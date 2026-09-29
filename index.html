@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trilha AI PM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F2F3FA; --surface:#FFFFFF; --surface-2:#F7F7FC; --ink:#1C1B36; --muted:#5E5D7C; --line:#E2E2F0;
+  --brand:#5B47F5; --ok:#1F9D62; --warn:#C2410C;
+  --m1:#7C5CFA; --m2:#12A594; --m3:#EE4E5A; --m4:#E69A12; --m5:#3478F6; --m6:#D0409F; --m7:#1F9D62; --m8:#F26B2A; --m9:#2F3C9E;
+  --shadow:0 1px 2px rgba(28,27,54,.06), 0 8px 24px rgba(28,27,54,.06);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#13122A; --surface:#1D1C3A; --surface-2:#242346; --ink:#EEEDFC; --muted:#A9A8C8; --line:#33325A;
+    --brand:#8F80FF; --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    --m9:#6F7CF0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#13122A; --surface:#1D1C3A; --surface-2:#242346; --ink:#EEEDFC; --muted:#A9A8C8; --line:#33325A;
+  --brand:#8F80FF; --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  --m9:#6F7CF0;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:8px}
+a{color:var(--brand)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* Top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:19px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.brand-mark{width:30px;height:30px;border-radius:10px;display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:5px;background:var(--surface);box-shadow:var(--shadow)}
+.brand-mark i{border-radius:3px}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:15px}
+.nav a[aria-current="page"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.pill{font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);white-space:nowrap}
+.theme-btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:36px;height:36px;display:grid;place-items:center}
+
+main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:stretch}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.02em;margin:0 0 14px}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch;margin:0 0 22px}
+.hero-left{padding:8px 0}
+.continue{background:var(--surface);border-radius:28px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
+.ring-row{display:flex;align-items:center;gap:18px}
+.ring{--p:0;width:108px;height:108px;border-radius:50%;background:conic-gradient(var(--brand) calc(var(--p)*1%), var(--line) 0);display:grid;place-items:center;flex:none}
+.ring span{width:84px;height:84px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:26px}
+.ring-row p{margin:0;color:var(--muted);font-size:15px}
+.ring-row strong{display:block;color:var(--ink);font-size:17px}
+.minibars{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;align-items:end;height:64px;margin-top:auto}
+.minibars a{display:block;height:100%;border-radius:8px;background:color-mix(in srgb,var(--c) 16%,var(--surface-2));position:relative;overflow:hidden}
+.minibars a i{position:absolute;left:0;right:0;bottom:0;background:var(--c);border-radius:8px}
+.minibars-l{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;font-size:11px;color:var(--muted);text-align:center;font-weight:700}
+.next-box{border-radius:18px;padding:14px 16px;background:var(--surface-2);border-left:6px solid var(--c,var(--brand))}
+.next-box small{color:var(--muted);display:block;font-size:13px}
+.next-box b{font-size:16px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:12px 18px;font-weight:700;font-size:15px;background:var(--brand);color:#fff;text-decoration:none}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.btn.soft{background:var(--surface);color:var(--ink);border:1.5px solid color-mix(in srgb,var(--c,var(--brand)) 45%,transparent)}
+.btn.done{background:var(--ok)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+/* Ribbon: 32 stops */
+.ribbon{margin:30px 0 8px;background:var(--surface);border-radius:24px;padding:20px 22px;box-shadow:var(--shadow)}
+.ribbon-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap}
+.ribbon-head h2{font-family:var(--display);font-size:20px;margin:0}
+.ribbon-head span{color:var(--muted);font-size:14px}
+.stops{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:6px 2px 10px}
+.stop-group{display:flex;gap:5px;align-items:center;padding:6px 8px;border-radius:999px;background:color-mix(in srgb,var(--c) 12%,transparent)}
+.stop{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--c);background:var(--surface);color:var(--c);font-size:12px;font-weight:800;display:grid;place-items:center;flex:none;padding:0;transition:transform .15s}
+.stop:hover{transform:scale(1.12)}
+.stop.is-done{background:var(--c);color:#fff}
+.stop.is-next{box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 30%,transparent)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:6px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+
+/* About */
+details.about{margin:18px 0 34px;background:var(--surface);border-radius:20px;padding:4px 20px;box-shadow:var(--shadow)}
+details.about summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.about summary::-webkit-details-marker{display:none}
+details.about summary::after{content:"+";font-size:22px;color:var(--muted)}
+details.about[open] summary::after{content:"−"}
+details.about .about-body{padding:0 0 18px;color:var(--muted);max-width:75ch}
+details.about .about-body p{margin:0 0 10px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
+.flow span{background:var(--surface-2);border:1px solid var(--line);color:var(--ink);padding:6px 12px;border-radius:999px;font-size:14px;font-weight:600}
+
+/* Modules */
+.modules{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.module{background:var(--surface);border-radius:26px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.mod-head{padding:20px 22px 16px;background:color-mix(in srgb,var(--c) 13%,var(--surface));position:relative}
+.mod-num{font-family:var(--display);font-weight:800;font-size:15px;color:var(--c);display:flex;justify-content:space-between;align-items:center}
+.mod-head h3{font-family:var(--display);font-size:21px;line-height:1.15;margin:6px 0 8px;letter-spacing:-.01em}
+.mod-head p{margin:0;color:var(--muted);font-size:14px}
+.bar{height:8px;border-radius:99px;background:color-mix(in srgb,var(--c) 18%,var(--surface));margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--c);border-radius:99px;transition:width .4s}
+.lessons{list-style:none;margin:0;padding:8px 10px 12px}
+.lessons a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;text-decoration:none;color:var(--ink)}
+.lessons a:hover{background:var(--surface-2)}
+.chk{width:24px;height:24px;border-radius:50%;border:2px solid var(--c);flex:none;display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--c)}
+.chk.on{background:var(--c);color:#fff}
+.lessons .t{flex:1;font-weight:600;font-size:15px;line-height:1.35}
+.lessons .n{font-size:12px;color:var(--muted);font-weight:700;display:block}
+.lessons .ex .t{font-weight:700}
+.tag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--c) 15%,transparent);color:var(--ink)}
+
+/* Lesson */
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-weight:600;text-decoration:none;margin-bottom:14px}
+.lesson-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
+.l-head{background:color-mix(in srgb,var(--c) 14%,var(--surface));border-radius:28px;padding:26px 28px;margin-bottom:18px}
+.l-kicker{color:var(--c);font-weight:800;font-family:var(--display);font-size:15px}
+.l-head h1{font-family:var(--display);font-size:clamp(28px,3.6vw,42px);line-height:1.08;letter-spacing:-.015em;margin:6px 0 18px}
+.l-actions{display:flex;flex-wrap:wrap;gap:10px}
+.block{background:var(--surface);border-radius:22px;padding:22px 24px;box-shadow:var(--shadow);margin-bottom:16px}
+.block h2{font-family:var(--display);font-size:21px;margin:0 0 12px;letter-spacing:-.01em}
+.block p{margin:0 0 10px;max-width:72ch}
+.concepts{display:grid;gap:10px}
+.concept{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:var(--surface-2)}
+.concept b{display:block;font-size:16px;margin-bottom:3px}
+.concept p{margin:0;color:var(--muted);font-size:15px}
+.ask-link{margin-top:8px;background:none;border:0;padding:0;color:var(--c);font-weight:700;font-size:14px}
+.pm-note{border-radius:20px;padding:18px 20px;background:color-mix(in srgb,var(--c) 10%,var(--surface));border:1.5px dashed color-mix(in srgb,var(--c) 55%,transparent);margin-bottom:16px}
+.pm-note b{font-family:var(--display);font-size:17px;display:block;margin-bottom:4px}
+.pm-note p{margin:0;max-width:72ch}
+textarea{width:100%;min-height:150px;border:1.5px solid var(--line);border-radius:16px;padding:14px;background:var(--surface-2);resize:vertical;line-height:1.5}
+textarea:focus{outline:none;border-color:var(--c,var(--brand))}
+.save-state{font-size:13px;color:var(--muted);margin-top:6px;min-height:18px}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}
+.pager a{flex:1;min-width:200px;background:var(--surface);border-radius:18px;padding:14px 18px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.pager a small{display:block;color:var(--muted);font-size:13px}
+.pager a.next{text-align:right}
+
+/* Quiz */
+.quiz-q{border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px;background:var(--surface-2)}
+.quiz-q p{font-weight:700;margin:0 0 10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;font-size:15px}
+.opt:hover:not(:disabled){border-color:var(--c)}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface))}
+.opt.wrong{border-color:var(--m3);background:color-mix(in srgb,var(--m3) 10%,var(--surface))}
+.opt:disabled{cursor:default}
+.why{margin-top:10px;font-size:14px;color:var(--muted)}
+.score{font-weight:700;margin-top:6px}
+
+/* Chat */
+.chat{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);max-height:calc(100vh - 110px);overflow:hidden}
+.chat.full{position:static;max-height:none;min-height:70vh}
+.chat-head{padding:18px 20px 12px;border-bottom:1px solid var(--line)}
+.chat-head h2{font-family:var(--display);font-size:19px;margin:0}
+.chat-head p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:180px}
+.msg{max-width:92%;padding:11px 14px;border-radius:18px;font-size:15px;line-height:1.5;word-wrap:break-word}
+.msg.me{align-self:flex-end;background:var(--c,var(--brand));color:#fff;border-bottom-right-radius:6px}
+.msg.ai{align-self:flex-start;background:var(--surface-2);border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.ai p{margin:0 0 8px}.msg.ai p:last-child{margin:0}
+.msg.ai ul,.msg.ai ol{margin:4px 0 8px;padding-left:20px}
+.msg.ai code{background:var(--line);padding:1px 5px;border-radius:5px;font-size:.92em}
+.msg.ai pre{background:var(--line);padding:10px;border-radius:10px;overflow-x:auto}
+.msg.thinking{color:var(--muted);font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px}
+.chip{border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:6px 11px;font-size:13px;font-weight:600;color:var(--ink)}
+.chip:hover{border-color:var(--c,var(--brand))}
+.composer{display:flex;gap:8px;padding:12px 14px 14px;border-top:1px solid var(--line)}
+.composer textarea{min-height:46px;height:46px;max-height:140px;border-radius:14px;padding:11px 12px;font-size:15px}
+.composer .btn{padding:0 16px}
+.empty-chat{color:var(--muted);font-size:14px;text-align:center;margin:auto;max-width:28ch}
+.chat-off{padding:18px 20px;color:var(--muted);font-size:14px}
+.note-err{color:var(--warn);font-size:14px;margin-top:8px}
+
+/* Glossary */
+.page-title{font-family:var(--display);font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;margin:0 0 6px}
+.page-sub{color:var(--muted);margin:0 0 20px;max-width:60ch}
+.search{width:100%;max-width:520px;border:1.5px solid var(--line);background:var(--surface);border-radius:16px;padding:13px 16px;font-size:16px;margin-bottom:20px}
+.search:focus{outline:none;border-color:var(--brand)}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.g-item{background:var(--surface);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);border-top:5px solid var(--c)}
+.g-item b{display:block;font-size:16px;margin-bottom:4px}
+.g-item p{margin:0 0 8px;color:var(--muted);font-size:14.5px}
+.g-item a{font-size:13px;font-weight:700;color:var(--c);text-decoration:none}
+.chat-wrap{max-width:820px}
+
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+.celebrate{animation:pop .5s ease}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+
+@media (max-width:1000px){
+  .lesson-grid{grid-template-columns:1fr}
+  .chat{position:static;max-height:none}
+  .msgs{max-height:480px}
+}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .top-in{flex-wrap:wrap;gap:10px}
+  .nav{margin-left:0;order:3;width:100%}
+  .top-right{margin-left:auto}
+  .modules{grid-template-columns:1fr}
+  main{padding:20px 14px 70px}
+  .l-head{padding:20px}
+  .block{padding:18px}
+}
+.top-right{display:flex;gap:8px;align-items:center}
+/* Interview */
+.iv-wrap{max-width:900px}
+.iv-row{margin-bottom:16px}
+.iv-lab{display:block;font-weight:700;font-size:14px;color:var(--muted);margin-bottom:8px}
+.segs{display:flex;flex-wrap:wrap;gap:6px}
+.seg{border:1.5px solid var(--line);background:var(--surface-2);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600}
+.seg[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.iv-empty{color:var(--muted);text-align:center;padding:26px;border:2px dashed var(--line);border-radius:22px;margin:0 0 16px}
+.iv-q{border-top:6px solid var(--m6)}
+.iv-qlab{font-family:var(--display);font-weight:800;color:var(--m6);font-size:15px}
+.iv-question{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);line-height:1.25;font-weight:700;margin:6px 0 8px;max-width:none}
+.iv-q .ask-link{color:var(--m6)}
+.iv-hint{background:color-mix(in srgb,var(--m6) 9%,var(--surface));border-radius:14px;padding:12px 14px;color:var(--ink);margin-top:8px}
+.iv-meta{display:flex;gap:16px;font-size:13px;color:var(--muted);margin:6px 0 12px;font-weight:600}
+.scores{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.score-card{border-radius:18px;padding:14px 16px;background:color-mix(in srgb,var(--c) 11%,var(--surface))}
+.score-card span{display:block;font-weight:700;color:var(--muted);font-size:14px}
+.score-card b{font-family:var(--display);font-size:32px;line-height:1.1;color:var(--c)}
+.score-card .dots{display:flex;gap:5px;margin-top:6px}.dots i{width:22px;height:7px;border-radius:9px;background:color-mix(in srgb,var(--c) 22%,transparent)}.dots i.on{background:var(--c)}
+.iv-fb h3{font-family:var(--display);font-size:17px;margin:18px 0 8px}
+.iv-fb ul{margin:0;padding-left:20px}.iv-fb li{margin-bottom:5px}
+.fb-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}.fb-cols h3{margin-top:0}
+.corrs{display:grid;gap:10px}
+.corr{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface-2)}
+.c-o{color:var(--m3);text-decoration:line-through;text-decoration-thickness:1.5px}
+.c-b{color:var(--ok);font-weight:700;margin-top:3px}
+.corr p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.vocab div{border-radius:14px;padding:12px 14px;background:color-mix(in srgb,var(--m4) 12%,var(--surface))}
+.vocab p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.polished{border-left:5px solid var(--m2);background:var(--surface-2);border-radius:0 14px 14px 0;padding:14px 16px}
+.polished p{margin:0 0 8px}.polished p:last-child{margin:0}
+.follow{margin-top:18px;border-radius:18px;padding:16px;background:color-mix(in srgb,var(--m6) 9%,var(--surface))}
+.follow h3{margin-top:0}.follow p{font-weight:600}
+.iv-hist-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.iv-hist-head h2{margin:0}
+.hist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.hist li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface-2)}
+.h-q{font-weight:600}
+.h-meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13px;color:var(--muted);margin-top:6px}
+.h-s{font-weight:700;color:var(--c)}
+.hist .ask-link{margin:0;color:var(--brand)}
+@media (max-width:760px){.fb-cols,.scores{grid-template-columns:1fr}}
+
+.lang{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:800;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--brand);color:#fff}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true"><i style="background:var(--m1)"></i><i style="background:var(--m3)"></i><i style="background:var(--m5)"></i><i style="background:var(--m4)"></i></span>
+      <span id="brandName">Trilha AI PM</span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#/" data-nav="home">Trilha</a>
+      <a href="#/glossario" data-nav="glossario">Glossário</a>
+      <a href="#/tutor" data-nav="tutor">Tutor</a>
+      <a href="#/entrevista" data-nav="entrevista">Entrevista</a>
+    </nav>
+    <div class="top-right">
+      <div class="lang" role="group" aria-label="Idioma da página"><button data-lang="pt" aria-pressed="true">PT</button><button data-lang="en" aria-pressed="false">EN</button></div>
+      <span class="pill" id="topProgress">0 de 32 aulas</span>
+      <button class="theme-btn" id="themeBtn" aria-label="Alternar tema claro ou escuro">◐</button>
+    </div>
+  </div>
+</header>
+<main id="app" tabindex="-1"></main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============ CONTEÚDO DA TRILHA ============ */
+const MODULES = [
+ {n:1,c:"var(--m1)",title:"O que é IA e como chegamos até aqui",
+  desc:"Conceitos, origens, IA simbólica e a diferença entre parecer inteligente e ser confiável.",
+  ex:"Compare uma interação baseada em regras com uma resposta generativa e discuta o que cada sistema realmente demonstrou ser capaz de fazer.",
+  lessons:[
+  {t:"O conceito de inteligência artificial",
+   s:"O que estamos chamando de IA? Aqui você conhece as capacidades clássicas (percepção, representação de conhecimento, raciocínio, aprendizagem e tomada de decisão) e aprende a separar IA, automação, algoritmo, modelo e produto.",
+   k:[["Algoritmo","Sequência finita de passos para resolver um problema. Nem todo algoritmo é IA: ordenar uma lista é algoritmo, não inteligência."],
+      ["Automação","Executar uma tarefa sem intervenção humana. Pode ser feita só com regras fixas, sem nenhuma IA envolvida."],
+      ["Modelo","Artefato matemático que transforma entradas em saídas, normalmente aprendido a partir de dados. Exemplo: um classificador de spam."],
+      ["Produto de IA","A experiência completa entregue ao usuário: modelo, dados, interface, regras, integrações e operação. O modelo é apenas uma das peças."],
+      ["Capacidades clássicas da IA","Perceber o ambiente, representar conhecimento, raciocinar, aprender com experiência e decidir. Um sistema pode ter umas e não outras."]],
+   pm:"Em entrevistas, separar \"temos um modelo\" de \"temos um produto\" mostra maturidade. O valor vem do problema resolvido, não da tecnologia escolhida."},
+  {t:"As origens e os fundamentos da IA",
+   s:"As perguntas que deram origem ao campo, suas conexões com lógica, matemática e computação, e o encontro de Dartmouth em 1956 como marco. A ideia é conhecer as linhas de pensamento sem contar a história como se uma abordagem tivesse eliminado a outra.",
+   k:[["Teste de Turing (1950)","Alan Turing propôs trocar a pergunta \"máquinas pensam?\" por um jogo de imitação: se não dá para distinguir a máquina de uma pessoa na conversa, o que isso diz?"],
+      ["Conferência de Dartmouth (1956)","Encontro organizado por John McCarthy, Marvin Minsky, Claude Shannon e Nathaniel Rochester que consolidou a IA como campo de pesquisa."],
+      ["Simbolismo e conexionismo","Uma linha representa conhecimento com símbolos e regras lógicas; outra aprende padrões com redes de unidades conectadas. As duas coexistiram e hoje se combinam."],
+      ["Invernos da IA","Períodos de corte de investimento depois de expectativas infladas, nos anos 1970 e no fim dos anos 1980."]],
+   pm:"Ciclos de hype e decepção se repetem. Um PM sênior calibra as expectativas de stakeholders com evidências, e não com promessas."},
+  {t:"IA simbólica e sistemas especialistas",
+   s:"Bases de conhecimento, regras e motores de inferência. Como representar o conhecimento de um especialista e usá-lo para chegar a conclusões, quais são as vantagens e limitações, e quando regras explícitas continuam sendo a melhor escolha.",
+   k:[["Base de conhecimento","Conjunto de fatos e regras de um domínio, normalmente escritos com a ajuda de especialistas humanos."],
+      ["Motor de inferência","Componente que aplica as regras aos fatos para chegar a conclusões, encadeando regras para frente (dos fatos à conclusão) ou para trás (da hipótese aos fatos)."],
+      ["MYCIN","Sistema especialista dos anos 1970, em Stanford, que sugeria tratamentos para infecções bacterianas usando centenas de regras."],
+      ["Gargalo de aquisição de conhecimento","Extrair e manter regras de especialistas é caro, e o sistema quebra diante de situações que ninguém previu."],
+      ["Quando regras ainda vencem","Requisitos regulatórios, lógica que precisa ser auditável, poucos casos bem definidos e custo de erro muito alto."]],
+   pm:"Antes de propor um LLM, pergunte se uma regra explícita resolve. Muitas vezes ela é mais barata, previsível e fácil de explicar."},
+  {t:"ELIZA e a diferença entre parecer inteligente e ser confiável",
+   s:"ELIZA e o efeito ELIZA: a tendência de atribuir compreensão e capacidades humanas a sistemas computacionais. O tema se conecta à confiança do usuário, à antropomorfização e ao risco de confundir conversa convincente com competência real.",
+   k:[["ELIZA (1966)","Programa criado por Joseph Weizenbaum no MIT que simulava um terapeuta reformulando as frases do usuário com padrões simples."],
+      ["Efeito ELIZA","Tendência de atribuir compreensão e intenção humanas a um sistema só porque a conversa soa natural."],
+      ["Antropomorfização","Dar características humanas ao sistema (nome, emoções, \"eu entendo você\"). Aumenta a confiança, às vezes além do que o sistema merece."],
+      ["Fluência não é competência","Um texto convincente pode estar errado. Confiabilidade se mede com testes, não com a impressão que a conversa causa."]],
+   pm:"Em produtos de IA, desenhe uma confiança calibrada: mostre fontes, deixe claros os limites e sinalize quando a resposta pode falhar."}
+ ]},
+ {n:2,c:"var(--m2)",title:"Os tipos de IA e como os modelos aprendem",
+  desc:"Organizar os tipos de IA sem misturar conceitos, entender machine learning e o ciclo de vida de um modelo.",
+  ex:"Para diferentes problemas de negócio, escolha entre regras, classificação, previsão ou outra abordagem, e justifique a escolha.",
+  lessons:[
+  {t:"Como organizar os \"tipos de IA\" sem misturar conceitos",
+   s:"Separar as classificações por capacidade, abordagem e aplicação. IA estreita, AGI e superinteligência são conceitos de capacidade; IA simbólica e aprendizado de máquina são abordagens; visão computacional, linguagem e recomendação são campos de aplicação.",
+   k:[["Por capacidade","IA estreita (tarefas específicas, que é tudo o que existe hoje), AGI (capacidade geral comparável à humana, conceito ainda em debate) e superinteligência (hipotética)."],
+      ["Por abordagem","Simbólica (regras e lógica), aprendizado de máquina (padrões aprendidos com dados) e abordagens híbridas."],
+      ["Por aplicação","Visão computacional, linguagem natural, fala, recomendação, previsão, robótica e outros."],
+      ["Eixos, não caixas","Um recomendador pode ser IA estreita, baseado em aprendizado de máquina e aplicado a e-commerce, tudo ao mesmo tempo."]],
+   pm:"Ao descrever um produto, deixe claro de qual eixo você está falando. Isso evita discussões confusas entre engenharia, design e negócio."},
+  {t:"Machine learning, redes neurais e deep learning",
+   s:"Como aprender padrões a partir de dados. Os tipos de aprendizado (supervisionado, não supervisionado, autossupervisionado e por reforço) e a relação entre aprendizado de máquina, redes neurais e deep learning, com exemplos de classificação, previsão e reconhecimento de padrões.",
+   k:[["Aprendizado supervisionado","Aprende com exemplos rotulados (este e-mail é spam, aquele não). Serve para classificação e regressão."],
+      ["Não supervisionado","Encontra estrutura em dados sem rótulos, como agrupar clientes por comportamento de compra."],
+      ["Autossupervisionado","O próprio dado gera o rótulo, como esconder a próxima palavra e pedir para o modelo prevê-la. É a base do pré-treino dos LLMs."],
+      ["Aprendizado por reforço","Aprende por tentativa, erro e recompensa. Aparece em jogos, robótica e no ajuste de LLMs com feedback humano (RLHF)."],
+      ["Redes neurais e deep learning","Deep learning é um tipo de rede neural com muitas camadas, e redes neurais são uma família dentro do aprendizado de máquina."]],
+   pm:"O tipo de aprendizado depende muito dos dados disponíveis. Quem costuma saber se existem rótulos, ou quanto custaria criá-los, é o PM."},
+  {t:"Dados, treinamento, inferência e avaliação básica",
+   s:"O ciclo de vida de um modelo: preparação dos dados, treinamento, validação, teste e uso em produção. Qualidade dos dados, generalização, sobreajuste, vazamento entre treino e teste, e a diferença entre uma pontuação do modelo e uma probabilidade calibrada.",
+   k:[["Treino, validação e teste","O treino ajusta o modelo, a validação ajuda a escolher configurações e o teste mede o desempenho final em dados nunca vistos."],
+      ["Sobreajuste (overfitting)","O modelo decora os exemplos de treino e vai mal em dados novos. É como estudar só as respostas da prova do ano passado."],
+      ["Vazamento de dados (data leakage)","Informação do teste, ou do futuro, contamina o treino e infla as métricas. Tudo parece ótimo até ir para produção."],
+      ["Inferência","Usar o modelo treinado para gerar previsões no dia a dia. Tem custo e latência próprios, que o PM precisa acompanhar."],
+      ["Score vs. probabilidade calibrada","Um score de 0,9 só significa \"90% de chance\" se o modelo estiver calibrado, ou seja, se entre os casos com 0,9 cerca de 90% forem realmente positivos."]],
+   pm:"Métricas excelentes em teste podem esconder vazamento. Pergunte sempre como o conjunto de teste foi montado e se ele representa o uso real."}
+ ]},
+ {n:3,c:"var(--m3)",title:"IA generativa por dentro",
+  desc:"Modelos de fundação, como um LLM gera tokens e como embeddings e bancos vetoriais entram na história.",
+  ex:"Observe a tokenização de diferentes textos e compare resultados de busca por palavras-chave com resultados de busca semântica.",
+  lessons:[
+  {t:"O que é IA generativa",
+   s:"Geração de texto, imagem, áudio, vídeo e código. Modelos de fundação, modelos de linguagem e modelos multimodais, distinguindo o modelo da aplicação construída sobre ele, sem reduzir toda IA generativa a um chatbot.",
+   k:[["IA generativa","Modelos que produzem conteúdo novo (texto, imagem, áudio, vídeo, código) em vez de apenas classificar ou prever um número."],
+      ["Modelo de fundação","Modelo grande, pré-treinado em dados amplos, que pode ser adaptado para muitas tarefas diferentes."],
+      ["Multimodal","Modelo que entende ou gera mais de um tipo de dado, como texto e imagem juntos."],
+      ["Mecanismos de geração","Modelos autorregressivos geram texto token a token; modelos de difusão criam imagens partindo de ruído e refinando aos poucos."],
+      ["Modelo vs. aplicação","O Claude é um modelo; um assistente de atendimento construído sobre ele é uma aplicação, com regras, dados e interface próprios."]],
+   pm:"Chat é só uma das interfaces possíveis. Muitas vezes o melhor uso de IA generativa é invisível, embutido em um fluxo que o usuário já conhece."},
+  {t:"Como um modelo de linguagem gera tokens",
+   s:"O caminho da entrada até a resposta: tokenização, processamento do contexto, cálculo de probabilidades e escolha sucessiva dos tokens. Temperatura, limites de saída e janela de contexto, lembrando que a probabilidade de um token não é a probabilidade de a resposta estar correta.",
+   k:[["Token","Pedaço de texto (palavra, parte de palavra ou pontuação) que o modelo processa. Textos em português costumam gastar mais tokens que em inglês."],
+      ["Geração autorregressiva","O modelo calcula a probabilidade do próximo token, escolhe um, acrescenta ao contexto e repete até terminar."],
+      ["Temperatura","Controla a aleatoriedade na escolha dos tokens. Mais baixa deixa a resposta mais previsível; mais alta, mais variada."],
+      ["Janela de contexto","Quantidade máxima de tokens que o modelo consegue considerar de uma vez, somando entrada e saída."],
+      ["Probabilidade não é verdade","O modelo pode escolher com alta confiança uma sequência factualmente errada. É daí que vêm as alucinações."]],
+   pm:"Custo e latência são cobrados por token. Entender tokens é entender a conta do seu produto de IA e o tempo de espera do usuário."},
+  {t:"Embeddings, busca semântica e bancos vetoriais",
+   s:"Como representar conteúdo em números para encontrar itens semelhantes. Embeddings para recuperação de documentos, indexação, metadados e busca lexical, vetorial e híbrida. O banco vetorial recupera conteúdo; ele não gera os tokens da resposta.",
+   k:[["Embedding","Vetor de números que representa o significado de um texto. Textos com sentido parecido ficam próximos nesse espaço."],
+      ["Similaridade","Medida de proximidade entre vetores (como a similaridade de cosseno), usada para achar conteúdos parecidos."],
+      ["Busca lexical","Procura palavras exatas, como no algoritmo BM25. Excelente para códigos, nomes próprios e termos raros."],
+      ["Busca vetorial e híbrida","A vetorial encontra sinônimos e paráfrases; a híbrida combina as duas para ter o melhor de cada uma."],
+      ["Banco vetorial","Armazena e indexa embeddings para recuperar trechos rapidamente. Quem escreve a resposta continua sendo o modelo de linguagem."]],
+   pm:"Se o cliente busca \"pedido 4821\", a busca lexical ganha. Se pergunta \"como devolvo um produto?\", a busca semântica ajuda muito."}
+ ]},
+ {n:4,c:"var(--m4)",title:"Modelos abertos, fechados e decisões econômicas",
+  desc:"O que é realmente aberto, onde o modelo roda, quanto custa e como escolher.",
+  ex:"Defenda a escolha de arquitetura para um protótipo de baixo volume e para uma operação de maior escala.",
+  lessons:[
+  {t:"Modelos fechados, open-weight e open source",
+   s:"O que efetivamente está disponível em cada caso: pesos, código, informações sobre os dados e permissões de uso. Como ler uma model card e uma licença, lembrando que disponibilizar os pesos não torna um sistema automaticamente open source.",
+   k:[["Modelo fechado","Acessível só por API ou produto do fornecedor. Os pesos não são divulgados."],
+      ["Open-weight","Os pesos podem ser baixados, mas dados de treino, código de treino ou a própria licença podem ter restrições."],
+      ["Open source em IA","Pela definição da Open Source Initiative, exige liberdade de usar, estudar, modificar e compartilhar, com acesso a pesos, código e informação suficiente sobre os dados."],
+      ["Model card","Documento que descreve uso pretendido, dados, avaliações, limitações e riscos de um modelo."],
+      ["Licença","Define o que é permitido: uso comercial, limites de escala, restrições de aplicação e obrigações de atribuição."]],
+   pm:"Antes de adotar um modelo aberto, leia a licença junto com o jurídico. \"Pesos abertos\" não quer dizer \"uso livre\"."},
+  {t:"Onde o modelo roda: API, nuvem ou infraestrutura própria",
+   s:"Comparar um modelo proprietário acessado por API, um modelo de pesos abertos hospedado por terceiros e um modelo executado em infraestrutura própria. Abertura do modelo e forma de hospedagem são decisões diferentes.",
+   k:[["API proprietária","Você chama o modelo do fornecedor e paga por uso. Pouca operação, menos controle sobre o ambiente."],
+      ["Open-weight gerenciado","Modelo aberto hospedado por um provedor de nuvem e consumido também como API."],
+      ["Self-hosted","Roda em infraestrutura própria ou dedicada. Mais controle sobre dados e customização, e muito mais trabalho de operação."],
+      ["Abertura e hospedagem são eixos diferentes","Um modelo aberto pode ser usado como serviço gerenciado, e um fechado pode estar disponível dentro da sua nuvem."]],
+   pm:"Privacidade, residência de dados e exigências de clientes enterprise costumam decidir a hospedagem mais do que a qualidade do modelo."},
+  {t:"Quanto custa usar cada alternativa",
+   s:"Comparar cobrança por consumo com custos de capacidade computacional. Montar cenários com tokens, CPU e GPU, capacidade ociosa, disponibilidade, manutenção e equipe, calculando o custo total sem assumir de antemão que aberto é mais barato ou que API é mais cara.",
+   k:[["Cobrança por consumo","Preço por milhão de tokens de entrada e de saída. O custo cresce junto com o volume de uso."],
+      ["Custo de capacidade","GPUs reservadas são cobradas por hora, sendo usadas ou não."],
+      ["Capacidade ociosa","GPU parada continua custando. Baixa utilização encarece cada requisição atendida."],
+      ["Custo total (TCO)","Inclui infraestrutura, alta disponibilidade, manutenção, monitoramento e as pessoas que operam tudo isso."],
+      ["Ponto de equilíbrio","Volume a partir do qual hospedar passa a compensar mais do que pagar por uso, quando esse ponto existe."]],
+   pm:"Monte uma planilha com cenários de volume antes de opinar. É o tipo de raciocínio que entrevistadores de AI PM adoram ver."},
+  {t:"Como escolher um modelo e quando adotar uma solução híbrida",
+   s:"Uma matriz de decisão com qualidade na tarefa, custo, latência, privacidade, licença e capacidade operacional. Testar uma arquitetura que envia tarefas simples a um modelo menor e casos complexos a um mais capaz, comparando com um único modelo.",
+   k:[["Matriz de decisão","Critérios com pesos (qualidade, custo, latência, privacidade, licença, operação) para comparar opções de forma explícita."],
+      ["Avaliar na sua tarefa","Benchmarks públicos dão pistas, mas quem decide é o desempenho no seu próprio conjunto de testes."],
+      ["Roteamento de modelos","Tarefas simples vão para um modelo menor e barato; casos complexos, para um modelo mais capaz."],
+      ["Cascata","Tenta primeiro o modelo barato e escala para o maior quando a confiança é baixa ou a validação falha."],
+      ["O custo do roteador","O roteamento também erra e adiciona complexidade. Compare sempre com a opção de usar um único modelo."]],
+   pm:"A resposta madura raramente é \"o melhor modelo\". É o modelo suficiente para a qualidade exigida, com o menor custo total."}
+ ]},
+ {n:5,c:"var(--m5)",title:"Prompt engineering, context engineering e RAG",
+  desc:"Instruções testáveis, a informação certa no contexto e respostas apoiadas em fontes.",
+  ex:"Resolva a mesma tarefa com diferentes estratégias (prompt, contexto longo, RAG, fine-tuning) e compare qualidade, custo, manutenção e atualização das informações.",
+  lessons:[
+  {t:"Prompt engineering: instruções que podem ser testadas",
+   s:"Objetivo, instruções, exemplos, restrições e formato esperado. Clareza, versionamento e comparação entre versões: em vez de colecionar prompts mágicos, medir como cada alteração afeta os resultados.",
+   k:[["Anatomia de um bom prompt","Objetivo, contexto, instruções, exemplos, restrições e formato de saída, nessa ordem de importância para a clareza."],
+      ["Few-shot","Incluir exemplos de entrada e saída esperada para mostrar ao modelo o padrão desejado."],
+      ["Saída estruturada","Pedir JSON ou outro formato fixo facilita validar a resposta e integrar com outros sistemas."],
+      ["Versionamento de prompts","Tratar prompt como código: versão, histórico de mudanças e possibilidade de voltar atrás."],
+      ["Comparar versões","Rodar cada versão no mesmo conjunto de casos e comparar resultados, em vez de confiar na impressão de um teste isolado."]],
+   pm:"Prompt é parte da especificação do produto. Pense nele como uma user story que o modelo executa, com critérios de aceite testáveis."},
+  {t:"Context engineering: qual informação chega ao modelo",
+   s:"Selecionar, organizar e atualizar instruções, histórico, documentos e resultados de ferramentas. Orçamento de contexto, resumo, memória persistente e descarte de informação irrelevante. A pergunta muda de \"como escrever o pedido?\" para \"o que o modelo precisa receber?\".",
+   k:[["Contexto","Tudo o que o modelo recebe numa chamada: instruções de sistema, histórico, documentos e resultados de ferramentas."],
+      ["Orçamento de contexto","A janela é finita e cada token custa. Informação irrelevante pode até piorar a qualidade da resposta."],
+      ["Resumo e compactação","Condensar conversas ou documentos longos para manter só o que importa para a tarefa."],
+      ["Memória persistente","Guardar fatos entre sessões (preferências, decisões) e trazê-los de volta quando forem relevantes."],
+      ["A pergunta central","O que o modelo precisa saber, neste momento, para executar bem esta tarefa específica?"]],
+   pm:"Muitos problemas atribuídos ao modelo são, na verdade, problemas de contexto: faltou informação ou sobrou ruído."},
+  {t:"RAG: responder usando fontes externas",
+   s:"O fluxo de recuperação e geração: ingestão, divisão em trechos, busca, reordenação e resposta apoiada em fontes. Atualização dos documentos, permissões e avaliação separada da recuperação e da resposta, comparando busca lexical, vetorial e híbrida.",
+   k:[["RAG","Retrieval-Augmented Generation: recuperar trechos relevantes de fontes externas e entregá-los ao modelo para que ele responda com base neles."],
+      ["Ingestão e chunking","Carregar documentos e dividi-los em trechos de tamanho adequado, acompanhados de metadados como data, autor e permissão."],
+      ["Reranking","Reordenar os trechos recuperados com um modelo mais preciso antes de enviá-los ao LLM."],
+      ["Citações","A resposta indica quais fontes usou, o que permite ao usuário conferir."],
+      ["Permissões e atualização","O usuário só deve receber trechos que tem direito de ver, e o índice precisa acompanhar as mudanças nos documentos."],
+      ["Avaliação em duas partes","Medir a recuperação (achou o trecho certo?) separada da geração (a resposta é fiel ao trecho?)."]],
+   pm:"Quando o RAG erra, a primeira pergunta é: o trecho certo chegou ao modelo? Isso separa problema de busca de problema de geração."},
+  {t:"Quando usar prompt, contexto longo, RAG ou fine-tuning",
+   s:"Comparar as alternativas para melhorar uma solução: aprimorar instruções, fornecer documentos diretamente, recuperar informações sob demanda ou adaptar o modelo com treinamento adicional. Combinações e critérios de escolha, sem tratar as técnicas como substitutas universais.",
+   k:[["Melhorar o prompt","Primeiro passo: barato, rápido e reversível."],
+      ["Contexto longo","Colocar os documentos inteiros no contexto. Simples quando o material é pequeno, estável e cabe na janela."],
+      ["RAG","Indicado quando a base é grande, muda com frequência ou exige controle de permissões."],
+      ["Fine-tuning","Ajustar os pesos com exemplos para ensinar formato, estilo ou uma tarefa específica. Não é a melhor forma de ensinar conhecimento que muda com frequência."],
+      ["Combinações","Um sistema real pode unir prompt bem feito, RAG e um modelo ajustado, cada um resolvendo uma parte."]],
+   pm:"Saber explicar por que você não fez fine-tuning é tão valioso quanto saber quando fazer."}
+ ]},
+ {n:6,c:"var(--m6)",title:"De assistentes a agentes",
+  desc:"Diferenças entre chatbots, workflows e agentes, anatomia de um agente e o mercado na prática.",
+  ex:"Compare agentes e plataformas de mercado considerando autonomia, integrações, supervisão, custo e critérios de sucesso, e não apenas a qualidade de uma demonstração.",
+  lessons:[
+  {t:"Chatbots, assistentes, workflows e agentes: qual é a diferença?",
+   s:"Separar a experiência oferecida ao usuário da arquitetura que a sustenta. Um assistente pode usar agentes, e \"assistente\" não significa \"apenas responde\". Na arquitetura, comparar fluxos predefinidos com sistemas em que o modelo decide os próximos passos.",
+   k:[["Chatbot","Interface conversacional. Por trás pode haver regras simples ou um modelo de linguagem."],
+      ["Assistente","Experiência feita para ajudar o usuário em tarefas. Pode ou não usar agentes internamente."],
+      ["Workflow","Sequência de passos definida em código, em que o LLM executa etapas previstas de antemão."],
+      ["Agente","O modelo decide dinamicamente os próximos passos e quais ferramentas usar até cumprir um objetivo."],
+      ["Experiência não é arquitetura","O nome que aparece na interface não revela como o sistema funciona por dentro."]],
+   pm:"Quando alguém disser \"vamos fazer um agente\", pergunte qual decisão o modelo precisa tomar sozinho que um fluxo fixo não resolveria."},
+  {t:"Anatomia de um agente de IA",
+   s:"Objetivo, modelo, ferramentas, estado, ciclo de ação e observação e condições de parada. APIs, chamadas de ferramentas, MCP e permissões, projetando um agente com escopo limitado, orçamento de execução e pontos de aprovação humana.",
+   k:[["Objetivo e condição de parada","O que o agente precisa alcançar e quando deve parar, seja por sucesso, falha ou limite atingido."],
+      ["Ferramentas (tool use)","Funções ou APIs que o modelo pode chamar, descritas com nome, finalidade e parâmetros."],
+      ["Ciclo ação e observação","O agente age, observa o resultado e decide o próximo passo, repetindo até concluir."],
+      ["Estado","O que o agente sabe e já fez até o momento, incluindo resultados intermediários."],
+      ["MCP (Model Context Protocol)","Padrão aberto, lançado pela Anthropic, para conectar modelos a ferramentas e fontes de dados de forma padronizada."],
+      ["Guardrails","Permissões mínimas, orçamento de passos e custo, e aprovação humana para ações sensíveis ou irreversíveis."]],
+   pm:"Desenhar os pontos de aprovação humana é trabalho de produto. É ali que confiança, risco e experiência se encontram."},
+  {t:"Arquiteturas de agentes e quando não usá-las",
+   s:"Comparar fluxo fixo, agente único, execução paralela e delegação entre agentes. O que a autonomia acrescenta e quanto custa em complexidade, e principalmente quando uma solução determinística ou uma única chamada ao modelo já resolve.",
+   k:[["Fluxo fixo","Previsível, barato e fácil de testar. Ótimo quando os passos são conhecidos."],
+      ["Agente único com ferramentas","Um modelo com acesso a algumas ferramentas decide a ordem de uso. Bom para tarefas abertas de escopo limitado."],
+      ["Execução paralela","Várias chamadas simultâneas cujos resultados são combinados depois. Reduz tempo em tarefas independentes."],
+      ["Orquestrador e subagentes","Um agente divide o trabalho e delega partes a outros. Poderoso, mas caro e difícil de depurar."],
+      ["O preço da autonomia","Mais tokens, mais latência, mais variabilidade e mais pontos de falha."]],
+   pm:"Regra prática: comece com a solução mais simples que funciona e acrescente autonomia só quando ela provar valor em teste."},
+  {t:"Agentes e plataformas do mercado, na prática",
+   s:"Estudar referências de categorias diferentes sem confundir um agente pronto com uma plataforma para construir agentes: agentes de programação, de pesquisa e síntese, e plataformas empresariais.",
+   k:[["Agentes de programação","Codex e Claude Code executam tarefas de desenvolvimento: leem o código, rodam comandos, propõem mudanças e pedem revisão."],
+      ["Pesquisa e síntese","Gemini Deep Research planeja a pesquisa, consulta várias fontes e monta um relatório."],
+      ["Plataformas empresariais","Microsoft Copilot Studio e Salesforce Agentforce servem para construir e operar agentes conectados a processos e sistemas de negócio."],
+      ["Agente pronto vs. plataforma","Um é produto para usar direto; a outra é ferramenta para montar agentes próprios."],
+      ["Como comparar","Autonomia, integrações, supervisão, custo e critérios de sucesso pesam mais do que uma demonstração bonita."]],
+   pm:"Você já usa Claude Code e Cursor no dia a dia. Observe onde eles pedem aprovação, como mostram o que fizeram e quando param: isso é design de agente."}
+ ]},
+ {n:7,c:"var(--m7)",title:"Qualidade, confiabilidade e operação",
+  desc:"Evals, projeto para falhas, observabilidade e métricas do técnico ao negócio.",
+  ex:"Investigue as falhas de uma solução e proponha melhorias apoiadas em evidências, e não apenas em impressões.",
+  lessons:[
+  {t:"Evals: como demonstrar que a solução funciona",
+   s:"Definir critérios de sucesso, montar conjuntos de avaliação e combinar testes automáticos com avaliação humana. Modelos como julgadores, suas limitações e a necessidade de calibrá-los, separando os exemplos usados para melhorar a solução daqueles reservados para testá-la.",
+   k:[["Eval","Conjunto de casos com critérios de sucesso para medir se o sistema faz o que deveria."],
+      ["Golden set","Casos representativos com resposta esperada, incluindo casos difíceis e de borda."],
+      ["Automático e humano","Testes automáticos dão escala; a avaliação humana captura nuances e calibra os critérios."],
+      ["LLM como juiz","Um modelo avalia respostas seguindo uma rubrica. Precisa ser comparado com avaliadores humanos para merecer confiança."],
+      ["Desenvolvimento vs. teste","Os exemplos usados para ajustar o prompt não podem ser os mesmos que medem o resultado final."]],
+   pm:"Seu case do Design QA Agent já tem 24 casos com recall e precisão medidos. É exatamente esse raciocínio que você vai defender em entrevista."},
+  {t:"Reliability: como projetar para falhas",
+   s:"Metas de confiabilidade, limites de tempo, novas tentativas, alternativas de recuperação e encaminhamento para humanos. Prevenção de ações duplicadas, controle de versões e reversão de mudanças, usando objetivos de nível de serviço para tornar \"ser confiável\" algo verificável.",
+   k:[["SLO e SLI","O objetivo de nível de serviço (ex.: 99,5% das respostas em até 5 segundos) e o indicador que o mede."],
+      ["Timeout e retry","Limite de espera e novas tentativas com intervalo crescente (backoff), para não sobrecarregar o sistema."],
+      ["Fallback","Plano B quando algo falha: modelo alternativo, resposta padrão ou encaminhamento para uma pessoa."],
+      ["Idempotência","Repetir a mesma ação não pode duplicar o efeito, como abrir dois chamados para o mesmo problema."],
+      ["Versionamento e rollback","Prompts, modelos e configurações com versão, para voltar rapidamente quando algo piora."]],
+   pm:"Transforme \"precisa ser confiável\" em números combinados com engenharia. Isso dá clareza para priorizar e para negociar escopo."},
+  {t:"Observability: como descobrir onde o sistema falhou",
+   s:"Registrar e inspecionar etapas de execução, chamadas a ferramentas, fontes consultadas, versões, consumo e erros. Distinguir a resposta apresentada ao usuário do resultado efetivamente obtido.",
+   k:[["Trace","Registro de cada etapa de uma execução: chamadas ao modelo, ferramentas usadas, fontes, tempo e tokens."],
+      ["Versões registradas","Saber qual versão de prompt, modelo e índice gerou cada resposta."],
+      ["Consumo e erros","Tokens, custo, latência e falhas por etapa, para achar gargalos."],
+      ["Verificar o efeito, não a fala","O agente dizer \"o chamado foi aberto\" não prova que o chamado existe no sistema."],
+      ["Revisão de amostras","Ler conversas reais periodicamente revela problemas que nenhuma métrica agregada mostra."]],
+   pm:"Sem observabilidade, cada bug vira opinião. Com traces, vira evidência para priorizar."},
+  {t:"Metrics: do desempenho técnico ao resultado de negócio",
+   s:"Um painel em três camadas: qualidade da tarefa, saúde operacional e impacto no negócio, com indicadores como resolução correta, intervenção humana, disponibilidade, latência, custo por tarefa, adoção e tempo economizado.",
+   k:[["Qualidade da tarefa","Resolução correta, fidelidade às fontes e taxa de erro."],
+      ["Saúde operacional","Disponibilidade, latência, custo por tarefa e taxa de intervenção humana."],
+      ["Impacto no negócio","Adoção, retenção, tempo economizado, receita gerada ou custo evitado."],
+      ["Métrica de contrapeso","Indicador que protege contra otimizações ruins, como satisfação do cliente ao lado da taxa de automação."],
+      ["Indicadores antecedentes e consequentes","Os antecedentes mudam rápido e sinalizam tendência; os consequentes mostram o resultado final, mas demoram."]],
+   pm:"Conectar métrica técnica a resultado de negócio é o que diferencia um AI PM sênior de alguém que só acompanha acurácia."}
+ ]},
+ {n:8,c:"var(--m8)",title:"Eficiência, segurança e governança",
+  desc:"Otimizar custo e latência do sistema completo e controlar riscos antes do lançamento.",
+  ex:"Monte um plano de redução de custo e um registro de riscos, explicando quais controles são necessários antes do lançamento.",
+  lessons:[
+  {t:"Cost/Latency: otimizar o sistema completo",
+   s:"Retomar custos incluindo recuperação, ferramentas, múltiplas chamadas e retrabalho. Cache, redução de contexto, processamento em lote, paralelismo e escolha de modelos, medindo tempo até a primeira resposta, duração total e os casos mais lentos sem perder um mínimo de qualidade.",
+   k:[["Tempo até o primeiro token (TTFT)","Quanto o usuário espera até ver algo aparecer. Define a sensação de rapidez."],
+      ["Percentis de latência","p95 e p99 mostram a experiência dos casos mais lentos, que a média esconde."],
+      ["Prompt caching","Reaproveitar partes repetidas do contexto entre chamadas reduz custo e latência."],
+      ["Processamento em lote","Agrupar tarefas que não precisam de resposta imediata costuma sair mais barato."],
+      ["Custo por tarefa concluída","Inclui retrabalho, novas tentativas e intervenção humana, e não só o preço de uma chamada."]],
+   pm:"Otimize a métrica que o usuário sente. Às vezes streaming resolve mais percepção de lentidão do que trocar de modelo."},
+  {t:"Safety, segurança e governança",
+   s:"Mapear respostas prejudiciais, vieses, vazamento de dados, manipulação por instruções maliciosas e ações não autorizadas. Controles de acesso, supervisão humana, retenção de dados, resposta a incidentes, testes adversariais e revisão de usos de maior risco.",
+   k:[["Prompt injection","Instruções maliciosas escondidas em conteúdo (e-mail, página, documento) tentando controlar o modelo."],
+      ["Vazamento de dados","O sistema expõe informações sensíveis de outros usuários, do contexto ou das instruções internas."],
+      ["Viés","Resultados sistematicamente piores ou injustos para determinados grupos."],
+      ["Menor privilégio","O agente só tem acesso ao mínimo necessário, e ações sensíveis exigem aprovação humana."],
+      ["Red teaming","Testes adversariais em que pessoas tentam de propósito fazer o sistema falhar."],
+      ["Governança","Políticas de retenção, registro de riscos, resposta a incidentes e referências como NIST AI RMF e EU AI Act."]],
+   pm:"Um registro de riscos com dono, probabilidade, impacto e controle é um artefato que impressiona em qualquer entrevista de AI PM."}
+ ]},
+ {n:9,c:"var(--m9)",title:"AI Product Discovery e atuação sênior",
+  desc:"Encontrar problemas que merecem IA, desenhar a experiência, lançar e defender decisões.",
+  ex:"Entrega final: um caso de produto que mostre o que foi construído, por que essa solução foi escolhida, como foi avaliada e quais resultados justificariam colocá-la em produção.",
+  lessons:[
+  {t:"AI Product Discovery: encontrar problemas que merecem IA",
+   s:"Investigar a necessidade do usuário, o processo atual, a frequência do problema e o valor de resolvê-lo. Avaliar disponibilidade de dados, tolerância a erros e alternativas sem IA, formulando hipóteses de valor e viabilidade antes de escolher uma arquitetura.",
+   k:[["Problema antes da tecnologia","Comece pela dor do usuário e pelo processo atual, e não pela vontade de usar IA."],
+      ["Frequência e valor","Quantas vezes o problema acontece e quanto vale resolvê-lo definem se o investimento se paga."],
+      ["Disponibilidade de dados","Existem dados suficientes, acessíveis e com permissão de uso?"],
+      ["Tolerância a erro","Quanto custa um erro? Sugerir um texto tolera falhas; aprovar um reembolso, bem menos."],
+      ["Alternativa sem IA","A linha de base: regras, melhor UX ou processo. A IA precisa superá-la de forma clara."]],
+   pm:"Seu histórico de discovery com usuários reais é uma vantagem. O desafio é somar a ele a leitura de viabilidade técnica de IA."},
+  {t:"Experiência do usuário em produtos de IA",
+   s:"Como o usuário acompanha, corrige, aprova ou interrompe o sistema. Apresentação de fontes, comunicação de limitações, tratamento de falhas e transferência para humanos, comparando interfaces conversacionais com outras formas de incorporar IA ao fluxo de trabalho.",
+   k:[["Humano no circuito","O usuário aprova, corrige ou interrompe a IA nos momentos que importam."],
+      ["Transparência","Mostrar fontes, o que o sistema fez e, quando útil, o grau de confiança."],
+      ["Comunicar limitações","Deixar claro o que o sistema não faz, antes que o usuário descubra do jeito difícil."],
+      ["Falhas e transferência","Desenhar o caminho quando a IA erra ou não sabe, incluindo a passagem para uma pessoa com contexto."],
+      ["Além do chat","Sugestões inline, preenchimento automático, ações em lote e resumos embutidos no fluxo existente."]],
+   pm:"Seu background em Product Design é um diferencial enorme aqui. Use exemplos concretos de telas e fluxos nas suas respostas."},
+  {t:"Experimentação, lançamento e evolução do produto",
+   s:"Critérios para avançar, corrigir ou interromper uma iniciativa. Piloto, comparação com o processo anterior, testes com usuários e lançamento gradual, conectando resultados a priorização, roadmap, adoção e decisões de construir ou contratar.",
+   k:[["Critérios de decisão","Definir antes do piloto o que significa avançar, ajustar ou encerrar a iniciativa."],
+      ["Piloto com linha de base","Comparar o resultado com o processo anterior, e não com a expectativa."],
+      ["Lançamento gradual","Modo sombra (a IA roda sem afetar o usuário), beta fechado e rollout por percentual."],
+      ["Teste A/B","Comparar grupos com e sem a funcionalidade para medir impacto real."],
+      ["Construir ou contratar","Avaliar custo, diferenciação, velocidade e dependência de fornecedor."]],
+   pm:"Mostrar que você sabe encerrar uma iniciativa com base em dados é sinal forte de senioridade."},
+  {t:"Projeto final: defender uma decisão de produto de IA",
+   s:"Uma proposta com problema, público, alternativa sem IA, arquitetura, escolha de modelos, critérios de avaliação, custos, riscos e plano de lançamento, defendida diante de perspectivas de produto, engenharia, design, segurança e negócio.",
+   k:[["Problema e público","Quem sofre com o quê, com que frequência e quanto isso custa hoje."],
+      ["Alternativa sem IA","Por que a solução mais simples não basta."],
+      ["Arquitetura e modelos","O desenho escolhido, os modelos e o porquê de cada decisão."],
+      ["Avaliação","Critérios de sucesso, evals e o que foi medido até aqui."],
+      ["Custos, riscos e lançamento","Custo por tarefa, registro de riscos com controles e plano de rollout."],
+      ["Defesa multidisciplinar","Responder a produto, engenharia, design, segurança e negócio com a mesma clareza."]],
+   pm:"Seu Design QA Agent pode ser o projeto final. Use esta aula para transformá-lo num caso que você defenda com segurança em entrevistas."}
+ ]}
+];
+
+// Numeração global das aulas
+let _n=0; MODULES.forEach(m=>m.lessons.forEach(l=>{l.num=++_n;l.mod=m;}));
+const LESSONS = MODULES.flatMap(m=>m.lessons);
+const TOTAL = LESSONS.length;
+
+/* ============ ENGLISH CONTENT ============ */
+const CONTENT_EN = [
+ {title:"What AI is and how we got here",
+  desc:"Core concepts, origins, symbolic AI and the difference between seeming intelligent and being reliable.",
+  ex:"Compare a rule-based interaction with a generative response and discuss what each system actually demonstrated it could do.",
+  lessons:[
+  {t:"The concept of artificial intelligence",
+   s:"What do we mean by AI? Here you meet the classic capabilities (perception, knowledge representation, reasoning, learning and decision making) and learn to tell apart AI, automation, algorithm, model and product.",
+   k:[["Algorithm","A finite sequence of steps that solves a problem. Not every algorithm is AI: sorting a list is an algorithm, not intelligence."],
+      ["Automation","Performing a task without human intervention. It can rely entirely on fixed rules, with no AI involved."],
+      ["Model","A mathematical artifact that turns inputs into outputs, usually learned from data. Example: a spam classifier."],
+      ["AI product","The complete experience delivered to the user: model, data, interface, rules, integrations and operations. The model is only one piece."],
+      ["Classic AI capabilities","Perceiving the environment, representing knowledge, reasoning, learning from experience and deciding. A system can have some and lack others."]],
+   pm:"In interviews, separating \"we have a model\" from \"we have a product\" shows maturity. Value comes from the problem solved, not from the technology chosen."},
+  {t:"The origins and foundations of AI",
+   s:"The questions that gave rise to the field, its links to logic, mathematics and computing, and the 1956 Dartmouth workshop as a milestone. The goal is to know the schools of thought without telling the story as if one approach simply wiped out the other.",
+   k:[["Turing Test (1950)","Alan Turing proposed replacing the question \"can machines think?\" with an imitation game: if you cannot tell the machine from a person in conversation, what does that say?"],
+      ["Dartmouth workshop (1956)","A meeting organized by John McCarthy, Marvin Minsky, Claude Shannon and Nathaniel Rochester that established AI as a research field."],
+      ["Symbolism and connectionism","One school represents knowledge with symbols and logical rules; the other learns patterns with networks of connected units. Both coexisted and are combined today."],
+      ["AI winters","Periods of funding cuts after inflated expectations, in the 1970s and the late 1980s."]],
+   pm:"Hype and disappointment cycles repeat. A senior PM calibrates stakeholder expectations with evidence, not promises."},
+  {t:"Symbolic AI and expert systems",
+   s:"Knowledge bases, rules and inference engines. How to represent an expert's knowledge and use it to reach conclusions, what the advantages and limitations are, and when explicit rules are still the best choice.",
+   k:[["Knowledge base","A set of facts and rules about a domain, usually written with the help of human experts."],
+      ["Inference engine","The component that applies rules to facts to reach conclusions, chaining forward (from facts to conclusion) or backward (from hypothesis to facts)."],
+      ["MYCIN","A 1970s expert system from Stanford that suggested treatments for bacterial infections using hundreds of rules."],
+      ["Knowledge acquisition bottleneck","Extracting and maintaining rules from experts is expensive, and the system breaks in situations nobody anticipated."],
+      ["When rules still win","Regulatory requirements, logic that must be auditable, a few well-defined cases and a very high cost of error."]],
+   pm:"Before proposing an LLM, ask whether an explicit rule solves it. It is often cheaper, more predictable and easier to explain."},
+  {t:"ELIZA and the gap between seeming intelligent and being reliable",
+   s:"ELIZA and the ELIZA effect: the tendency to attribute understanding and human abilities to computer systems. The topic connects to user trust, anthropomorphism and the risk of confusing a convincing conversation with real competence.",
+   k:[["ELIZA (1966)","A program created by Joseph Weizenbaum at MIT that simulated a therapist by rephrasing the user's sentences with simple patterns."],
+      ["ELIZA effect","The tendency to attribute human understanding and intent to a system just because the conversation sounds natural."],
+      ["Anthropomorphism","Giving the system human traits (a name, emotions, \"I understand you\"). It increases trust, sometimes beyond what the system deserves."],
+      ["Fluency is not competence","Convincing text can be wrong. Reliability is measured with tests, not with the impression a conversation leaves."]],
+   pm:"In AI products, design calibrated trust: show sources, make limits clear and signal when an answer may fail."}
+ ]},
+ {title:"Types of AI and how models learn",
+  desc:"Organizing the types of AI without mixing concepts, understanding machine learning and a model's life cycle.",
+  ex:"For different business problems, choose between rules, classification, prediction or another approach, and justify the choice.",
+  lessons:[
+  {t:"Organizing the \"types of AI\" without mixing concepts",
+   s:"Separate classifications by capability, approach and application. Narrow AI, AGI and superintelligence are capability concepts; symbolic AI and machine learning are approaches; computer vision, language and recommendation are application fields.",
+   k:[["By capability","Narrow AI (specific tasks, which is everything that exists today), AGI (general ability comparable to humans, still debated) and superintelligence (hypothetical)."],
+      ["By approach","Symbolic (rules and logic), machine learning (patterns learned from data) and hybrid approaches."],
+      ["By application","Computer vision, natural language, speech, recommendation, forecasting, robotics and others."],
+      ["Axes, not boxes","A recommender can be narrow AI, based on machine learning and applied to e-commerce, all at once."]],
+   pm:"When describing a product, be clear about which axis you are talking about. It avoids confusing discussions across engineering, design and business."},
+  {t:"Machine learning, neural networks and deep learning",
+   s:"How to learn patterns from data. The types of learning (supervised, unsupervised, self-supervised and reinforcement) and how machine learning, neural networks and deep learning relate, with examples of classification, prediction and pattern recognition.",
+   k:[["Supervised learning","Learns from labeled examples (this email is spam, that one is not). Used for classification and regression."],
+      ["Unsupervised learning","Finds structure in unlabeled data, such as grouping customers by purchase behavior."],
+      ["Self-supervised learning","The data itself provides the label, such as hiding the next word and asking the model to predict it. It is the basis of LLM pre-training."],
+      ["Reinforcement learning","Learns by trial, error and reward. Shows up in games, robotics and in tuning LLMs with human feedback (RLHF)."],
+      ["Neural networks and deep learning","Deep learning is a kind of neural network with many layers, and neural networks are a family within machine learning."]],
+   pm:"The type of learning depends heavily on the available data. The PM is often the one who knows whether labels exist or how much it would cost to create them."},
+  {t:"Data, training, inference and basic evaluation",
+   s:"A model's life cycle: data preparation, training, validation, testing and production use. Data quality, generalization, overfitting, leakage between training and test sets, and the difference between a model score and a calibrated probability.",
+   k:[["Training, validation and test","Training fits the model, validation helps choose settings and the test set measures final performance on unseen data."],
+      ["Overfitting","The model memorizes the training examples and performs poorly on new data. Like studying only last year's exam answers."],
+      ["Data leakage","Information from the test set, or from the future, contaminates training and inflates the metrics. Everything looks great until production."],
+      ["Inference","Using the trained model to make predictions day to day. It has its own cost and latency, which the PM needs to track."],
+      ["Score vs. calibrated probability","A 0.9 score only means \"90% chance\" if the model is calibrated, meaning that about 90% of cases scored 0.9 are actually positive."]],
+   pm:"Excellent test metrics can hide leakage. Always ask how the test set was built and whether it reflects real usage."}
+ ]},
+ {title:"Generative AI under the hood",
+  desc:"Foundation models, how an LLM generates tokens and where embeddings and vector databases fit in.",
+  ex:"Look at how different texts are tokenized and compare keyword search results with semantic search results.",
+  lessons:[
+  {t:"What generative AI is",
+   s:"Generating text, images, audio, video and code. Foundation models, language models and multimodal models, distinguishing the model from the application built on it, without reducing all generative AI to a chatbot.",
+   k:[["Generative AI","Models that produce new content (text, images, audio, video, code) instead of only classifying or predicting a number."],
+      ["Foundation model","A large model pre-trained on broad data that can be adapted to many different tasks."],
+      ["Multimodal","A model that understands or generates more than one type of data, such as text and images together."],
+      ["Generation mechanisms","Autoregressive models generate text token by token; diffusion models create images starting from noise and refining step by step."],
+      ["Model vs. application","Claude is a model; a customer support assistant built on it is an application with its own rules, data and interface."]],
+   pm:"Chat is only one possible interface. Often the best use of generative AI is invisible, embedded in a flow the user already knows."},
+  {t:"How a language model generates tokens",
+   s:"The path from input to answer: tokenization, context processing, probability calculation and successive token selection. Temperature, output limits and the context window, remembering that a token's probability is not the probability that the answer is correct.",
+   k:[["Token","A piece of text (word, part of a word or punctuation) that the model processes. Portuguese text usually uses more tokens than English."],
+      ["Autoregressive generation","The model computes the probability of the next token, picks one, appends it to the context and repeats until done."],
+      ["Temperature","Controls randomness in token selection. Lower makes answers more predictable; higher, more varied."],
+      ["Context window","The maximum number of tokens the model can consider at once, counting input and output."],
+      ["Probability is not truth","The model can confidently pick a factually wrong sequence. That is where hallucinations come from."]],
+   pm:"Cost and latency are billed per token. Understanding tokens means understanding your AI product's bill and the user's wait time."},
+  {t:"Embeddings, semantic search and vector databases",
+   s:"How to represent content as numbers to find similar items. Embeddings for document retrieval, indexing, metadata and lexical, vector and hybrid search. The vector database retrieves content; it does not generate the answer's tokens.",
+   k:[["Embedding","A vector of numbers that represents a text's meaning. Texts with similar meaning end up close together in that space."],
+      ["Similarity","A measure of closeness between vectors (such as cosine similarity), used to find similar content."],
+      ["Lexical search","Looks for exact words, as in the BM25 algorithm. Excellent for codes, proper names and rare terms."],
+      ["Vector and hybrid search","Vector search finds synonyms and paraphrases; hybrid search combines both to get the best of each."],
+      ["Vector database","Stores and indexes embeddings to retrieve passages quickly. The language model is still the one writing the answer."]],
+   pm:"If a customer searches for \"order 4821\", lexical search wins. If they ask \"how do I return a product?\", semantic search helps a lot."}
+ ]},
+ {title:"Open models, closed models and economic decisions",
+  desc:"What is really open, where the model runs, how much it costs and how to choose.",
+  ex:"Defend your architecture choice for a low-volume prototype and for a larger-scale operation.",
+  lessons:[
+  {t:"Closed, open-weight and open source models",
+   s:"What is actually available in each case: weights, code, information about the data and usage permissions. How to read a model card and a license, remembering that releasing weights does not automatically make a system open source.",
+   k:[["Closed model","Accessible only through the provider's API or product. Weights are not released."],
+      ["Open-weight","Weights can be downloaded, but training data, training code or the license itself may have restrictions."],
+      ["Open source in AI","Per the Open Source Initiative definition, it requires the freedom to use, study, modify and share, with access to weights, code and sufficient information about the data."],
+      ["Model card","A document describing a model's intended use, data, evaluations, limitations and risks."],
+      ["License","Defines what is allowed: commercial use, scale limits, application restrictions and attribution obligations."]],
+   pm:"Before adopting an open model, read the license with legal. \"Open weights\" does not mean \"free to use\"."},
+  {t:"Where the model runs: API, cloud or own infrastructure",
+   s:"Compare a proprietary model accessed via API, an open-weight model hosted by a third party and a model running on your own infrastructure. Model openness and hosting are separate decisions.",
+   k:[["Proprietary API","You call the provider's model and pay per use. Little operational work, less control over the environment."],
+      ["Managed open-weight","An open model hosted by a cloud provider and also consumed as an API."],
+      ["Self-hosted","Runs on your own or dedicated infrastructure. More control over data and customization, and much more operational work."],
+      ["Openness and hosting are different axes","An open model can be used as a managed service, and a closed one can be available inside your cloud."]],
+   pm:"Privacy, data residency and enterprise customer requirements often decide hosting more than model quality does."},
+  {t:"How much each option costs",
+   s:"Compare pay-per-use pricing with compute capacity costs. Build scenarios with tokens, CPU and GPU, idle capacity, availability, maintenance and staff, calculating total cost without assuming up front that open is cheaper or that APIs are more expensive.",
+   k:[["Pay per use","Price per million input and output tokens. Cost grows with usage volume."],
+      ["Capacity cost","Reserved GPUs are billed by the hour, whether they are used or not."],
+      ["Idle capacity","An idle GPU still costs money. Low utilization makes each request more expensive."],
+      ["Total cost of ownership (TCO)","Includes infrastructure, high availability, maintenance, monitoring and the people who run it all."],
+      ["Break-even point","The volume at which self-hosting becomes cheaper than paying per use, when such a point exists."]],
+   pm:"Build a spreadsheet with volume scenarios before giving an opinion. It is exactly the kind of reasoning AI PM interviewers love."},
+  {t:"How to choose a model and when to go hybrid",
+   s:"A decision matrix with task quality, cost, latency, privacy, license and operational capacity. Test an architecture that sends simple tasks to a smaller model and complex cases to a more capable one, comparing it with a single model.",
+   k:[["Decision matrix","Weighted criteria (quality, cost, latency, privacy, license, operations) to compare options explicitly."],
+      ["Evaluate on your task","Public benchmarks give hints, but what decides is performance on your own test set."],
+      ["Model routing","Simple tasks go to a smaller, cheaper model; complex cases, to a more capable one."],
+      ["Cascade","Try the cheap model first and escalate to the larger one when confidence is low or validation fails."],
+      ["The router's cost","Routing also makes mistakes and adds complexity. Always compare with using a single model."]],
+   pm:"The mature answer is rarely \"the best model\". It is the model that is good enough for the required quality, at the lowest total cost."}
+ ]},
+ {title:"Prompt engineering, context engineering and RAG",
+  desc:"Testable instructions, the right information in context and answers grounded in sources.",
+  ex:"Solve the same task with different strategies (prompt, long context, RAG, fine-tuning) and compare quality, cost, maintenance and information freshness.",
+  lessons:[
+  {t:"Prompt engineering: instructions you can test",
+   s:"Goal, instructions, examples, constraints and expected format. Clarity, versioning and comparing versions: instead of collecting magic prompts, measure how each change affects the results.",
+   k:[["Anatomy of a good prompt","Goal, context, instructions, examples, constraints and output format, in order of importance for clarity."],
+      ["Few-shot","Including examples of input and expected output to show the model the desired pattern."],
+      ["Structured output","Asking for JSON or another fixed format makes it easier to validate the answer and integrate with other systems."],
+      ["Prompt versioning","Treat prompts like code: versions, change history and the ability to roll back."],
+      ["Comparing versions","Run each version on the same set of cases and compare results, instead of trusting the impression of a single test."]],
+   pm:"A prompt is part of the product spec. Think of it as a user story the model executes, with testable acceptance criteria."},
+  {t:"Context engineering: what information reaches the model",
+   s:"Selecting, organizing and updating instructions, history, documents and tool results. Context budget, summarization, persistent memory and discarding irrelevant information. The question shifts from \"how do I write the request?\" to \"what does the model need to receive?\".",
+   k:[["Context","Everything the model receives in a call: system instructions, history, documents and tool results."],
+      ["Context budget","The window is finite and every token costs money. Irrelevant information can even hurt answer quality."],
+      ["Summarization and compaction","Condensing long conversations or documents to keep only what matters for the task."],
+      ["Persistent memory","Storing facts across sessions (preferences, decisions) and bringing them back when relevant."],
+      ["The central question","What does the model need to know, right now, to do this specific task well?"]],
+   pm:"Many problems blamed on the model are actually context problems: missing information or too much noise."},
+  {t:"RAG: answering with external sources",
+   s:"The retrieval and generation flow: ingestion, chunking, search, reranking and source-grounded answers. Document updates, permissions and evaluating retrieval separately from the answer, comparing lexical, vector and hybrid retrieval.",
+   k:[["RAG","Retrieval-Augmented Generation: retrieving relevant passages from external sources and handing them to the model so it answers based on them."],
+      ["Ingestion and chunking","Loading documents and splitting them into well-sized passages, with metadata such as date, author and permissions."],
+      ["Reranking","Reordering retrieved passages with a more precise model before sending them to the LLM."],
+      ["Citations","The answer shows which sources it used, so the user can check them."],
+      ["Permissions and freshness","Users should only receive passages they are allowed to see, and the index must keep up with document changes."],
+      ["Two-part evaluation","Measure retrieval (did it find the right passage?) separately from generation (is the answer faithful to the passage?)."]],
+   pm:"When RAG fails, the first question is: did the right passage reach the model? That separates a search problem from a generation problem."},
+  {t:"When to use prompting, long context, RAG or fine-tuning",
+   s:"Compare the options for improving a solution: better instructions, providing documents directly, retrieving information on demand or adapting the model with extra training. Combinations and selection criteria, without treating the techniques as universal substitutes.",
+   k:[["Improve the prompt","The first step: cheap, fast and reversible."],
+      ["Long context","Put whole documents in the context. Simple when the material is small, stable and fits in the window."],
+      ["RAG","Best when the knowledge base is large, changes often or requires permission control."],
+      ["Fine-tuning","Adjusting weights with examples to teach format, style or a specific task. Not the best way to teach knowledge that changes often."],
+      ["Combinations","A real system can combine a good prompt, RAG and a fine-tuned model, each solving one part."]],
+   pm:"Being able to explain why you did not fine-tune is as valuable as knowing when to do it."}
+ ]},
+ {title:"From assistants to agents",
+  desc:"Differences between chatbots, workflows and agents, the anatomy of an agent and the market in practice.",
+  ex:"Compare market agents and platforms on autonomy, integrations, oversight, cost and success criteria, and not just on the quality of a demo.",
+  lessons:[
+  {t:"Chatbots, assistants, workflows and agents: what is the difference?",
+   s:"Separate the experience offered to the user from the architecture behind it. An assistant can use agents, and \"assistant\" does not mean \"only answers\". On the architecture side, compare predefined flows with systems in which the model decides the next steps.",
+   k:[["Chatbot","A conversational interface. Behind it there may be simple rules or a language model."],
+      ["Assistant","An experience designed to help the user with tasks. It may or may not use agents internally."],
+      ["Workflow","A sequence of steps defined in code, in which the LLM performs steps planned in advance."],
+      ["Agent","The model dynamically decides the next steps and which tools to use until it reaches a goal."],
+      ["Experience is not architecture","The name shown in the interface does not reveal how the system works inside."]],
+   pm:"When someone says \"let's build an agent\", ask which decision the model needs to make on its own that a fixed flow would not handle."},
+  {t:"Anatomy of an AI agent",
+   s:"Goal, model, tools, state, the action and observation loop and stopping conditions. APIs, tool calls, MCP and permissions, designing an agent with limited scope, an execution budget and human approval points.",
+   k:[["Goal and stopping condition","What the agent must achieve and when it should stop, whether by success, failure or a limit being reached."],
+      ["Tools (tool use)","Functions or APIs the model can call, described with a name, purpose and parameters."],
+      ["Action and observation loop","The agent acts, observes the result and decides the next step, repeating until done."],
+      ["State","What the agent knows and has done so far, including intermediate results."],
+      ["MCP (Model Context Protocol)","An open standard, launched by Anthropic, for connecting models to tools and data sources in a standardized way."],
+      ["Guardrails","Minimal permissions, a step and cost budget, and human approval for sensitive or irreversible actions."]],
+   pm:"Designing the human approval points is product work. It is where trust, risk and experience meet."},
+  {t:"Agent architectures and when not to use them",
+   s:"Compare fixed flows, a single agent, parallel execution and delegation between agents. What autonomy adds and how much it costs in complexity, and above all when a deterministic solution or a single model call already solves the problem.",
+   k:[["Fixed flow","Predictable, cheap and easy to test. Great when the steps are known."],
+      ["Single agent with tools","One model with access to a few tools decides the order of use. Good for open-ended tasks with limited scope."],
+      ["Parallel execution","Several simultaneous calls whose results are combined later. Saves time on independent tasks."],
+      ["Orchestrator and subagents","One agent splits the work and delegates parts to others. Powerful, but expensive and hard to debug."],
+      ["The price of autonomy","More tokens, more latency, more variability and more points of failure."]],
+   pm:"Rule of thumb: start with the simplest solution that works and add autonomy only when it proves its value in testing."},
+  {t:"Agents and platforms on the market, in practice",
+   s:"Study references from different categories without confusing a ready-made agent with a platform for building agents: coding agents, research and synthesis agents, and enterprise platforms.",
+   k:[["Coding agents","Codex and Claude Code perform development tasks: they read the code, run commands, propose changes and ask for review."],
+      ["Research and synthesis","Gemini Deep Research plans the research, consults several sources and assembles a report."],
+      ["Enterprise platforms","Microsoft Copilot Studio and Salesforce Agentforce are used to build and run agents connected to business processes and systems."],
+      ["Ready-made agent vs. platform","One is a product you use directly; the other is a tool for building your own agents."],
+      ["How to compare","Autonomy, integrations, oversight, cost and success criteria matter more than a polished demo."]],
+   pm:"You already use Claude Code and Cursor every day. Notice where they ask for approval, how they show what they did and when they stop: that is agent design."}
+ ]},
+ {title:"Quality, reliability and operations",
+  desc:"Evals, designing for failure, observability and metrics from technical to business.",
+  ex:"Investigate the failures of a solution and propose improvements backed by evidence, not just impressions.",
+  lessons:[
+  {t:"Evals: how to show the solution works",
+   s:"Define success criteria, build evaluation sets and combine automated tests with human review. Models as judges, their limitations and the need to calibrate them, keeping the examples used to improve the solution separate from those reserved for testing it.",
+   k:[["Eval","A set of cases with success criteria that measures whether the system does what it should."],
+      ["Golden set","Representative cases with expected answers, including hard and edge cases."],
+      ["Automated and human","Automated tests give scale; human review captures nuance and calibrates the criteria."],
+      ["LLM as judge","A model grades answers following a rubric. It must be compared against human graders to be trusted."],
+      ["Development vs. test","The examples used to tune the prompt cannot be the same ones that measure the final result."]],
+   pm:"Your Design QA Agent case already has 24 cases with measured recall and precision. That is exactly the reasoning you will defend in interviews."},
+  {t:"Reliability: designing for failure",
+   s:"Reliability targets, timeouts, retries, recovery alternatives and handoff to humans. Preventing duplicate actions, version control and rolling back changes, using service level objectives to make \"being reliable\" something verifiable.",
+   k:[["SLO and SLI","The service level objective (e.g. 99.5% of answers within 5 seconds) and the indicator that measures it."],
+      ["Timeout and retry","A wait limit and new attempts with increasing intervals (backoff), so the system is not overloaded."],
+      ["Fallback","Plan B when something fails: an alternative model, a default answer or handoff to a person."],
+      ["Idempotency","Repeating the same action must not duplicate its effect, such as opening two tickets for the same issue."],
+      ["Versioning and rollback","Prompts, models and settings under version control, so you can roll back quickly when things get worse."]],
+   pm:"Turn \"it needs to be reliable\" into numbers agreed with engineering. That gives clarity for prioritizing and negotiating scope."},
+  {t:"Observability: finding where the system failed",
+   s:"Log and inspect execution steps, tool calls, sources consulted, versions, usage and errors. Distinguish the answer shown to the user from the result actually achieved.",
+   k:[["Trace","A record of every step in an execution: model calls, tools used, sources, time and tokens."],
+      ["Logged versions","Knowing which prompt, model and index version produced each answer."],
+      ["Usage and errors","Tokens, cost, latency and failures per step, to find bottlenecks."],
+      ["Check the effect, not the words","The agent saying \"the ticket was created\" does not prove the ticket exists in the system."],
+      ["Sample review","Reading real conversations regularly reveals problems no aggregate metric shows."]],
+   pm:"Without observability, every bug becomes an opinion. With traces, it becomes evidence for prioritization."},
+  {t:"Metrics: from technical performance to business results",
+   s:"A three-layer dashboard: task quality, operational health and business impact, with indicators such as correct resolution, human intervention, availability, latency, cost per task, adoption and time saved.",
+   k:[["Task quality","Correct resolution, faithfulness to sources and error rate."],
+      ["Operational health","Availability, latency, cost per task and human intervention rate."],
+      ["Business impact","Adoption, retention, time saved, revenue generated or cost avoided."],
+      ["Counter metric","An indicator that guards against bad optimizations, such as customer satisfaction next to the automation rate."],
+      ["Leading and lagging indicators","Leading indicators move fast and signal trends; lagging ones show the final result but take longer."]],
+   pm:"Connecting technical metrics to business results is what sets a senior AI PM apart from someone who only tracks accuracy."}
+ ]},
+ {title:"Efficiency, safety and governance",
+  desc:"Optimizing cost and latency across the whole system and controlling risks before launch.",
+  ex:"Build a cost reduction plan and a risk register, explaining which controls are needed before launch.",
+  lessons:[
+  {t:"Cost/Latency: optimizing the whole system",
+   s:"Revisit costs, now including retrieval, tools, multiple calls and rework. Caching, context reduction, batch processing, parallelism and model choice, measuring time to first response, total duration and the slowest cases while keeping a minimum quality level.",
+   k:[["Time to first token (TTFT)","How long the user waits until something appears. It defines the feeling of speed."],
+      ["Latency percentiles","p95 and p99 show the experience of the slowest cases, which the average hides."],
+      ["Prompt caching","Reusing repeated parts of the context across calls reduces cost and latency."],
+      ["Batch processing","Grouping tasks that do not need an immediate answer is usually cheaper."],
+      ["Cost per completed task","Includes rework, retries and human intervention, not just the price of one call."]],
+   pm:"Optimize the metric the user feels. Sometimes streaming fixes perceived slowness more than switching models."},
+  {t:"Safety, security and governance",
+   s:"Map harmful outputs, bias, data leakage, manipulation through malicious instructions and unauthorized actions. Access controls, human oversight, data retention, incident response, adversarial testing and review of higher-risk uses.",
+   k:[["Prompt injection","Malicious instructions hidden in content (an email, web page or document) trying to control the model."],
+      ["Data leakage","The system exposes sensitive information from other users, the context or internal instructions."],
+      ["Bias","Results that are systematically worse or unfair for certain groups."],
+      ["Least privilege","The agent only has the minimum access it needs, and sensitive actions require human approval."],
+      ["Red teaming","Adversarial testing in which people deliberately try to make the system fail."],
+      ["Governance","Retention policies, a risk register, incident response and references such as the NIST AI RMF and the EU AI Act."]],
+   pm:"A risk register with owner, likelihood, impact and control is an artifact that impresses in any AI PM interview."}
+ ]},
+ {title:"AI Product Discovery and senior practice",
+  desc:"Finding problems worth solving with AI, designing the experience, launching and defending decisions.",
+  ex:"Final deliverable: a product case showing what was built, why this solution was chosen, how it was evaluated and which results would justify putting it into production.",
+  lessons:[
+  {t:"AI Product Discovery: finding problems worth solving with AI",
+   s:"Investigate the user's need, the current process, how often the problem occurs and the value of solving it. Assess data availability, error tolerance and non-AI alternatives, forming value and feasibility hypotheses before choosing an architecture.",
+   k:[["Problem before technology","Start from the user's pain and the current process, not from the urge to use AI."],
+      ["Frequency and value","How often the problem happens and how much solving it is worth determine whether the investment pays off."],
+      ["Data availability","Is there enough data, is it accessible and are you allowed to use it?"],
+      ["Error tolerance","How much does a mistake cost? Suggesting text tolerates failures; approving a refund, much less."],
+      ["Non-AI alternative","The baseline: rules, better UX or process. AI needs to clearly beat it."]],
+   pm:"Your track record of discovery with real users is an advantage. The challenge is adding AI technical feasibility to it."},
+  {t:"User experience in AI products",
+   s:"How the user follows, corrects, approves or stops the system. Showing sources, communicating limitations, handling failures and handing off to humans, comparing conversational interfaces with other ways of embedding AI in the workflow.",
+   k:[["Human in the loop","The user approves, corrects or stops the AI at the moments that matter."],
+      ["Transparency","Show sources, what the system did and, when useful, its level of confidence."],
+      ["Communicating limitations","Make clear what the system does not do, before the user finds out the hard way."],
+      ["Failures and handoff","Design the path for when the AI is wrong or does not know, including handing off to a person with context."],
+      ["Beyond chat","Inline suggestions, autofill, bulk actions and summaries embedded in the existing flow."]],
+   pm:"Your Product Design background is a huge advantage here. Use concrete examples of screens and flows in your answers."},
+  {t:"Experimentation, launch and product evolution",
+   s:"Criteria for moving forward, adjusting or stopping an initiative. Pilots, comparison with the previous process, user testing and gradual rollout, connecting results to prioritization, roadmap, adoption and build versus buy decisions.",
+   k:[["Decision criteria","Define before the pilot what it means to move forward, adjust or shut down the initiative."],
+      ["Pilot with a baseline","Compare results with the previous process, not with expectations."],
+      ["Gradual rollout","Shadow mode (the AI runs without affecting users), closed beta and percentage-based rollout."],
+      ["A/B testing","Compare groups with and without the feature to measure real impact."],
+      ["Build vs. buy","Weigh cost, differentiation, speed and vendor dependency."]],
+   pm:"Showing that you know how to shut down an initiative based on data is a strong signal of seniority."},
+  {t:"Final project: defending an AI product decision",
+   s:"A proposal covering problem, audience, non-AI alternative, architecture, model choice, evaluation criteria, costs, risks and launch plan, defended from the perspectives of product, engineering, design, security and business.",
+   k:[["Problem and audience","Who suffers from what, how often and how much it costs today."],
+      ["Non-AI alternative","Why the simplest solution is not enough."],
+      ["Architecture and models","The chosen design, the models and the reason behind each decision."],
+      ["Evaluation","Success criteria, evals and what has been measured so far."],
+      ["Costs, risks and launch","Cost per task, a risk register with controls and a rollout plan."],
+      ["Cross-functional defense","Answer product, engineering, design, security and business with the same clarity."]],
+   pm:"Your Design QA Agent can be the final project. Use this lesson to turn it into a case you can confidently defend in interviews."}
+ ]}
+];
+MODULES.forEach((m,i)=>{const e=CONTENT_EN[i];m.en={title:e.title,desc:e.desc,ex:e.ex};m.lessons.forEach((l,j)=>{l.en=e.lessons[j];});});
+
+/* ============ ESTADO E PERSISTÊNCIA ============ */
+const LS_KEY="trilha-ai-pm-v1";
+const BLANK=()=>({done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null});
+let state = BLANK();
+let dbRef=null, saveTimer=null, saving=false, pending=false;
+
+function loadLocal(){try{const r=localStorage.getItem(LS_KEY);if(r)Object.assign(state,JSON.parse(r));}catch(e){}}
+function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){}}
+function persist(){saveLocal();clearTimeout(saveTimer);saveTimer=setTimeout(flush,1200);}
+async function flush(){
+  if(!dbRef) return;
+  if(saving){pending=true;return;}
+  saving=true;
+  try{ await dbRef.set(JSON.parse(JSON.stringify(state))); }catch(e){}
+  saving=false;
+  if(pending){pending=false;flush();}
+}
+async function initStore(){
+  if(!window.claude||!window.claude.use) return;
+  try{
+    const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]);
+    if(!db||!user) return;
+    const uid=await user.id();
+    if(!uid) return;
+    dbRef=db.doc("data/users/"+uid+"/progress");
+    const snap=await dbRef.get();
+    if(snap.exists){
+      state=Object.assign(BLANK(),snap.data()||{});
+      saveLocal(); applyTheme(); render();
+    } else flush();
+  }catch(e){ dbRef=null; }
+}
+
+/* ============ IDIOMA ============ */
+const EN=()=>state.lang==="en";
+const tx=(o,f)=>(EN()&&o.en&&o.en[f]!=null)?o.en[f]:o[f];
+const UI={
+ pt:{
+  nav_trail:"Trilha",nav_gloss:"Glossário",nav_tutor:"Tutor",nav_aria:"Seções",
+  top:(d,t)=>`${d} de ${t} aulas`,theme:"Alternar tema claro ou escuro",lang_aria:"Idioma da página",
+  hero_h1:"Dos fundamentos de IA à cadeira de AI PM sênior",
+  hero_lead:"Trinta e duas aulas em nove módulos para saber quando usar IA, qual abordagem escolher, como provar a qualidade e como sustentar o resultado de negócio.",
+  btn_continue:"Continuar a trilha",btn_start:"Começar pela aula 1",btn_final:"Ir para o projeto final",btn_ask:"Tirar uma dúvida",
+  prog_aria:"Seu progresso",prog_done:(d,t)=>`${d} de ${t} aulas concluídas`,prog_ex:x=>`${x} de 9 exercícios feitos`,
+  next_label:n=>`Próxima aula, módulo ${n}`,congrats:"Parabéns",congrats_b:"Você concluiu todas as aulas da trilha!",
+  mod_bar:(n,d,t)=>`Módulo ${n}: ${d} de ${t}`,
+  ribbon_aria:"Mapa da trilha",ribbon_h:"Seu caminho, aula por aula",ribbon_hint:"Toque em uma parada para abrir a aula",
+  lesson_word:"Aula",module_word:"Módulo",done_word:", concluída",
+  about:"Como a trilha funciona",
+  flow:["Entender a tecnologia","Possibilidades e limites","Escolher uma solução","Construir e avaliar","Operar","Demonstrar valor de negócio"],
+  about_p:["Um mesmo caso prático atravessa a trilha: atendimento ao cliente. Começa pelo processo manual e pelas regras, experimenta um modelo, acrescenta contexto e recuperação de documentos e, depois, permite ações limitadas, como consultar um pedido ou abrir um chamado.","A cada etapa, a complexidade adicional precisa ser justificada. Adicionar RAG, trocar de modelo ou transformar um assistente em agente é uma hipótese a testar, não uma evolução obrigatória.","Avaliação, segurança e valor para o usuário entram desde os primeiros exercícios, mesmo tendo módulos próprios mais adiante."],
+  modules_aria:"Módulos",final_deliv:"Entrega final",mod_ex:"Exercício do módulo",your_case:"Seu caso de produto de IA",practice:"Colocar em prática",
+  back:"← Voltar para a trilha",kicker:(m,l,t)=>`Módulo ${m}, aula ${l} de ${t}`,
+  done_on:"✓ Aula concluída",done_off:"Marcar como concluída",ask_btn:"Tirar dúvida sobre esta aula",
+  about_h:"Do que trata esta aula",concepts_h:"Conceitos-chave",ask_example:"Pedir um exemplo ao tutor",pm_h:"Na prática de PM",
+  quiz_h:"Teste seu entendimento",quiz_p:"O tutor cria três perguntas sobre esta aula, com explicação para cada resposta.",
+  quiz_gen:"Gerar perguntas",quiz_new:"Gerar novas perguntas",quiz_last:(s,t)=>`Último resultado: ${s} de ${t}`,
+  quiz_off:"O quiz usa o tutor, que fica disponível quando a página é aberta dentro do Claude.",quiz_creating:"Criando perguntas...",quiz_thinking:"Pensando nas perguntas...",
+  quiz_right:"Isso mesmo! ",quiz_wrong:"Quase. ",quiz_score:(s,a)=>`Você acertou ${s} de ${a}!`,quiz_bad:"As perguntas vieram num formato inesperado. Tente gerar de novo.",
+  notes_h:"Minhas anotações",notes_ph:"Anote ideias, dúvidas e como isso se conecta ao seu trabalho...",saved:"Salvo",saving:"Salvando...",
+  pager_aria:"Navegação entre aulas",prev:"← Aula anterior",next:"Próxima aula →",next_step:"Próximo passo →",ex_link:n=>`Exercício do módulo ${n}`,
+  toast_done:"Boa! Mais uma aula concluída.",toast_mod:n=>`Módulo ${n} completo! Que tal fazer o exercício?`,
+  chat_title:"Tire suas dúvidas",chat_sub:"Pergunte o que quiser sobre esta aula.",
+  chips:["Explique com o caso de atendimento ao cliente","Como isso aparece em entrevistas de AI PM?","Qual é o erro mais comum sobre esse tema?"],
+  ask_prompt:k=>`Me dá um exemplo prático de "${k}" num produto real, e explica por que isso importa para um PM.`,
+  empty_chat:"Nenhuma pergunta ainda. Escolha uma sugestão abaixo ou escreva a sua.",q_label:"Sua pergunta",ph:"Escreva sua dúvida...",send:"Enviar",thinking:"Pensando...",
+  chat_off:"O tutor fica disponível quando a página é aberta dentro do Claude. Suas aulas, anotações e progresso continuam funcionando normalmente.",
+  err_off:"O tutor não está disponível nesta visualização. Abra a página dentro do Claude e permita o uso quando for solicitado.",
+  err_rate:"Muitas perguntas em pouco tempo. Espere um pouquinho e tente de novo.",err_session:"Sua sessão expirou. Entre novamente no Claude e tente de novo.",
+  err_refused:"Essa pergunta não pôde ser respondida. Tente reformular.",err_default:"A resposta foi interrompida. Tente enviar de novo.",
+  ex_kicker:(n,f)=>`Módulo ${n}, ${f?"entrega final":"exercício"}`,ex_on:"✓ Exercício feito",ex_off:"Marcar exercício como feito",
+  challenge_h:"O desafio",final_hint:"Inclua: problema e público, alternativa sem IA, arquitetura, escolha de modelos, critérios de avaliação, custos, riscos e plano de lançamento.",
+  ex_hint:"Use o caso de atendimento ao cliente ou um produto que você conhece bem.",answer_h:"Sua resposta",answer_ph:"Escreva seu raciocínio aqui. Pode ser em tópicos.",
+  fb_btn:"Pedir feedback do tutor",fb_again:"Pedir feedback de novo",fb_busy:"Analisando sua resposta...",fb_reading:"Lendo com atenção...",fb_h:"Feedback do tutor",
+  fb_short:"Escreva um pouco mais antes de pedir feedback, pelo menos algumas frases.",fb_off:"O feedback usa o tutor, que fica disponível quando a página é aberta dentro do Claude.",
+  last_lesson:"← Última aula do módulo",next_module:"Próximo módulo →",end:"Fim da trilha →",see_progress:"Ver meu progresso",toast_ex:n=>`Exercício do módulo ${n} concluído!`,
+  ex_chat_title:"Converse sobre o exercício",ex_chat_sub:"Peça ajuda para estruturar seu raciocínio.",
+  ex_chips:["Como eu começo este exercício?","Me dá uma estrutura de resposta","Quais critérios um entrevistador usaria?"],
+  gloss_h:"Glossário",gloss_sub:n=>`Todos os ${n} conceitos-chave da trilha em um só lugar. Busque um termo e vá direto para a aula.`,
+  gloss_label:"Buscar conceito",gloss_ph:"Buscar: RAG, token, evals, fine-tuning...",gloss_none:q=>`Nenhum conceito encontrado para "${q}". Que tal perguntar ao`,gloss_tutor:"tutor",
+  tutor_h:"Tutor de IA para PMs",tutor_sub:"Pergunte sobre qualquer tema da trilha, peça simulações de perguntas de entrevista ou ajuda para conectar conceitos ao seu case.",
+  tutor_title:"Converse com o tutor",tutor_sub_done:(d,t)=>`Você já concluiu ${d} de ${t} aulas.`,tutor_sub_new:"Comece por onde quiser.",
+  tutor_chips:["Faça uma pergunta de entrevista de AI PM para eu responder","Qual a diferença entre RAG e fine-tuning?","Como explico evals para um stakeholder de negócio?","Com base no meu progresso, o que devo revisar?"],
+  clear:"Limpar esta conversa",cleared:"Conversa limpa."
+ },
+ en:{
+  nav_trail:"Path",nav_gloss:"Glossary",nav_tutor:"Tutor",nav_aria:"Sections",
+  top:(d,t)=>`${d} of ${t} lessons`,theme:"Toggle light or dark theme",lang_aria:"Page language",
+  hero_h1:"From AI fundamentals to the senior AI PM seat",
+  hero_lead:"Thirty-two lessons in nine modules to learn when to use AI, which approach to choose, how to prove quality and how to sustain business results.",
+  btn_continue:"Continue the path",btn_start:"Start with lesson 1",btn_final:"Go to the final project",btn_ask:"Ask a question",
+  prog_aria:"Your progress",prog_done:(d,t)=>`${d} of ${t} lessons completed`,prog_ex:x=>`${x} of 9 exercises done`,
+  next_label:n=>`Next lesson, module ${n}`,congrats:"Congratulations",congrats_b:"You have completed every lesson in the path!",
+  mod_bar:(n,d,t)=>`Module ${n}: ${d} of ${t}`,
+  ribbon_aria:"Path map",ribbon_h:"Your journey, lesson by lesson",ribbon_hint:"Tap a stop to open the lesson",
+  lesson_word:"Lesson",module_word:"Module",done_word:", completed",
+  about:"How the path works",
+  flow:["Understand the technology","Possibilities and limits","Choose a solution","Build and evaluate","Operate","Show business value"],
+  about_p:["A single practical case runs through the path: customer support. It starts with the manual process and rules, tries a model, adds context and document retrieval and then allows limited actions, such as checking an order or opening a ticket.","At each stage, the added complexity has to be justified. Adding RAG, switching models or turning an assistant into an agent is a hypothesis to test, not a mandatory evolution.","Evaluation, safety and user value are part of the very first exercises, even though they get their own modules later on."],
+  modules_aria:"Modules",final_deliv:"Final deliverable",mod_ex:"Module exercise",your_case:"Your AI product case",practice:"Put it into practice",
+  back:"← Back to the path",kicker:(m,l,t)=>`Module ${m}, lesson ${l} of ${t}`,
+  done_on:"✓ Lesson completed",done_off:"Mark as completed",ask_btn:"Ask about this lesson",
+  about_h:"What this lesson covers",concepts_h:"Key concepts",ask_example:"Ask the tutor for an example",pm_h:"In PM practice",
+  quiz_h:"Test your understanding",quiz_p:"The tutor creates three questions about this lesson, with an explanation for each answer.",
+  quiz_gen:"Generate questions",quiz_new:"Generate new questions",quiz_last:(s,t)=>`Last result: ${s} of ${t}`,
+  quiz_off:"The quiz uses the tutor, which is available when the page is opened inside Claude.",quiz_creating:"Creating questions...",quiz_thinking:"Thinking up questions...",
+  quiz_right:"Correct! ",quiz_wrong:"Not quite. ",quiz_score:(s,a)=>`You got ${s} of ${a} right!`,quiz_bad:"The questions came back in an unexpected format. Try generating again.",
+  notes_h:"My notes",notes_ph:"Write down ideas, questions and how this connects to your work...",saved:"Saved",saving:"Saving...",
+  pager_aria:"Lesson navigation",prev:"← Previous lesson",next:"Next lesson →",next_step:"Next step →",ex_link:n=>`Module ${n} exercise`,
+  toast_done:"Nice! One more lesson done.",toast_mod:n=>`Module ${n} complete! How about the exercise?`,
+  chat_title:"Ask your questions",chat_sub:"Ask anything about this lesson.",
+  chips:["Explain it with the customer support case","How does this come up in AI PM interviews?","What is the most common mistake on this topic?"],
+  ask_prompt:k=>`Give me a practical example of "${k}" in a real product, and explain why it matters for a PM.`,
+  empty_chat:"No questions yet. Pick a suggestion below or write your own.",q_label:"Your question",ph:"Type your question...",send:"Send",thinking:"Thinking...",
+  chat_off:"The tutor is available when the page is opened inside Claude. Your lessons, notes and progress keep working as usual.",
+  err_off:"The tutor is not available in this view. Open the page inside Claude and allow it when prompted.",
+  err_rate:"Too many questions in a short time. Wait a moment and try again.",err_session:"Your session expired. Sign in to Claude again and retry.",
+  err_refused:"This question could not be answered. Try rephrasing it.",err_default:"The answer was interrupted. Try sending it again.",
+  ex_kicker:(n,f)=>`Module ${n}, ${f?"final deliverable":"exercise"}`,ex_on:"✓ Exercise done",ex_off:"Mark exercise as done",
+  challenge_h:"The challenge",final_hint:"Include: problem and audience, non-AI alternative, architecture, model choice, evaluation criteria, costs, risks and launch plan.",
+  ex_hint:"Use the customer support case or a product you know well.",answer_h:"Your answer",answer_ph:"Write your reasoning here. Bullet points are fine.",
+  fb_btn:"Get feedback from the tutor",fb_again:"Get feedback again",fb_busy:"Reviewing your answer...",fb_reading:"Reading carefully...",fb_h:"Tutor feedback",
+  fb_short:"Write a bit more before asking for feedback, at least a few sentences.",fb_off:"Feedback uses the tutor, which is available when the page is opened inside Claude.",
+  last_lesson:"← Last lesson of the module",next_module:"Next module →",end:"End of the path →",see_progress:"See my progress",toast_ex:n=>`Module ${n} exercise completed!`,
+  ex_chat_title:"Talk through the exercise",ex_chat_sub:"Ask for help structuring your reasoning.",
+  ex_chips:["How do I get started on this exercise?","Give me a structure for my answer","What criteria would an interviewer use?"],
+  gloss_h:"Glossary",gloss_sub:n=>`All ${n} key concepts of the path in one place. Search for a term and jump straight to the lesson.`,
+  gloss_label:"Search concepts",gloss_ph:"Search: RAG, token, evals, fine-tuning...",gloss_none:q=>`No concepts found for "${q}". Why not ask the`,gloss_tutor:"tutor",
+  tutor_h:"AI tutor for PMs",tutor_sub:"Ask about any topic in the path, practice interview questions or get help connecting concepts to your case.",
+  tutor_title:"Chat with the tutor",tutor_sub_done:(d,t)=>`You have completed ${d} of ${t} lessons.`,tutor_sub_new:"Start wherever you like.",
+  tutor_chips:["Ask me an AI PM interview question to answer","What is the difference between RAG and fine-tuning?","How do I explain evals to a business stakeholder?","Based on my progress, what should I review?"],
+  clear:"Clear this conversation",cleared:"Conversation cleared."
+ }
+};
+function u(k,...a){const d=UI[EN()?"en":"pt"];const v=d[k]!==undefined?d[k]:UI.pt[k];return typeof v==="function"?v(...a):v;}
+
+/* ============ TUTOR (Claude) ============ */
+let samplePromise=null;
+function getSample(){
+  if(!samplePromise) samplePromise=(window.claude&&window.claude.use)?claude.use("sample").catch(()=>null):Promise.resolve(null);
+  return samplePromise;
+}
+let sampleOff=false;
+const PROFILE="The student is Thais, a Senior Product Manager with 8+ years of experience, coming from Product Design, who works on B2B and B2C SaaS platforms for global brands and is preparing for AI Product Manager and Senior PM roles. She is building an AI PM case: a Design QA Agent in Python using the Claude API, with recall and precision evals.";
+function RULES(){
+  const lang=EN()?"Always answer in clear, natural English (she is a fluent, non-native speaker preparing for international interviews).":"Responda sempre em português do Brasil.";
+  return "You are Thais's tutor in an AI study path for AI Product Managers. "+PROFILE+" "+lang+" Style rules: friendly, warm and professional tone; NEVER use em dashes or en dashes (the characters — and –), use commas, colons or short sentences instead; be didactic and concrete; use product examples, especially the customer support case that runs through the path (manual process, rules, model, RAG, agent with limited actions); when useful, show how the topic comes up in PM interviews; say clearly when you are not sure about something; keep answers to about 220 words unless she asks for more; use short lists only when they help readability.";
+}
+function cleanDash(t){return String(t).replace(/\s*[—–]\s*/g,", ");}
+function errCopy(code){
+  switch(code){
+    case "not_granted": case "sampling_disabled": case "not_declared": case "capability_disabled": case "capability_removed":
+      sampleOff=true; return u("err_off");
+    case "rate_limited": return u("err_rate");
+    case "session_expired": return u("err_session");
+    case "refused": return u("err_refused");
+    case "cancelled": return "";
+    default: return u("err_default");
+  }
+}
+
+/* ============ UTILIDADES ============ */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function md(src){
+  let t=esc(cleanDash(src));
+  const blocks=[]; t=t.replace(/```[\s\S]*?```/g,m=>{blocks.push(m.replace(/```\w*\n?|```/g,""));return "\u0000"+(blocks.length-1)+"\u0000";});
+  t=t.replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/(^|[^*])\*([^*\n]+)\*/g,"$1<em>$2</em>");
+  const lines=t.split("\n"); let out=[],list=null,para=[];
+  const fp=()=>{if(para.length){out.push("<p>"+para.join("<br>")+"</p>");para=[];}};
+  const fl=()=>{if(list){out.push("<"+list.type+">"+list.items.map(i=>"<li>"+i+"</li>").join("")+"</"+list.type+">");list=null;}};
+  for(const raw of lines){
+    const l=raw.trim(); let m;
+    if(!l){fp();fl();continue;}
+    if(m=l.match(/^#{1,4}\s+(.*)/)){fp();fl();out.push("<p><strong>"+m[1]+"</strong></p>");continue;}
+    if(m=l.match(/^[-*•]\s+(.*)/)){fp();if(!list||list.type!=="ul"){fl();list={type:"ul",items:[]};}list.items.push(m[1]);continue;}
+    if(m=l.match(/^\d+[.)]\s+(.*)/)){fp();if(!list||list.type!=="ol"){fl();list={type:"ol",items:[]};}list.items.push(m[1]);continue;}
+    fl();para.push(l);
+  }
+  fp();fl();
+  return out.join("").replace(/\u0000(\d+)\u0000/g,(_,i)=>"<pre><code>"+blocks[+i]+"</code></pre>");
+}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("show"),2200);}
+const doneCount=()=>LESSONS.filter(l=>state.done[l.num]).length;
+const modDone=m=>m.lessons.filter(l=>state.done[l.num]).length;
+function nextLesson(){return LESSONS.find(l=>!state.done[l.num])||null;}
+
+/* ============ TEMA E IDIOMA ============ */
+function applyTheme(){
+  if(state.theme) document.documentElement.setAttribute("data-theme",state.theme);
+  else document.documentElement.removeAttribute("data-theme");
+}
+$("#themeBtn").addEventListener("click",()=>{
+  const dark=state.theme?state.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  state.theme=dark?"light":"dark"; applyTheme(); persist();
+});
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{
+  if(state.lang===b.dataset.lang) return;
+  state.lang=b.dataset.lang; persist(); render();
+}));
+function applyChrome(){
+  document.documentElement.lang=EN()?"en":"pt-BR";
+  document.title=EN()?"AI PM Path":"Trilha AI PM";
+  $("#brandName").textContent=EN()?"AI PM Path":"Trilha AI PM";
+  $('[data-nav="home"]').textContent=u("nav_trail");
+  $('[data-nav="glossario"]').textContent=u("nav_gloss");
+  $('[data-nav="tutor"]').textContent=u("nav_tutor");
+  $('[data-nav="entrevista"]').textContent=iv("nav");
+  $(".nav").setAttribute("aria-label",u("nav_aria"));
+  $("#themeBtn").setAttribute("aria-label",u("theme"));
+  $(".lang").setAttribute("aria-label",u("lang_aria"));
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===(state.lang||"pt"))));
+  $("#topProgress").textContent=u("top",doneCount(),TOTAL);
+}
+
+/* ============ ROTAS ============ */
+function route(){
+  const h=location.hash.replace(/^#/,"")||"/";
+  const parts=h.split("/").filter(Boolean);
+  return {name:parts[0]||"home",id:parts[1]?+parts[1]:null};
+}
+let chatAbort=null;
+function render(){
+  if(chatAbort){chatAbort.abort();chatAbort=null;}
+  applyChrome();
+  const r=route(), app=$("#app");
+  document.querySelectorAll("[data-nav]").forEach(a=>a.removeAttribute("aria-current"));
+  const navKey=r.name==="aula"||r.name==="exercicio"?"home":r.name;
+  const cur=$('[data-nav="'+navKey+'"]'); if(cur) cur.setAttribute("aria-current","page");
+  if(r.name==="aula"&&r.id&&LESSONS[r.id-1]) renderLesson(app,LESSONS[r.id-1]);
+  else if(r.name==="exercicio"&&r.id&&MODULES[r.id-1]) renderExercise(app,MODULES[r.id-1]);
+  else if(r.name==="glossario") renderGlossary(app);
+  else if(r.name==="tutor") renderTutor(app);
+  else if(r.name==="entrevista") renderInterview(app);
+  else renderHome(app);
+}
+window.addEventListener("hashchange",()=>{render();window.scrollTo(0,0);$("#app").focus({preventScroll:true});});
+
+/* ============ HOME ============ */
+function renderHome(app){
+  const d=doneCount(), pct=Math.round(d/TOTAL*100), nx=nextLesson();
+  const exDone=MODULES.filter(m=>state.exDone[m.n]).length;
+  app.innerHTML=`
+  <section class="hero">
+    <div class="hero-left">
+      <h1>${u("hero_h1")}</h1>
+      <p class="lead">${u("hero_lead")}</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        ${nx?`<a class="btn" href="#/aula/${nx.num}">${d?u("btn_continue"):u("btn_start")}</a>`:`<a class="btn" href="#/exercicio/9">${u("btn_final")}</a>`}
+        <a class="btn ghost" href="#/tutor">${u("btn_ask")}</a>
+        <a class="btn ghost" href="#/entrevista">${EN()?"Practice an interview":"Treinar entrevista em inglês"}</a>
+      </div>
+    </div>
+    <aside class="continue" aria-label="${u("prog_aria")}">
+      <div class="ring-row">
+        <div class="ring" style="--p:${pct}"><span>${pct}%</span></div>
+        <p><strong>${u("prog_done",d,TOTAL)}</strong>${u("prog_ex",exDone)}</p>
+      </div>
+      ${nx?`<div class="next-box" style="--c:${nx.mod.c}"><small>${u("next_label",nx.mod.n)}</small><b>${nx.num}. ${esc(tx(nx,"t"))}</b></div>`
+          :`<div class="next-box"><small>${u("congrats")}</small><b>${u("congrats_b")}</b></div>`}
+      <div class="minibars" aria-hidden="true">${MODULES.map(m=>`<a href="#/aula/${m.lessons[0].num}" tabindex="-1" style="--c:${m.c}" title="${u("mod_bar",m.n,modDone(m),m.lessons.length)}"><i style="height:${modDone(m)/m.lessons.length*100}%"></i></a>`).join("")}</div>
+      <div class="minibars-l" aria-hidden="true">${MODULES.map(m=>`<span>M${m.n}</span>`).join("")}</div>
+    </aside>
+  </section>
+
+  <section class="ribbon" aria-label="${u("ribbon_aria")}">
+    <div class="ribbon-head"><h2>${u("ribbon_h")}</h2><span>${u("ribbon_hint")}</span></div>
+    <div class="stops">
+      ${MODULES.map(m=>`<div class="stop-group" style="--c:${m.c}" title="${u("module_word")} ${m.n}: ${esc(tx(m,"title"))}">
+        ${m.lessons.map(l=>{const lbl=`${u("lesson_word")} ${l.num}: ${esc(tx(l,"t"))}`;return `<a class="stop ${state.done[l.num]?"is-done":""} ${nx&&nx.num===l.num?"is-next":""}" href="#/aula/${l.num}" title="${lbl}" aria-label="${lbl}${state.done[l.num]?u("done_word"):""}" style="text-decoration:none">${state.done[l.num]?"✓":l.num}</a>`}).join("")}
+      </div>`).join("")}
+    </div>
+    <div class="legend">${MODULES.map(m=>`<span style="--c:${m.c}"><i></i>M${m.n}</span>`).join("")}</div>
+  </section>
+
+  <details class="about">
+    <summary>${u("about")}</summary>
+    <div class="about-body">
+      <div class="flow">${u("flow").map(f=>`<span>${f}</span>`).join("")}</div>
+      ${u("about_p").map(p=>`<p>${p}</p>`).join("")}
+    </div>
+  </details>
+
+  <section class="modules" aria-label="${u("modules_aria")}">
+    ${MODULES.map(m=>{const md_=modDone(m),tot=m.lessons.length;return `
+    <article class="module" style="--c:${m.c}">
+      <div class="mod-head">
+        <div class="mod-num"><span>${u("module_word")} ${m.n}</span><span class="tag">${md_}/${tot}</span></div>
+        <h3>${esc(tx(m,"title"))}</h3>
+        <p>${esc(tx(m,"desc"))}</p>
+        <div class="bar" aria-hidden="true"><i style="width:${md_/tot*100}%"></i></div>
+      </div>
+      <ul class="lessons">
+        ${m.lessons.map(l=>`<li><a href="#/aula/${l.num}"><span class="chk ${state.done[l.num]?"on":""}" aria-hidden="true">${state.done[l.num]?"✓":""}</span><span class="t"><span class="n">${u("lesson_word")} ${l.num}</span>${esc(tx(l,"t"))}</span></a></li>`).join("")}
+        <li class="ex"><a href="#/exercicio/${m.n}"><span class="chk ${state.exDone[m.n]?"on":""}" aria-hidden="true">${state.exDone[m.n]?"✓":"★"}</span><span class="t"><span class="n">${m.n===9?u("final_deliv"):u("mod_ex")}</span>${m.n===9?u("your_case"):u("practice")}</span></a></li>
+      </ul>
+    </article>`}).join("")}
+  </section>`;
+}
+
+/* ============ AULA ============ */
+function renderLesson(app,l){
+  const m=l.mod, prev=LESSONS[l.num-2], next=LESSONS[l.num];
+  const done=!!state.done[l.num], K=tx(l,"k");
+  app.innerHTML=`
+  <a class="back" href="#/">${u("back")}</a>
+  <div class="lesson-grid" style="--c:${m.c}">
+    <div>
+      <header class="l-head">
+        <div class="l-kicker">${u("kicker",m.n,l.num,TOTAL)}</div>
+        <h1>${esc(tx(l,"t"))}</h1>
+        <div class="l-actions">
+          <button class="btn ${done?"done":""}" id="doneBtn" aria-pressed="${done}">${done?u("done_on"):u("done_off")}</button>
+          <a class="btn soft" href="#chatBox">${u("ask_btn")}</a>
+        </div>
+      </header>
+      <section class="block"><h2>${u("about_h")}</h2><p>${esc(tx(l,"s"))}</p></section>
+      <section class="block"><h2>${u("concepts_h")}</h2>
+        <div class="concepts">${K.map(([k,v],i)=>`<div class="concept"><b>${esc(k)}</b><p>${esc(v)}</p><button class="ask-link" data-ask="${i}">${u("ask_example")}</button></div>`).join("")}</div>
+      </section>
+      <div class="pm-note"><b>${u("pm_h")}</b><p>${esc(tx(l,"pm"))}</p></div>
+      <section class="block"><h2>${u("quiz_h")}</h2>
+        <p style="color:var(--muted)">${u("quiz_p")}</p>
+        <div id="quiz"></div>
+        <button class="btn soft" id="quizBtn">${state.quiz[l.num]?u("quiz_new"):u("quiz_gen")}</button>
+        ${state.quiz[l.num]?`<div class="score">${u("quiz_last",state.quiz[l.num].s,state.quiz[l.num].t)}</div>`:""}
+        <div id="quizMsg" class="note-err"></div>
+      </section>
+      <section class="block"><h2>${u("notes_h")}</h2>
+        <textarea id="notes" placeholder="${u("notes_ph")}">${esc(state.notes[l.num]||"")}</textarea>
+        <div class="save-state" id="noteState">${state.notes[l.num]?u("saved"):""}</div>
+      </section>
+      <nav class="pager" aria-label="${u("pager_aria")}">
+        ${prev?`<a href="#/aula/${prev.num}"><small>${u("prev")}</small>${esc(tx(prev,"t"))}</a>`:"<span></span>"}
+        ${next?(next.mod.n!==m.n?`<a class="next" href="#/exercicio/${m.n}"><small>${u("next_step")}</small>${u("ex_link",m.n)}</a>`:`<a class="next" href="#/aula/${next.num}"><small>${u("next")}</small>${esc(tx(next,"t"))}</a>`)
+              :`<a class="next" href="#/exercicio/9"><small>${u("next_step")}</small>${u("final_deliv")}</a>`}
+      </nav>
+    </div>
+    <div id="chatBox"></div>
+  </div>`;
+
+  $("#doneBtn").addEventListener("click",e=>{
+    state.done[l.num]=!state.done[l.num]; if(!state.done[l.num]) delete state.done[l.num];
+    persist();
+    const b=e.currentTarget, on=!!state.done[l.num];
+    b.classList.toggle("done",on); b.setAttribute("aria-pressed",on); b.textContent=on?u("done_on"):u("done_off");
+    $("#topProgress").textContent=u("top",doneCount(),TOTAL);
+    if(on){b.classList.remove("celebrate");void b.offsetWidth;b.classList.add("celebrate");
+      toast(modDone(m)===m.lessons.length?u("toast_mod",m.n):u("toast_done"));}
+  });
+  let nt; $("#notes").addEventListener("input",e=>{
+    state.notes[l.num]=e.target.value; $("#noteState").textContent=u("saving");
+    clearTimeout(nt); nt=setTimeout(()=>{persist();$("#noteState").textContent=u("saved");},600);
+  });
+  const ctx=`Current lesson: "${tx(l,"t")}" (module ${m.n}: ${tx(m,"title")}).\nSummary: ${tx(l,"s")}\nKey concepts: ${K.map(([a,b])=>a+": "+b).join(" | ")}`;
+  const chat=mountChat($("#chatBox"),{key:"a"+l.num,title:u("chat_title"),sub:u("chat_sub"),context:ctx,chips:u("chips")});
+  app.querySelectorAll("[data-ask]").forEach(b=>b.addEventListener("click",()=>{
+    chat.send(u("ask_prompt",K[+b.dataset.ask][0]));
+    $("#chatBox").scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+  $("#quizBtn").addEventListener("click",()=>makeQuiz(l));
+}
+
+/* ============ QUIZ ============ */
+async function makeQuiz(l){
+  const btn=$("#quizBtn"), box=$("#quiz"), msg=$("#quizMsg"); msg.textContent="";
+  const sample=await getSample();
+  if(!sample||sampleOff){msg.textContent=u("quiz_off");return;}
+  btn.disabled=true; btn.textContent=u("quiz_creating");
+  box.innerHTML=`<p class="msg thinking" style="padding:0">${u("quiz_thinking")}</p>`;
+  const K=tx(l,"k");
+  const lang=EN()?"in English":"em português do Brasil";
+  const prompt=`${RULES()}\n\nCreate 3 multiple-choice questions, written ${lang}, about the lesson below. Mix one conceptual question, one about applying it in a product and one about a PM decision. Each question has 4 plausible options and only one correct answer. Do not use dashes as punctuation.\n\n${tx(l,"t")}\n${tx(l,"s")}\nConcepts: ${K.map(([a,b])=>a+": "+b).join(" | ")}\n\nReply with only a JSON array in this format: [{"q":"question","o":["a","b","c","d"],"a":0,"why":"short explanation of the correct answer"}]`;
+  try{
+    const qs=await sample.json(prompt,{cache:false});
+    if(!Array.isArray(qs)||!qs.length) throw {code:"invalid_json"};
+    let answered=0,score=0; const n=Math.min(3,qs.length);
+    box.innerHTML=qs.slice(0,3).map((q,i)=>`<div class="quiz-q" data-i="${i}"><p>${i+1}. ${esc(cleanDash(q.q))}</p><div class="opts">${(q.o||[]).map((o,j)=>`<button class="opt" data-j="${j}">${esc(cleanDash(o))}</button>`).join("")}</div><div class="why" hidden></div></div>`).join("");
+    box.querySelectorAll(".quiz-q").forEach(qe=>{
+      const q=qs[+qe.dataset.i];
+      qe.querySelectorAll(".opt").forEach(ob=>ob.addEventListener("click",()=>{
+        const j=+ob.dataset.j, right=Number(q.a);
+        qe.querySelectorAll(".opt").forEach((x,xi)=>{x.disabled=true;if(xi===right)x.classList.add("right");});
+        if(j!==right) ob.classList.add("wrong"); else score++;
+        const w=qe.querySelector(".why"); w.hidden=false; w.textContent=(j===right?u("quiz_right"):u("quiz_wrong"))+cleanDash(q.why||"");
+        if(++answered===n){state.quiz[l.num]={s:score,t:n};persist();toast(u("quiz_score",score,n));}
+      }));
+    });
+    btn.textContent=u("quiz_new");
+  }catch(e){
+    box.innerHTML="";
+    msg.textContent=(e&&e.code==="invalid_json")?u("quiz_bad"):errCopy(e&&e.code);
+    btn.textContent=u("quiz_gen");
+  }
+  btn.disabled=false;
+}
+
+/* ============ CHAT ============ */
+function mountChat(el,opts){
+  const turns=(state.chats[opts.key]||[]).slice();
+  el.innerHTML=`<section class="chat ${opts.full?"full":""}" aria-label="${esc(opts.title)}">
+    <div class="chat-head"><h2>${esc(opts.title)}</h2><p>${esc(opts.sub)}</p></div>
+    <div class="msgs" aria-live="polite"></div>
+    <div class="chips">${opts.chips.map(c=>`<button class="chip">${esc(c)}</button>`).join("")}</div>
+    <form class="composer" onsubmit="return false">
+      <label class="sr" for="in-${opts.key}">${u("q_label")}</label>
+      <textarea id="in-${opts.key}" rows="1" placeholder="${u("ph")}"></textarea>
+      <button class="btn" type="submit">${u("send")}</button>
+    </form>
+    <div class="chat-off" hidden>${u("chat_off")}</div>
+  </section>`;
+  const msgs=el.querySelector(".msgs"), ta=el.querySelector("textarea"), form=el.querySelector("form"), sendBtn=form.querySelector("button");
+  const off=()=>{form.hidden=true;el.querySelector(".chips").hidden=true;el.querySelector(".chat-off").hidden=false;};
+  function draw(){
+    if(!turns.length){msgs.innerHTML=`<p class="empty-chat">${u("empty_chat")}</p>`;return;}
+    msgs.innerHTML=turns.map(t=>t.role==="user"?`<div class="msg me">${esc(t.content)}</div>`:`<div class="msg ai">${md(t.content)}</div>`).join("");
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+  draw();
+  getSample().then(s=>{if(!s) off();});
+  let busy=false;
+  async function send(text){
+    text=(text||"").trim(); if(!text||busy) return;
+    const sample=await getSample();
+    if(!sample||sampleOff){off();return;}
+    busy=true; sendBtn.disabled=true; ta.value="";
+    turns.push({role:"user",content:text}); draw();
+    const bubble=document.createElement("div"); bubble.className="msg ai thinking"; bubble.textContent=u("thinking");
+    msgs.appendChild(bubble); msgs.scrollTop=msgs.scrollHeight;
+    const lead=RULES()+(opts.context?"\n\nContext:\n"+opts.context:"")+"\n\nThe conversation with Thais follows.";
+    const recent=turns.slice(-10); if(recent[0].role!=="user") recent.shift();
+    chatAbort=new AbortController();
+    try{
+      const {text:ans}=await sample([{role:"user",content:lead},...recent],{cache:false,signal:chatAbort.signal,onText:({text})=>{bubble.classList.remove("thinking");bubble.innerHTML=md(text);msgs.scrollTop=msgs.scrollHeight;}});
+      turns.push({role:"assistant",content:cleanDash(ans)});
+      state.chats[opts.key]=turns.slice(-16).map(t=>({role:t.role,content:t.content.slice(0,4000)})); persist();
+    }catch(e){
+      if(e&&e.code==="cancelled"){busy=false;return;}
+      const c=errCopy(e&&e.code);
+      if(e&&e.text) turns.push({role:"assistant",content:cleanDash(e.text)}); else turns.pop();
+      draw();
+      const n=document.createElement("p"); n.className="note-err"; n.style.padding="0 4px"; n.textContent=c; msgs.appendChild(n);
+      if(sampleOff) off();
+      chatAbort=null; busy=false; sendBtn.disabled=false; return;
+    }
+    chatAbort=null; busy=false; sendBtn.disabled=false; draw();
+  }
+  form.addEventListener("submit",()=>send(ta.value));
+  ta.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(ta.value);}});
+  ta.addEventListener("input",()=>{ta.style.height="46px";ta.style.height=Math.min(ta.scrollHeight,140)+"px";});
+  el.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>send(c.textContent)));
+  return {send};
+}
+
+/* ============ EXERCÍCIO ============ */
+function renderExercise(app,m){
+  const isFinal=m.n===9, done=!!state.exDone[m.n], last=m.lessons[m.lessons.length-1], nm=MODULES[m.n];
+  app.innerHTML=`
+  <a class="back" href="#/">${u("back")}</a>
+  <div class="lesson-grid" style="--c:${m.c}">
+    <div>
+      <header class="l-head">
+        <div class="l-kicker">${u("ex_kicker",m.n,isFinal)}</div>
+        <h1>${isFinal?u("your_case"):esc(tx(m,"title"))}</h1>
+        <div class="l-actions"><button class="btn ${done?"done":""}" id="exDoneBtn">${done?u("ex_on"):u("ex_off")}</button></div>
+      </header>
+      <section class="block"><h2>${u("challenge_h")}</h2><p>${esc(tx(m,"ex"))}</p>
+        <p style="color:var(--muted)">${isFinal?u("final_hint"):u("ex_hint")}</p>
+      </section>
+      <section class="block"><h2>${u("answer_h")}</h2>
+        <textarea id="exText" style="min-height:240px" placeholder="${u("answer_ph")}">${esc(state.ex[m.n]||"")}</textarea>
+        <div class="save-state" id="exState">${state.ex[m.n]?u("saved"):""}</div>
+        <button class="btn" id="fbBtn" style="margin-top:8px">${state.exFb[m.n]?u("fb_again"):u("fb_btn")}</button>
+        <div id="fbMsg" class="note-err"></div>
+      </section>
+      <section class="block" id="fbBlock" ${state.exFb[m.n]?"":"hidden"}><h2>${u("fb_h")}</h2><div id="fb" class="msg ai" style="max-width:none">${state.exFb[m.n]?md(state.exFb[m.n]):""}</div></section>
+      <nav class="pager">
+        <a href="#/aula/${last.num}"><small>${u("last_lesson")}</small>${esc(tx(last,"t"))}</a>
+        ${nm?`<a class="next" href="#/aula/${nm.lessons[0].num}"><small>${u("next_module")}</small>${esc(tx(nm,"title"))}</a>`:`<a class="next" href="#/"><small>${u("end")}</small>${u("see_progress")}</a>`}
+      </nav>
+    </div>
+    <div id="chatBox"></div>
+  </div>`;
+  $("#exDoneBtn").addEventListener("click",e=>{
+    state.exDone[m.n]=!state.exDone[m.n]; if(!state.exDone[m.n]) delete state.exDone[m.n]; persist();
+    const on=!!state.exDone[m.n]; e.currentTarget.classList.toggle("done",on); e.currentTarget.textContent=on?u("ex_on"):u("ex_off");
+    if(on) toast(u("toast_ex",m.n));
+  });
+  let t; $("#exText").addEventListener("input",e=>{state.ex[m.n]=e.target.value;$("#exState").textContent=u("saving");clearTimeout(t);t=setTimeout(()=>{persist();$("#exState").textContent=u("saved");},600);});
+  $("#fbBtn").addEventListener("click",async()=>{
+    const txt=($("#exText").value||"").trim(), msg=$("#fbMsg"); msg.textContent="";
+    if(txt.length<40){msg.textContent=u("fb_short");return;}
+    const sample=await getSample();
+    if(!sample||sampleOff){msg.textContent=u("fb_off");return;}
+    const btn=$("#fbBtn"); btn.disabled=true; btn.textContent=u("fb_busy");
+    const block=$("#fbBlock"), fb=$("#fb"); block.hidden=false; fb.classList.add("thinking"); fb.textContent=u("fb_reading");
+    const heads=EN()?"**What is strong** (2 to 3 points), **What is missing or could improve** (2 to 4 concrete points), **How an interviewer would see it** (1 short paragraph) and **Next step** (1 practical suggestion)"
+                    :"**O que está forte** (2 a 3 pontos), **O que falta ou pode melhorar** (2 a 4 pontos concretos), **Como um entrevistador veria** (1 parágrafo curto) e **Próximo passo** (1 sugestão prática)";
+    const prompt=`${RULES()}\n\nReview Thais's answer to the exercise below as a senior AI PM mentor and as an interviewer would. Structure it as: ${heads}. Be specific and kind, without dashes as punctuation. Up to 350 words.\n\nModule ${m.n}: ${tx(m,"title")}\nExercise: ${tx(m,"ex")}\n\nThais's answer:\n${txt.slice(0,12000)}`;
+    try{
+      const {text}=await sample(prompt,{cache:false,onText:({text})=>{fb.classList.remove("thinking");fb.innerHTML=md(text);}});
+      state.exFb[m.n]=cleanDash(text); persist();
+    }catch(e){
+      if(e&&e.text) fb.innerHTML=md(e.text); else {fb.textContent="";block.hidden=!state.exFb[m.n];}
+      msg.textContent=errCopy(e&&e.code);
+    }
+    btn.disabled=false; btn.textContent=u("fb_again");
+  });
+  mountChat($("#chatBox"),{key:"e"+m.n,title:u("ex_chat_title"),sub:u("ex_chat_sub"),
+    context:`Module ${m.n} exercise (${tx(m,"title")}): ${tx(m,"ex")}\nModule lessons: ${m.lessons.map(l=>tx(l,"t")).join("; ")}`,
+    chips:u("ex_chips")});
+}
+
+/* ============ GLOSSÁRIO ============ */
+function renderGlossary(app){
+  const items=LESSONS.flatMap(l=>tx(l,"k").map(([k,v])=>({k,v,l})));
+  app.innerHTML=`
+  <h1 class="page-title">${u("gloss_h")}</h1>
+  <p class="page-sub">${u("gloss_sub",items.length)}</p>
+  <label class="sr" for="q">${u("gloss_label")}</label>
+  <input class="search" id="q" type="search" placeholder="${u("gloss_ph")}" autocomplete="off">
+  <div class="gloss" id="gl"></div>`;
+  const gl=$("#gl"), norm=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+  function draw(q){
+    const nq=norm(q||""), f=items.filter(i=>!nq||norm(i.k+" "+i.v).includes(nq));
+    gl.innerHTML=f.length?f.map(i=>`<div class="g-item" style="--c:${i.l.mod.c}"><b>${esc(i.k)}</b><p>${esc(i.v)}</p><a href="#/aula/${i.l.num}">${u("lesson_word")} ${i.l.num}: ${esc(tx(i.l,"t"))}</a></div>`).join("")
+      :`<p style="color:var(--muted)">${u("gloss_none",esc(q))} <a href="#/tutor">${u("gloss_tutor")}</a>?</p>`;
+  }
+  draw(""); $("#q").addEventListener("input",e=>draw(e.target.value));
+}
+
+/* ============ TUTOR GERAL ============ */
+function renderTutor(app){
+  const d=doneCount();
+  app.innerHTML=`<div class="chat-wrap">
+    <h1 class="page-title">${u("tutor_h")}</h1>
+    <p class="page-sub">${u("tutor_sub")}</p>
+    <div id="chatBox"></div>
+    <p style="margin-top:12px"><button class="btn ghost" id="clearChat">${u("clear")}</button></p>
+  </div>`;
+  mountChat($("#chatBox"),{key:"geral",full:true,title:u("tutor_title"),sub:d?u("tutor_sub_done",d,TOTAL):u("tutor_sub_new"),
+    context:`Progress: ${d} of ${TOTAL} lessons completed. Completed lessons: ${LESSONS.filter(l=>state.done[l.num]).map(l=>l.num+". "+tx(l,"t")).join("; ")||"none yet"}. Path structure: ${MODULES.map(m=>"Module "+m.n+": "+tx(m,"title")).join("; ")}.`,
+    chips:u("tutor_chips")});
+  $("#clearChat").addEventListener("click",()=>{delete state.chats.geral;persist();render();toast(u("cleared"));});
+}
+
+/* ============ TREINO DE ENTREVISTA ============ */
+const IV_UI={
+ pt:{nav:"Entrevista",h:"Treino de entrevista em inglês",
+  sub:"O tutor faz perguntas típicas de entrevistas de AI PM em inglês, avalia o conteúdo da sua resposta e também a clareza do seu inglês.",
+  topic:"Tema",type:"Tipo de pergunta",level:"Senioridade da vaga",mixed:"Toda a trilha",done_only:"Só o que já estudei",
+  types:{concept:"Conceitual",product:"Product sense",tradeoff:"Trade-offs técnicos",behavioral:"Comportamental com IA"},
+  levels:{senior:"Senior PM",staff:"Staff/Lead PM"},
+  newq:"Gerar pergunta",another:"Outra pergunta",gen:"Preparando a pergunta...",
+  empty:"Escolha o tema e o tipo de pergunta e clique em \"Gerar pergunta\" para começar.",
+  qlabel:"Pergunta do entrevistador",hint:"Ver dica",hide_hint:"Esconder dica",
+  ans_label:"Sua resposta em inglês",ans_ph:"Answer as you would in the interview. Aim for 150 to 300 words, with a clear structure.",
+  words:n=>`${n} palavras`,time:t=>`Tempo: ${t}`,
+  submit:"Enviar resposta",reviewing:"Avaliando sua resposta...",short:"Escreva pelo menos umas 40 palavras para receber uma avaliação útil.",
+  off:"O treino usa o tutor, que fica disponível quando a página é aberta dentro do Claude.",bad:"A avaliação veio num formato inesperado. Tente enviar de novo.",
+  content:"Conteúdo",english:"Inglês",strengths:"O que funcionou",improve:"O que melhorar",corrections:"Correções de inglês",
+  vocab:"Vocabulário para soar mais natural",polished:"Versão melhorada da sua resposta",follow:"Pergunta de follow-up",
+  answer_follow:"Responder o follow-up",copy:"Copiar versão melhorada",copied:"Copiado!",no_corr:"Nenhuma correção importante. Seu inglês está claro!",
+  history:"Histórico de treinos",no_history:"Suas tentativas aparecem aqui depois da primeira avaliação.",
+  retry:"Treinar de novo",clear_h:"Limpar histórico",cleared:"Histórico limpo.",
+  fb_lang:"Brazilian Portuguese"},
+ en:{nav:"Interview",h:"English interview practice",
+  sub:"The tutor asks typical AI PM interview questions in English, reviews the content of your answer and the clarity of your English.",
+  topic:"Topic",type:"Question type",level:"Role seniority",mixed:"Whole path",done_only:"Only what I've studied",
+  types:{concept:"Conceptual",product:"Product sense",tradeoff:"Technical trade-offs",behavioral:"Behavioral with AI"},
+  levels:{senior:"Senior PM",staff:"Staff/Lead PM"},
+  newq:"Generate question",another:"Another question",gen:"Preparing the question...",
+  empty:"Pick a topic and question type, then click \"Generate question\" to begin.",
+  qlabel:"Interviewer's question",hint:"Show hint",hide_hint:"Hide hint",
+  ans_label:"Your answer in English",ans_ph:"Answer as you would in the interview. Aim for 150 to 300 words, with a clear structure.",
+  words:n=>`${n} words`,time:t=>`Time: ${t}`,
+  submit:"Submit answer",reviewing:"Reviewing your answer...",short:"Write at least about 40 words to get useful feedback.",
+  off:"Practice uses the tutor, which is available when the page is opened inside Claude.",bad:"The review came back in an unexpected format. Try submitting again.",
+  content:"Content",english:"English",strengths:"What worked",improve:"What to improve",corrections:"English corrections",
+  vocab:"Vocabulary to sound more natural",polished:"Improved version of your answer",follow:"Follow-up question",
+  answer_follow:"Answer the follow-up",copy:"Copy improved version",copied:"Copied!",no_corr:"No major corrections. Your English is clear!",
+  history:"Practice history",no_history:"Your attempts show up here after your first review.",
+  retry:"Practice again",clear_h:"Clear history",cleared:"History cleared.",
+  fb_lang:"English"}
+};
+const iv=k=>IV_UI[EN()?"en":"pt"][k];
+let ivTimer=null;
+function fmtTime(s){return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
+
+function renderInterview(app){
+  if(!state.iv) state.iv={topic:"mixed",type:"concept",level:"senior",cur:null,history:[]};
+  const S=state.iv;
+  const chip=(group,val,label)=>{const m=val[0]==="m"&&MODULES[+val.slice(1)-1];return `<button class="seg" data-g="${group}" data-v="${val}" aria-pressed="${S[group]===val}"${m?` title="${esc(tx(m,"title"))}"`:""}>${esc(label)}</button>`;};
+  app.innerHTML=`
+  <div class="iv-wrap">
+    <h1 class="page-title">${iv("h")}</h1>
+    <p class="page-sub">${iv("sub")}</p>
+    <section class="block iv-setup">
+      <div class="iv-row"><span class="iv-lab">${iv("topic")}</span><div class="segs">
+        ${chip("topic","mixed",iv("mixed"))}${chip("topic","done",iv("done_only"))}
+        ${MODULES.map(m=>chip("topic","m"+m.n,EN()?"Module "+m.n:"Módulo "+m.n)).join("")}
+      </div></div>
+      <div class="iv-row"><span class="iv-lab">${iv("type")}</span><div class="segs">
+        ${Object.entries(iv("types")).map(([k,v])=>chip("type",k,v)).join("")}
+      </div></div>
+      <div class="iv-row"><span class="iv-lab">${iv("level")}</span><div class="segs">
+        ${Object.entries(iv("levels")).map(([k,v])=>chip("level",k,v)).join("")}
+      </div></div>
+      <button class="btn" id="ivNew">${S.cur?iv("another"):iv("newq")}</button>
+      <div class="note-err" id="ivMsg"></div>
+    </section>
+    <div id="ivCur"></div>
+    <section class="block"><div class="iv-hist-head"><h2>${iv("history")}</h2>${S.history.length?`<button class="btn ghost" id="ivClear">${iv("clear_h")}</button>`:""}</div>
+      <div id="ivHist"></div></section>
+  </div>`;
+  app.querySelectorAll(".seg").forEach(b=>b.addEventListener("click",()=>{
+    S[b.dataset.g]=b.dataset.v; persist();
+    app.querySelectorAll(`.seg[data-g="${b.dataset.g}"]`).forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+  }));
+  $("#ivNew").addEventListener("click",()=>newQuestion());
+  const cl=$("#ivClear"); if(cl) cl.addEventListener("click",()=>{S.history=[];persist();render();toast(iv("cleared"));});
+  drawCurrent(); drawHistory();
+}
+
+function topicContext(){
+  const S=state.iv;
+  let ls=LESSONS;
+  if(S.topic==="done"){const d=LESSONS.filter(l=>state.done[l.num]);if(d.length) ls=d;}
+  else if(S.topic.startsWith("m")){const m=MODULES[+S.topic.slice(1)-1]; if(m) ls=m.lessons;}
+  return ls.map(l=>{const e=l.en||l;return "- "+e.t+": "+e.k.map(k=>k[0]).join(", ");}).join("\n");
+}
+
+async function newQuestion(q){
+  const S=state.iv, msg=$("#ivMsg"); msg.textContent="";
+  if(q){S.cur={q:q.q,hint:q.hint||"",answer:"",fb:null,start:Date.now()};persist();drawCurrent();window.scrollTo({top:$("#ivCur").offsetTop-90,behavior:"smooth"});return;}
+  const sample=await getSample();
+  if(!sample||sampleOff){msg.textContent=iv("off");return;}
+  const btn=$("#ivNew"); btn.disabled=true; btn.textContent=iv("gen");
+  const types={concept:"a conceptual question that checks deep understanding of AI concepts, as a PM would need to explain them",
+    product:"a product sense question: designing or improving an AI-powered product or feature for a realistic scenario",
+    tradeoff:"a technical trade-off question: choosing between approaches (e.g. RAG vs fine-tuning, model choice, cost vs latency, agent vs workflow) and defending the decision",
+    behavioral:"a behavioral question about leading AI product work (tell me about a time...), which she can answer from her experience as a Senior PM with a Product Design background"};
+  const recent=S.history.slice(0,8).map(h=>"- "+h.q).join("\n")||"none";
+  const prompt=`You are an experienced interviewer hiring a ${S.level==="staff"?"Staff or Lead":"Senior"} AI Product Manager at an international tech company. ${PROFILE}\n\nWrite ONE interview question in English. Type: ${types[S.type]}. Base it on these study topics:\n${topicContext()}\n\nAvoid repeating these recent questions:\n${recent}\n\nAlso write a short hint (in ${iv("fb_lang")}, max 40 words) about what a strong answer should cover, without giving the answer away. Never use em dashes or en dashes.\n\nReply with only JSON: {"q":"question","hint":"hint"}`;
+  try{
+    const r=await sample.json(prompt,{cache:false});
+    if(!r||!r.q) throw {code:"invalid_json"};
+    S.cur={q:cleanDash(r.q),hint:cleanDash(r.hint||""),answer:"",fb:null,start:Date.now()};
+    persist(); drawCurrent();
+  }catch(e){ msg.textContent=(e&&e.code==="invalid_json")?iv("bad"):errCopy(e&&e.code); }
+  btn.disabled=false; btn.textContent=state.iv.cur?iv("another"):iv("newq");
+}
+
+function drawCurrent(){
+  const box=$("#ivCur"); if(!box) return;
+  clearInterval(ivTimer);
+  const S=state.iv, c=S.cur;
+  if(!c){box.innerHTML=`<p class="iv-empty">${iv("empty")}</p>`;return;}
+  box.innerHTML=`
+  <section class="block iv-q">
+    <div class="iv-qlab">${iv("qlabel")}</div>
+    <p class="iv-question">${esc(c.q)}</p>
+    ${c.hint?`<button class="ask-link" id="ivHintBtn">${iv("hint")}</button><p class="iv-hint" id="ivHint" hidden>${esc(c.hint)}</p>`:""}
+    <label class="iv-lab" for="ivAns" style="display:block;margin:16px 0 8px">${iv("ans_label")}</label>
+    <textarea id="ivAns" lang="en" spellcheck="true" style="min-height:220px" placeholder="${iv("ans_ph")}" ${c.fb?"readonly":""}>${esc(c.answer||"")}</textarea>
+    <div class="iv-meta"><span id="ivWords"></span><span id="ivTime"></span></div>
+    ${c.fb?"":`<button class="btn" id="ivSubmit">${iv("submit")}</button>`}
+    <div class="note-err" id="ivErr"></div>
+  </section>
+  <div id="ivFb"></div>`;
+  const ta=$("#ivAns");
+  const wc=()=>{const n=(ta.value.trim().match(/\S+/g)||[]).length;$("#ivWords").textContent=iv("words")(n);return n;};
+  wc();
+  const tick=()=>{const end=c.fb?c.fb.at:Date.now();$("#ivTime").textContent=iv("time")(fmtTime(Math.max(0,Math.round((end-(c.start||end))/1000))));};
+  tick(); if(!c.fb) ivTimer=setInterval(()=>{if(!document.body.contains(ta)){clearInterval(ivTimer);return;}tick();},1000);
+  let t; ta.addEventListener("input",()=>{wc();c.answer=ta.value;clearTimeout(t);t=setTimeout(persist,700);});
+  const hb=$("#ivHintBtn"); if(hb) hb.addEventListener("click",()=>{const h=$("#ivHint");h.hidden=!h.hidden;hb.textContent=h.hidden?iv("hint"):iv("hide_hint");});
+  const sb=$("#ivSubmit"); if(sb) sb.addEventListener("click",()=>review(wc()));
+  if(c.fb) drawFeedback(c);
+}
+
+async function review(words){
+  const S=state.iv, c=S.cur, err=$("#ivErr"); err.textContent="";
+  if(words<40){err.textContent=iv("short");return;}
+  const sample=await getSample();
+  if(!sample||sampleOff){err.textContent=iv("off");return;}
+  const btn=$("#ivSubmit"); btn.disabled=true; btn.textContent=iv("reviewing");
+  const at=Date.now();
+  const prompt=`You are a senior interviewer hiring a ${S.level==="staff"?"Staff or Lead":"Senior"} AI Product Manager at an international tech company, and also an English communication coach. ${PROFILE} She is a fluent, non-native English speaker from Brazil.\n\nQuestion: ${c.q}\n\nHer answer (written as she would speak it):\n"""${(c.answer||"").slice(0,8000)}"""\n\nEvaluate two things: the CONTENT (structure, depth, AI/PM judgment, trade-offs, metrics, specificity) and the ENGLISH (clarity, grammar, naturalness, professional tone). Be encouraging but honest and specific. Write all explanations in ${iv("fb_lang")}. Keep "original", "better", "term" and "polished" in English. Never use em dashes or en dashes.\n\nReply with only JSON:\n{"content_score":1-5,"english_score":1-5,"strengths":["2 to 3 items"],"improve":["2 to 4 concrete items"],"corrections":[{"original":"exact phrase from her answer","better":"more natural English","why":"short reason"}],"vocabulary":[{"term":"useful English phrase","tip":"when to use it"}],"polished":"an improved version of HER answer in natural spoken English, keeping her ideas and experience, about the same length","follow_up":"one realistic follow-up question in English"}\nInclude up to 5 corrections (empty array if none are needed) and 3 vocabulary items.`;
+  try{
+    const r=await sample.json(prompt,{cache:false});
+    if(!r||typeof r!=="object"||!r.polished) throw {code:"invalid_json"};
+    const clampS=v=>Math.max(1,Math.min(5,Math.round(Number(v)||0)));
+    c.fb={cs:clampS(r.content_score),es:clampS(r.english_score),
+      strengths:(r.strengths||[]).map(cleanDash),improve:(r.improve||[]).map(cleanDash),
+      corrections:(r.corrections||[]).slice(0,6).map(x=>({o:cleanDash(x.original||""),b:cleanDash(x.better||""),w:cleanDash(x.why||"")})),
+      vocab:(r.vocabulary||[]).slice(0,4).map(x=>({t:cleanDash(x.term||""),p:cleanDash(x.tip||"")})),
+      polished:cleanDash(r.polished),follow:cleanDash(r.follow_up||""),at};
+    S.history.unshift({q:c.q,cs:c.fb.cs,es:c.fb.es,date:at,type:S.type});
+    S.history=S.history.slice(0,30);
+    persist(); drawCurrent(); drawHistory();
+    $("#ivFb").scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(e){
+    err.textContent=(e&&e.code==="invalid_json")?iv("bad"):errCopy(e&&e.code);
+    btn.disabled=false; btn.textContent=iv("submit");
+  }
+}
+
+function drawFeedback(c){
+  const f=c.fb, box=$("#ivFb");
+  const dots=n=>`<span class="dots" aria-label="${n}/5">${[1,2,3,4,5].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`;
+  const list=a=>a.length?`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:"";
+  box.innerHTML=`
+  <section class="block iv-fb">
+    <div class="scores">
+      <div class="score-card" style="--c:var(--m5)"><span>${iv("content")}</span><b>${f.cs}/5</b>${dots(f.cs)}</div>
+      <div class="score-card" style="--c:var(--m2)"><span>${iv("english")}</span><b>${f.es}/5</b>${dots(f.es)}</div>
+    </div>
+    <div class="fb-cols">
+      <div><h3>${iv("strengths")}</h3>${list(f.strengths)}</div>
+      <div><h3>${iv("improve")}</h3>${list(f.improve)}</div>
+    </div>
+    <h3>${iv("corrections")}</h3>
+    ${f.corrections.length?`<div class="corrs">${f.corrections.map(x=>`<div class="corr"><div class="c-o" lang="en">${esc(x.o)}</div><div class="c-b" lang="en">${esc(x.b)}</div><p>${esc(x.w)}</p></div>`).join("")}</div>`:`<p>${iv("no_corr")}</p>`}
+    ${f.vocab.length?`<h3>${iv("vocab")}</h3><div class="vocab">${f.vocab.map(v=>`<div><b lang="en">${esc(v.t)}</b><p>${esc(v.p)}</p></div>`).join("")}</div>`:""}
+    <h3>${iv("polished")}</h3>
+    <div class="polished" lang="en">${md(f.polished)}</div>
+    <button class="btn ghost" id="ivCopy" style="margin-top:10px">${iv("copy")}</button>
+    ${f.follow?`<div class="follow"><h3>${iv("follow")}</h3><p lang="en">${esc(f.follow)}</p><button class="btn" id="ivFollow">${iv("answer_follow")}</button></div>`:""}
+  </section>`;
+  $("#ivCopy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(f.polished);toast(iv("copied"));}catch(e){}});
+  const fu=$("#ivFollow"); if(fu) fu.addEventListener("click",()=>newQuestion({q:f.follow}));
+}
+
+function drawHistory(){
+  const box=$("#ivHist"); if(!box) return;
+  const H=state.iv.history;
+  if(!H.length){box.innerHTML=`<p style="color:var(--muted);margin:0">${iv("no_history")}</p>`;return;}
+  const loc=EN()?"en-US":"pt-BR";
+  box.innerHTML=`<ul class="hist">${H.map((h,i)=>`<li><div class="h-q" lang="en">${esc(h.q)}</div>
+    <div class="h-meta"><span>${new Date(h.date).toLocaleDateString(loc,{day:"2-digit",month:"short"})}</span><span>${esc(iv("types")[h.type]||"")}</span>
+    <span class="h-s" style="--c:var(--m5)">${iv("content")} ${h.cs}/5</span><span class="h-s" style="--c:var(--m2)">${iv("english")} ${h.es}/5</span>
+    <button class="ask-link" data-retry="${i}">${iv("retry")}</button></div></li>`).join("")}</ul>`;
+  box.querySelectorAll("[data-retry]").forEach(b=>b.addEventListener("click",()=>newQuestion({q:H[+b.dataset.retry].q})));
+}
+
+/* ============ INÍCIO ============ */
+loadLocal(); applyTheme(); render(); initStore();
+</script>
+</body>
+</html>
