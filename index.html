@@ -647,6 +647,72 @@ details.about summary::after,.res-details summary::after{transition:transform .2
 @media (prefers-reduced-motion: reduce){#app.enter,.bar i,.pts-bar i,.minibars a i{animation:none}}
 .pts-big .count{font-size:inherit;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
 .pts-big{align-items:center}
+
+/* ===== Simulado ===== */
+.sim-wrap{max-width:860px}
+.sim-resume{border:1px solid color-mix(in srgb,var(--brand) 30%,transparent);background:color-mix(in srgb,var(--brand) 6%,var(--surface));border-radius:var(--r-lg);padding:16px 20px;margin-bottom:16px}
+.sim-resume p{margin:0 0 10px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.sim-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sim-mode{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:var(--r-md);padding:14px 16px;display:grid;gap:2px}
+.sim-mode b{font-size:16px}.sim-mode span{font-size:14px;color:var(--muted)}
+.sim-mode[aria-pressed="true"]{border-color:var(--btn);background:color-mix(in srgb,var(--brand) 7%,var(--surface))}
+.sim-avail{color:var(--muted);font-size:14px!important;margin:4px 0 14px!important}
+.sim-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.sim-stats div{border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px}
+.sim-stats small{display:block;color:var(--muted);font-size:13px}.sim-stats b{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+.sim-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sim-exit{background:none;border:0;padding:0;font:inherit;color:var(--muted);font-weight:600;cursor:pointer}
+.sim-time{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600;font-size:14px}
+.sim-prog{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:16px}
+.sim-prog i{display:block;height:100%;background:var(--btn);border-radius:99px;transition:width .35s var(--ease)}
+.sim-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.sim-qn{font-weight:700;font-size:14px;color:var(--ci)}
+.sim-text{font-size:19px!important;font-weight:600;line-height:1.5!important;margin:0 0 16px!important;max-width:none!important}
+.sim-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.sim-actions.top{margin:0 0 16px}
+.sim-keys{font-size:12.5px!important;color:var(--muted);margin:14px 0 0!important}
+@media (pointer:coarse){.sim-keys{display:none}}
+.sim-card.swap{animation:rise .24s var(--ease) both}
+.sim-card.just .fq-opt.right{animation:okPop .4s var(--ease)}
+.sim-card.just .fq-opt.wrong{animation:nudge .32s var(--ease)}
+.sim-card.just .sim-why{animation:rise .3s var(--ease) both}
+.sim-why{margin-top:14px}
+.sim-confirm{margin-top:14px;border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;background:var(--surface-2)}
+.sim-confirm p{margin:0 0 10px!important}
+.sim-map{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.sim-map button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.sim-map button.on{background:color-mix(in srgb,var(--brand) 10%,var(--surface));color:var(--ink);border-color:color-mix(in srgb,var(--brand) 35%,transparent)}
+.sim-map button.cur{outline:2px solid var(--btn);outline-offset:1px}
+.sim-score{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.sim-big{font-size:22px;font-weight:700;display:block;margin-bottom:4px}
+.sim-score p{margin:0!important}
+.sim-sub{display:flex;gap:14px;color:var(--muted);font-size:14px!important;margin-top:6px!important}
+.sim-groups{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.sim-bar{display:grid;grid-template-columns:64px 1fr 44px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.sim-bar .bar{margin:0;background:color-mix(in srgb,var(--c,var(--brand)) 15%,var(--surface))}
+.sim-bar .bar i{background:var(--c,var(--brand))}
+.sim-bar b{text-align:right;font-variant-numeric:tabular-nums}
+.sim-review{display:grid;gap:12px}
+.rev{border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px}
+.rev.no{border-color:color-mix(in srgb,var(--m3) 30%,var(--line))}
+.rev-q{font-weight:600;margin:0 0 8px!important;font-size:16px!important}
+.rev-a{margin:4px 0!important;font-size:15px!important}
+.rev-a small{display:block;font-size:12.5px;font-weight:600;color:var(--muted)}
+.rev-a.ok{color:var(--oki)}.rev-a.no{color:var(--m3i)}
+.rev-w{color:var(--muted);font-size:14.5px!important;margin:8px 0 0!important}
+@media (max-width:760px){.sim-modes,.sim-groups{grid-template-columns:1fr}.sim-stats b{font-size:22px}}
+.sim-score{flex-wrap:nowrap}.sim-score>div:last-child{flex:1;min-width:0}
+@media (max-width:560px){.sim-score{flex-wrap:wrap}}
+
+@media (max-width:1180px){
+  .top-in{flex-wrap:wrap;row-gap:6px;padding:10px 18px 8px}
+  .nav{order:3;width:100%;margin-left:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:6px;padding-bottom:2px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{white-space:nowrap;flex:none}
+  .top-right{margin-left:auto}
+}
+@media (max-width:480px){#topProgress{display:none}.brand{font-size:18px}}
 </style>
 </head>
 <body>
@@ -658,6 +724,7 @@ details.about summary::after,.res-details summary::after{transition:transform .2
     </a>
     <nav class="nav" aria-label="Seções">
       <a href="#/" data-nav="home">Trilha</a>
+      <a href="#/simulado" data-nav="simulado">Simulado</a>
       <a href="#/glossario" data-nav="glossario">Glossário</a>
       <a href="#/tutor" data-nav="tutor">Tutor</a>
       <a href="#/entrevista" data-nav="entrevista">Entrevista</a>
@@ -2725,9 +2792,651 @@ const totalPts=()=>LESSONS.reduce((a,l)=>a+lessonPts(l.num),0);
 const totalMax=()=>LESSONS.reduce((a,l)=>a+lessonMax(l.num),0);
 const answeredCount=()=>LESSONS.reduce((a,l)=>a+((state.qs||{})[l.num]||[]).filter(e=>e&&e.p!=null).length,0);
 const fmtN=x=>x.toLocaleString(EN()?"en-US":"pt-BR");
+/* ============ BANCO DE QUESTÕES DO SIMULADO ============ */
+// S(módulo, nível 1-3, [pergunta PT, [opções PT], índice correto, explicação PT], [pergunta EN, [opções EN], explicação EN])
+const SIMQ=[];
+function S(m,lv,pt,en){SIMQ.push({id:SIMQ.length+1,m,lv,q:pt[0],o:pt[1],a:pt[2],w:pt[3],qe:en[0],oe:en[1],we:en[2]});}
+
+/* Módulo 1 */
+S(1,2,["Um time chama de \"IA\" um sistema que roteia tickets por palavras-chave fixas. Num pitch para investidores, qual é o maior risco de manter esse rótulo?",
+ ["Perder credibilidade quando a diligência revelar que são só regras","Ter de publicar uma model card completa do sistema de roteamento","Ser obrigado a migrar o roteamento para um LLM em pouco tempo","Pagar tributos maiores por declarar uso de inteligência artificial"],0,
+ "Roteamento por palavras-chave é automação baseada em regras. Vender isso como IA cria um problema de credibilidade quando a diligência técnica olhar por dentro. As outras consequências não decorrem do rótulo."],
+ ["A team calls a system that routes tickets by fixed keywords \"AI\". In an investor pitch, what is the biggest risk of keeping that label?",
+ ["Losing credibility when due diligence reveals it is just rules","Having to publish a full model card for the routing system","Being forced to migrate routing to an LLM within a short time","Paying higher taxes for declaring the use of artificial intelligence"],
+ "Keyword routing is rule-based automation. Selling it as AI creates a credibility problem once technical due diligence looks inside. The other consequences do not follow from the label."]);
+S(1,3,["Uma demo com LLM impressiona a diretoria, mas em 200 casos reais acerta 72%. Qual leitura está mais alinhada à lição do ELIZA?",
+ ["A amostra de 200 casos é pequena demais para qualquer conclusão","A fluência da demo inflou a percepção de competência do sistema","72% de acerto já supera o processo humano que existe hoje","A diretoria avaliou a demo com critérios técnicos inadequados"],1,
+ "O efeito ELIZA é atribuir competência a algo que apenas soa natural. A demo convenceu pela fluência; os 200 casos reais mostram o desempenho de fato. Não há dado que sustente comparação com humanos, e 200 casos já permitem uma leitura útil."],
+ ["An LLM demo impresses leadership, but on 200 real cases it is right 72% of the time. Which reading best matches the ELIZA lesson?",
+ ["A sample of 200 cases is too small for any conclusion","The demo's fluency inflated the perceived competence of the system","72% accuracy already beats the human process that exists today","Leadership judged the demo using inadequate technical criteria"],
+ "The ELIZA effect is attributing competence to something that merely sounds natural. The demo convinced through fluency; the 200 real cases show actual performance. There is no data to support a human comparison, and 200 cases already allow a useful reading."]);
+S(1,2,["Qual destes problemas é mais bem resolvido com regras do que com um modelo?",
+ ["Detectar ironia em avaliações de clientes nas redes sociais","Resumir uma reunião de uma hora em cinco tópicos objetivos","Calcular multa por atraso conforme uma cláusula contratual fixa","Classificar fotos de produtos por estilo visual e ocasião"],2,
+ "A multa segue uma regra explícita, estável e auditável. Ironia, resumo e estilo visual envolvem ambiguidade e padrões difíceis de escrever como regras."],
+ ["Which of these problems is better solved with rules than with a model?",
+ ["Detecting irony in customer reviews on social media","Summarizing a one-hour meeting into five objective bullets","Calculating a late fee according to a fixed contract clause","Classifying product photos by visual style and occasion"],
+ "The late fee follows an explicit, stable and auditable rule. Irony, summarization and visual style involve ambiguity and patterns that are hard to write as rules."]);
+S(1,1,["O que os invernos da IA ensinam sobre a gestão de stakeholders?",
+ ["Pesquisa de base deve ser pausada durante crises econômicas","Projetos de IA devem ficar fora do roadmap oficial da empresa","Só vale investir depois que surgir um modelo dominante no mercado","Promessas acima da entrega custam investimento e confiança"],3,
+ "Os invernos vieram de expectativas infladas que não se cumpriram, levando a cortes de financiamento. A lição para o PM é calibrar expectativas com evidências."],
+ ["What do the AI winters teach about stakeholder management?",
+ ["Foundational research should be paused during economic crises","AI projects should stay off the company's official roadmap","It is only worth investing once a dominant model emerges","Promises above delivery cost investment and trust"],
+ "The winters came from inflated expectations that went unmet, leading to funding cuts. The lesson for the PM is to calibrate expectations with evidence."]);
+S(1,3,["Seu assistente responde com tom confiante mesmo quando não encontra a política na base. Qual mudança ataca a causa, e não o sintoma?",
+ ["Pedir no prompt um tom mais humilde em todas as respostas","Exigir fonte recuperada para afirmar política, ou admitir que não há","Incluir um aviso fixo de que a IA pode errar no rodapé","Reduzir a temperatura para deixar as respostas mais estáveis"],1,
+ "A causa é o assistente afirmar políticas sem base. Condicionar a afirmação a uma fonte recuperada resolve isso. Tom humilde, aviso fixo e temperatura mexem na aparência, não no problema."],
+ ["Your assistant answers confidently even when it cannot find the policy in the knowledge base. Which change addresses the cause rather than the symptom?",
+ ["Ask in the prompt for a humbler tone in every answer","Require a retrieved source to state policy, or admit there is none","Add a fixed footer disclaimer saying the AI may be wrong","Lower the temperature to make answers more stable"],
+ "The cause is the assistant stating policies without grounding. Making such statements conditional on a retrieved source fixes it. Humble tone, a disclaimer and temperature change the appearance, not the problem."]);
+
+/* Módulo 2 */
+S(2,2,["Um modelo de churn foi treinado com a coluna \"data de cancelamento\" entre as variáveis. O que provavelmente aconteceu?",
+ ["Sobreajuste, porque o modelo ficou complexo demais para os dados","Vazamento, porque a coluna só existe depois do evento a prever","Desbalanceamento, porque há poucos clientes cancelados na base","Drift, porque o perfil dos clientes mudou depois do treino"],1,
+ "A data de cancelamento só é preenchida depois que o cliente cancela, ou seja, revela a resposta. É vazamento clássico: métricas ótimas no teste e inutilidade em produção."],
+ ["A churn model was trained with the \"cancellation date\" column among its features. What most likely happened?",
+ ["Overfitting, because the model became too complex for the data","Leakage, because the column only exists after the event to predict","Class imbalance, because there are few churned customers in the data","Drift, because customer profiles changed after training"],
+ "The cancellation date is only filled in after the customer cancels, so it reveals the answer. It is classic leakage: great test metrics and uselessness in production."]);
+S(2,3,["Em fraude, só 0,5% das transações são fraudulentas. Um modelo tem 99,5% de acurácia. O que você conclui?",
+ ["O modelo está pronto, pois supera a meta usual de 95%","Houve vazamento, pois acurácia acima de 99% não é realista","Nada ainda, pois prever \"não fraude\" sempre já daria 99,5%","O modelo sobreajustou e precisa ser treinado com menos dados"],2,
+ "Com classes tão desbalanceadas, acurácia engana: um modelo que nunca aponta fraude também tem 99,5%. É preciso olhar precisão, recall e o custo de cada erro."],
+ ["In fraud, only 0.5% of transactions are fraudulent. A model has 99.5% accuracy. What do you conclude?",
+ ["The model is ready, since it beats the usual 95% target","There was leakage, since accuracy above 99% is not realistic","Nothing yet, since always predicting \"not fraud\" gives 99.5%","The model overfit and should be trained with less data"],
+ "With such imbalanced classes, accuracy misleads: a model that never flags fraud also scores 99.5%. You need precision, recall and the cost of each error."]);
+S(2,2,["O time quer agrupar clientes em perfis de comportamento, sem nenhum rótulo prévio. Que tipo de aprendizado é esse?",
+ ["Supervisionado","Não supervisionado","Por reforço","Autossupervisionado"],1,
+ "Agrupar sem rótulos é a tarefa típica do aprendizado não supervisionado, como em algoritmos de clusterização."],
+ ["The team wants to group customers into behavior profiles without any prior labels. What type of learning is this?",
+ ["Supervised","Unsupervised","Reinforcement","Self-supervised"],
+ "Grouping without labels is the typical unsupervised learning task, as in clustering algorithms."]);
+S(2,3,["Seu classificador de tickets urgentes tem precisão de 90% e recall de 40%. O que isso significa na operação?",
+ ["Erra 60% das marcações de urgência que faz no dia a dia","Marca muitos tickets comuns como urgentes por engano","Acerta a classificação de 90% de todos os tickets recebidos","Quase tudo que marca é urgente, mas deixa passar a maioria"],3,
+ "Precisão de 90%: dos tickets marcados como urgentes, 90% são mesmo urgentes. Recall de 40%: dos urgentes que existem, só 40% são detectados. Ou seja, o modelo é confiável quando aponta, mas perde muitos casos."],
+ ["Your urgent-ticket classifier has 90% precision and 40% recall. What does this mean in operations?",
+ ["It is wrong on 60% of the urgency flags it raises each day","It flags many regular tickets as urgent by mistake","It correctly classifies 90% of all incoming tickets","Almost everything it flags is urgent, but it misses most of them"],
+ "90% precision: of tickets flagged urgent, 90% truly are. 40% recall: of all urgent tickets, only 40% are caught. The model is reliable when it flags, but misses many cases."]);
+S(2,2,["Por que o pré-treino de LLMs é chamado de autossupervisionado?",
+ ["O modelo corrige os próprios erros sem precisar de dados novos","Humanos supervisionam apenas uma pequena amostra do treino","Os rótulos vêm do próprio texto, como a palavra seguinte","O modelo escolhe sozinho quais dados quer usar no treino"],2,
+ "O texto fornece os próprios rótulos: esconde-se um trecho e o modelo aprende a prevê-lo. Não há rotulagem humana nessa fase."],
+ ["Why is LLM pre-training called self-supervised?",
+ ["The model corrects its own errors without needing new data","Humans supervise only a small sample of the training data","The labels come from the text itself, such as the next word","The model chooses on its own which data to train on"],
+ "The text supplies its own labels: part of it is hidden and the model learns to predict it. There is no human labeling in this phase."]);
+S(2,1,["Qual sinal mais indica sobreajuste?",
+ ["Desempenho baixo tanto no treino quanto na validação","Ótimo desempenho no treino e bem pior na validação","Desempenho parecido no treino, na validação e no teste","Desempenho melhor na validação do que no próprio treino"],1,
+ "Sobreajuste é decorar o treino e generalizar mal. O sinal é a distância grande entre treino e validação. Desempenho baixo nos dois indica subajuste."],
+ ["Which signal most indicates overfitting?",
+ ["Low performance on both training and validation","Great performance on training and much worse on validation","Similar performance on training, validation and test","Better performance on validation than on training itself"],
+ "Overfitting is memorizing training data and generalizing poorly. The sign is a large gap between training and validation. Low performance on both indicates underfitting."]);
+
+/* Módulo 3 */
+S(3,2,["Um usuário cola um contrato de 300 páginas e o assistente ignora cláusulas do meio do documento. Qual fenômeno explica melhor?",
+ ["Temperatura alta demais, que gera respostas aleatórias","Uso pior de informações no meio de contextos muito longos","Tokenização ruim de termos jurídicos escritos em português","Falta de fine-tuning do modelo com contratos do setor"],1,
+ "Estudos como \"Lost in the Middle\" mostram que modelos aproveitam pior o que fica no meio de contextos longos. Dividir o documento ou recuperar trechos relevantes ajuda."],
+ ["A user pastes a 300-page contract and the assistant ignores clauses in the middle of the document. Which phenomenon best explains it?",
+ ["Temperature set too high, producing random answers","Weaker use of information in the middle of very long contexts","Poor tokenization of legal terms written in Portuguese","Lack of fine-tuning the model on industry contracts"],
+ "Studies such as \"Lost in the Middle\" show models make worse use of what sits in the middle of long contexts. Splitting the document or retrieving relevant passages helps."]);
+S(3,3,["Duas consultas frequentes: \"pedido 88213\" e \"quero devolver um presente\". Qual arquitetura de busca atende melhor às duas?",
+ ["Vetorial, porque embeddings também representam bem códigos","Lexical, porque \"devolver\" é uma palavra-chave muito comum","Híbrida, combinando correspondência exata e semântica","Nenhuma, porque o LLM resolve as duas sem recuperar dados"],2,
+ "O número do pedido pede correspondência exata; a intenção de devolução pede compreensão semântica. A busca híbrida cobre os dois tipos."],
+ ["Two frequent queries: \"order 88213\" and \"I want to return a gift\". Which search architecture serves both best?",
+ ["Vector, because embeddings also represent codes well","Lexical, because \"return\" is a very common keyword","Hybrid, combining exact and semantic matching","None, because the LLM handles both without retrieving data"],
+ "The order number needs exact matching; the return intent needs semantic understanding. Hybrid search covers both."]);
+S(3,2,["O que a temperatura altera na geração de texto?",
+ ["Quantos tokens o modelo consegue ler de uma vez","A probabilidade de a resposta estar factualmente certa","Quão concentrada fica a escolha entre os tokens prováveis","Quanto o modelo consulta fontes externas antes de responder"],2,
+ "A temperatura muda a distribuição de escolha: baixa concentra nas opções mais prováveis, alta espalha. Ela não controla contexto, veracidade nem consulta a fontes."],
+ ["What does temperature change in text generation?",
+ ["How many tokens the model can read at once","The probability that the answer is factually correct","How concentrated the choice among likely tokens becomes","How much the model consults external sources first"],
+ "Temperature changes the sampling distribution: low concentrates on the most likely options, high spreads it out. It does not control context, truthfulness or source lookup."]);
+S(3,3,["Um app gera em média 1.000 tokens de saída, mas 70% das respostas poderiam ter cerca de 300. Qual é o efeito de encurtar essas respostas?",
+ ["Menor custo, mas tempo até o primeiro token mais alto","Menor custo e menor tempo total de cada resposta","Mesmo tempo total, porque os tokens saem em paralelo","Mesmo custo, porque a cobrança é feita por requisição"],1,
+ "Tokens de saída são cobrados e gerados um a um, então menos tokens reduzem custo e tempo total. O tempo até o primeiro token praticamente não muda."],
+ ["An app generates 1,000 output tokens on average, but 70% of answers could be about 300. What is the effect of shortening those answers?",
+ ["Lower cost, but a higher time to first token","Lower cost and lower total time per answer","Same total time, because tokens are produced in parallel","Same cost, because billing is per request"],
+ "Output tokens are billed and generated one by one, so fewer tokens reduce cost and total time. Time to first token barely changes."]);
+S(3,2,["Qual afirmação sobre embeddings está correta?",
+ ["Cada dimensão do vetor corresponde a uma palavra do vocabulário","Vetores gerados por modelos diferentes podem ser comparados","O banco vetorial usa os embeddings para redigir a resposta final","Textos com sentido parecido tendem a ficar próximos no espaço"],3,
+ "Embeddings posicionam textos de sentido semelhante perto uns dos outros. As dimensões não são palavras, vetores de modelos diferentes não são comparáveis e quem escreve a resposta é o LLM."],
+ ["Which statement about embeddings is correct?",
+ ["Each vector dimension corresponds to one word in the vocabulary","Vectors produced by different models can be compared","The vector database uses embeddings to write the final answer","Texts with similar meaning tend to sit close together in the space"],
+ "Embeddings place texts with similar meaning near each other. Dimensions are not words, vectors from different models are not comparable and the LLM writes the answer."]);
+S(3,1,["O que significa a sigla LLM?",
+ ["Learned Logic Machine","Large Language Model","Linear Language Mapping","Long Latency Model"],1,
+ "LLM é Large Language Model: um modelo de linguagem de grande porte, com bilhões de parâmetros treinados em grandes volumes de texto."],
+ ["What does LLM stand for?",
+ ["Learned Logic Machine","Large Language Model","Linear Language Mapping","Long Latency Model"],
+ "LLM means Large Language Model: a language model with billions of parameters trained on large volumes of text."]);
+S(3,3,["Um modelo afirma \"tenho 95% de certeza\" numa resposta que está errada. O que isso mostra?",
+ ["O modelo foi treinado com dados desatualizados sobre o tema","A temperatura zerada travou o modelo numa resposta errada","Confiança dita em texto não é uma medida calibrada de acerto","O tokenizador dividiu a pergunta original de forma incorreta"],2,
+ "Quando o modelo verbaliza confiança, isso é texto gerado, não uma probabilidade calibrada. Por isso decisões não devem se apoiar nessa frase."],
+ ["A model states \"I am 95% sure\" in an answer that is wrong. What does this show?",
+ ["The model was trained on outdated data about the topic","Zero temperature locked the model into a wrong answer","Confidence stated in text is not a calibrated measure of accuracy","The tokenizer split the original question incorrectly"],
+ "When a model verbalizes confidence, it is generated text, not a calibrated probability. Decisions should not rely on that sentence."]);
+
+/* Módulo 4 */
+S(4,3,["Cenário: 2 mil chamadas por dia, cada uma com 2 mil tokens de entrada e 500 de saída. Preço: US$ 3 por milhão de tokens de entrada e US$ 15 por milhão de saída. Qual é o custo aproximado em 30 dias?",
+ ["Cerca de US$ 360","Cerca de US$ 450","Cerca de US$ 810","Cerca de US$ 2.250"],2,
+ "Por chamada: 2.000 × 3 / 1.000.000 = US$ 0,006 de entrada e 500 × 15 / 1.000.000 = US$ 0,0075 de saída, total US$ 0,0135. Vezes 2.000 chamadas e 30 dias: cerca de US$ 810. Os outros valores contam só a entrada, só a saída ou tudo pelo preço de saída."],
+ ["Scenario: 2 thousand calls a day, each with 2 thousand input tokens and 500 output tokens. Pricing: US$ 3 per million input tokens and US$ 15 per million output tokens. What is the approximate cost over 30 days?",
+ ["About US$ 360","About US$ 450","About US$ 810","About US$ 2,250"],
+ "Per call: 2,000 × 3 / 1,000,000 = US$ 0.006 input and 500 × 15 / 1,000,000 = US$ 0.0075 output, totaling US$ 0.0135. Times 2,000 calls and 30 days: about US$ 810. The other values count only input, only output or everything at the output price."]);
+S(4,2,["Um modelo é distribuído com pesos para download, mas a licença proíbe usá-lo para treinar outros modelos. Como classificá-lo?",
+ ["Open source, porque os pesos estão disponíveis para todos","Open-weight com restrições, e não open source pela OSI","Fechado, porque existe uma licença definindo o uso","Domínio público, porque o download é gratuito para todos"],1,
+ "Ter pesos disponíveis não basta para ser open source: restrições de uso violam a liberdade de usar e modificar exigida pela definição da OSI."],
+ ["A model is distributed with downloadable weights, but its license forbids using it to train other models. How should it be classified?",
+ ["Open source, because the weights are available to everyone","Open-weight with restrictions, not open source per the OSI","Closed, because there is a license defining its use","Public domain, because the download is free for everyone"],
+ "Available weights are not enough to be open source: usage restrictions violate the freedom to use and modify required by the OSI definition."]);
+S(4,3,["Quando hospedar um modelo aberto tende a ficar mais barato do que usar uma API?",
+ ["Sempre que a licença do modelo for MIT ou Apache 2.0","Quando o volume é baixo e tem picos difíceis de prever","Com volume alto e estável, que mantém as GPUs ocupadas","Quando o time já tem alguém experiente em Python"],2,
+ "GPUs reservadas custam por hora. Só com uso alto e constante o custo por requisição cai abaixo do preço da API. Licença e habilidade em Python não mudam essa conta."],
+ ["When does hosting an open model tend to be cheaper than using an API?",
+ ["Whenever the model's license is MIT or Apache 2.0","When volume is low and has hard-to-predict spikes","With high, steady volume that keeps the GPUs busy","When the team already has someone experienced in Python"],
+ "Reserved GPUs cost by the hour. Only with high, constant usage does the cost per request fall below the API price. License and Python skills do not change that math."]);
+S(4,2,["Seu roteador manda 80% dos pedidos para um modelo pequeno, e a qualidade geral caiu 6 pontos. Qual é o próximo passo?",
+ ["Desligar o roteador e usar apenas o modelo maior","Trocar o modelo pequeno por outro de porte parecido","Analisar quais tipos de pedido foram mal roteados","Aumentar a temperatura do modelo pequeno para variar"],2,
+ "Antes de reverter, é preciso entender onde a qualidade caiu. Muitas vezes poucos tipos de pedido concentram a perda e basta ajustar o roteamento deles."],
+ ["Your router sends 80% of requests to a small model, and overall quality dropped 6 points. What is the next step?",
+ ["Turn off the router and use only the larger model","Swap the small model for another of similar size","Analyze which request types were routed poorly","Raise the small model's temperature for variety"],
+ "Before reverting, understand where quality dropped. Often a few request types concentrate the loss, and adjusting their routing is enough."]);
+S(4,2,["Qual destas informações não costuma aparecer numa model card?",
+ ["Usos pretendidos e usos não recomendados do modelo","O preço que cada cliente negociou com o fornecedor","Resultados de avaliações e limitações conhecidas","Informações gerais sobre os dados usados no treino"],1,
+ "Model cards documentam uso pretendido, avaliações, limitações e dados. Condições comerciais negociadas com clientes não fazem parte dela."],
+ ["Which of these does not usually appear in a model card?",
+ ["Intended uses and non-recommended uses of the model","The price each client negotiated with the vendor","Evaluation results and known limitations","General information about the training data"],
+ "Model cards document intended use, evaluations, limitations and data. Commercial terms negotiated with clients are not part of it."]);
+S(4,3,["Um banco exige que nenhum dado saia da sua nuvem, e o modelo preferido é proprietário. Qual opção costuma resolver sem trocar de modelo?",
+ ["Fazer fine-tuning de um modelo aberto parecido com o preferido","Anonimizar os dados e seguir usando a API pública padrão","Rodar o modelo proprietário em servidores próprios do banco","Usar a oferta gerenciada do modelo dentro da nuvem do banco"],3,
+ "Grandes nuvens oferecem modelos proprietários dentro do próprio ambiente do cliente. Os pesos de modelos fechados não são entregues para rodar em servidores próprios, e anonimizar não atende à exigência de os dados não saírem."],
+ ["A bank requires that no data leave its cloud, and the preferred model is proprietary. Which option usually solves this without switching models?",
+ ["Fine-tune an open model similar to the preferred one","Anonymize the data and keep using the standard public API","Run the proprietary model on the bank's own servers","Use the model's managed offering inside the bank's cloud"],
+ "Major clouds offer proprietary models inside the client's own environment. Closed model weights are not handed over to run on private servers, and anonymizing does not meet the requirement that data not leave."]);
+S(4,1,["Por que avaliar modelos no seu próprio conjunto de testes, além de olhar rankings públicos?",
+ ["Rankings públicos são proibidos em decisões de compra","Seu conjunto de testes tende a dar notas mais altas","Rankings podem não refletir sua tarefa, seus dados e seu idioma","Fornecedores raramente divulgam resultados em rankings"],2,
+ "Benchmarks públicos medem tarefas genéricas e podem sofrer com otimização para o teste. O que decide é o desempenho no seu caso de uso real."],
+ ["Why evaluate models on your own test set, beyond looking at public leaderboards?",
+ ["Public leaderboards are forbidden in purchasing decisions","Your own test set tends to give higher scores","Leaderboards may not reflect your task, data and language","Vendors rarely publish results on leaderboards"],
+ "Public benchmarks measure generic tasks and can suffer from test optimization. What decides is performance on your real use case."]);
+/* Módulo 5 */
+S(5,2,["O assistente ignora o formato JSON pedido em 8% das respostas. Qual solução é mais robusta?",
+ ["Repetir três vezes no prompt que o formato é obrigatório","Usar saída estruturada nativa e validar antes de integrar","Aumentar a temperatura para variar as próximas tentativas","Pedir ao usuário que reformule a pergunta quando falhar"],1,
+ "Saída estruturada nativa garante o formato, e a validação pega o que escapar. Repetir instruções reduz falhas, mas não as elimina."],
+ ["The assistant ignores the requested JSON format in 8% of answers. Which solution is most robust?",
+ ["Repeat three times in the prompt that the format is mandatory","Use native structured output and validate before integrating","Raise the temperature to vary the next attempts","Ask the user to rephrase the question when it fails"],
+ "Native structured output guarantees the format, and validation catches anything that slips. Repeating instructions reduces failures but does not eliminate them."]);
+S(5,3,["Você mudou o prompt e a nota no golden set subiu de 81% para 84%, com 50 casos. O que fazer antes de comemorar?",
+ ["Publicar logo, porque qualquer melhora positiva já compensa","Trocar de modelo para confirmar que o novo prompt é melhor","Reduzir o golden set para 20 casos e testar outra vez","Checar se a diferença não é ruído e olhar os casos que pioraram"],3,
+ "Com 50 casos, 3 pontos equivalem a cerca de 1,5 caso, o que pode ser só variação. Além disso, uma melhora média pode esconder regressões importantes."],
+ ["You changed the prompt and the golden set score rose from 81% to 84%, with 50 cases. What should you do before celebrating?",
+ ["Ship it now, since any positive improvement is worth it","Switch models to confirm the new prompt is better","Shrink the golden set to 20 cases and test again","Check whether the gap is noise and review cases that got worse"],
+ "With 50 cases, 3 points equal about 1.5 cases, which may be just variation. Also, an average gain can hide important regressions."]);
+S(5,2,["Num RAG, a busca traz o trecho certo, mas a resposta contradiz esse trecho. Onde está o problema?",
+ ["Na busca, que deveria trazer mais trechos parecidos","Na ingestão, que dividiu os documentos em pedaços","Na geração, que não está fiel ao contexto recebido","No embedding, que deveria ter mais dimensões"],2,
+ "Se o trecho certo chegou ao modelo e a resposta o contradiz, a falha está na geração. Busca, ingestão e embeddings fizeram seu trabalho."],
+ ["In a RAG system, retrieval brings the right passage, but the answer contradicts it. Where is the problem?",
+ ["In retrieval, which should bring more similar passages","In ingestion, which split the documents into chunks","In generation, which is not faithful to the given context","In the embedding, which should have more dimensions"],
+ "If the right passage reached the model and the answer contradicts it, generation is at fault. Retrieval, ingestion and embeddings did their job."]);
+S(5,3,["Uma base de 40 páginas, estável, é consultada poucas vezes por dia. Qual abordagem tende a ser mais simples e suficiente?",
+ ["Montar um RAG com banco vetorial e etapa de reranking","Colocar os documentos no contexto, com cache de prompt","Fazer fine-tuning semanal com o conteúdo da base","Treinar um modelo pequeno do zero com esses textos"],1,
+ "Material pequeno e estável cabe no contexto, e o cache reduz o custo da parte repetida. RAG só compensa com bases grandes, dinâmicas ou com permissões."],
+ ["A stable 40-page knowledge base is queried a few times a day. Which approach tends to be simplest and sufficient?",
+ ["Build a RAG with a vector database and a reranking step","Put the documents in context, with prompt caching","Fine-tune weekly on the knowledge base content","Train a small model from scratch on these texts"],
+ "Small, stable material fits in context, and caching reduces the cost of the repeated part. RAG only pays off with large, dynamic or permissioned corpora."]);
+S(5,2,["Qual técnica melhora a busca ao acrescentar, a cada trecho, um resumo do documento antes de gerar o embedding?",
+ ["Chain-of-thought","Few-shot prompting","Contextual retrieval","Prompt caching"],2,
+ "Contextual retrieval, publicada pela Anthropic em 2024, adiciona contexto do documento a cada trecho, o que reduz falhas de recuperação."],
+ ["Which technique improves retrieval by adding a summary of the document to each chunk before embedding it?",
+ ["Chain-of-thought","Few-shot prompting","Contextual retrieval","Prompt caching"],
+ "Contextual retrieval, published by Anthropic in 2024, adds document context to each chunk, which reduces retrieval failures."]);
+S(5,3,["Usuários diferentes devem receber respostas baseadas só nos documentos que podem acessar. Onde aplicar esse controle?",
+ ["No prompt, pedindo ao modelo que respeite as permissões","Na interface, escondendo respostas de quem não tem acesso","No fine-tuning, ensinando ao modelo quem pode ver o quê","Na recuperação, filtrando os trechos pelas permissões do usuário"],3,
+ "Se um trecho restrito chega ao modelo, ele pode aparecer na resposta. O filtro precisa acontecer antes, na recuperação. Prompt, interface e fine-tuning não garantem isso."],
+ ["Different users should get answers based only on documents they can access. Where should this control be applied?",
+ ["In the prompt, asking the model to respect permissions","In the interface, hiding answers from users without access","In fine-tuning, teaching the model who can see what","In retrieval, filtering chunks by the user's permissions"],
+ "If a restricted chunk reaches the model, it can appear in the answer. Filtering must happen earlier, at retrieval. Prompt, interface and fine-tuning do not guarantee it."]);
+S(5,2,["Quando o fine-tuning faz mais sentido do que o RAG?",
+ ["Para responder sobre preços que mudam toda semana","Para fixar formato e estilo de saída em alto volume","Para citar a fonte de cada informação da resposta","Para respeitar permissões de acesso aos documentos"],1,
+ "Fine-tuning ajusta comportamento, como formato e estilo, e pode reduzir custo em alto volume. Fatos que mudam, citações e permissões ficam melhor com recuperação."],
+ ["When does fine-tuning make more sense than RAG?",
+ ["To answer about prices that change every week","To lock in output format and style at high volume","To cite the source of each piece of information","To respect access permissions on documents"],
+ "Fine-tuning adjusts behavior, such as format and style, and can cut cost at high volume. Changing facts, citations and permissions are better served by retrieval."]);
+S(5,1,["O que é few-shot prompting?",
+ ["Fazer poucas chamadas ao modelo para economizar custo","Treinar o modelo com poucos exemplos rotulados","Incluir exemplos de entrada e saída esperada no prompt","Limitar o número de tokens da resposta do modelo"],2,
+ "Few-shot é mostrar ao modelo alguns exemplos do padrão desejado dentro do próprio prompt, sem alterar seus pesos."],
+ ["What is few-shot prompting?",
+ ["Making few calls to the model to save cost","Training the model on a few labeled examples","Including examples of input and expected output in the prompt","Limiting the number of tokens in the model's answer"],
+ "Few-shot means showing the model a few examples of the desired pattern within the prompt itself, without changing its weights."]);
+
+/* Módulo 6 */
+S(6,2,["Um fluxo de reembolso tem sempre quatro etapas fixas e uma aprovação humana. Chamar isso de \"agente\" é:",
+ ["Correto, porque usa um LLM em pelo menos uma etapa","Correto, porque executa ações em sistemas externos","Impreciso, porque é um workflow de passos predefinidos","Impreciso, porque é um chatbot que conversa com o cliente"],2,
+ "Num agente, o modelo decide os próximos passos. Com etapas fixas em código, é um workflow, mesmo que use LLM e execute ações."],
+ ["A refund flow always has four fixed steps and one human approval. Calling it an \"agent\" is:",
+ ["Correct, because it uses an LLM in at least one step","Correct, because it takes actions in external systems","Imprecise, because it is a workflow of predefined steps","Imprecise, because it is a chatbot talking to the customer"],
+ "In an agent, the model decides the next steps. With steps fixed in code, it is a workflow, even if it uses an LLM and takes actions."]);
+S(6,3,["Seu agente às vezes entra em loop, chamando a mesma ferramenta várias vezes. Qual controle é mais eficaz?",
+ ["Instrução no prompt pedindo para não repetir ações","Modelo maior, que costuma planejar melhor as ações","Orçamento de passos com uma condição de parada explícita","Temperatura zero para tornar o agente mais previsível"],2,
+ "Um limite estrutural funciona mesmo quando o modelo erra. Instruções e modelos maiores reduzem a chance, mas não impedem o loop."],
+ ["Your agent sometimes loops, calling the same tool repeatedly. Which control is most effective?",
+ ["A prompt instruction asking it not to repeat actions","A larger model, which usually plans actions better","A step budget with an explicit stopping condition","Zero temperature to make the agent more predictable"],
+ "A structural limit works even when the model errs. Instructions and larger models reduce the chance but do not prevent the loop."]);
+S(6,2,["O que o MCP padroniza?",
+ ["O formato dos pesos de modelos de código aberto","A forma de medir a qualidade de agentes em benchmarks","A conexão entre aplicações de IA e ferramentas ou dados","O protocolo de comunicação entre GPUs de um cluster"],2,
+ "O Model Context Protocol padroniza como aplicações de IA se conectam a ferramentas e fontes de dados, reduzindo integrações sob medida."],
+ ["What does MCP standardize?",
+ ["The weight format of open-source models","The way agent quality is measured in benchmarks","The connection between AI applications and tools or data","The communication protocol between GPUs in a cluster"],
+ "The Model Context Protocol standardizes how AI applications connect to tools and data sources, reducing custom integrations."]);
+S(6,3,["Você precisa de uma pesquisa sobre 12 concorrentes independentes. Qual arquitetura equilibra melhor qualidade e tempo?",
+ ["Agente único analisando um concorrente de cada vez","Workflow fixo com uma única chamada ao modelo","Doze agentes independentes, sem nenhuma consolidação","Orquestrador com subagentes em paralelo e síntese final"],3,
+ "Subtarefas independentes podem rodar em paralelo, e o orquestrador consolida o resultado. Sem síntese, sobram doze relatórios soltos; em sequência, demora mais."],
+ ["You need research on 12 independent competitors. Which architecture best balances quality and time?",
+ ["A single agent analyzing one competitor at a time","A fixed workflow with a single model call","Twelve independent agents, with no consolidation","An orchestrator with parallel subagents and a final synthesis"],
+ "Independent subtasks can run in parallel, and the orchestrator consolidates the result. Without synthesis you get twelve loose reports; sequentially, it takes longer."]);
+S(6,2,["Por que sistemas multiagente costumam custar bem mais que um agente único?",
+ ["Cada agente consome contexto e tokens próprios","Exigem modelos maiores em todas as etapas","Precisam de fine-tuning para cada subagente","São cobrados por uma licença adicional de uso"],0,
+ "Cada subagente carrega o próprio contexto e gera os próprios tokens, o que multiplica o consumo. Não há exigência de modelo maior nem de fine-tuning."],
+ ["Why do multi-agent systems usually cost much more than a single agent?",
+ ["Each agent consumes its own context and tokens","They require larger models at every step","They need fine-tuning for each subagent","They are billed through an additional usage license"],
+ "Each subagent carries its own context and generates its own tokens, multiplying consumption. There is no requirement for a larger model or fine-tuning."]);
+S(6,3,["Um agente lê páginas da web e pode enviar e-mails pela conta da empresa. Que risco essa combinação cria?",
+ ["O agente fica lento ao processar páginas muito longas","Instruções escondidas numa página podem levar ao envio de dados","Páginas em outros idiomas podem confundir o modelo","O custo de tokens sobe com páginas cheias de imagens"],1,
+ "Conteúdo não confiável combinado com capacidade de comunicação externa permite que uma instrução escondida faça o agente vazar dados por e-mail."],
+ ["An agent reads web pages and can send emails from the company account. What risk does this combination create?",
+ ["The agent slows down when processing very long pages","Hidden instructions on a page may lead it to send data out","Pages in other languages may confuse the model","Token costs rise with image-heavy pages"],
+ "Untrusted content combined with external communication lets a hidden instruction make the agent leak data by email."]);
+S(6,1,["Qual é a diferença entre um agente pronto e uma plataforma de agentes?",
+ ["Um usa LLM; a outra usa apenas regras de negócio","Um é gratuito; a outra é sempre cobrada por assento","Um resolve uma tarefa; a outra serve para construir agentes","Um roda na nuvem; a outra roda só no computador local"],2,
+ "Agentes prontos, como os de programação, resolvem uma categoria de tarefa. Plataformas servem para montar agentes próprios ligados aos processos da empresa."],
+ ["What is the difference between a ready-made agent and an agent platform?",
+ ["One uses an LLM; the other uses only business rules","One is free; the other is always billed per seat","One solves a task; the other is for building agents","One runs in the cloud; the other runs only locally"],
+ "Ready-made agents, such as coding agents, solve a category of tasks. Platforms are for building your own agents tied to company processes."]);
+
+/* Módulo 7 */
+S(7,3,["Seu LLM-juiz concorda com humanos em 92% dos casos fáceis e em 61% dos difíceis. Como usá-lo?",
+ ["Em todos os casos, já que a média ponderada passa de 75%","Nos fáceis, mantendo revisão humana nos casos difíceis","Em nenhum caso, pois qualquer discordância o invalida","Só nos difíceis, onde ele mais poupa tempo dos humanos"],1,
+ "O juiz é confiável onde concorda com humanos. Nos difíceis, 61% é pouco. A média esconde essa diferença, e descartar tudo desperdiça a parte útil."],
+ ["Your LLM judge agrees with humans on 92% of easy cases and 61% of hard ones. How should you use it?",
+ ["On every case, since the weighted average exceeds 75%","On easy cases, keeping human review for hard ones","On no cases, since any disagreement invalidates it","Only on hard cases, where it saves humans the most time"],
+ "The judge is reliable where it agrees with humans. On hard cases, 61% is too low. The average hides that gap, and discarding everything wastes the useful part."]);
+S(7,2,["Qual métrica revela se um agente acerta de forma consistente a mesma tarefa?",
+ ["Acertar a tarefa em pelo menos uma de k tentativas (pass@k)","Acertar a mesma tarefa em todas as k tentativas (pass^k)","Média de tokens consumidos por tarefa concluída","Tempo médio até a primeira ação do agente"],1,
+ "pass^k exige sucesso em todas as tentativas, medindo consistência. pass@k mede se ele consegue ao menos uma vez, o que superestima a confiabilidade."],
+ ["Which metric reveals whether an agent consistently succeeds at the same task?",
+ ["Succeeding in at least one of k attempts (pass@k)","Succeeding at the same task in all k attempts (pass^k)","Average tokens consumed per completed task","Average time until the agent's first action"],
+ "pass^k requires success on every attempt, measuring consistency. pass@k measures whether it succeeds at least once, which overstates reliability."]);
+S(7,2,["A latência média do assistente é 2 s, mas o p99 é 18 s. O que priorizar?",
+ ["Nada, porque a média está dentro do esperado","Trocar de modelo, porque a média poderia ser 1 s","Investigar os casos lentos, que afetam usuários reais","Desligar o streaming para estabilizar os tempos"],2,
+ "O p99 mostra que 1 em cada 100 respostas leva 18 s. Em volume, são muitos usuários frustrados, e a média esconde isso."],
+ ["The assistant's average latency is 2 s, but p99 is 18 s. What should you prioritize?",
+ ["Nothing, since the average is within expectations","Switching models, since the average could be 1 s","Investigating the slow cases, which affect real users","Turning off streaming to stabilize response times"],
+ "p99 shows 1 in every 100 answers takes 18 s. At volume, that is many frustrated users, and the average hides it."]);
+S(7,3,["Seu golden set tem 300 casos, mas 85% são perguntas fáceis de FAQ. Qual é o principal problema?",
+ ["O conjunto é pequeno demais para qualquer conclusão","Perguntas de FAQ não deveriam entrar em avaliações","O LLM-juiz fica mais caro com tantos casos fáceis","A nota não representa os casos difíceis que mais importam"],3,
+ "300 casos é um bom tamanho, mas a composição distorce a nota: o desempenho nos casos difíceis, onde estão os riscos, quase não pesa."],
+ ["Your golden set has 300 cases, but 85% are easy FAQ questions. What is the main problem?",
+ ["The set is too small for any conclusion","FAQ questions should not be part of evaluations","The LLM judge gets more expensive with so many easy cases","The score does not represent the hard cases that matter most"],
+ "300 cases is a good size, but the mix distorts the score: performance on hard cases, where the risks are, barely counts."]);
+S(7,2,["O agente diz \"chamado aberto\", mas o chamado não existe. Qual evidência mostra o que de fato aconteceu?",
+ ["A transcrição completa da conversa com o cliente","O trace da chamada à ferramenta e o registro no sistema","A nota de satisfação que o cliente deu no final","A versão do prompt de sistema usada naquela conversa"],1,
+ "A conversa mostra só o que o agente disse. O trace e o sistema de destino mostram se a ferramenta foi chamada e qual foi o resultado."],
+ ["The agent says \"ticket opened\", but the ticket does not exist. Which evidence shows what actually happened?",
+ ["The full transcript of the conversation with the customer","The tool call trace and the record in the target system","The satisfaction score the customer gave at the end","The system prompt version used in that conversation"],
+ "The conversation only shows what the agent said. The trace and the target system show whether the tool was called and what the result was."]);
+S(7,3,["A automação subiu, o CSAT ficou estável e o recontato em 7 dias passou de 8% para 15%. Qual é a melhor leitura?",
+ ["Clientes satisfeitos estão voltando mais para comprar","O CSAT estável comprova que a qualidade se manteve","O recontato subiu por sazonalidade, sem relação com a IA","Parte dos casos \"resolvidos\" não foi resolvida de fato"],3,
+ "Recontato é a métrica de contrapeso: cliente que volta em poucos dias geralmente não teve o problema resolvido. O CSAT pode não captar isso se só quem ficou satisfeito responde."],
+ ["Automation rose, CSAT stayed flat and 7-day re-contact went from 8% to 15%. What is the best reading?",
+ ["Satisfied customers are coming back to buy more","Flat CSAT proves quality held steady","Re-contact rose due to seasonality, unrelated to AI","Some \"resolved\" cases were not actually resolved"],
+ "Re-contact is the counter metric: customers who come back within days usually did not get their issue solved. CSAT may miss this if only satisfied customers respond."]);
+S(7,2,["Qual destas metas é um SLO bem definido?",
+ ["Média de 4 s por resposta, medida uma vez por mês","Respostas em até 4 s, sem definir período nem percentual","99% das respostas em até 4 s, medido a cada semana","100% das respostas em até 4 s, em todos os momentos"],2,
+ "Um bom SLO tem indicador, limite, percentual e janela de medição. Médias escondem casos lentos, e 100% é irreal e não deixa orçamento de erro."],
+ ["Which of these targets is a well-defined SLO?",
+ ["A 4 s average per answer, measured once a month","Answers within 4 s, with no period or percentage defined","99% of answers within 4 s, measured every week","100% of answers within 4 s, at all times"],
+ "A good SLO has an indicator, a threshold, a percentage and a measurement window. Averages hide slow cases, and 100% is unrealistic and leaves no error budget."]);
+S(7,1,["Por que separar os casos de desenvolvimento dos casos de teste nas avaliações?",
+ ["Para reduzir o custo de rodar as avaliações automáticas","Para permitir que o juiz avalie cada caso mais rápido","Para evitar que o ajuste ao conjunto infle a nota final","Para garantir que os testes tenham os casos mais fáceis"],2,
+ "Se o prompt é ajustado olhando os mesmos casos que medem o resultado, a nota sobe sem que o sistema tenha melhorado de verdade."],
+ ["Why separate development cases from test cases in evaluations?",
+ ["To reduce the cost of running automated evaluations","To let the judge score each case faster","To keep tuning on the set from inflating the final score","To ensure the tests contain the easiest cases"],
+ "If the prompt is tuned by looking at the same cases that measure the result, the score rises without the system truly improving."]);
+
+/* Módulo 8 */
+S(8,2,["Um prompt de sistema de 6 mil tokens se repete em todas as chamadas. Qual otimização tem maior efeito direto?",
+ ["Streaming das respostas para o usuário","Cache de prompt para o trecho repetido","Processamento em lote das requisições","Temperatura menor para respostas curtas"],1,
+ "O cache reaproveita o trecho repetido entre chamadas, reduzindo custo e latência dessa parte. Streaming melhora percepção; lote exige tarefas sem urgência."],
+ ["A 6-thousand-token system prompt repeats on every call. Which optimization has the biggest direct effect?",
+ ["Streaming answers to the user","Prompt caching for the repeated section","Batch processing of requests","Lower temperature for short answers"],
+ "Caching reuses the repeated section across calls, cutting cost and latency for that part. Streaming improves perception; batching requires non-urgent tasks."]);
+S(8,3,["Qual controle reduz melhor o risco da \"tríade letal\" num agente?",
+ ["Pedir no prompt que o modelo desconfie de páginas da web","Usar um modelo maior, que resiste melhor a manipulações","Registrar todas as conversas para uma auditoria posterior","Exigir aprovação humana para qualquer envio externo de dados"],3,
+ "A tríade une dados privados, conteúdo não confiável e comunicação externa. Bloquear a saída sem aprovação quebra a cadeia. Auditoria só detecta depois."],
+ ["Which control best reduces the \"lethal trifecta\" risk in an agent?",
+ ["Asking in the prompt for the model to distrust web pages","Using a larger model, which resists manipulation better","Logging all conversations for a later audit","Requiring human approval for any external data sending"],
+ "The trifecta combines private data, untrusted content and external communication. Blocking outbound actions without approval breaks the chain. Auditing only detects afterwards."]);
+S(8,2,["Pelo AI Act europeu, um sistema que faz triagem de currículos tende a ser classificado como:",
+ ["Risco mínimo","Alto risco","Risco proibido","Fora do escopo"],1,
+ "Sistemas usados em recrutamento e gestão de pessoas estão entre os casos de alto risco do AI Act, com obrigações de gestão de risco, dados e supervisão humana."],
+ ["Under the EU AI Act, a resume screening system tends to be classified as:",
+ ["Minimal risk","High risk","Prohibited risk","Out of scope"],
+ "Systems used in hiring and workforce management are among the AI Act's high-risk cases, with obligations for risk management, data and human oversight."]);
+S(8,3,["Relatórios diários são gerados à noite, sem urgência. Qual combinação reduz mais o custo?",
+ ["Streaming com o maior modelo disponível","Chamadas síncronas com temperatura zero","Processamento em lote com um modelo menor validado","Multiagente em paralelo para terminar mais cedo"],2,
+ "Sem urgência, o lote costuma ter desconto, e um modelo menor validado para a tarefa reduz ainda mais o custo. As outras opções não atacam custo."],
+ ["Daily reports are generated overnight with no urgency. Which combination cuts cost the most?",
+ ["Streaming with the largest model available","Synchronous calls with zero temperature","Batch processing with a validated smaller model","Parallel multi-agent setup to finish earlier"],
+ "Without urgency, batching is usually discounted, and a smaller model validated for the task cuts cost further. The other options do not address cost."]);
+S(8,2,["Qual destes é um exemplo de prompt injection indireta?",
+ ["Usuário pedindo ao assistente que ignore o limite de tamanho","Texto oculto num PDF mandando o assistente mudar de tarefa","Erro de digitação que muda o sentido da pergunta feita","Pergunta ambígua que leva o modelo a uma resposta errada"],1,
+ "Na injeção indireta, a instrução maliciosa vem de um conteúdo que o modelo lê, como um documento ou página, e não do próprio usuário."],
+ ["Which of these is an example of indirect prompt injection?",
+ ["A user asking the assistant to ignore the length limit","Hidden text in a PDF telling the assistant to switch tasks","A typo that changes the meaning of the question asked","An ambiguous question that leads the model to a wrong answer"],
+ "In indirect injection, the malicious instruction comes from content the model reads, such as a document or page, not from the user."]);
+S(8,1,["O que é red teaming?",
+ ["Monitoramento de custos com alertas em vermelho no painel","Testes em que pessoas tentam fazer o sistema falhar de propósito","Revisão jurídica dos termos de uso antes do lançamento","Treinamento do time de suporte para lidar com crises"],1,
+ "Red teaming são testes adversariais: pessoas tentam deliberadamente provocar falhas, vazamentos ou comportamentos indevidos antes que usuários reais encontrem."],
+ ["What is red teaming?",
+ ["Cost monitoring with red alerts on the dashboard","Tests in which people deliberately try to make the system fail","A legal review of the terms of use before launch","Training the support team to handle crises"],
+ "Red teaming is adversarial testing: people deliberately try to trigger failures, leaks or improper behavior before real users find them."]);
+
+/* Módulo 9 */
+S(9,3,["Antes do piloto, você definiu: \"avança se resolver 60% sem humano, com CSAT de pelo menos 4,2\". O piloto teve 64% e CSAT 3,9. Qual decisão?",
+ ["Avançar, pois a resolução superou a meta definida","Encerrar, pois um critério falho invalida a iniciativa","Redefinir a meta de CSAT para 3,8 e então avançar","Ajustar e repetir, pois a meta de qualidade não foi atingida"],3,
+ "Os critérios foram definidos juntos, e um deles falhou. Mudar a meta depois do resultado tira o sentido de defini-la antes; encerrar ignora que o volume foi bom."],
+ ["Before the pilot, you defined: \"go ahead if it resolves 60% without a human, with CSAT of at least 4.2\". The pilot reached 64% and CSAT 3.9. What is the decision?",
+ ["Go ahead, since resolution beat the defined target","Kill it, since one failed criterion invalidates the initiative","Reset the CSAT target to 3.8 and then go ahead","Adjust and repeat, since the quality target was not met"],
+ "The criteria were set together, and one failed. Changing the target after the result defeats the purpose of setting it beforehand; killing it ignores that volume was good."]);
+S(9,2,["Qual é o melhor primeiro caso de uso de IA num time de atendimento?",
+ ["Aprovação automática de reembolsos de qualquer valor","Rascunho de resposta que o atendente revisa e envia","Encerramento automático de contas inadimplentes","Respostas jurídicas finais enviadas sem revisão"],1,
+ "Rascunhos revisados têm saída verificável e baixo custo de erro, ideais para começar. As outras opções têm alto impacto e exigem muito mais salvaguardas."],
+ ["What is the best first AI use case in a support team?",
+ ["Automatic approval of refunds of any amount","A draft reply the agent reviews and sends","Automatic closure of delinquent accounts","Final legal answers sent without review"],
+ "Reviewed drafts have verifiable output and low error cost, ideal for starting. The other options are high impact and need many more safeguards."]);
+S(9,3,["O modelo acerta 70% das vezes. Qual desenho de UX extrai mais valor com menos risco?",
+ ["Execução automática, com opção de desfazer depois","Sugestão editável com fonte, aceita em um toque","Resposta direta ao cliente com aviso de que é IA","Pop-up de confirmação antes de cada sugestão"],1,
+ "Com 30% de erro, a pessoa precisa revisar antes de agir. Sugestões editáveis aproveitam os acertos com pouco atrito; desfazer depois pode chegar tarde, e pop-ups cansam."],
+ ["The model is right 70% of the time. Which UX design captures the most value with the least risk?",
+ ["Automatic execution, with an option to undo later","An editable suggestion with a source, accepted in one tap","A direct answer to the customer with an AI disclaimer","A confirmation pop-up before every suggestion"],
+ "With a 30% error rate, the person must review before acting. Editable suggestions capture the wins with little friction; undoing later may be too late, and pop-ups wear users out."]);
+S(9,2,["Para que serve o modo sombra antes de um lançamento?",
+ ["Testar a interface com um grupo pequeno de clientes","Comparar a IA com o processo atual sem afetar clientes","Reduzir o custo de inferência durante o piloto","Treinar o modelo com as respostas dos atendentes"],1,
+ "No modo sombra, a IA processa casos reais em paralelo, mas as decisões continuam com o processo atual. Isso mede a qualidade sem expor clientes."],
+ ["What is shadow mode for before a launch?",
+ ["Testing the interface with a small group of customers","Comparing AI with the current process without affecting customers","Reducing inference cost during the pilot","Training the model on support agents' replies"],
+ "In shadow mode, AI processes real cases in parallel, but decisions stay with the current process. This measures quality without exposing customers."]);
+S(9,3,["Numa entrevista: \"Como você mediria o sucesso de um assistente de suporte?\". Qual resposta mostra mais senioridade?",
+ ["Taxa de automação, que resume o valor do assistente","Satisfação do cliente medida ao fim de cada conversa","Métricas de qualidade, operação e negócio, com contrapesos","Acurácia do modelo no golden set, revisada todo mês"],2,
+ "Uma métrica isolada pode ser otimizada às custas de outras. A resposta sênior conecta qualidade, operação e negócio, com métricas que protegem contra efeitos colaterais."],
+ ["In an interview: \"How would you measure the success of a support assistant?\". Which answer shows the most seniority?",
+ ["Automation rate, which sums up the assistant's value","Customer satisfaction measured at the end of each chat","Quality, operational and business metrics, with counter metrics","Model accuracy on the golden set, reviewed monthly"],
+ "A single metric can be optimized at the expense of others. The senior answer connects quality, operations and business, with metrics that guard against side effects."]);
+S(9,2,["Qual pergunta de discovery mais ajuda a decidir se um caso merece IA?",
+ ["Qual modelo os concorrentes estão usando hoje?","Com que frequência acontece e quanto custa um erro?","Quantos engenheiros de ML a empresa tem disponíveis?","Qual é o maior modelo que cabe no orçamento atual?"],1,
+ "Frequência indica valor potencial e custo do erro indica risco. Juntas, mostram se o caso compensa e que tipo de supervisão exige."],
+ ["Which discovery question best helps decide whether a case deserves AI?",
+ ["Which model are competitors using today?","How often does it happen, and how costly is an error?","How many ML engineers does the company have available?","What is the largest model that fits the current budget?"],
+ "Frequency signals potential value and error cost signals risk. Together, they show whether the case pays off and what kind of oversight it needs."]);
+// Ajustes para que o tamanho das alternativas não denuncie a correta (mesma ordem e mesmo índice correto)
+const SIMFIX={
+30:{o:["Chain-of-thought","Few-shot prompting","Contextual retrieval","Reciprocal rank fusion"],oe:["Chain-of-thought","Few-shot prompting","Contextual retrieval","Reciprocal rank fusion"]},
+5:{o:["Pedir no prompt um tom mais humilde e cauteloso em todas as respostas","Afirmar política só com fonte recuperada, ou admitir que não há","Incluir no rodapé um aviso fixo dizendo que a IA pode cometer erros","Reduzir a temperatura para deixar as respostas mais estáveis e curtas"],
+   oe:["Ask in the prompt for a humbler, more cautious tone in every answer","State policy only from a retrieved source, or admit there is none","Add a fixed footer disclaimer saying the AI may make mistakes","Lower the temperature to make answers more stable and consistent"]},
+9:{oe:["It is wrong on 60% of the urgency flags it raises each day","It flags many regular tickets as urgent by mistake every day","It correctly classifies 90% of all the tickets that come in","What it flags is almost always urgent, but it misses most"]},
+11:{oe:["Low performance on both training and validation","Great on training data, much worse on validation","Similar performance on training, validation and test","Better performance on validation than on training itself"]},
+12:{o:["Temperatura alta demais, que gera respostas aleatórias","Uso pior de informações no meio de contextos longos","Tokenização ruim de termos jurídicos escritos em português","Falta de fine-tuning do modelo com contratos do setor"],
+    oe:["Temperature set too high, which produces random answers","Weaker use of information in the middle of long contexts","Poor tokenization of legal terms written in Portuguese","Lack of fine-tuning the model on contracts from the industry"]},
+14:{o:["Quantos tokens o modelo consegue ler e considerar de uma vez","A probabilidade de a resposta estar factualmente certa","Quão concentrada fica a escolha entre tokens prováveis","Quanto o modelo consulta fontes externas antes de responder"],
+    oe:["How many tokens the model can read and consider at once","The probability that the answer is factually correct","How concentrated the choice among likely tokens is","How much the model consults external sources before answering"]},
+16:{oe:["Each vector dimension corresponds to one word in the vocabulary","Vectors produced by different models can be compared directly","The vector database uses embeddings to write the final answer","Texts with similar meaning tend to be close in the space"]},
+18:{o:["O modelo foi treinado com dados desatualizados sobre o tema","A temperatura zerada travou o modelo numa resposta errada","Confiança dita em texto não é uma medida calibrada","O tokenizador dividiu a pergunta original de forma incorreta"],
+    oe:["The model was trained on outdated data about this topic","Zero temperature locked the model into one wrong answer","Stated confidence is not a calibrated measure of accuracy","The tokenizer split the original question in the wrong way"]},
+25:{o:["Rankings públicos são proibidos em decisões formais de compra","Seu conjunto de testes tende a dar notas mais altas e estáveis","Rankings podem não refletir sua tarefa, dados e idioma","Fornecedores raramente divulgam resultados em rankings públicos"],
+    oe:["Public leaderboards are forbidden in purchasing decisions","Your own test set tends to give higher and steadier scores","Leaderboards may not reflect your task, data and language","Vendors rarely publish their results on public leaderboards"]},
+26:{oe:["Repeat three times in the prompt that the format is mandatory","Use native structured output and validate before integrating","Raise the temperature so the next attempts vary more","Ask the user to rephrase the question whenever it fails"]},
+27:{o:["Publicar logo, porque qualquer melhora positiva já compensa","Trocar de modelo para confirmar que o novo prompt é melhor","Reduzir o golden set para 20 casos e testar outra vez","Ver se a diferença não é ruído e checar o que piorou"],
+    oe:["Ship it now, since any positive improvement is worth it","Switch models to confirm the new prompt is really better","Shrink the golden set to 20 cases and run the test again","Check if the gap is noise and review what got worse"]},
+31:{o:["No prompt, pedindo ao modelo que respeite as permissões","Na interface, escondendo respostas de quem não tem acesso","No fine-tuning, ensinando ao modelo quem pode ver o quê","Na recuperação, filtrando trechos pelas permissões"],
+    oe:["In the prompt, asking the model to respect permissions","In the interface, hiding answers from users without access","In fine-tuning, teaching the model who can see what","In retrieval, filtering chunks by user permissions"]},
+33:{o:["Fazer poucas chamadas ao modelo para economizar custo","Treinar o modelo com apenas alguns exemplos rotulados","Mostrar exemplos de entrada e saída no próprio prompt","Limitar o número de tokens na resposta do modelo"],
+    oe:["Making only a few calls to the model to save on cost","Training the model on just a few labeled examples","Showing input/output examples inside the prompt","Limiting the number of tokens in the model's answer"]},
+36:{o:["O formato dos arquivos de pesos de modelos abertos","A forma de medir a qualidade de agentes em benchmarks","Como apps de IA se conectam a ferramentas e dados","O protocolo de comunicação entre GPUs de um cluster"],
+    oe:["The weight file format used by open-source models","The way agent quality is measured in benchmarks","How AI apps connect to tools and data sources","The communication protocol between GPUs in a cluster"]},
+37:{o:["Agente único analisando um concorrente de cada vez","Workflow fixo com uma única chamada longa ao modelo","Doze agentes independentes, sem nenhuma consolidação","Orquestrador com subagentes paralelos e síntese"],
+    oe:["A single agent analyzing one competitor at a time","A fixed workflow with one long call to the model","Twelve independent agents, with no final consolidation","An orchestrator with parallel subagents and synthesis"]},
+39:{o:["O agente fica lento ao processar páginas muito longas e pesadas","Instruções ocultas numa página podem fazê-lo enviar dados","Páginas em outros idiomas podem confundir o modelo e o agente","O custo de tokens sobe com páginas cheias de imagens"],
+    oe:["The agent slows down when processing very long pages","Hidden page instructions may make it send data out","Pages in other languages may confuse the model","Token costs rise sharply with image-heavy web pages"]},
+40:{o:["Um usa LLM; a outra usa apenas regras de negócio","Um é gratuito; a outra é sempre cobrada por assento","Um resolve uma tarefa; a outra serve para criar agentes","Um roda na nuvem; a outra roda apenas no computador local"]},
+42:{oe:["Succeeding in at least one of k tries at the task (pass@k)","Succeeding at the same task in all k tries (pass^k)","Average tokens consumed per completed task","Average time until the agent takes its first action"]},
+43:{o:["Nada, porque a média está dentro do que era esperado","Trocar de modelo, porque a média poderia ser 1 s","Investigar os casos lentos, que afetam pessoas reais","Desligar o streaming para estabilizar os tempos de resposta"],
+    oe:["Nothing, since the average is within expectations","Switching models, since the average could be 1 s","Investigating the slow cases, which hit real users","Turning off streaming to stabilize the response times"]},
+44:{o:["O conjunto é pequeno demais para qualquer conclusão","Perguntas de FAQ não deveriam entrar em avaliações","O LLM-juiz fica mais caro com tantos casos fáceis","A nota ignora os casos difíceis, que mais importam"],
+    oe:["The set is too small to support any conclusion at all","FAQ questions should not be part of evaluations","The LLM judge gets more expensive with so many easy cases","The score barely reflects the hard cases that matter"]},
+45:{o:["A transcrição completa da conversa com o cliente","O trace da ferramenta e o registro no sistema","A nota de satisfação que o cliente deu no final","A versão do prompt de sistema usada naquela conversa"]},
+48:{oe:["To reduce the cost of running automated evaluations","To let the judge score each individual case faster","To stop tuning on the set from inflating the score","To ensure the tests contain only the easiest cases"]},
+49:{oe:["Streaming the answers to the user","Caching the repeated prompt prefix","Batch processing of all requests","Lower temperature for shorter answers"]},
+52:{o:["Streaming com o maior modelo disponível","Chamadas síncronas com temperatura zero","Lote com um modelo menor já validado","Multiagente em paralelo para terminar mais cedo"],
+    oe:["Streaming with the largest model available","Synchronous calls with zero temperature","Batching with a validated smaller model","A parallel multi-agent setup to finish earlier"]},
+54:{o:["Monitoramento de custos com alertas em vermelho no painel","Testes em que pessoas forçam falhas de propósito","Revisão jurídica dos termos de uso antes do lançamento","Treinamento do time de suporte para lidar com crises"],
+    oe:["Cost monitoring with red alerts on the main dashboard","Tests where people deliberately try to break it","A legal review of the terms of use before launch","Training the support team to handle crisis situations"]},
+55:{o:["Avançar, pois a resolução superou a meta que foi definida","Encerrar, pois um critério falho invalida a iniciativa","Redefinir a meta de CSAT para 3,8 e então seguir adiante","Ajustar e repetir, pois a meta de CSAT não foi atingida"]},
+57:{oe:["Automatic execution, with an option to undo later","An editable, sourced suggestion accepted in one tap","A direct answer to the customer with an AI disclaimer","A confirmation pop-up shown before every suggestion"]},
+58:{o:["Testar a interface com um grupo pequeno de clientes","Comparar a IA ao processo atual sem afetar clientes","Reduzir o custo de inferência durante todo o piloto","Treinar o modelo com as respostas dos atendentes"],
+    oe:["Testing the interface with a small group of customers","Comparing AI to today's process with no customer impact","Reducing inference cost while the pilot is running","Training the model on replies written by support agents"]},
+59:{o:["Taxa de automação, que resume o valor do assistente","Satisfação do cliente medida ao fim de cada conversa","Qualidade, operação e negócio, com contrapesos","Acurácia do modelo no golden set, revisada todo mês"],
+    oe:["Automation rate, which sums up all of the assistant's value","Customer satisfaction measured at the end of each chat","Quality, operations and business, with counter metrics","Model accuracy on the golden set, reviewed monthly"]}
+};
+SIMQ.forEach(q=>{const f=SIMFIX[q.id];if(!f)return;if(f.o)q.o=f.o;if(f.oe)q.oe=f.oe;});
+// Remove palavras absolutas das erradas quando não fazem parte do erro de raciocínio
+const SIMREPL={
+"A amostra de 200 casos é pequena demais para qualquer conclusão":"A amostra de 200 casos é pequena demais para tirar conclusões",
+"A sample of 200 cases is too small for any conclusion":"A sample of 200 cases is too small to draw conclusions",
+"Pedir no prompt um tom mais humilde e cauteloso em todas as respostas":"Pedir no prompt um tom mais humilde e cauteloso nas respostas",
+"Ask in the prompt for a humbler, more cautious tone in every answer":"Ask in the prompt for a humbler, more cautious tone in answers",
+"Acerta a classificação de 90% de todos os tickets recebidos":"Acerta a classificação de 90% dos tickets recebidos",
+"It flags many regular tickets as urgent by mistake every day":"It flags many regular tickets as urgent by mistake",
+"It correctly classifies 90% of all the tickets that come in":"It correctly classifies 90% of the tickets that come in",
+"Open source, porque os pesos estão disponíveis para todos":"Open source, porque os pesos podem ser baixados livremente",
+"Domínio público, porque o download é gratuito para todos":"Domínio público, porque o download é gratuito",
+"Sempre que a licença do modelo for MIT ou Apache 2.0":"Quando a licença do modelo for MIT ou Apache 2.0",
+"Publicar logo, porque qualquer melhora positiva já compensa":"Publicar logo, porque a melhora já compensa o risco",
+"Ship it now, since any positive improvement is worth it":"Ship it now, since the gain already outweighs the risk",
+"To answer about prices that change every week":"To answer about prices that change weekly",
+"Doze agentes independentes, sem nenhuma consolidação":"Doze agentes independentes, sem consolidação final",
+"Exigem modelos maiores em todas as etapas":"Exigem modelos maiores em cada etapa",
+"They require larger models at every step":"They require larger models at each step",
+"Um é gratuito; a outra é sempre cobrada por assento":"Um é gratuito; a outra é cobrada por assento",
+"One is free; the other is always billed per seat":"One is free; the other is billed per seat",
+"O conjunto é pequeno demais para qualquer conclusão":"O conjunto é pequeno demais para tirar conclusões",
+"The set is too small to support any conclusion at all":"The set is too small to support solid conclusions",
+"Batch processing of all requests":"Batch processing of the requests",
+"Registrar todas as conversas para uma auditoria posterior":"Registrar as conversas para uma auditoria posterior",
+"Logging all conversations for a later audit":"Logging conversations for a later audit",
+"A confirmation pop-up shown before every suggestion":"A confirmation pop-up before each suggestion",
+"Automation rate, which sums up all of the assistant's value":"Automation rate, which sums up the assistant's value",
+"To lock in output format and style at high volume":"To lock in output format and style at scale"
+};
+SIMQ.forEach(q=>{q.o=q.o.map(x=>SIMREPL[x]||x);q.oe=q.oe.map(x=>SIMREPL[x]||x);});
+/* ============ SIMULADO ============ */
+const SIM_UI={
+ pt:{nav:"Simulado",h:"Simulado",sub:"Questões novas e misturadas de toda a trilha, diferentes das que aparecem nas aulas. As alternativas mudam de ordem a cada tentativa.",
+  count:"Quantidade de questões",all:"Todas",mods:"Módulos",allMods:"Todos",diff:"Dificuldade",diffAll:"Todas",diffHard:"Só difícil e avançada",
+  mode:"Modo",study:"Estudo",studyD:"Corrige cada questão na hora, com explicação",exam:"Prova",examD:"Corrige tudo só no final, como numa avaliação",
+  start:"Começar simulado",avail:n=>`${n} questões disponíveis com esses filtros`,none:"Nenhuma questão com esses filtros. Ajuste os módulos ou a dificuldade.",
+  resume:(i,n)=>`Você tem um simulado em andamento, na questão ${i} de ${n}.`,cont:"Continuar",discard:"Descartar",
+  stats:"Seu histórico",best:"Melhor resultado",attempts:"Simulados feitos",avg:"Média",noHist:"Seus resultados aparecem aqui depois do primeiro simulado.",
+  q:(i,n)=>`Questão ${i} de ${n}`,confirm:"Confirmar resposta",next:"Próxima",prev:"Anterior",finish:"Finalizar simulado",seeRes:"Ver resultado",
+  exit:"Sair e continuar depois",pick:"Selecione uma alternativa",unans:n=>`Ainda há ${n} questão(ões) sem resposta. Finalizar mesmo assim?`,yesFinish:"Sim, finalizar",keepGoing:"Voltar às questões",
+  right:"Correta!",wrong:"Não é essa.",keys:"Atalhos: teclas 1 a 4 escolhem, Enter confirma.",
+  res:"Resultado",resScore:(c,n,p)=>`Você acertou ${c} de ${n} (${p}%)`,time:t=>`Tempo: ${t}`,byMod:"Por módulo",byLv:"Por dificuldade",
+  msg:[[85,"Excelente! Você está pronta para discutir esses temas com segurança em entrevistas."],[70,"Muito bom! Revise as questões que errou para fechar as lacunas."],[50,"Bom começo. Vale revisar as aulas dos módulos com menor desempenho."],[0,"Use o resultado como mapa: revise os módulos com menor desempenho e tente de novo."]],
+  review:"Revisão das questões",onlyWrong:"Só as que errei",allQ:"Todas",yours:"Sua resposta",correct:"Resposta correta",blank:"Sem resposta",
+  redoWrong:"Refazer só as que errei",newSim:"Novo simulado",discuss:"Discutir com o tutor",lesson:"Revisar o módulo",
+  ask:(q,m,c)=>`No simulado, a questão "${q}" tinha como resposta correta "${c}"${m?`, mas eu respondi "${m}"`:", e eu deixei em branco"}. Pode me explicar o raciocínio com um exemplo prático de PM?`,
+  histRow:(p,n,md)=>`${p}% em ${n} questões, modo ${md}`,cta:"Fazer um simulado"},
+ en:{nav:"Practice test",h:"Practice test",sub:"New, mixed questions from the whole path, different from the ones in the lessons. Options change order on every attempt.",
+  count:"Number of questions",all:"All",mods:"Modules",allMods:"All",diff:"Difficulty",diffAll:"All",diffHard:"Hard and advanced only",
+  mode:"Mode",study:"Study",studyD:"Grades each question right away, with an explanation",exam:"Exam",examD:"Grades everything at the end, like a real test",
+  start:"Start practice test",avail:n=>`${n} questions available with these filters`,none:"No questions match these filters. Adjust modules or difficulty.",
+  resume:(i,n)=>`You have a test in progress, at question ${i} of ${n}.`,cont:"Continue",discard:"Discard",
+  stats:"Your history",best:"Best result",attempts:"Tests taken",avg:"Average",noHist:"Your results show up here after your first test.",
+  q:(i,n)=>`Question ${i} of ${n}`,confirm:"Confirm answer",next:"Next",prev:"Previous",finish:"Finish test",seeRes:"See results",
+  exit:"Exit and continue later",pick:"Select an option",unans:n=>`${n} question(s) still unanswered. Finish anyway?`,yesFinish:"Yes, finish",keepGoing:"Back to the questions",
+  right:"Correct!",wrong:"Not this one.",keys:"Shortcuts: keys 1 to 4 select, Enter confirms.",
+  res:"Results",resScore:(c,n,p)=>`You got ${c} of ${n} right (${p}%)`,time:t=>`Time: ${t}`,byMod:"By module",byLv:"By difficulty",
+  msg:[[85,"Excellent! You are ready to discuss these topics confidently in interviews."],[70,"Very good! Review the questions you missed to close the gaps."],[50,"Good start. Review the lessons for the modules with lower scores."],[0,"Use the result as a map: review the weaker modules and try again."]],
+  review:"Question review",onlyWrong:"Only the ones I missed",allQ:"All",yours:"Your answer",correct:"Correct answer",blank:"No answer",
+  redoWrong:"Retry only the ones I missed",newSim:"New practice test",discuss:"Discuss with the tutor",lesson:"Review the module",
+  ask:(q,m,c)=>`In the practice test, the question "${q}" had "${c}" as the correct answer${m?`, but I answered "${m}"`:", and I left it blank"}. Can you explain the reasoning with a practical PM example?`,
+  histRow:(p,n,md)=>`${p}% on ${n} questions, ${md} mode`,cta:"Take a practice test"}
+};
+const sv=(k,...a)=>{const v=SIM_UI[EN()?"en":"pt"][k];return typeof v==="function"?v(...a):v;};
+const simQ=id=>SIMQ[id-1];
+const sqT=q=>EN()?q.qe:q.q, sqO=q=>EN()?q.oe:q.o, sqW=q=>EN()?q.we:q.w;
+function simState(){if(!state.sim||typeof state.sim!=="object")state.sim={cfg:{n:30,mods:[],hard:false,mode:"estudo"},cur:null,hist:[]};
+  state.sim=JSON.parse(JSON.stringify(state.sim));if(!state.sim.cfg)state.sim.cfg={n:30,mods:[],hard:false,mode:"estudo"};if(!state.sim.hist)state.sim.hist=[];return state.sim;}
+function simPool(cfg){return SIMQ.filter(q=>(!cfg.mods.length||cfg.mods.includes(q.m))&&(!cfg.hard||q.lv>=2));}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+let simTimer=null;
+function simSave(S){state.sim=S;persist();}
+
+function renderSim(app){
+  clearInterval(simTimer);
+  const S=simState();
+  if(S.cur&&S.cur.done) return renderSimResult(app,S);
+  if(S.cur&&S.view==="run") return renderSimRun(app,S);
+  const cfg=S.cfg, pool=simPool(cfg), H=S.hist||[];
+  const best=H.length?Math.max(...H.map(h=>h.p)):null, avg=H.length?Math.round(H.reduce((a,h)=>a+h.p,0)/H.length):null;
+  const seg=(g,v,l)=>`<button type="button" class="seg" data-g="${g}" data-v="${v}" aria-pressed="${String(cfg[g])===String(v)}">${l}</button>`;
+  app.innerHTML=`<div class="sim-wrap">
+    <h1 class="page-title">${sv("h")}</h1><p class="page-sub">${sv("sub")}</p>
+    ${S.cur?`<div class="sim-resume"><p>${sv("resume",S.cur.i+1,S.cur.ids.length)}</p><div class="row"><button class="btn" id="simCont">${sv("cont")}</button><button class="btn ghost" id="simDisc">${sv("discard")}</button></div></div>`:""}
+    <section class="block sim-setup">
+      <div class="iv-row"><span class="iv-lab">${sv("count")}</span><div class="segs">${[15,30,60].map(n=>seg("n",n,n===60?`${sv("all")} (60)`:n)).join("")}</div></div>
+      <div class="iv-row"><span class="iv-lab">${sv("mods")}</span><div class="segs">
+        <button type="button" class="seg" data-mod="all" aria-pressed="${!cfg.mods.length}">${sv("allMods")}</button>
+        ${MODULES.map(m=>`<button type="button" class="seg" data-mod="${m.n}" aria-pressed="${cfg.mods.includes(m.n)}" title="${esc(tx(m,"title"))}">M${m.n}</button>`).join("")}</div></div>
+      <div class="iv-row"><span class="iv-lab">${sv("diff")}</span><div class="segs">${seg("hard",false,sv("diffAll"))}${seg("hard",true,sv("diffHard"))}</div></div>
+      <div class="iv-row"><span class="iv-lab">${sv("mode")}</span><div class="sim-modes">
+        ${[["estudo","study"],["prova","exam"]].map(([v,k])=>`<button type="button" class="sim-mode" data-mode="${v}" aria-pressed="${cfg.mode===v}"><b>${sv(k)}</b><span>${sv(k+"D")}</span></button>`).join("")}</div></div>
+      <p class="sim-avail">${pool.length?sv("avail",pool.length):sv("none")}</p>
+      <button class="btn" id="simStart" ${pool.length?"":"disabled"}>${sv("start")}</button>
+    </section>
+    <section class="block"><h2>${sv("stats")}</h2>
+      ${H.length?`<div class="sim-stats"><div><small>${sv("best")}</small><b>${best}%</b></div><div><small>${sv("avg")}</small><b>${avg}%</b></div><div><small>${sv("attempts")}</small><b>${H.length}</b></div></div>
+      <ul class="hist">${H.slice(0,10).map(h=>`<li><div class="h-q">${sv("histRow",h.p,h.n,h.mode==="prova"?sv("exam").toLowerCase():sv("study").toLowerCase())}</div>
+        <div class="h-meta"><span>${new Date(h.d).toLocaleDateString(EN()?"en-US":"pt-BR",{day:"2-digit",month:"short"})}</span><span>${fmtTime(h.s||0)}</span></div></li>`).join("")}</ul>`
+      :`<p style="color:var(--muted);margin:0">${sv("noHist")}</p>`}
+    </section></div>`;
+  app.querySelectorAll(".seg[data-g]").forEach(b=>b.addEventListener("click",()=>{
+    const g=b.dataset.g; cfg[g]=g==="n"?+b.dataset.v:b.dataset.v==="true"; simSave(S); renderSim(app);}));
+  app.querySelectorAll(".seg[data-mod]").forEach(b=>b.addEventListener("click",()=>{
+    const v=b.dataset.mod; if(v==="all")cfg.mods=[]; else{const n=+v; cfg.mods=cfg.mods.includes(n)?cfg.mods.filter(x=>x!==n):cfg.mods.concat(n).sort();}
+    simSave(S); renderSim(app);}));
+  app.querySelectorAll(".sim-mode").forEach(b=>b.addEventListener("click",()=>{cfg.mode=b.dataset.mode;simSave(S);renderSim(app);}));
+  const st=$("#simStart"); if(st) st.addEventListener("click",()=>simStart(app,shuffle(pool.map(q=>q.id)).slice(0,cfg.n),cfg.mode));
+  const c=$("#simCont"); if(c) c.addEventListener("click",()=>{S.view="run";simSave(S);renderSim(app);});
+  const d=$("#simDisc"); if(d) d.addEventListener("click",()=>{S.cur=null;simSave(S);renderSim(app);});
+}
+function simStart(app,ids,mode){
+  const S=simState(); const ord={}; ids.forEach(id=>ord[id]=shuffle([0,1,2,3]));
+  S.cur={ids,ord,ans:{},conf:{},i:0,mode,start:Date.now(),el:0,done:false}; S.view="run"; simSave(S); renderSim(app);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.addEventListener("visibilitychange",()=>{const c=state.sim&&state.sim.cur;if(!c||c.done||!c.resumeAt)return;
+  if(document.visibilityState==="hidden"){c.el=simElapsed(c);c.resumeAt=null;persist();}else if(document.querySelector(".sim-run")){c.resumeAt=Date.now();}});
+function simElapsed(c){return Math.round((c.el||0)+(c.done?0:(Date.now()-(c.resumeAt||c.start))/1000));}
+function renderSimRun(app,S){
+  const c=S.cur; if(!c.resumeAt){c.resumeAt=Date.now();}
+  const n=c.ids.length, id=c.ids[c.i], q=simQ(id), ord=c.ord[id], ops=sqO(q);
+  const study=c.mode==="estudo", picked=c.ans[id], confirmed=study&&c.conf[id];
+  const L=["A","B","C","D"], correctDisp=ord.indexOf(q.a), m=MODULES[q.m-1];
+  const answered=c.ids.filter(x=>c.ans[x]!=null).length;
+  app.innerHTML=`<div class="sim-wrap sim-run" style="--c:${m.c}">
+    <div class="sim-top"><button class="back sim-exit" id="simExit">${sv("exit")}</button><span class="sim-time" id="simTime"></span></div>
+    <div class="sim-prog"><i style="width:${(study?c.ids.filter(x=>c.conf[x]).length:answered)/n*100}%"></i></div>
+    <section class="block sim-card">
+      <div class="sim-meta"><span class="sim-qn">${sv("q",c.i+1,n)}</span><span class="tag">M${q.m}: ${esc(tx(m,"title"))}</span><span class="fq-lv lv${q.lv}">${u("lv")[q.lv]}</span></div>
+      <p class="sim-text">${esc(sqT(q))}</p>
+      <div class="fq-opts" role="radiogroup">${ord.map((oi,j)=>{const isPick=picked===j;
+        const cls=confirmed?(j===correctDisp?"right":(isPick?"wrong":"")):(isPick?"sel":"");
+        return `<button type="button" role="radio" aria-checked="${isPick}" class="fq-opt ${cls}" data-j="${j}" ${confirmed?"disabled":""}><span class="fq-l">${L[j]}</span><span>${esc(ops[oi])}</span></button>`;}).join("")}</div>
+      ${confirmed?`<div class="fq-why sim-why"><b>${picked===correctDisp?sv("right"):sv("wrong")}</b> ${esc(sqW(q))}</div>`:""}
+      <div class="sim-actions">
+        ${!study&&c.i>0?`<button class="btn ghost" id="simPrev">${sv("prev")}</button>`:""}
+        ${study&&!confirmed?`<button class="btn" id="simConfirm" ${picked==null?"disabled":""}>${sv("confirm")}</button>`:""}
+        ${(study&&confirmed)||!study?(c.i<n-1?`<button class="btn ${!study&&picked==null?"ghost":""}" id="simNext">${sv("next")}</button>`:`<button class="btn" id="simFinish">${study?sv("seeRes"):sv("finish")}</button>`):""}
+        ${!study&&c.i<n-1?`<button class="btn ghost" id="simFinish">${sv("finish")}</button>`:""}
+      </div>
+      <div id="simAsk"></div>
+      <p class="sim-keys">${sv("keys")}</p>
+    </section>
+    ${!study?`<nav class="sim-map" aria-label="Mapa">${c.ids.map((x,k)=>`<button type="button" class="${c.ans[x]!=null?"on":""} ${k===c.i?"cur":""}" data-k="${k}">${k+1}</button>`).join("")}</nav>`:""}
+  </div>`;
+  const tick=()=>{const e=$("#simTime");if(!e){clearInterval(simTimer);return;}e.textContent=fmtTime(simElapsed(c));};
+  tick(); simTimer=setInterval(tick,1000);
+  const go=k=>{c.i=k;simSave(S);renderSimRun(app,S);app.querySelector(".sim-card").classList.add("swap");};
+  const pick=j=>{if(confirmed)return;c.ans[id]=j;simSave(S);const y=window.scrollY;renderSimRun(app,S);window.scrollTo(0,y);};
+  app.querySelectorAll(".fq-opt").forEach(b=>b.addEventListener("click",()=>pick(+b.dataset.j)));
+  const cf=$("#simConfirm"); if(cf) cf.addEventListener("click",()=>{if(picked==null)return;c.conf[id]=true;simSave(S);const y=window.scrollY;renderSimRun(app,S);window.scrollTo(0,y);
+    const card=app.querySelector(".sim-card");card.classList.add("just");});
+  const nx=$("#simNext"); if(nx) nx.addEventListener("click",()=>go(c.i+1));
+  const pv=$("#simPrev"); if(pv) pv.addEventListener("click",()=>go(c.i-1));
+  const fin=$("#simFinish"); if(fin) fin.addEventListener("click",()=>{
+    const left=c.ids.filter(x=>c.ans[x]==null).length;
+    if(!study&&left){$("#simAsk").innerHTML=`<div class="sim-confirm"><p>${sv("unans",left)}</p><div class="row"><button class="btn" id="simYes">${sv("yesFinish")}</button><button class="btn ghost" id="simNo">${sv("keepGoing")}</button></div></div>`;
+      $("#simYes").addEventListener("click",()=>simFinish(app,S));$("#simNo").addEventListener("click",()=>{$("#simAsk").innerHTML="";});return;}
+    simFinish(app,S);});
+  app.querySelectorAll(".sim-map button").forEach(b=>b.addEventListener("click",()=>go(+b.dataset.k)));
+  $("#simExit").addEventListener("click",()=>{c.el=simElapsed(c);c.resumeAt=null;S.view="setup";simSave(S);clearInterval(simTimer);renderSim(app);});
+  document.onkeydown=e=>{if(!document.querySelector(".sim-run"))return;if(e.target.closest("textarea,input"))return;
+    if(["1","2","3","4"].includes(e.key)){pick(+e.key-1);}
+    else if(e.key==="Enter"){const b=$("#simConfirm")||$("#simNext")||$("#simFinish");if(b&&!b.disabled){e.preventDefault();b.click();}}};
+}
+function simFinish(app,S){
+  const c=S.cur; c.el=simElapsed(c); c.done=true; c.resumeAt=null; clearInterval(simTimer);
+  const ok=c.ids.filter(id=>c.ans[id]!=null&&c.ord[id][c.ans[id]]===simQ(id).a).length;
+  const p=Math.round(ok/c.ids.length*100);
+  S.hist=[{d:Date.now(),n:c.ids.length,c:ok,p,mode:c.mode,s:c.el}].concat(S.hist||[]).slice(0,30);
+  simSave(S); renderSim(app); window.scrollTo({top:0,behavior:"smooth"}); toast(sv("resScore",ok,c.ids.length,p));
+}
+function renderSimResult(app,S){
+  const c=S.cur, n=c.ids.length, isOk=id=>c.ans[id]!=null&&c.ord[id][c.ans[id]]===simQ(id).a;
+  const ok=c.ids.filter(isOk).length, p=Math.round(ok/n*100);
+  const msg=sv("msg").find(x=>p>=x[0])[1];
+  const group=(key,keys,label)=>keys.map(k=>{const ids=c.ids.filter(id=>simQ(id)[key]===k);if(!ids.length)return "";const r=ids.filter(isOk).length,pc=Math.round(r/ids.length*100);
+    return `<div class="sim-bar" ${key==="m"?`style="--c:${MODULES[k-1].c}"`:""}><span>${label(k)}</span><div class="bar"><i style="width:${pc}%"></i></div><b>${r}/${ids.length}</b></div>`;}).join("");
+  const wrongIds=c.ids.filter(id=>!isOk(id));
+  const filt=S.revAll?c.ids:wrongIds;
+  app.innerHTML=`<div class="sim-wrap">
+    <h1 class="page-title">${sv("res")}</h1>
+    <section class="block sim-score">
+      <div class="ring" data-p="${p}" style="--p:0"><span>${p}%</span></div>
+      <div><b class="sim-big">${sv("resScore",ok,n,p)}</b><p>${msg}</p><p class="sim-sub"><span>${sv("time",fmtTime(c.el||0))}</span><span>${c.mode==="prova"?sv("exam"):sv("study")}</span></p></div>
+    </section>
+    <div class="sim-groups">
+      <section class="block"><h2>${sv("byMod")}</h2>${group("m",[1,2,3,4,5,6,7,8,9],k=>`M${k}`)}</section>
+      <section class="block"><h2>${sv("byLv")}</h2>${group("lv",[1,2,3],k=>u("lv")[k])}</section>
+    </div>
+    <div class="sim-actions top">${wrongIds.length?`<button class="btn" id="simRedo">${sv("redoWrong")} (${wrongIds.length})</button>`:""}<button class="btn ghost" id="simNew">${sv("newSim")}</button></div>
+    <section class="block"><div class="iv-hist-head"><h2>${sv("review")}</h2><div class="segs"><button class="seg" id="revW" aria-pressed="${!S.revAll}">${sv("onlyWrong")}</button><button class="seg" id="revA" aria-pressed="${!!S.revAll}">${sv("allQ")}</button></div></div>
+      <div class="sim-review">${filt.map(id=>{const q=simQ(id),o=sqO(q),pk=c.ans[id],mine=pk!=null?o[c.ord[id][pk]]:null,good=isOk(id);
+        return `<div class="rev ${good?"ok":"no"}" style="--c:${MODULES[q.m-1].c}"><div class="sim-meta"><span class="tag">M${q.m}</span><span class="fq-lv lv${q.lv}">${u("lv")[q.lv]}</span></div>
+          <p class="rev-q">${esc(sqT(q))}</p>
+          ${good?"":`<p class="rev-a no"><small>${sv("yours")}</small>${mine?esc(mine):`<em>${sv("blank")}</em>`}</p>`}
+          <p class="rev-a ok"><small>${sv("correct")}</small>${esc(o[q.a])}</p>
+          <p class="rev-w">${esc(sqW(q))}</p>
+          <div class="fq-actions">${good?"":`<button class="ask-link" data-ask="${id}">${sv("discuss")}</button>`}<a class="ask-link" href="#/aula/${MODULES[q.m-1].lessons[0].num}">${sv("lesson")} ${q.m}</a></div></div>`;}).join("")||`<p style="color:var(--muted)">${EN()?"No missed questions. Great job!":"Nenhuma questão errada. Parabéns!"}</p>`}</div>
+    </section></div>`;
+  const r=app.querySelector(".ring[data-p]"); requestAnimationFrame(()=>requestAnimationFrame(()=>r.style.setProperty("--p",p)));
+  const rd=$("#simRedo"); if(rd) rd.addEventListener("click",()=>simStart(app,shuffle(wrongIds),c.mode));
+  $("#simNew").addEventListener("click",()=>{S.cur=null;S.view="setup";simSave(S);renderSim(app);window.scrollTo({top:0});});
+  $("#revW").addEventListener("click",()=>{S.revAll=false;simSave(S);renderSimResult(app,S);});
+  $("#revA").addEventListener("click",()=>{S.revAll=true;simSave(S);renderSimResult(app,S);});
+  app.querySelectorAll("[data-ask]").forEach(b=>b.addEventListener("click",()=>{
+    const id=+b.dataset.ask,q=simQ(id),o=sqO(q),pk=c.ans[id];
+    window._tutorAsk=sv("ask",sqT(q),pk!=null?o[c.ord[id][pk]]:null,o[q.a]); location.hash="#/tutor";}));
+}
+
 /* ============ ESTADO E PERSISTÊNCIA ============ */
 const LS_KEY="trilha-ai-pm-v1";
-const BLANK=()=>({done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{}});
+const BLANK=()=>({done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null});
 let state = BLANK();
 let dbRef=null, saveTimer=null, saving=false, pending=false;
 
@@ -3047,6 +3756,7 @@ function applyChrome(){
   $('[data-nav="tutor"]').textContent=u("nav_tutor");
   $('[data-nav="entrevista"]').textContent=iv("nav");
   $('[data-nav="biblioteca"]').textContent=u("lib_nav");
+  $('[data-nav="simulado"]').textContent=sv("nav");
   $(".nav").setAttribute("aria-label",u("nav_aria"));
   $("#themeBtn").setAttribute("aria-label",u("theme"));
   $(".lang").setAttribute("aria-label",u("lang_aria"));
@@ -3065,6 +3775,8 @@ let chatAbort=null;
 function render(){
   if(chatAbort){chatAbort.abort();chatAbort=null;}
   document.body.classList.remove("sheet-open");
+  if(typeof simTimer!=="undefined")clearInterval(simTimer); document.onkeydown=null;
+  {const c=state.sim&&state.sim.cur;if(c&&!c.done&&c.resumeAt&&route().name!=="simulado"){c.el=simElapsed(c);c.resumeAt=null;}}
   applyChrome();
   const r=route(), app=$("#app");
   document.querySelectorAll("[data-nav]").forEach(a=>a.removeAttribute("aria-current"));
@@ -3076,6 +3788,7 @@ function render(){
   else if(r.name==="tutor") renderTutor(app);
   else if(r.name==="entrevista") renderInterview(app);
   else if(r.name==="biblioteca") renderLibrary(app);
+  else if(r.name==="simulado") renderSim(app);
   else {renderHome(app); animateHome();}
   app.classList.remove("enter"); void app.offsetWidth; app.classList.add("enter");
 }
@@ -3092,7 +3805,7 @@ function renderHome(app){
       <p class="lead">${u("hero_lead")}</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         ${nx?`<a class="btn" href="#/aula/${nx.num}">${d?u("btn_continue"):u("btn_start")}</a>`:`<a class="btn" href="#/exercicio/9">${u("btn_final")}</a>`}
-        <a class="btn ghost" href="#/tutor">${u("btn_ask")}</a>
+        <a class="btn ghost" href="#/simulado">${sv("cta")}</a>
         <a class="btn ghost" href="#/entrevista">${EN()?"Practice an interview":"Treinar entrevista em inglês"}</a>
       </div>
     </div>
@@ -3473,9 +4186,10 @@ function renderTutor(app){
     <div id="chatBox"></div>
     <p style="margin-top:12px"><button class="btn ghost" id="clearChat">${u("clear")}</button></p>
   </div>`;
-  mountChat($("#chatBox"),{key:"geral",full:true,title:u("tutor_title"),sub:d?u("tutor_sub_done",d,TOTAL):u("tutor_sub_new"),
+  const tchat=mountChat($("#chatBox"),{key:"geral",full:true,title:u("tutor_title"),sub:d?u("tutor_sub_done",d,TOTAL):u("tutor_sub_new"),
     context:`Progress: ${d} of ${TOTAL} lessons completed. Completed lessons: ${LESSONS.filter(l=>state.done[l.num]).map(l=>l.num+". "+tx(l,"t")).join("; ")||"none yet"}. Path structure: ${MODULES.map(m=>"Module "+m.n+": "+tx(m,"title")).join("; ")}.`,
     chips:u("tutor_chips")});
+  if(window._tutorAsk){const t=window._tutorAsk;window._tutorAsk=null;setTimeout(()=>tchat.send(t),150);}
   $("#clearChat").addEventListener("click",()=>{state.chats=Object.assign({},state.chats);delete state.chats.geral;persist();render();toast(u("cleared"));});
 }
 
