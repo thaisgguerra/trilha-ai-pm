@@ -713,6 +713,115 @@ details.about summary::after,.res-details summary::after{transition:transform .2
   .top-right{margin-left:auto}
 }
 @media (max-width:480px){#topProgress{display:none}.brand{font-size:18px}}
+
+/* ===== Diagramas ===== */
+.dg figcaption{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:650;font-size:20px;margin-bottom:16px;letter-spacing:-.01em}
+.dg-note{font-size:14px!important;color:var(--muted);margin:14px 0 0!important}
+.dg-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* camadas */
+.dg-ring{border:1.5px solid color-mix(in srgb,var(--c) calc(30% + var(--lv)*12%),var(--line));background:color-mix(in srgb,var(--c) calc(3% + var(--lv)*4%),var(--surface));border-radius:18px;padding:12px 14px 14px}
+.dg-ring .dg-ring{margin-top:10px}
+.dg-ring-h b{display:block;font-size:15.5px;color:var(--ci)}
+.dg-ring-h span{display:block;font-size:13.5px;color:var(--muted);line-height:1.45}
+/* linha do tempo */
+.dg-tl{list-style:none;margin:0;padding:8px 0 4px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(92px,1fr);position:relative;min-width:640px}
+.dg-tl::before{content:"";position:absolute;left:0;right:0;top:41px;height:2px;background:color-mix(in srgb,var(--c) 35%,var(--line))}
+.dg-tl li{display:grid;justify-items:center;text-align:center;gap:6px;position:relative;padding:0 4px}
+.dg-tl .y{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;color:var(--ci)}
+.dg-tl i{width:12px;height:12px;border-radius:50%;background:var(--surface);border:2.5px solid var(--c);margin:4px 0}
+.dg-tl .l{font-size:13px;line-height:1.35;color:var(--ink)}
+/* fluxo e ciclo */
+.dg-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:22px;counter-reset:s}
+.dg-flow li{position:relative;border:1px solid color-mix(in srgb,var(--c) 30%,var(--line));background:color-mix(in srgb,var(--c) 6%,var(--surface));border-radius:14px;padding:12px 12px 14px;display:grid;gap:4px;align-content:start}
+.dg-flow li:not(:last-child)::after{content:"";position:absolute;right:-17px;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--ci);
+  -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>') center/contain no-repeat;
+  mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>') center/contain no-repeat}
+.dg-flow .k{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--ci);color:var(--on-ci)}
+.dg-flow b{font-size:14.5px;line-height:1.3}
+.dg-flow .s{font-size:12.5px;color:var(--muted);line-height:1.4}
+.dg-loop{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:13.5px;color:var(--ci);font-weight:600}
+.dg-loop svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:820px){
+  .dg-flow{grid-template-columns:1fr;gap:18px}
+  .dg-flow li{grid-template-columns:auto 1fr;column-gap:10px}
+  .dg-flow li .s{grid-column:2}
+  .dg-flow li:not(:last-child)::after{right:auto;left:22px;top:auto;bottom:-15px;margin:0;transform:rotate(90deg)}
+}
+/* tabela comparativa */
+.dg-table{width:100%;border-collapse:separate;border-spacing:0;font-size:14.5px;min-width:520px}
+.dg-table th,.dg-table td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.45}
+.dg-table thead th{font-size:13.5px;color:var(--ci);border-bottom:2px solid color-mix(in srgb,var(--c) 40%,var(--line))}
+.dg-table tbody th{font-weight:600;color:var(--muted);font-size:13.5px;width:22%}
+.dg-table tbody tr:last-child th,.dg-table tbody tr:last-child td{border-bottom:0}
+/* espectro */
+.dg-spec-ends{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:6px}
+.dg-spec-bar{height:8px;border-radius:99px;background:linear-gradient(90deg,color-mix(in srgb,var(--c) 18%,var(--surface)),var(--c))}
+.dg-spec-items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:10px;margin-top:-8px}
+.dg-spec-items li{display:grid;justify-items:center;text-align:center;gap:4px}
+.dg-spec-items i{width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--ci);margin-bottom:4px}
+.dg-spec-items b{font-size:13.5px;line-height:1.3}
+.dg-spec-items span{font-size:12px;color:var(--muted);line-height:1.35}
+@media (max-width:640px){.dg-spec-bar{display:none}.dg-spec-items{grid-template-columns:1fr;margin-top:6px;justify-items:start}.dg-spec-items li{grid-template-columns:auto 1fr;justify-items:start;text-align:left;column-gap:10px}.dg-spec-items li span{grid-column:2}}
+/* barras */
+.dg-bars{display:grid;gap:10px}
+.dg-bar{display:grid;grid-template-columns:minmax(120px,38%) 1fr 48px;gap:12px;align-items:center;font-size:14px}
+.dg-bar .t{height:12px;border-radius:99px;background:color-mix(in srgb,var(--c) 12%,var(--surface));overflow:hidden}
+.dg-bar .t i{display:block;height:100%;background:var(--c);border-radius:99px;transform-origin:left;animation:grow .8s var(--ease) both}
+.dg-bar b{text-align:right;font-variant-numeric:tabular-nums}
+/* pilha */
+.dg-stack{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dg-stack li{border-radius:12px;padding:11px 14px;background:color-mix(in srgb,var(--c) calc(5% + var(--i)*3%),var(--surface));border:1px solid color-mix(in srgb,var(--c) 22%,var(--line));display:grid;grid-template-columns:minmax(150px,30%) 1fr;gap:12px;align-items:baseline}
+.dg-stack b{font-size:14.5px}
+.dg-stack span{font-size:13.5px;color:var(--muted);line-height:1.45}
+@media (max-width:640px){.dg-stack li{grid-template-columns:1fr;gap:2px}}
+/* matriz */
+.dg-matrix{display:grid;gap:8px}
+.dg-matrix .ylab,.dg-matrix .xlab{font-size:12.5px;font-weight:600;color:var(--muted)}
+.dg-matrix .xlab{text-align:center}
+.dg-matrix .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dg-matrix .cell{border-radius:14px;padding:14px;border:1px solid var(--line);background:var(--surface-2);display:grid;gap:4px;min-height:92px;align-content:start}
+.dg-matrix .cell b{font-size:15px}
+.dg-matrix .cell span{font-size:13px;color:var(--muted);line-height:1.4}
+.dg-matrix .c1{background:color-mix(in srgb,var(--c) 12%,var(--surface));border-color:color-mix(in srgb,var(--c) 40%,var(--line))}
+.dg-matrix .c1 b{color:var(--ci)}
+/* tríade */
+.dg-triad{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:20px;align-items:center}
+.dg-triad svg{width:100%;height:auto}
+.dg-triad circle{fill:color-mix(in srgb,var(--c) 14%,transparent);stroke:var(--ci);stroke-width:1.5}
+.dg-triad text{font-family:var(--body);font-size:13px;font-weight:600;fill:var(--ink);text-anchor:middle}
+.dg-triad text.mid{font-size:22px;font-weight:800;fill:var(--m3i)}
+.dg-triad ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.dg-triad li b{display:block;font-size:14.5px}.dg-triad li span{font-size:13.5px;color:var(--muted)}
+@media (max-width:640px){.dg-triad{grid-template-columns:1fr}.dg-triad svg{max-width:260px;margin:0 auto}}
+/* aprofundando */
+.deep-more h3{font-family:var(--display);font-size:17.5px;font-weight:650;margin:18px 0 6px;letter-spacing:-.005em}
+.deep-more h2+h3{margin-top:4px}
+.lesson-grid>div,.lesson-grid .block,.dg{min-width:0}
+
+.dg-flow.is-long{grid-template-columns:1fr;gap:16px}
+.dg-flow.is-long li{grid-template-columns:auto minmax(130px,30%) 1fr;column-gap:12px;align-items:center;padding:10px 14px}
+.dg-flow.is-long li:not(:last-child)::after{right:auto;left:24px;top:auto;bottom:-14px;margin:0;transform:rotate(90deg)}
+@media (max-width:820px){.dg-flow.is-long li{grid-template-columns:auto 1fr}.dg-flow.is-long li .s{grid-column:2}}
+.dg-tl{min-width:560px;grid-auto-columns:minmax(52px,1fr)}
+.dg-tl .l{font-size:12.5px}
+
+.dg-tl{grid-auto-flow:row;grid-template-columns:repeat(var(--n),minmax(0,1fr));min-width:calc(var(--n)*78px)}
+.dg-tl li{align-content:start;grid-template-rows:auto auto auto}
+.dg-tl .l{overflow-wrap:anywhere;hyphens:auto}
+
+.dg-tl .l{overflow-wrap:normal;hyphens:manual}
+.dg{container-type:inline-size}
+@container (max-width:760px){
+  .dg-tl{grid-template-columns:auto 1fr;grid-auto-flow:row;min-width:0;padding:0;gap:0}
+  .dg-tl::before{left:63px;right:auto;top:6px;bottom:6px;width:2px;height:auto}
+  .dg-tl li{display:contents}
+  .dg-tl .y{grid-column:1;text-align:right;padding:6px 26px 6px 0;width:66px;position:relative}
+  .dg-tl .y::after{content:"";position:absolute;right:-6px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--surface);border:2.5px solid var(--c)}
+  .dg-tl i{display:none}
+  .dg-tl .l{grid-column:2;text-align:left;padding:6px 0 6px 18px;font-size:14px;align-self:center}
+}
+.dg-matrix .c1:not(.hl){background:var(--surface-2);border-color:var(--line)}.dg-matrix .c1:not(.hl) b{color:var(--ink)}
+.dg-matrix .hl{background:color-mix(in srgb,var(--c) 12%,var(--surface));border-color:color-mix(in srgb,var(--c) 40%,var(--line))}.dg-matrix .hl b{color:var(--ci)}
 </style>
 </head>
 <body>
@@ -2773,6 +2882,362 @@ Q(32,[
  "Writing the press release and hard questions before building forces clarity about problem, customer and value, as Amazon does."]
 ]);
 
+// Reescrita das alternativas para que o tamanho e a estrutura não denunciem a correta (mesmo índice correto)
+const QZFIX={
+1:[[["Escolher o modelo mais avançado disponível no mercado hoje","Definir que comportamento deve mudar e como medir isso","Contratar um time de ciência de dados antes do discovery","Lançar um chatbot de retenção como MVP para aprender rápido"],["Pick the most advanced model available on the market today","Define what behavior must change and how to measure it","Hire a data science team before doing any discovery","Launch a retention chatbot as an MVP to learn quickly"]],
+ [["IA, porque toma decisões sem intervenção humana","Modelo de machine learning, porque usa dados do cliente","Automação baseada em regras, sem IA","Agente, porque executa ações por conta própria"],["AI, because it makes decisions without human input","A machine learning model, because it uses customer data","Rule-based automation, with no AI","An agent, because it takes actions on its own"]],
+ [["O modelo precisa de mais dados de treino e de validação","A meta de acerto deveria ser de pelo menos 99%","É preciso trocar por um modelo maior e mais recente","O valor depende do produto como um todo, não do modelo"],["The model needs more training and validation data","The accuracy target should be at least 99%","You need to switch to a larger, more recent model","Value depends on the whole product, not the model"]]],
+2:[[["Concordar, porque os modelos atuais superaram os limites antigos","Propor um piloto com marcos verificáveis","Recusar o projeto para evitar um novo inverno da IA","Pedir que a engenharia defina sozinha o prazo final"],["Agree, since today's models have overcome past limits","Propose a pilot with verifiable milestones","Reject the project to avoid another AI winter","Ask engineering to set the final deadline alone"]],
+ [["Que a IA simbólica foi totalmente abandonada depois disso","Que redes neurais só funcionam bem em jogos de tabuleiro","Que dados e busca venceram onde regras não davam conta","Que o Go é um jogo mais simples do que o xadrez"],["That symbolic AI was completely abandoned after that","That neural networks only work well in board games","That data plus search won where rules fell short","That Go is a simpler game than chess"]],
+ [["Modelos estatísticos combinados com regras e verificações","Apenas regras simbólicas escritas por especialistas do domínio","Apenas redes neurais, sem nenhuma regra explícita envolvida","Sistemas especialistas dos anos 1980 com uma interface nova"],["Statistical models combined with rules and checks","Only symbolic rules written by domain experts","Only neural networks, with no explicit rules involved","1980s expert systems with a brand-new interface"]]],
+3:[[["Resumir a reclamação do cliente para o atendente","Classificar o tom da mensagem como positivo ou negativo","Decidir a elegibilidade para reembolso","Sugerir uma resposta empática para o cliente"],["Summarizing the customer's complaint for the agent","Classifying the message tone as positive or negative","Deciding refund eligibility","Suggesting an empathetic reply to the customer"]],
+ [["Eram lentos demais para os computadores daquela época","Manter as regras era caro e elas falhavam em casos novos","Não podiam ser explicados a usuários nem auditores","Dependiam de GPUs que ainda não existiam no mercado"],["They were too slow for the computers of that era","Rules were costly to maintain and failed on new cases","They could not be explained to users or auditors","They depended on GPUs that did not exist yet"]],
+ [["Um LLM decide e escreve uma justificativa em texto","Um agente autônomo com acesso direto ao sistema de crédito","Fine-tuning de um LLM com as decisões dos últimos anos","O modelo extrai os dados e regras auditáveis decidem"],["An LLM decides and writes a text justification","An autonomous agent with direct access to the credit system","Fine-tuning an LLM on past years of decisions","The model extracts data and auditable rules decide"]]],
+4:[[["Satisfação média (CSAT) ao final de cada conversa","Taxa de respostas erradas aceitas em testes","Tempo médio de conversa por sessão de atendimento","Número médio de mensagens trocadas por sessão"],["Average satisfaction (CSAT) at the end of each chat","Rate of wrong answers accepted in tests","Average conversation time per support session","Average number of messages exchanged per session"]],
+ [["Mostrar fontes e sinalizar respostas incompletas","Dar ao assistente nome e personalidade mais marcantes","Fazer o assistente responder bem mais rápido","Usar mais emojis e expressões de empatia nas respostas"],["Show sources and flag incomplete answers","Give the assistant a stronger name and personality","Make the assistant respond much faster","Use more emojis and empathetic phrases in answers"]],
+ [["Empresas não respondem pelo que o chatbot afirma","O cliente deve sempre confirmar a informação com um humano","O que o assistente diz vale como informação da empresa","Chatbots devem ser proibidos de tratar de preços"],["Companies are not liable for what the chatbot says","Customers should always confirm with a human","What the assistant says counts as company information","Chatbots should be banned from discussing prices"]]],
+5:[[["Aceitar, porque AGI tem uma definição técnica consensual","Pedir o desempenho medido na sua tarefa e nos seus dados","Descartar o fornecedor por exagero de marketing","Pedir o número de parâmetros do modelo usado"],["Accept it, since AGI has a consensus technical definition","Ask for measured performance on your task and data","Drop the vendor for marketing exaggeration","Ask for the parameter count of the model used"]],
+ [["O tamanho do modelo utilizado no sistema","Se o sistema usa rede neural ou regras","A aplicação, como recrutamento ou crédito","O idioma em que a interface é apresentada"],["The size of the model used in the system","Whether it uses neural networks or rules","The application, such as hiring or credit","The language the interface is presented in"]],
+ [["AGI; abordagem simbólica; aplicação em varejo","Superinteligência; abordagem híbrida; marketing","IA estreita; abordagem simbólica; busca de produtos","IA estreita; ML generativo; geração de conteúdo"],["AGI; symbolic approach; retail application","Superintelligence; hybrid approach; marketing","Narrow AI; symbolic approach; product search","Narrow AI; generative ML; content generation"]]],
+6:[[["Um LLM de fronteira lendo as tabelas diretamente","ML clássico, como gradient boosting","Aprendizado por reforço com recompensas mensais","Um agente autônomo com acesso ao banco de dados"],["A frontier LLM reading the tables directly","Classic ML, such as gradient boosting","Reinforcement learning with monthly rewards","An autonomous agent with database access"]],
+ [["Quanto custa rotular, ou se um LLM resolve sem rótulos","Qual GPU a engenharia deve reservar para o treinamento","Se o modelo terá mais de 1 bilhão de parâmetros no total","Se dá para aplicar aprendizado por reforço nesse caso"],["Labeling cost, or whether an LLM can skip labels","Which GPU engineering should reserve for training","Whether the model will exceed 1 billion parameters","Whether reinforcement learning can be applied here"]],
+ [["São mais baratos que modelos comuns em qualquer tarefa","Dispensam a etapa de pré-treino em grandes volumes","Trocam custo e tempo por qualidade em tarefas difíceis","Só funcionam bem com dados tabulares estruturados"],["They are cheaper than regular models on any task","They skip the pre-training stage at large scale","They trade cost and time for quality on hard tasks","They only work well with structured tabular data"]]],
+7:[[["O modelo é pequeno demais para o volume de produção","Vazamento ou teste que não representa o uso real","Falta de GPUs suficientes no ambiente de produção","A temperatura está alta demais nas respostas"],["The model is too small for production volume","Leakage or a test that does not mirror real usage","Not enough GPUs in the production environment","The temperature is set too high for answers"]],
+ [["Que o score seja arredondado para uma casa decimal","Um modelo com mais parâmetros e mais dados","Que o limite seja reduzido para 0,5 para cobrir mais casos","Checagem de calibração e custo de cada tipo de erro"],["That the score be rounded to one decimal place","A model with more parameters and more data","That the threshold be lowered to 0.5 to cover more cases","A calibration check and the cost of each error type"]],
+ [["O alto custo das GPUs usadas no treinamento","Um ataque de prompt injection no sistema de preços","Mudança nos dados sem monitoramento suficiente","Um problema de latência na interface de compra"],["The high cost of GPUs used for training","A prompt injection attack on the pricing system","Data drift without enough monitoring","A latency problem in the purchasing interface"]]],
+8:[[["Large Logic Machine; muitas regras","Large Language Model; muitos parâmetros e dados","Linked Language Module; ligação com bancos","Large Learning Memory; memória de longo prazo"],["Large Logic Machine; many rules","Large Language Model; many parameters and data","Linked Language Module; database links","Large Learning Memory; long-term memory"]],
+ [["Recursos no fluxo, com saída que o usuário verifica","Um chatbot genérico em destaque na página inicial","Conteúdo gerado e publicado automaticamente","Substituir toda a interface atual por uma conversa"],["In-flow features with output the user verifies","A generic chatbot featured on the home page","Content generated and published automatically","Replacing the entire interface with a chat"]],
+ [["Trocar o modelo sempre muda toda a experiência","Modelos de fundação dispensam a camada de aplicação","O modelo é só um dos componentes da aplicação","Aplicação e modelo são termos equivalentes no mercado"],["Switching models always changes the whole experience","Foundation models make the application layer unnecessary","The model is only one component of the application","Application and model are equivalent market terms"]]],
+9:[[["O mesmo custo nos dois idiomas","Mais tokens em português para o mesmo conteúdo","Custo maior em inglês em qualquer cenário","Custo definido apenas pelo número de palavras"],["The same cost in both languages","More tokens in Portuguese for the same content","Higher cost in English in any scenario","Cost set only by the number of words"]],
+ [["Temperatura alta, para mais variedade","Limite de tokens de saída ilimitado","Temperatura baixa e saída estruturada","Streaming desligado para reduzir o custo"],["High temperature, for more variety","An unlimited output token limit","Low temperature and structured output","Streaming turned off to cut cost"]],
+ [["Aumentar a janela de contexto do modelo","Usar uma temperatura um pouco mais alta","Adicionar mais exemplos ao prompt de sistema","Exibir a resposta em streaming"],["Increase the model's context window","Use a slightly higher temperature","Add more examples to the system prompt","Stream the answer as it is generated"]]],
+10:[[["Apenas busca vetorial, por entender significado","Busca lexical ou híbrida, por exigir exatidão","Nenhuma busca, com o LLM respondendo de memória","Busca por imagem nas capturas de tela"],["Vector search only, since it captures meaning","Lexical or hybrid search, since codes need exactness","No search, with the LLM answering from memory","Image search over the screenshots"]],
+ [["Recall@k com perguntas reais de usuários","Número de parâmetros do modelo de embedding","Tamanho do banco vetorial em gigabytes","Tempo de treinamento do modelo de embedding"],["Recall@k on real user questions","Parameter count of the embedding model","Size of the vector database in gigabytes","Training time of the embedding model"]],
+ [["Nenhum, embeddings são compatíveis entre modelos","Retreinar o LLM que gera as respostas finais","Regerar todos os embeddings e reavaliar a busca","Migrar o banco relacional para outro fornecedor"],["None, embeddings are compatible across models","Retraining the LLM that writes the final answers","Re-embedding everything and re-evaluating search","Migrating the relational database to a new vendor"]]],
+11:[[["Open source pela definição da OSI","Open-weight, com restrições na licença","Modelo fechado, por ter licença própria","Domínio público, por ser gratuito"],["Open source under the OSI definition","Open-weight, with license restrictions","Closed, because it has its own license","Public domain, because it is free"]],
+ [["Apenas uma API proprietária do fornecedor","Nenhuma, isso é inviável com IA generativa","Um chatbot baseado em regras de negócio","Um modelo open-weight com licença compatível"],["Only the vendor's proprietary API","None, this is not viable with generative AI","A chatbot based on business rules","An open-weight model with a compatible license"]],
+ [["No preço por milhão de tokens","Na model card","No número de downloads","No nome e na versão do modelo"],["In the price per million tokens","In the model card","In the number of downloads","In the model's name and version"]]],
+12:[[["Residência de dados e regiões de hospedagem","A temperatura padrão do modelo escolhido","O número de parâmetros do modelo escolhido","O idioma em que o modelo foi mais treinado"],["Data residency and hosting regions","The default temperature of the chosen model","The parameter count of the chosen model","The language the model was mostly trained on"]],
+ [["O modelo fica mais inteligente nesse ambiente","Simplifica compra, contratos e segurança","Dispensa as avaliações de qualidade do modelo","Elimina o custo cobrado por token consumido"],["The model becomes smarter in that environment","It simplifies procurement, contracts and security","It removes the need for quality evaluations","It eliminates the per-token cost"]],
+ [["Usar recursos exclusivos de um fornecedor no código","Nunca trocar de modelo depois do lançamento","Camada de abstração e evals próprias","Hospedar tudo internamente desde o primeiro dia"],["Using one vendor's exclusive features in the code","Never switching models after launch","An abstraction layer and your own evals","Hosting everything internally from day one"]]],
+13:[[["Nada, essas informações já bastam","Preços de entrada e saída, retries e ferramentas","O número de pessoas do time de produto","O tamanho da janela de contexto do modelo"],["Nothing, this information is enough","Input and output prices, retries and tools","The headcount of the product team","The size of the model's context window"]],
+ [["Fica mais barato do que pagar por uso numa API","Não muda, porque o custo da GPU é fixo","Cai a zero depois que o hardware é pago","Sobe, porque a capacidade ociosa também é paga"],["It becomes cheaper than paying per use on an API","It does not change, since GPU cost is fixed","It drops to zero once the hardware is paid off","It rises, since idle capacity is also paid for"]],
+ [["Tokens de pensamento são cobrados como saída","Os tokens de entrada deixam de ser cobrados","O preço passa a ser fixo por mês de uso","Respostas curtas passam a custar mais caro"],["Thinking tokens are billed as output","Input tokens are no longer charged","Pricing becomes a fixed monthly fee","Short answers start costing more"]]],
+14:[[["O ranking público mais recente do mercado","Golden set próprio, com custo e latência p95","A preferência do time de engenharia","O modelo mais caro, por ser o mais capaz"],["The most recent public leaderboard","Your own golden set, with cost and p95 latency","The engineering team's preference","The most expensive model, as the most capable"]],
+ [["Deixar todas as respostas mais lentas","Aumentar o número de parâmetros usados","Mandar casos difíceis ao modelo fraco sem alerta","Impedir o uso de streaming nas respostas"],["Making every answer slower","Increasing the number of parameters used","Sending hard cases to the weak model silently","Preventing streaming of answers"]],
+ [["Quando a confiança é baixa ou a validação falha","Em todas as requisições, por segurança","De forma aleatória, para equilibrar a carga","Apenas nos horários de pico de acesso"],["When confidence is low or validation fails","On every request, to be safe","Randomly, to balance the load","Only during peak traffic hours"]]],
+15:[[["Escrever \"seja cuidadoso com prazos de entrega\"","Política explícita, exemplos e testes de borda","Aumentar a temperatura das respostas","Pedir respostas mais curtas e diretas"],["Write \"be careful with delivery dates\"","An explicit policy, examples and edge-case tests","Raise the temperature of answers","Ask for shorter, more direct answers"]],
+ [["Testar três perguntas manualmente e comparar","Perguntar ao próprio modelo qual versão prefere","Comparar o tamanho e a clareza dos dois prompts","Rodar as duas no mesmo conjunto de casos"],["Test three questions manually and compare","Ask the model which version it prefers","Compare the length and clarity of both prompts","Run both on the same set of cases"]],
+ [["Texto livre, para soar mais natural ao usuário","Saída estruturada com campos definidos","Resposta sempre em inglês, por padronização","Emojis para indicar o status"],["Free text, to sound more natural to users","Structured output with defined fields","Always answer in English for consistency","Emojis that signal the request status"]]],
+16:[[["Aumentar a janela de contexto do modelo","Compactar o histórico mantendo o essencial","Trocar a temperatura a cada nova mensagem","Remover o prompt de sistema das chamadas"],["Increase the model's context window","Compact the history, keeping what matters","Change the temperature on each new message","Remove the system prompt from calls"]],
+ [["Definir o que guardar e permitir ver e apagar","Guardar todas as interações para sempre","Não avisar o usuário para evitar atrito","Usar apenas cookies do navegador para isso"],["Define what to store and allow view and delete","Store every interaction forever","Avoid telling users to prevent friction","Use only browser cookies for this"]],
+ [["Trocar o modelo por uma versão mais nova","Aumentar o limite de tokens de saída","Ver o que chegou ao modelo naquela chamada","Refazer o design da interface do assistente"],["Switch to a newer version of the model","Increase the output token limit","Check what reached the model in that call","Redesign the assistant's interface"]]],
+17:[[["Trocar o LLM imediatamente por outro mais capaz","Ver se o trecho certo veio e só então isolar a falha","Aumentar a temperatura para variar as respostas","Indexar mais documentos, mesmo que pouco relevantes"],["Swap the LLM right away for a more capable one","Check if the right passage came, then isolate the fault","Raise the temperature to vary the answers","Index more documents, even loosely relevant ones"]],
+ [["Divisão dos documentos em trechos mal feita","Temperatura alta demais na geração","Reranking desativado na etapa de busca","Falta de filtro de permissões na busca"],["Poor splitting of documents into chunks","Temperature set too high during generation","Reranking turned off in the retrieval step","No permission filtering in retrieval"]],
+ [["O número total de documentos indexados","Resolução correta sem humano, com contrapeso","O tamanho médio dos trechos recuperados","A quantidade média de citações por resposta"],["The total number of documents indexed so far","Correct no-human resolution, with a counter metric","The average size of the chunks retrieved per query","The average number of citations in each answer"]]],
+18:[[["Fine-tuning semanal com a tabela nova","RAG ou ferramenta que consulta a fonte atual","A tabela de seis meses atrás no prompt","Temperatura mais alta para atualizar valores"],["Weekly fine-tuning with the new price list","RAG or a tool that queries the current source","The six-month-old list placed in the prompt","Higher temperature to refresh the values"]],
+ [["Para ensinar fatos que mudam toda semana","Para exibir as fontes de cada resposta","Para fixar formato e estilo, ou reduzir custo","Para controlar permissões de acesso"],["To teach facts that change every week","To show the sources behind each answer","To lock in format and style, or cut cost","To control access permissions"]],
+ [["Modelos gerais podem alcançar os especializados","Treinar do zero é a melhor estratégia em finanças","O setor financeiro evita adotar IA generativa","RAG não funciona bem com documentos financeiros"],["General models can catch up with specialized ones","Training from scratch is the best strategy in finance","The finance industry avoids generative AI","RAG does not work well with financial documents"]]],
+19:[[["Agente autônomo com acesso aos sistemas","Workflow com etapa de aprovação humana","Chatbot sem integração com sistemas","Arquitetura multiagente com orquestrador"],["An autonomous agent with system access","A workflow with a human approval step","A chatbot with no system integration","A multi-agent setup with an orchestrator"]],
+ [["O concorrente principal já tem um agente?","Qual é o maior modelo disponível hoje?","Quantos tokens por segundo o modelo gera?","Que decisão um fluxo fixo não resolveria?"],["Does the main competitor already have an agent?","What is the largest model available today?","How many tokens per second does the model generate?","Which decision could a fixed flow not handle?"]],
+ [["Preço atrelado ao resultado do cliente","Cobrança por cada mensagem enviada ao cliente","Preço fixo por assento de cada atendente","Cobrança proporcional aos tokens consumidos"],["Pricing tied to the customer's outcome","Charging for each message sent to customers","A fixed price per support agent seat","Charging in proportion to tokens consumed"]]],
+20:[[["Consultar o status de um pedido","Abrir um chamado no sistema","Ler uma pergunta frequente da base","Buscar a política de trocas vigente"],["Checking an order's status","Opening a ticket in the system","Reading an FAQ from the knowledge base","Looking up the current return policy"]],
+ [["Um prompt pedindo mais cuidado com ações","Um modelo maior e mais capaz","Permissões mínimas, orçamento e aprovação","Temperatura zero em todas as etapas"],["A prompt asking for more care with actions","A larger, more capable model","Minimal permissions, a budget and approvals","Zero temperature at every step"]],
+ [["Treina modelos com dados da empresa","Padroniza a conexão com ferramentas e dados","Substitui a necessidade de avaliações","Garante segurança total contra ataques"],["It trains models on company data","It standardizes connections to tools and data","It replaces the need for evaluations","It guarantees full security against attacks"]]],
+21:[[["Adotar, porque qualidade sempre vem primeiro","Pesar o ganho contra custo e latência no caso","Rejeitar, porque o custo é alto demais","Decidir por votação entre os membros do time"],["Adopt it, since quality always comes first","Weigh the gain against cost and latency","Reject it, since the cost is too high","Decide by a vote among team members"]],
+ [["Pesquisar dez concorrentes e consolidar","Preencher um formulário em ordem fixa","Aprovar um reembolso com política clara","Responder a uma saudação do cliente"],["Researching ten competitors and consolidating","Filling in a form in a fixed order","Approving a refund under a clear policy","Replying to a customer's greeting"]],
+ [["Usar vários agentes desde o primeiro dia","Um agente único com todas as ferramentas","Fazer fine-tuning antes de qualquer teste","A solução mais simples que funcione"],["Use multiple agents from day one","A single agent with every tool available","Fine-tune before running any tests","The simplest solution that works"]]],
+22:[[["Assistir às demonstrações dos fornecedores","Testar com tarefas reais e critérios definidos","Escolher o mais popular entre os times","Comparar apenas o preço das licenças"],["Watch the vendors' demos","Test with real tasks and defined criteria","Pick the most popular one among teams","Compare license prices only"]],
+ [["Não há diferença relevante entre essas ferramentas","O Claude Code é uma plataforma de CRM corporativo","Plataformas criam agentes; o Claude Code é um agente","Todos são modelos de linguagem de empresas diferentes"],["There is no meaningful difference between these tools","Claude Code is an enterprise CRM platform","Platforms build agents; Claude Code is an agent","They are all language models from different firms"]],
+ [["Falta de GPUs para rodar o agente no dia a dia","Baixa adoção sem gestão da mudança","O nome comercial escolhido para o produto","O idioma padrão configurado na interface"],["A shortage of GPUs to run the agent day to day","Low adoption without change management","The commercial name chosen for the product","The default language set in the interface"]]],
+23:[[["Casos reais e difíceis, validados por especialistas","Perguntas criadas pelo time de produto na sprint","Apenas benchmarks públicos reconhecidos no mercado","Só os casos mais fáceis, para começar com boa nota"],["Real, hard cases validated by experts","Questions written by the product team in a sprint","Only well-known public benchmarks","Only the easiest cases, to start with a good score"]],
+ [["Para reduzir o custo de cada rodada de avaliação","Porque o juiz tem vieses que precisam ser medidos","Porque humanos avaliam mais rápido em escala","Não é necessário, pois o juiz é objetivo"],["To reduce the cost of each evaluation round","Because the judge has biases that must be measured","Because humans grade faster at scale","It is unnecessary, since the judge is objective"]],
+ [["Nenhum, a nota subiu de forma consistente","O golden set ficou grande demais","O juiz ficou mais rígido com o tempo","Os mesmos casos ajustaram e mediram"],["None, the score rose consistently","The golden set became too large","The judge grew stricter over time","The same cases were used to tune and measure"]]],
+24:[[["Exibir uma mensagem de erro genérica","Outro provedor ou humano com contexto","Tentar de novo indefinidamente","Desligar o produto até o retorno"],["Show a generic error message","Another provider or a human with context","Retry indefinitely","Shut down the product until it recovers"]],
+ [["Latência baixa","Streaming","Idempotência","Temperatura baixa"],["Low latency","Streaming","Idempotency","Low temperature"]],
+ [["Usar adjetivos claros e objetivos no documento de requisitos","Deixar para definir depois do lançamento","Pedir o modelo mais caro e confiável do mercado","SLOs mensuráveis acordados com engenharia"],["Use clear, objective adjectives in the requirements doc","Leave it to be defined after launch","Ask for the most expensive, reliable model","Measurable SLOs agreed with engineering"]]],
+25:[[["Confiar na resposta que o agente deu","Conferir o trace e o sistema de pagamentos","Perguntar ao agente se ele tem certeza","Aumentar a temperatura e tentar de novo"],["Trust the answer the agent gave","Check the trace and the payment system","Ask the agent whether it is sure","Raise the temperature and try again"]],
+ [["Ler conversas reais e categorizar falhas","Olhar só a média de satisfação semanal","Acompanhar o uso de CPU dos servidores","Contar o total de tokens consumidos"],["Read real conversations and tag failures","Look only at weekly average satisfaction","Track server CPU usage","Count the total tokens consumed"]],
+ [["Tudo, inclusive dados sensíveis sem tratamento","Nada, para evitar qualquer risco","Etapas, versões e custos, com dados mascarados","Apenas a resposta final enviada ao cliente"],["Everything, including untreated sensitive data","Nothing, to avoid any risk","Steps, versions and costs, with data masked","Only the final answer sent to the customer"]]],
+26:[[["Sucesso total da iniciativa de automação","Ganho de eficiência às custas da qualidade","Um erro de medição no painel","Que clientes gostam de voltar a falar"],["Total success for the automation effort","Efficiency gains at the expense of quality","A measurement error in the dashboard","That customers like talking to us again"]],
+ [["Número total de mensagens enviadas por dia","Tokens consumidos em média por conversa","Usuários ativos cadastrados no assistente","Resoluções corretas sem humano"],["The total number of messages sent per day","Average tokens consumed per conversation","Active users registered in the assistant","Correct resolutions without a human"]],
+ [["Receita anual da empresa","Taxa de aceitação na primeira semana","Cancelamentos acumulados no ano","Lucro consolidado do trimestre"],["Annual company revenue","Acceptance rate in the first week","Cancellations accumulated over the year","Consolidated quarterly profit"]]],
+27:[[["Cache de prompt","Temperatura mais alta","Tradução do prompt para inglês","Desligar o streaming"],["Prompt caching","A higher temperature","Translating the prompt to English","Turning off streaming"]],
+ [["Chamadas síncronas com o maior modelo","Processamento em lote, com desconto","Streaming para cada relatório","Arquitetura multiagente em paralelo"],["Synchronous calls with the largest model","Batch processing, at a discount","Streaming for each report","A parallel multi-agent architecture"]],
+ [["A média de todas as respostas","O tempo mínimo registrado","Os percentis altos, como p95 e p99","O número de requisições por minuto"],["The average of all answers","The minimum time recorded","High percentiles, such as p95 and p99","The number of requests per minute"]]],
+28:[[["Latência alta ao ler e-mails longos","Injeção indireta via e-mail malicioso","Custo de tokens com anexos grandes","Viés de idioma em e-mails estrangeiros"],["High latency when reading long emails","Indirect injection via a malicious email","Token costs from large attachments","Language bias in foreign emails"]],
+ [["Pedir no prompt que ignore instruções de e-mails","Usar um modelo maior e mais resistente","Um filtro de palavrões nas mensagens","Limitar permissões e aprovar reembolsos"],["Tell the prompt to ignore email instructions","Use a larger, more resistant model","A profanity filter on messages","Limit permissions and approve refunds"]],
+ [["No registro de riscos","No changelog do produto","No roadmap do trimestre","No backlog de bugs"],["In the risk register","In the product changelog","In the quarterly roadmap","In the bug backlog"]]],
+29:[[["Qual modelo usar na primeira versão","Volume, custo atual e tolerância a erro","O preço atual das GPUs no mercado","Quantos engenheiros estão disponíveis"],["Which model to use in the first version","Volume, current cost and error tolerance","Current market prices of GPUs","How many engineers are available"]],
+ [["Aprovar empréstimos sem revisão humana","Dar o diagnóstico médico final ao paciente","Rascunhos que o atendente revisa","Decidir demissões por desempenho"],["Approving loans without human review","Giving patients the final medical diagnosis","Drafts that the agent reviews","Deciding performance-based layoffs"]],
+ [["Sem um problema claro, tecnologia não basta","Hardware de consumo não deveria depender de IA","O preço de lançamento era baixo para o mercado","Faltou investimento em marketing e distribuição"],["Without a clear problem, tech is not enough","Consumer hardware should not rely on AI","The launch price was too low for the market","It lacked marketing and distribution budget"]]],
+30:[[["Execução automática, sem revisão","Sugestão editável, com fonte","Esconder que é IA para gerar confiança","Pop-up obrigatório a cada resposta"],["Automatic execution, with no review","An editable suggestion with a source","Hide that it is AI to build trust","A mandatory pop-up on every answer"]],
+ [["Reiniciar o atendimento do zero","Encerrar e pedir que o cliente ligue","Pedir o e-mail do cliente","Passar todo o contexto adiante"],["Restart the conversation from scratch","End the chat and ask the customer to call","Ask for the customer's email","Pass on the full context"]],
+ [["Usava um modelo de IA muito ruim","Interrompia sem respeitar o contexto","Era caro para os usuários","Não tinha voz nem animação"],["It used a very poor AI model","It interrupted without regard for context","It was expensive for users","It had no voice or animation"]]],
+31:[[["Depois de ver os primeiros resultados","Antes de o piloto começar","Não é preciso definir critérios","Quando a diretoria solicitar"],["After seeing the first results","Before the pilot starts","Criteria do not need defining","When leadership requests it"]],
+ [["Um tema escuro para a interface","Um beta fechado com poucos clientes","IA em paralelo, sem afetar clientes","Um teste A/B tradicional"],["A dark theme for the interface","A closed beta with a few customers","AI in parallel, without affecting users","A traditional A/B test"]],
+ [["Resumos gerados por IA falham na maioria das vezes","Escalar rápido sem testar bordas","IA generativa não serve para mecanismos de busca","Lançamento gradual é desnecessário em grandes empresas"],["AI-generated summaries fail most of the time","Scaling fast without testing edge cases","Generative AI is not suited to search engines","Gradual rollout is unnecessary at big companies"]]],
+32:[[["\"Não cheguei a pensar nisso durante o projeto\"","Explicar os critérios e quando faria sentido","\"Fine-tuning é caro e quase nunca compensa\"","\"O modelo base já era bom o suficiente para nós\""],["\"I did not think about it during the project\"","Explain the criteria and when it would fit","\"Fine-tuning is costly and rarely pays off\"","\"The base model was already good enough for us\""]],
+ [["O número de parâmetros do modelo escolhido","A arquitetura técnica em todos os detalhes","Impacto no negócio e custo por tarefa","A paleta de cores e a tipografia da interface"],["The parameter count of the chosen model","The technical architecture in full detail","Business impact and cost per task","The interface's color palette and fonts"]],
+ [["Um diagrama de classes do sistema","Uma planilha de custos detalhada","O backlog priorizado do time","O PR/FAQ do working backwards"],["A class diagram of the system","A detailed cost spreadsheet","The team's prioritized backlog","The PR/FAQ from working backwards"]]]
+};
+for(const k in QZFIX){QZFIX[k].forEach((pair,i)=>{const q=QZ[k][i];if(!q)return;q[1]=pair[0];q[5]=pair[1];});}
+// Segunda rodada: alonga distratores curtos e enxuga corretas que ainda destoavam
+const QZREPL={
+"They depended on GPUs that did not exist yet":"They depended on GPUs that did not exist at the time",
+"They were too slow for the computers of that era":"They were far too slow for the computers of that era",
+"Rules were costly to maintain and failed on new cases":"Rules were costly and broke on new cases",
+"Descartar o fornecedor por exagero de marketing":"Descartar o fornecedor por exagero nas promessas de marketing",
+"Pedir o número de parâmetros do modelo usado":"Pedir o número de parâmetros e o tamanho do modelo usado",
+"Pedir o desempenho medido na sua tarefa e nos seus dados":"Pedir o desempenho medido nos seus dados",
+"Leakage or a test that does not mirror real usage":"Leakage or an unrealistic test set",
+"Large Logic Machine; muitas regras":"Large Logic Machine; muitas regras de negócio",
+"Large Language Model; muitos parâmetros e dados":"Large Language Model; muitos parâmetros",
+"Large Logic Machine; many rules":"Large Logic Machine; many business rules",
+"Large Language Model; many parameters and data":"Large Language Model; many parameters",
+"O mesmo custo nos dois idiomas":"O mesmo custo nos dois idiomas, se o texto for igual",
+"Mais tokens em português para o mesmo conteúdo":"Mais tokens em português",
+"Custo maior em inglês em qualquer cenário":"Custo maior em inglês, por ser o idioma padrão",
+"The same cost in both languages":"The same cost in both languages for equal text",
+"More tokens in Portuguese for the same content":"More tokens in Portuguese",
+"Higher cost in English in any scenario":"Higher cost in English, as the default language",
+"Cost set only by the number of words":"Cost set only by the number of words in each answer",
+"An unlimited output token limit":"An unlimited output token limit, to avoid cuts",
+"Streaming turned off to cut cost":"Streaming turned off to cut the cost per call",
+"Lexical or hybrid search, since codes need exactness":"Lexical or hybrid search",
+"Image search over the screenshots":"Image search over screenshots of the error screens",
+"Only the vendor's proprietary API":"Only the vendor's proprietary API, via the internet",
+"A chatbot based on business rules":"A chatbot based on fixed business rules and scripts",
+"An open-weight model with a compatible license":"An open-weight model with a suitable license",
+"It simplifies procurement, contracts and security":"It simplifies procurement and security",
+"It eliminates the per-token cost":"It eliminates the per-token cost for the client",
+"Nada, essas informações já bastam":"Nada, essas informações já bastam para a estimativa",
+"Preços de entrada e saída, retries e ferramentas":"Preços, retries e chamadas de ferramentas",
+"O número de pessoas do time de produto":"O número de pessoas no time de produto e engenharia",
+"Nothing, this information is enough":"Nothing, this information is enough to estimate",
+"Input and output prices, retries and tools":"Prices, retries and tool calls",
+"The headcount of the product team":"The headcount of the product and engineering team",
+"Fica mais barato do que pagar por uso numa API":"Fica mais barato do que pagar por uso numa API pública",
+"Sobe, porque a capacidade ociosa também é paga":"Sobe, pois a ociosidade também é paga",
+"Golden set próprio, com custo e latência p95":"Golden set próprio, com custo e p95",
+"A preferência do time de engenharia":"A preferência técnica do time de engenharia",
+"The most recent public leaderboard":"The most recent public leaderboard results",
+"Your own golden set, with cost and p95 latency":"Your own golden set, cost and p95",
+"The engineering team's preference":"The engineering team's technical preference",
+"Mandar casos difíceis ao modelo fraco sem alerta":"Errar a rota de casos difíceis em silêncio",
+"Deixar todas as respostas mais lentas":"Deixar todas as respostas mais lentas para o usuário",
+"Making every answer slower":"Making every answer slower for the user",
+"Sending hard cases to the weak model silently":"Silently misrouting hard cases",
+"Preventing streaming of answers":"Preventing streaming of the answers to users",
+"Quando a confiança é baixa ou a validação falha":"Quando a confiança ou a validação falham",
+"Em todas as requisições, por segurança":"Em todas as requisições, por segurança e simplicidade",
+"Apenas nos horários de pico de acesso":"Apenas nos horários de pico de acesso dos usuários",
+"When confidence is low or validation fails":"When confidence or validation fails",
+"On every request, to be safe":"On every request, to be safe and keep it simple",
+"Randomly, to balance the load":"Randomly, to balance the load across models",
+"Only during peak traffic hours":"Only during the peak traffic hours of the day",
+"Política explícita, exemplos e testes de borda":"Política explícita, exemplos e testes",
+"Aumentar a temperatura das respostas":"Aumentar a temperatura das respostas do assistente",
+"An explicit policy, examples and edge-case tests":"An explicit policy, examples and tests",
+"Raise the temperature of answers":"Raise the temperature of the assistant's answers",
+"Ask for shorter, more direct answers":"Ask for shorter, more direct answers in every reply",
+"Definir o que guardar e permitir ver e apagar":"Definir o que guardar, com opção de apagar",
+"Guardar todas as interações para sempre":"Guardar todas as interações para sempre, por precaução",
+"Define what to store and allow view and delete":"Define what to store, with a delete option",
+"Store every interaction forever":"Store every interaction forever, just in case",
+"Use only browser cookies for this":"Use only browser cookies to store this information",
+"Increase the output token limit":"Increase the output token limit for the answers",
+"Redesign the assistant's interface":"Redesign the assistant's interface and flows",
+"Check if the right passage came, then isolate the fault":"Check whether the right passage was retrieved",
+"Raise the temperature to vary the answers":"Raise the temperature to vary the generated answers",
+"Para fixar formato e estilo, ou reduzir custo":"Para fixar formato e estilo",
+"Para controlar permissões de acesso":"Para controlar permissões de acesso aos documentos",
+"To lock in format and style, or cut cost":"To lock in format and style",
+"To control access permissions":"To control access permissions on the documents",
+"Um modelo maior e mais capaz":"Um modelo maior e mais capaz de planejar as ações",
+"Permissões mínimas, orçamento e aprovação":"Permissões mínimas e aprovação",
+"Temperatura zero em todas as etapas":"Temperatura zero em todas as etapas do agente",
+"A larger, more capable model":"A larger model that plans its actions better",
+"Minimal permissions, a budget and approvals":"Minimal permissions and approvals",
+"Zero temperature at every step":"Zero temperature at every step of the agent",
+"Padroniza a conexão com ferramentas e dados":"Padroniza conexões com ferramentas",
+"Treina modelos com dados da empresa":"Treina modelos com dados internos da empresa",
+"It standardizes connections to tools and data":"It standardizes connections to tools",
+"It trains models on company data":"It trains models on internal company data",
+"Researching ten competitors and consolidating":"Researching ten competitors",
+"Filling in a form in a fixed order":"Filling in a form in a fixed, required order",
+"Replying to a customer's greeting":"Replying to a customer's greeting message",
+"Testar com tarefas reais e critérios definidos":"Testar com tarefas reais da empresa",
+"Comparar apenas o preço das licenças":"Comparar apenas o preço das licenças anuais",
+"Watch the vendors' demos":"Watch the vendors' polished product demos",
+"Test with real tasks and defined criteria":"Test with real company tasks",
+"Compare license prices only":"Compare only the annual license prices",
+"Because the judge has biases that must be measured":"Because the judge has measurable biases",
+"Because humans grade faster at scale":"Because humans grade faster and cheaper at scale",
+"None, the score rose consistently":"None, the score rose consistently across cases",
+"The golden set became too large":"The golden set became too large to be useful",
+"The judge grew stricter over time":"The judge grew stricter as the runs went on",
+"The same cases were used to tune and measure":"The same cases tuned and measured it",
+"Outro provedor ou humano com contexto":"Outro provedor ou um humano",
+"Tentar de novo indefinidamente":"Tentar de novo indefinidamente até responder",
+"Desligar o produto até o retorno":"Desligar o produto até o fornecedor voltar",
+"Show a generic error message":"Show a generic error message to the user",
+"Another provider or a human with context":"Another provider or a human",
+"Retry indefinitely":"Retry indefinitely until it answers",
+"Trust the answer the agent gave":"Trust the answer the agent gave the customer",
+"Check the trace and the payment system":"Check the trace and the payment system",
+"Ask the agent whether it is sure":"Ask the agent whether it is sure about it",
+"Track server CPU usage":"Track CPU usage across the servers",
+"Count the total tokens consumed":"Count the total tokens consumed per week",
+"Nada, para evitar qualquer risco":"Nada, para evitar qualquer risco de vazamento",
+"Etapas, versões e custos, com dados mascarados":"Etapas e custos, com dados mascarados",
+"Nothing, to avoid any risk":"Nothing, to avoid any risk of leaking data",
+"Steps, versions and costs, with data masked":"Steps and costs, with data masked",
+"Um erro de medição no painel":"Um erro de medição no painel de métricas",
+"Ganho de eficiência às custas da qualidade":"Eficiência às custas da qualidade",
+"Receita anual da empresa":"Receita anual consolidada da empresa",
+"Taxa de aceitação na primeira semana":"Aceitação na primeira semana",
+"A média de todas as respostas":"A média de tempo de todas as respostas",
+"O tempo mínimo registrado":"O menor tempo registrado no período",
+"Os percentis altos, como p95 e p99":"Percentis altos, como p95 e p99",
+"The average of all answers":"The average time across all answers",
+"The minimum time recorded":"The shortest time recorded in the period",
+"High percentiles, such as p95 and p99":"High percentiles, like p95 and p99",
+"Indirect injection via a malicious email":"Indirect prompt injection",
+"Language bias in foreign emails":"Language bias in emails written in other languages",
+"Volume, current cost and error tolerance":"Volume, cost and error tolerance",
+"Current market prices of GPUs":"Current market prices of GPUs for inference",
+"Usava um modelo de IA muito ruim":"Usava um modelo de IA ruim para a época",
+"Interrompia sem respeitar o contexto":"Interrompia na hora errada",
+"Era caro para os usuários":"Era caro para os usuários do pacote Office",
+"Não tinha voz nem animação":"Não tinha voz nem animações mais elaboradas",
+"It used a very poor AI model":"It used a poor AI model for its time",
+"It interrupted without regard for context":"It interrupted at the wrong time",
+"It was expensive for users":"It was expensive for Office users",
+"It had no voice or animation":"It had no voice or richer animations",
+"Um teste A/B tradicional":"Um teste A/B tradicional com dois grupos",
+"Um tema escuro para a interface":"Um tema escuro opcional para a interface",
+"IA em paralelo, sem afetar clientes":"IA em paralelo, sem afetar ninguém",
+"A traditional A/B test":"A traditional A/B test with two groups",
+"A dark theme for the interface":"An optional dark theme for the interface",
+"AI in parallel, without affecting users":"AI running in parallel, unseen",
+"A detailed cost spreadsheet":"A detailed spreadsheet of project costs",
+"The PR/FAQ from working backwards":"The working backwards PR/FAQ"
+};
+for(let k=1;k<=32;k++)(QZ[k]||[]).forEach(q=>{q[1]=q[1].map(x=>QZREPL[x]||x);q[5]=q[5].map(x=>QZREPL[x]||x);});
+// Terceira rodada: equilibra para que a correta não seja nem sistematicamente a mais longa, nem a mais curta
+const QZREPL2={
+"Automação baseada em regras, sem IA":"Automação baseada em regras fixas, sem nenhuma IA envolvida",
+"Rule-based automation, with no AI":"Rule-based automation that follows fixed rules, with no AI",
+"Propor um piloto com marcos verificáveis":"Propor um piloto pequeno, com marcos e metas que possam ser verificados",
+"Propose a pilot with verifiable milestones":"Propose a small pilot with milestones that can be verified",
+"Decidir a elegibilidade para reembolso":"Decidir se o cliente é elegível ao reembolso segundo a política",
+"Deciding refund eligibility":"Deciding whether the customer is eligible for a refund",
+"Taxa de respostas erradas aceitas em testes":"Taxa de respostas erradas que os usuários aceitam nos testes",
+"Rate of wrong answers accepted in tests":"Rate of wrong answers that users accept during tests",
+"ML clássico, como gradient boosting":"ML clássico sobre os dados tabulares, como gradient boosting",
+"Classic ML, such as gradient boosting":"Classic ML on the tabular data, such as gradient boosting",
+"Mais tokens em português":"Mais tokens em português para expressar o mesmo conteúdo",
+"More tokens in Portuguese":"More tokens in Portuguese to express the same content",
+"Lexical or hybrid search":"Lexical or hybrid search, since codes need exact matches",
+"Na model card":"Na model card publicada",
+"In the model card":"In the published model card",
+"Camada de abstração e evals próprias":"Uma camada de abstração com avaliações próprias e comparáveis",
+"Sobe, pois a ociosidade também é paga":"Sobe, porque a capacidade ociosa também é paga",
+"Quando a confiança ou a validação falham":"Quando a confiança for baixa ou a resposta não passar na validação",
+"When confidence or validation fails":"When confidence is low or the answer fails validation",
+"Rodar as duas no mesmo conjunto de casos":"Rodar as duas versões no mesmo conjunto de casos de teste",
+"Run both on the same set of cases":"Run both versions on the same fixed set of test cases",
+"No permission filtering in retrieval":"No permission filtering at the retrieval step",
+"Para fixar formato e estilo":"Para fixar formato e estilo, ou reduzir custo",
+"To lock in format and style":"To lock in format and style, or cut cost",
+"Permissões mínimas e aprovação":"Permissões mínimas, orçamento de passos e aprovação humana",
+"Minimal permissions and approvals":"Minimal permissions, a step budget and human approvals",
+"Researching ten competitors":"Researching ten competitors and consolidating",
+"Testar com tarefas reais da empresa":"Testar com tarefas reais e critérios definidos",
+"Outro provedor ou um humano":"Outro provedor ou um humano com contexto",
+"Another provider or a human":"Another provider or a human with context",
+"Etapas e custos, com dados mascarados":"Etapas, versões e custos, com dados mascarados",
+"Steps and costs, with data masked":"Steps, versions and costs, with data masked",
+"Resoluções corretas sem humano":"Problemas resolvidos corretamente sem intervenção humana",
+"Correct resolutions without a human":"Issues resolved correctly without human intervention",
+"Percentis altos, como p95 e p99":"Os percentis altos, como p95 e p99",
+"Rascunhos que o atendente revisa":"Rascunhos de resposta que o atendente revisa antes de enviar",
+"Drafts that the agent reviews":"Draft replies that the agent reviews before sending",
+"Interrompia na hora errada":"Interrompia na hora errada, sem considerar o contexto",
+"It interrupted at the wrong time":"It interrupted at the wrong moment, ignoring context",
+"Antes de o piloto começar":"Antes de o piloto começar, junto com as metas",
+"Before the pilot starts":"Before the pilot starts, together with the targets",
+"Escalar rápido sem testar bordas":"Escalar para todos sem testar bem os casos de borda",
+"Impacto no negócio e custo por tarefa":"Impacto em métricas de negócio e custo por tarefa",
+"Business impact and cost per task":"Impact on business metrics and cost per task",
+"O modelo é só um dos componentes da aplicação":"O modelo é apenas um dos componentes da aplicação",
+"Pedir o desempenho medido nos seus dados":"Pedir o desempenho medido na sua tarefa e nos seus dados",
+"Prices, retries and tool calls":"Input and output prices, retries and tool calls",
+"Baixa adoção sem gestão da mudança":"Baixa adoção por falta de gestão da mudança",
+"The same cases tuned and measured it":"The same cases were used to tune and to measure",
+"Indirect prompt injection":"Indirect prompt injection via a malicious email"
+};
+for(let k=1;k<=32;k++)(QZ[k]||[]).forEach(q=>{q[1]=q[1].map(x=>QZREPL2[x]||x);q[5]=q[5].map(x=>QZREPL2[x]||x);});
+// Quarta rodada: alguns distratores ganham detalhe para a correta voltar ao meio
+const QZREPL3={
+"Modelo de machine learning, porque usa dados do cliente":"Modelo de machine learning, porque usa dados históricos do cliente",
+"A machine learning model, because it uses customer data":"A machine learning model, because it uses historical customer data",
+"Satisfação média (CSAT) ao final de cada conversa":"Satisfação média (CSAT) medida ao final de cada conversa atendida",
+"Um LLM de fronteira lendo as tabelas diretamente":"Um LLM de fronteira lendo as tabelas diretamente, sem pré-processamento",
+"A frontier LLM reading the tables directly":"A frontier LLM reading the tables directly, with no preprocessing",
+"O mesmo custo nos dois idiomas, se o texto for igual":"O mesmo custo nos dois idiomas, desde que o texto seja equivalente",
+"Usar recursos exclusivos de um fornecedor no código":"Usar recursos exclusivos de um único fornecedor em todo o código",
+"Perguntar ao próprio modelo qual versão prefere":"Perguntar ao próprio modelo qual das duas versões ele prefere",
+"Compare the length and clarity of both prompts":"Compare the length and clarity of both prompts side by side",
+"Um modelo maior e mais capaz de planejar as ações":"Um modelo maior, que costuma planejar melhor as próprias ações",
+"A larger model that plans its actions better":"A larger model, which usually plans its own actions better",
+"Número total de mensagens enviadas por dia":"Número total de mensagens enviadas pelo assistente por dia",
+"The total number of messages sent per day":"The total number of messages the assistant sends per day",
+"Dar o diagnóstico médico final ao paciente":"Dar ao paciente o diagnóstico médico final, sem revisão de um médico",
+"Giving patients the final medical diagnosis":"Giving patients the final medical diagnosis without a doctor",
+"Não tinha voz nem animações mais elaboradas":"Não tinha voz nem animações mais elaboradas que chamassem atenção",
+"It had no voice or richer animations":"It had no voice or the richer animations users expected",
+"Depois de ver os primeiros resultados":"Depois de ver os primeiros resultados do piloto rodando",
+"After seeing the first results":"After seeing the first results from the running pilot",
+"A paleta de cores e a tipografia da interface":"A paleta de cores e a tipografia usadas na interface do produto"
+};
+for(let k=1;k<=32;k++)(QZ[k]||[]).forEach(q=>{q[1]=q[1].map(x=>QZREPL3[x]||x);q[5]=q[5].map(x=>QZREPL3[x]||x);});
+// Quinta rodada: palavras absolutas deixam de aparecer só nas alternativas erradas
+const QZREPL4={
+"Hire a data science team before doing any discovery":"Hire a data science team before doing discovery",
+"O cliente deve sempre confirmar a informação com um humano":"O cliente deve confirmar a informação com um humano",
+"Customers should always confirm with a human":"Customers should confirm with a human first",
+"São mais baratos que modelos comuns em qualquer tarefa":"São mais baratos que modelos comuns na maioria das tarefas",
+"They are cheaper than regular models on any task":"They are cheaper than regular models on most tasks",
+"Trocar o modelo sempre muda toda a experiência":"Trocar o modelo muda a experiência inteira do usuário",
+"Switching models always changes the whole experience":"Switching models changes the user's entire experience",
+"Usar recursos exclusivos de um único fornecedor em todo o código":"Usar recursos exclusivos de um único fornecedor no código",
+"Nunca trocar de modelo depois do lançamento":"Evitar trocar de modelo depois do lançamento",
+"Never switching models after launch":"Avoiding model switches after launch",
+"Deixar todas as respostas mais lentas para o usuário":"Deixar as respostas mais lentas para o usuário",
+"Making every answer slower for the user":"Making answers slower for the user",
+"Ask for shorter, more direct answers in every reply":"Ask for shorter, more direct answers in replies",
+"Resposta sempre em inglês, por padronização":"Resposta em inglês, por padronização",
+"Always answer in English for consistency":"Answers in English for consistency",
+"Guardar todas as interações para sempre, por precaução":"Guardar as interações indefinidamente, por precaução",
+"Store every interaction forever, just in case":"Store interactions indefinitely, just in case",
+"Temperatura zero em todas as etapas do agente":"Temperatura zero nas etapas do agente",
+"Zero temperature at every step of the agent":"Zero temperature across the agent's steps",
+"Adotar, porque qualidade sempre vem primeiro":"Adotar, porque qualidade vem em primeiro lugar",
+"Adopt it, since quality always comes first":"Adopt it, since quality comes first",
+"Fazer fine-tuning antes de qualquer teste":"Fazer fine-tuning antes dos primeiros testes",
+"Fine-tune before running any tests":"Fine-tune before running the first tests",
+"Todos são modelos de linguagem de empresas diferentes":"São modelos de linguagem de empresas diferentes",
+"They are all language models from different firms":"They are language models from different firms",
+"Nada, para evitar qualquer risco de vazamento":"Nada, para evitar riscos de vazamento",
+"Nothing, to avoid any risk of leaking data":"Nothing, to avoid the risk of leaking data",
+"A mandatory pop-up on every answer":"A mandatory pop-up on each answer",
+"\"Fine-tuning é caro e quase nunca compensa\"":"\"Fine-tuning é caro e raramente compensa\"",
+"A arquitetura técnica em todos os detalhes":"A arquitetura técnica em detalhes"
+};
+for(let k=1;k<=32;k++)(QZ[k]||[]).forEach(q=>{q[1]=q[1].map(x=>QZREPL4[x]||x);q[5]=q[5].map(x=>QZREPL4[x]||x);});
+
 // Equilibra a posição da resposta correta: cada letra é a certa no mesmo número de questões, em ordem embaralhada fixa
 (function(){const all=[];for(let k=1;k<=32;k++)(QZ[k]||[]).forEach(q=>all.push(q));
   const pos=all.map((_,i)=>i%4);let seed=20260930;const rnd=()=>{seed=(seed*1103515245+12345)%2147483648;return seed/2147483648;};
@@ -3434,6 +3899,414 @@ function renderSimResult(app,S){
     window._tutorAsk=sv("ask",sqT(q),pk!=null?o[c.ord[id][pk]]:null,o[q.a]); location.hash="#/tutor";}));
 }
 
+/* ============ APROFUNDAMENTO E DIAGRAMAS ============ */
+// MORE[n] = {dg: especificação do diagrama, deep: [[títuloPT,títuloEN,textoPT,textoEN], ...]}
+const MORE={};
+function M(n,o){MORE[n]=o;}
+
+M(1,{dg:{type:"nest",t:["Como os termos se encaixam","How the terms fit together"],
+  rings:[["Produto de IA","AI product","Experiência completa: dados, interface, regras, operação e métricas","Full experience: data, interface, rules, operations and metrics"],
+         ["Sistema","System","Modelo + integrações + regras + monitoramento","Model + integrations + rules + monitoring"],
+         ["Modelo","Model","Transforma entradas em saídas; aprendido com dados","Turns inputs into outputs; learned from data"],
+         ["Algoritmo","Algorithm","Os passos que treinam e executam o modelo","The steps that train and run the model"]],
+  note:["A automação pode existir em qualquer camada sem envolver IA.","Automation can exist at any layer without involving AI."]},
+ deep:[["Por que o rótulo importa","Why the label matters",
+  "Chamar tudo de IA cria três problemas práticos. O primeiro é de expectativa: se o cliente acha que há um modelo aprendendo, espera melhora contínua, e um sistema de regras não melhora sozinho. O segundo é de custo: modelos exigem dados, avaliação e monitoramento, e quem não separa as coisas subestima o esforço. O terceiro é de risco regulatório: leis como o AI Act definem obrigações para sistemas de IA, e classificar errado pode gerar exigências desnecessárias ou, pior, deixar de cumprir as necessárias.",
+  "Calling everything AI creates three practical problems. The first is expectations: if customers think a model is learning, they expect continuous improvement, and a rule-based system does not improve on its own. The second is cost: models require data, evaluation and monitoring, and anyone who does not separate the concepts underestimates the effort. The third is regulatory risk: laws such as the AI Act define obligations for AI systems, and misclassifying can create unnecessary requirements or, worse, miss the required ones."],
+ ["Um teste rápido para usar no dia a dia","A quick test for everyday use",
+  "Diante de qualquer funcionalidade, faça três perguntas. Existe algo aprendido a partir de dados, ou só regras escritas por pessoas? O comportamento muda quando chegam dados novos, sem alguém reprogramar? O resultado é uma previsão ou geração com alguma incerteza? Se as três respostas forem não, é automação ou software tradicional. Se alguma for sim, há um componente de IA, e com ele vêm as perguntas de produto da trilha: como medir qualidade, o que acontece quando erra e quanto custa operar.",
+  "For any feature, ask three questions. Is there something learned from data, or only rules written by people? Does the behavior change when new data arrives, without someone reprogramming it? Is the output a prediction or generation with some uncertainty? If all three answers are no, it is automation or traditional software. If any is yes, there is an AI component, and with it come the product questions of this path: how to measure quality, what happens when it errs and how much it costs to run."]]});
+
+M(2,{dg:{type:"timeline",t:["Marcos da história da IA","Milestones in AI history"],
+  items:[["1950","Teste de Turing","Turing Test"],["1956","Dartmouth","Dartmouth"],["1958","Perceptron","Perceptron"],["1973","1º inverno","1st winter"],["1980s","Sistemas especialistas","Expert systems"],["1987","2º inverno","2nd winter"],["1997","Deep Blue","Deep Blue"],["2012","AlexNet","AlexNet"],["2017","Transformer","Transformer"],["2022","ChatGPT","ChatGPT"]]},
+ deep:[["O padrão dos ciclos de hype","The pattern of hype cycles",
+  "Os dois invernos seguiram a mesma sequência: uma demonstração impressionante, promessas de que problemas gerais seriam resolvidos em poucos anos, investimento alto, resultados abaixo do prometido e corte de verbas. No primeiro, a tradução automática e a visão computacional não chegaram perto do anunciado. No segundo, os sistemas especialistas se mostraram caros de manter. Em ambos, a tecnologia não era inútil; o problema era a distância entre promessa e entrega.",
+  "Both winters followed the same sequence: an impressive demo, promises that general problems would be solved within a few years, heavy investment, results below what was promised and funding cuts. In the first, machine translation and computer vision came nowhere near what was announced. In the second, expert systems proved costly to maintain. In both cases the technology was not useless; the problem was the gap between promise and delivery."],
+ ["O que é diferente agora, e o que não é","What is different now, and what is not",
+  "Hoje há três diferenças reais: dados em escala de internet, poder computacional barato e uma técnica, o Transformer, que melhora de forma previsível com mais dados e computação. Isso gerou produtos usados por centenas de milhões de pessoas, algo que nenhum ciclo anterior alcançou. O que não mudou é a tendência humana de extrapolar demonstrações. Para o PM, a lição é separar o que já funciona em produção do que ainda é promessa, e planejar roadmaps com base no primeiro.",
+  "Today there are three real differences: internet-scale data, cheap computing power and a technique, the Transformer, that improves predictably with more data and compute. This produced products used by hundreds of millions of people, something no previous cycle achieved. What has not changed is the human tendency to extrapolate from demos. For the PM, the lesson is to separate what already works in production from what is still a promise, and to build roadmaps on the former."]]});
+
+M(3,{dg:{type:"flow",t:["Como funciona um sistema especialista","How an expert system works"],
+  steps:[["Especialista","Expert","entrevistas","interviews"],["Base de conhecimento","Knowledge base","fatos + regras SE/ENTÃO","facts + IF/THEN rules"],["Motor de inferência","Inference engine","aplica as regras","applies the rules"],["Conclusão","Conclusion","com explicação","with explanation"]],
+  note:["Hoje, o padrão híbrido coloca um LLM antes do motor: ele transforma texto livre em fatos estruturados.","Today, the hybrid pattern puts an LLM before the engine: it turns free text into structured facts."]},
+ deep:[["Onde as regras ainda vencem","Where rules still win",
+  "Regras explícitas são a melhor escolha quando o custo de um erro é alto, quando a decisão precisa ser explicada a um auditor e quando os casos são poucos e bem definidos. Cálculo de impostos, elegibilidade a benefícios, limites de crédito e conformidade regulatória são exemplos. Nesses casos, previsibilidade vale mais do que flexibilidade, e um modelo estatístico, por melhor que seja, adiciona incerteza onde ela não é aceitável.",
+  "Explicit rules are the best choice when the cost of an error is high, when the decision must be explained to an auditor and when cases are few and well defined. Tax calculation, benefit eligibility, credit limits and regulatory compliance are examples. In these cases, predictability is worth more than flexibility, and a statistical model, however good, adds uncertainty where it is not acceptable."],
+ ["O padrão híbrido na prática","The hybrid pattern in practice",
+  "No atendimento, o cliente escreve: \"comprei há 20 dias, a tela veio riscada e quero meu dinheiro de volta\". Um LLM extrai os fatos: dias desde a compra = 20, motivo = defeito, pedido = reembolso. Depois, regras determinísticas aplicam a política: defeito dentro de 30 dias dá direito a reembolso. O LLM lida com a linguagem bagunçada, e a regra garante uma decisão consistente e auditável. Esse desenho é cada vez mais comum em produtos de IA em setores regulados.",
+  "In customer support, the customer writes: \"I bought it 20 days ago, the screen arrived scratched and I want my money back\". An LLM extracts the facts: days since purchase = 20, reason = defect, request = refund. Then deterministic rules apply the policy: a defect within 30 days qualifies for a refund. The LLM handles the messy language, and the rule ensures a consistent, auditable decision. This design is increasingly common in AI products in regulated industries."]]});
+
+M(4,{dg:{type:"compare",t:["Fluência não é confiabilidade","Fluency is not reliability"],
+  cols:[["ELIZA (1966)","ELIZA (1966)"],["LLM atual","Today's LLM"]],
+  rows:[["Como responde","How it answers",["Reformula a frase do usuário com padrões","Gera texto novo, token a token"],["Rephrases the user's sentence with patterns","Generates new text, token by token"]],
+        ["Fluência","Fluency",["Baixa, mas convincente","Muito alta"],["Low, but convincing","Very high"]],
+        ["Conhecimento","Knowledge",["Nenhum","Amplo, mas pode estar errado ou desatualizado"],["None","Broad, but may be wrong or outdated"]],
+        ["Risco principal","Main risk",["Usuário atribuir compreensão","Usuário confiar em erro dito com segurança"],["Users attributing understanding","Users trusting errors stated confidently"]]]},
+ deep:[["Por que confiamos em quem fala bem","Why we trust smooth talkers",
+  "Pessoas usam fluência como atalho para competência: quem fala com segurança parece saber. Com humanos, o atalho funciona razoavelmente, porque fluência e conhecimento costumam andar juntos. Com LLMs, eles se separam: o modelo escreve com a mesma confiança quando acerta e quando inventa. Pesquisas sobre confiança excessiva mostram que usuários aceitam respostas erradas com mais frequência quando a explicação é longa e bem escrita.",
+  "People use fluency as a shortcut for competence: whoever speaks confidently seems to know. With humans, the shortcut works reasonably well, because fluency and knowledge tend to go together. With LLMs they come apart: the model writes with the same confidence whether it is right or making things up. Research on overreliance shows that users accept wrong answers more often when the explanation is long and well written."],
+ ["Padrões de produto para calibrar a confiança","Product patterns to calibrate trust",
+  "Os padrões mais eficazes são: mostrar a fonte de cada afirmação importante, para que o usuário confira; dizer \"não encontrei\" em vez de improvisar; destacar o que precisa de verificação, como valores e prazos; e evitar personalidade exagerada em contextos sérios. Nas avaliações, inclua casos em que a resposta parece certa mas está errada, e meça quantos usuários percebem. Essa métrica diz mais sobre segurança do que a satisfação média.",
+  "The most effective patterns are: show the source of each important claim so users can check it; say \"I could not find it\" instead of improvising; highlight what needs verification, such as amounts and deadlines; and avoid exaggerated personality in serious contexts. In evaluations, include cases where the answer looks right but is wrong, and measure how many users notice. That metric says more about safety than average satisfaction."]]});
+
+M(5,{dg:{type:"compare",t:["Três eixos para classificar um sistema","Three axes to classify a system"],
+  cols:[["Capacidade","Capability"],["Abordagem","Approach"],["Aplicação","Application"]],
+  rows:[["Pergunta","Question",["Quão geral é?","Como aprende ou decide?","Para que serve?"],["How general is it?","How does it learn or decide?","What is it for?"]],
+        ["Exemplos","Examples",["IA estreita, AGI, superinteligência","Simbólica, ML, híbrida","Visão, linguagem, recomendação"],["Narrow AI, AGI, superintelligence","Symbolic, ML, hybrid","Vision, language, recommendation"]],
+        ["Quem se importa","Who cares",["Estratégia e expectativas","Engenharia e custo","Jurídico e regulação"],["Strategy and expectations","Engineering and cost","Legal and regulation"]]]},
+ deep:[["Por que a AGI é difícil de definir","Why AGI is hard to define",
+  "Não há acordo sobre o que conta como inteligência geral. Algumas definições olham para tarefas (fazer a maioria dos trabalhos intelectuais humanos), outras para aprendizado (aprender qualquer tarefa nova com poucos exemplos) e outras para impacto econômico. A proposta do Google DeepMind de níveis combina desempenho e amplitude, mas ainda depende de quais tarefas entram na conta. Para o PM, isso significa tratar \"AGI\" como discurso de mercado, e não como especificação.",
+  "There is no agreement on what counts as general intelligence. Some definitions look at tasks (doing most human intellectual work), others at learning (learning any new task from few examples) and others at economic impact. Google DeepMind's levels proposal combines performance and breadth, but still depends on which tasks are counted. For the PM, this means treating \"AGI\" as market talk, not as a specification."],
+ ["Como os eixos ajudam em decisões reais","How the axes help with real decisions",
+  "O eixo da aplicação define riscos e obrigações: um mesmo modelo usado para sugerir músicas e para triar currículos tem exigências completamente diferentes. O eixo da abordagem define custo e manutenção: regras exigem especialistas; ML exige dados e monitoramento. O eixo da capacidade define expectativas: um sistema estreito vai falhar fora do seu domínio, e a comunicação com usuários precisa deixar esse limite claro.",
+  "The application axis defines risks and obligations: the same model used to suggest songs and to screen resumes has completely different requirements. The approach axis defines cost and maintenance: rules need experts; ML needs data and monitoring. The capability axis defines expectations: a narrow system will fail outside its domain, and communication with users must make that limit clear."]]});
+
+M(6,{dg:{type:"nest",t:["Onde cada termo se encaixa","Where each term fits"],
+  rings:[["Inteligência artificial","Artificial intelligence","Qualquer técnica que faz máquinas executarem tarefas inteligentes","Any technique that makes machines perform intelligent tasks"],
+         ["Machine learning","Machine learning","Aprende padrões a partir de dados","Learns patterns from data"],
+         ["Redes neurais","Neural networks","Camadas de unidades conectadas","Layers of connected units"],
+         ["Deep learning","Deep learning","Redes com muitas camadas","Networks with many layers"],
+         ["LLMs","LLMs","Deep learning treinado em texto, em escala gigante","Deep learning trained on text at huge scale"]]},
+ deep:[["Como um modelo aprende, sem matemática","How a model learns, without math",
+  "Imagine um modelo de preço de imóveis. Ele começa chutando valores aleatórios. Para cada casa do treino, compara o chute com o preço real e calcula o erro. Depois ajusta seus parâmetros um pouco na direção que reduziria esse erro, processo chamado de descida do gradiente. Repetido milhões de vezes, o modelo encontra parâmetros que erram pouco. Um LLM faz o mesmo, só que o \"preço\" é a próxima palavra e os parâmetros são bilhões.",
+  "Imagine a house price model. It starts by guessing random values. For each house in the training data, it compares the guess with the real price and computes the error. Then it nudges its parameters slightly in the direction that would reduce that error, a process called gradient descent. Repeated millions of times, the model finds parameters that make small errors. An LLM does the same, except the \"price\" is the next word and the parameters number in the billions."],
+ ["Pré-treino e pós-treino","Pre-training and post-training",
+  "O pré-treino ensina o modelo a prever texto e, com isso, ele absorve gramática, fatos e padrões de raciocínio. Mas um modelo só pré-treinado completa textos; não segue instruções nem recusa pedidos perigosos. O pós-treino ajusta esse comportamento com exemplos de boas respostas, preferências humanas (RLHF) ou princípios (Constitutional AI). É no pós-treino que se define boa parte da \"personalidade\" que o usuário percebe, e por isso duas versões do mesmo modelo base podem se comportar de forma bem diferente.",
+  "Pre-training teaches the model to predict text, and in doing so it absorbs grammar, facts and reasoning patterns. But a model that is only pre-trained just completes text; it does not follow instructions or refuse dangerous requests. Post-training adjusts this behavior with examples of good answers, human preferences (RLHF) or principles (Constitutional AI). Post-training defines much of the \"personality\" users perceive, which is why two versions of the same base model can behave quite differently."]]});
+
+M(7,{dg:{type:"flow",t:["Ciclo de vida de um modelo","A model's life cycle"],
+  steps:[["Dados","Data","coleta e limpeza","collection and cleaning"],["Divisão","Split","treino, validação, teste","train, validation, test"],["Treino","Training","ajuste dos parâmetros","fitting parameters"],["Avaliação","Evaluation","no teste nunca visto","on the unseen test"],["Produção","Production","inferência e monitoramento","inference and monitoring"]],
+  note:["Em produção, mudanças nos dados (drift) fazem o ciclo recomeçar.","In production, data changes (drift) restart the cycle."]},
+ deep:[["Lendo uma matriz de confusão","Reading a confusion matrix",
+  "Num classificador de fraude, há quatro resultados possíveis: fraude detectada (verdadeiro positivo), fraude que passou (falso negativo), compra legítima bloqueada (falso positivo) e compra legítima aprovada (verdadeiro negativo). Precisão responde \"dos bloqueios, quantos eram fraude?\". Recall responde \"das fraudes, quantas pegamos?\". Aumentar uma costuma reduzir a outra, e a escolha do ponto de equilíbrio é uma decisão de produto, porque depende do custo de cada erro.",
+  "In a fraud classifier there are four possible outcomes: fraud caught (true positive), fraud missed (false negative), legitimate purchase blocked (false positive) and legitimate purchase approved (true negative). Precision answers \"of the blocks, how many were fraud?\". Recall answers \"of the frauds, how many did we catch?\". Raising one usually lowers the other, and choosing the balance point is a product decision, because it depends on the cost of each error."],
+ ["Drift: quando o mundo muda","Drift: when the world changes",
+  "Um modelo aprende o mundo como ele era nos dados de treino. Quando o comportamento muda, por uma pandemia, uma campanha nova ou uma mudança de preço, o modelo continua aplicando padrões antigos. Isso é drift. Os sinais são queda gradual nas métricas, mudança na distribuição das entradas e aumento de casos que o modelo marca com baixa confiança. A defesa é monitorar esses sinais e ter um processo de retreino, com dono e frequência definidos.",
+  "A model learns the world as it was in the training data. When behavior changes, due to a pandemic, a new campaign or a price change, the model keeps applying old patterns. That is drift. The signs are gradual drops in metrics, shifts in input distributions and more cases the model flags with low confidence. The defense is to monitor these signals and have a retraining process with a defined owner and cadence."]]});
+
+M(8,{dg:{type:"compare",t:["IA tradicional e IA generativa","Traditional and generative AI"],
+  cols:[["IA tradicional (discriminativa)","Traditional AI (discriminative)"],["IA generativa","Generative AI"]],
+  rows:[["Saída","Output",["Rótulo, número ou ranking","Texto, imagem, áudio, código"],["A label, number or ranking","Text, images, audio, code"]],
+        ["Exemplo","Example",["Este e-mail é spam?","Escreva a resposta para este e-mail"],["Is this email spam?","Write the reply to this email"]],
+        ["Como avaliar","How to evaluate",["Acurácia, precisão, recall","Rubricas, juízes, avaliação humana"],["Accuracy, precision, recall","Rubrics, judges, human review"]],
+        ["Risco típico","Typical risk",["Classificar errado","Inventar com aparência de verdade"],["Misclassifying","Making things up convincingly"]]]},
+ deep:[["O que \"modelo de fundação\" muda para produto","What \"foundation model\" changes for product",
+  "Antes, cada tarefa de IA exigia um modelo próprio, treinado com dados rotulados específicos. Com modelos de fundação, um único modelo atende dezenas de tarefas apenas mudando as instruções. Isso derruba o custo de experimentar: um PM consegue testar uma ideia em horas, sem time de ciência de dados. A contrapartida é que o diferencial competitivo sai do modelo, que todos podem contratar, e vai para dados próprios, integração ao fluxo e qualidade da experiência.",
+  "Previously, each AI task required its own model trained on specific labeled data. With foundation models, a single model handles dozens of tasks just by changing the instructions. That slashes the cost of experimenting: a PM can test an idea in hours, without a data science team. The trade-off is that competitive advantage moves away from the model, which anyone can buy, toward proprietary data, workflow integration and experience quality."],
+ ["Avaliar o que não tem gabarito único","Evaluating what has no single answer key",
+  "Uma pergunta de classificação tem resposta certa; um resumo bom pode ser escrito de muitas formas. Por isso, a avaliação de IA generativa usa rubricas: critérios como fidelidade à fonte, completude, tom e formato, cada um com uma escala. A rubrica é aplicada por pessoas ou por um modelo juiz calibrado. Escrever boas rubricas é trabalho de produto, porque elas traduzem o que \"bom\" significa para o usuário.",
+  "A classification question has a right answer; a good summary can be written in many ways. That is why evaluating generative AI uses rubrics: criteria such as faithfulness to the source, completeness, tone and format, each with a scale. The rubric is applied by people or by a calibrated judge model. Writing good rubrics is product work, because they translate what \"good\" means to the user."]]});
+M(9,{dg:{type:"cycle",t:["Como um LLM gera a resposta","How an LLM generates the answer"],
+  steps:[["Texto vira tokens","Text becomes tokens","\"devolver o pedido\" vira: dev / olver / o / pedido","\"return the order\" becomes: return / the / order"],["Calcula probabilidades","Computes probabilities","para todos os tokens possíveis","for every possible token"],["Escolhe um token","Picks a token","a temperatura controla a ousadia","temperature controls boldness"],["Acrescenta ao contexto","Appends to context","e repete o ciclo","and repeats the loop"]],
+  note:["O ciclo para ao gerar um token de fim ou atingir o limite de saída.","The loop stops at an end token or the output limit."]},
+ deep:[["Fazendo a conta de custo","Doing the cost math",
+  "Suponha um assistente que recebe 1.500 tokens de entrada (instruções, histórico e pergunta) e gera 400 de saída, com preços de US$ 3 e US$ 15 por milhão. Cada resposta custa 1.500 × 3 / 1.000.000 + 400 × 15 / 1.000.000, ou seja, US$ 0,0105. Com 50 mil conversas de 4 respostas por mês, são cerca de US$ 2.100. Repare que a saída, mesmo menor, pesa mais na conta. Respostas mais enxutas e histórico compactado são as alavancas mais diretas.",
+  "Suppose an assistant receives 1,500 input tokens (instructions, history and question) and generates 400 output tokens, at prices of US$ 3 and US$ 15 per million. Each answer costs 1,500 × 3 / 1,000,000 + 400 × 15 / 1,000,000, or US$ 0.0105. With 50 thousand conversations of 4 answers a month, that is about US$ 2,100. Notice that output, though smaller, weighs more. Leaner answers and compacted history are the most direct levers."],
+ ["Por que o modelo \"alucina\"","Why the model \"hallucinates\"",
+  "O modelo foi treinado para produzir a continuação mais provável, e não para verificar fatos. Quando a informação não está no contexto nem foi bem aprendida, ele ainda gera algo plausível, porque é isso que sabe fazer. Alucinações são mais comuns em detalhes específicos: números, datas, nomes, citações e políticas internas. As defesas são dar a informação no contexto (RAG), pedir que cite a fonte e permitir que diga \"não sei\".",
+  "The model was trained to produce the most likely continuation, not to check facts. When the information is not in the context and was not learned well, it still generates something plausible, because that is what it does. Hallucinations are most common in specific details: numbers, dates, names, quotes and internal policies. The defenses are providing the information in context (RAG), asking it to cite the source and allowing it to say \"I don't know\"."]]});
+
+M(10,{dg:{type:"compare",t:["Três jeitos de buscar","Three ways to search"],
+  cols:[["Lexical (BM25)","Lexical (BM25)"],["Vetorial","Vector"],["Híbrida","Hybrid"]],
+  rows:[["Como funciona","How it works",["Compara palavras exatas","Compara significado (embeddings)","Combina as duas listas"],["Matches exact words","Matches meaning (embeddings)","Combines both lists"]],
+        ["Brilha em","Shines at",["Códigos, nomes, termos raros","Sinônimos e paráfrases","Bases reais e variadas"],["Codes, names, rare terms","Synonyms and paraphrases","Real, varied corpora"]],
+        ["Falha em","Fails at",["\"Quero devolver\" vs \"troca\"","Números e códigos exatos","Custo e complexidade maiores"],["\"Return\" vs \"exchange\"","Exact numbers and codes","Higher cost and complexity"]]]},
+ deep:[["Como uma frase vira coordenadas","How a sentence becomes coordinates",
+  "Um modelo de embedding lê o texto e devolve uma lista de centenas ou milhares de números. Cada número não tem significado isolado; o que importa é a posição do vetor em relação aos outros. Frases como \"esqueci minha senha\" e \"não consigo entrar na conta\" ficam próximas, mesmo sem palavras em comum. A busca calcula a distância entre o vetor da pergunta e os vetores dos documentos e devolve os mais próximos.",
+  "An embedding model reads text and returns a list of hundreds or thousands of numbers. No single number has meaning on its own; what matters is the vector's position relative to others. Sentences like \"I forgot my password\" and \"I can't log into my account\" end up close, even with no words in common. Search computes the distance between the question's vector and the documents' vectors and returns the closest ones."],
+ ["Como avaliar a busca antes de culpar o modelo","How to evaluate search before blaming the model",
+  "Monte uma lista de 50 a 100 perguntas reais e, para cada uma, marque qual documento deveria ser encontrado. Depois meça o recall@5: em quantas perguntas o documento certo aparece entre os cinco primeiros resultados. Se esse número for baixo, nenhum LLM vai compensar, porque a informação nem chega até ele. Esse teste simples costuma revelar problemas de divisão dos documentos, metadados ausentes ou falta de busca lexical.",
+  "Build a list of 50 to 100 real questions and, for each, mark which document should be found. Then measure recall@5: in how many questions the right document appears among the top five results. If that number is low, no LLM will compensate, because the information never reaches it. This simple test often reveals chunking problems, missing metadata or the lack of lexical search."]]});
+
+M(11,{dg:{type:"compare",t:["O que cada tipo de modelo entrega","What each kind of model provides"],
+  cols:[["Fechado","Closed"],["Open-weight","Open-weight"],["Open source (OSI)","Open source (OSI)"]],
+  rows:[["Pesos","Weights",["Não","Sim","Sim"],["No","Yes","Yes"]],
+        ["Código de treino","Training code",["Não","Às vezes","Sim"],["No","Sometimes","Yes"]],
+        ["Informação sobre os dados","Data information",["Resumo","Parcial","Suficiente para reproduzir"],["Summary","Partial","Enough to reproduce"]],
+        ["Liberdade de uso","Freedom of use",["Termos do fornecedor","Licença pode restringir","Usar, estudar, modificar, compartilhar"],["Vendor terms","License may restrict","Use, study, modify, share"]]]},
+ deep:[["O que olhar numa licença","What to check in a license",
+  "Quatro pontos resolvem a maior parte das dúvidas: se o uso comercial é permitido; se há limite de tamanho da empresa ou de usuários; se existe uma política de uso aceitável que proíbe certas aplicações; e se é permitido usar as saídas do modelo para treinar outros modelos. Licenças como Apache 2.0 e MIT são permissivas; licenças próprias de fornecedores variam bastante e precisam de leitura atenta com o jurídico.",
+  "Four points settle most questions: whether commercial use is allowed; whether there is a limit on company size or users; whether an acceptable use policy forbids certain applications; and whether using the model's outputs to train other models is permitted. Licenses such as Apache 2.0 and MIT are permissive; vendors' own licenses vary widely and need careful reading with legal."],
+ ["Quando escolher um modelo aberto","When to choose an open model",
+  "Modelos abertos fazem mais sentido quando há exigência de rodar em ambiente próprio, necessidade de customização profunda, volume alto e estável que justifique infraestrutura, ou estratégia de não depender de um fornecedor. Eles fazem menos sentido quando o time é pequeno, o volume é baixo ou a qualidade de ponta é decisiva. Muitas empresas acabam com uma combinação: modelo fechado para tarefas difíceis e aberto para tarefas de alto volume.",
+  "Open models make the most sense when there is a requirement to run in your own environment, a need for deep customization, high and steady volume that justifies infrastructure, or a strategy of not depending on one vendor. They make less sense when the team is small, volume is low or top quality is decisive. Many companies end up with a mix: a closed model for hard tasks and an open one for high-volume tasks."]]});
+
+M(12,{dg:{type:"spectrum",t:["Mais controle, mais operação","More control, more operations"],
+  ends:[["Menos operação","Less operations"],["Mais controle","More control"]],
+  items:[["API do fornecedor","Vendor API","pague por uso, zero infraestrutura","pay per use, zero infrastructure"],["Modelo na sua nuvem","Model in your cloud","marketplace da AWS, Google ou Azure","AWS, Google or Azure marketplace"],["Open-weight gerenciado","Managed open-weight","provedor de inferência","inference provider"],["Self-hosted","Self-hosted","suas GPUs, seu time","your GPUs, your team"]]},
+ deep:[["Perguntas para levantar com o cliente","Questions to raise with the client",
+  "Antes de escolher, levante: onde os dados podem ser processados (país e nuvem)? Os dados podem ser usados para treinar modelos do fornecedor? Qual é o tempo máximo de retenção dos registros? Há exigência de certificações, como ISO 27001 ou SOC 2? Qual latência é aceitável e de que região vêm os usuários? Essas respostas eliminam opções rapidamente e evitam descobrir um bloqueio depois que o produto está pronto.",
+  "Before choosing, find out: where can data be processed (country and cloud)? Can data be used to train the vendor's models? What is the maximum retention time for logs? Are certifications required, such as ISO 27001 or SOC 2? What latency is acceptable, and which region do users come from? These answers rule out options quickly and avoid discovering a blocker after the product is built."],
+ ["O custo escondido do self-hosting","The hidden cost of self-hosting",
+  "Rodar o próprio modelo exige mais do que GPUs: alguém precisa atualizar versões, ajustar o motor de inferência, garantir alta disponibilidade, monitorar falhas e responder a incidentes de madrugada. Na prática, isso significa pelo menos uma ou duas pessoas dedicadas. Ao comparar com uma API, inclua esse custo de pessoas, além de considerar que a qualidade dos modelos abertos que você consegue rodar pode ser menor que a dos melhores fechados.",
+  "Running your own model takes more than GPUs: someone has to update versions, tune the inference engine, ensure high availability, monitor failures and respond to incidents at night. In practice, that means at least one or two dedicated people. When comparing with an API, include that people cost, and consider that the open models you can run may be of lower quality than the best closed ones."]]});
+
+M(13,{dg:{type:"bars",t:["Exemplo: de onde vem o custo de uma conversa","Example: where a conversation's cost comes from"],
+  items:[["Saída (respostas)","Output (answers)",42],["Histórico reenviado","Re-sent history",27],["Prompt de sistema","System prompt",16],["Trechos do RAG","RAG passages",11],["Novas tentativas","Retries",4]],
+  note:["Distribuição ilustrativa. Meça a do seu produto antes de otimizar.","Illustrative breakdown. Measure your product's before optimizing."]},
+ deep:[["Montando o modelo de custo","Building the cost model",
+  "Comece pela unidade que o cliente valoriza, como uma conversa resolvida. Some os tokens de entrada e saída de todas as chamadas dessa unidade, incluindo recuperação, ferramentas e novas tentativas. Multiplique pelos preços e pelo volume esperado. Depois compare com o valor gerado: se uma conversa custa US$ 0,04 e evita um atendimento humano de US$ 3, a margem é grande. Se o produto for vendido por assento, simule o usuário mais intenso, não o médio.",
+  "Start with the unit the customer values, such as a resolved conversation. Add up the input and output tokens of every call in that unit, including retrieval, tools and retries. Multiply by prices and expected volume. Then compare with the value created: if a conversation costs US$ 0.04 and avoids a US$ 3 human contact, the margin is large. If the product is sold per seat, simulate the heaviest user, not the average one."],
+ ["Alavancas de redução, em ordem de esforço","Cost levers, in order of effort",
+  "Primeiro, as baratas: cache para o prompt de sistema, limite de tamanho das respostas e compactação do histórico. Depois, as médias: processamento em lote para tarefas sem urgência e roteamento de tarefas simples para um modelo menor. Por último, as caras: fine-tuning ou destilação para um modelo próprio e hospedagem própria. Medir antes e depois de cada mudança evita trocar qualidade por economia sem perceber.",
+  "First, the cheap ones: caching the system prompt, capping answer length and compacting history. Next, the medium ones: batch processing for non-urgent tasks and routing simple tasks to a smaller model. Last, the expensive ones: fine-tuning or distilling into your own model and self-hosting. Measuring before and after each change avoids trading quality for savings without noticing."]]});
+
+M(14,{dg:{type:"flow",t:["Cascata de modelos","Model cascade"],
+  steps:[["Pedido","Request","",""],["Modelo pequeno","Small model","rápido e barato","fast and cheap"],["Validação","Validation","confiança, formato, regras","confidence, format, rules"],["Modelo grande","Large model","só se a validação falhar","only if validation fails"]],
+  note:["Meça quantos pedidos sobem para o modelo grande: esse número define a economia real.","Measure how many requests escalate to the large model: that number sets the real savings."]},
+ deep:[["Como montar uma matriz de decisão","How to build a decision matrix",
+  "Liste os critérios que importam (qualidade no seu golden set, custo por tarefa, latência p95, privacidade, licença, facilidade de operação) e dê um peso a cada um conforme o caso de uso. Atribua notas de 1 a 5 para cada modelo, multiplique pelos pesos e some. O número final importa menos que a conversa que ele provoca: discordâncias sobre pesos revelam prioridades diferentes entre produto, engenharia e negócio, e é melhor descobri-las cedo.",
+  "List the criteria that matter (quality on your golden set, cost per task, p95 latency, privacy, license, ease of operation) and give each a weight based on the use case. Score each model from 1 to 5, multiply by the weights and add them up. The final number matters less than the conversation it sparks: disagreements over weights reveal different priorities across product, engineering and business, and it is better to find them early."],
+ ["Reavaliar faz parte da rotina","Re-evaluating is part of the routine",
+  "Fornecedores lançam modelos novos a cada poucos meses, frequentemente mais baratos e melhores. Se o golden set e a matriz estiverem prontos, testar uma novidade leva horas. Sem eles, cada troca vira um projeto. Uma boa prática é revisar a escolha de modelos a cada trimestre e sempre que um fornecedor anunciar uma versão nova relevante.",
+  "Vendors release new models every few months, often cheaper and better. If the golden set and matrix are ready, testing a new release takes hours. Without them, every switch becomes a project. A good practice is to review model choices every quarter and whenever a vendor announces a relevant new version."]]});
+
+M(15,{dg:{type:"stack",t:["Anatomia de um prompt de sistema","Anatomy of a system prompt"],
+  items:[["Papel e objetivo","Role and goal","Você é o assistente de suporte da Loja X. Seu objetivo é resolver dúvidas de pedidos.","You are Store X's support assistant. Your goal is to resolve order questions."],
+         ["Contexto","Context","Política de trocas: 30 dias. Prazo padrão: 5 dias úteis.","Return policy: 30 days. Standard delivery: 5 business days."],
+         ["Regras","Rules","Nunca prometa prazos fora da política. Se não souber, ofereça um atendente.","Never promise dates outside the policy. If unsure, offer a human agent."],
+         ["Exemplos","Examples","Pergunta: \"chega amanhã?\" Resposta ideal: ...","Question: \"will it arrive tomorrow?\" Ideal answer: ..."],
+         ["Formato","Format","Responda em até 3 frases, em português, com tom cordial.","Answer in up to 3 sentences, in a friendly tone."]]},
+ deep:[["Erros comuns em prompts de produto","Common mistakes in product prompts",
+  "Os mais frequentes são: instruções contraditórias acumuladas ao longo do tempo (\"seja breve\" e \"explique em detalhes\"); regras vagas como \"seja cuidadoso\", que o modelo não sabe como cumprir; ausência de exemplos para os casos difíceis; e prompts gigantes que ninguém revisa. Cada mudança no prompt deveria vir com o motivo e o resultado nos testes, como um commit de código.",
+  "The most frequent are: contradictory instructions piled up over time (\"be brief\" and \"explain in detail\"); vague rules such as \"be careful\", which the model does not know how to follow; no examples for hard cases; and giant prompts nobody reviews. Every prompt change should come with the reason and the test results, like a code commit."],
+ ["Testando o prompt como uma especificação","Testing the prompt like a spec",
+  "Para cada regra do prompt, crie pelo menos um caso de teste que tente quebrá-la. Se a regra é \"não prometer prazos\", inclua um cliente insistindo por uma data. Rode o conjunto a cada alteração e compare com a versão anterior. Com 50 a 100 casos bem escolhidos, você descobre regressões antes dos usuários, e as discussões sobre o prompt passam a ser sobre dados, e não sobre opiniões.",
+  "For each rule in the prompt, create at least one test case that tries to break it. If the rule is \"do not promise dates\", include a customer insisting on a date. Run the set on every change and compare with the previous version. With 50 to 100 well-chosen cases, you find regressions before users do, and prompt discussions become about data, not opinions."]]});
+
+M(16,{dg:{type:"stack",t:["O que entra na janela de contexto","What goes into the context window"],
+  items:[["Instruções de sistema","System instructions","fixas; boas candidatas a cache","fixed; good caching candidates"],
+         ["Memória do usuário","User memory","preferências e decisões salvas","saved preferences and decisions"],
+         ["Histórico compactado","Compacted history","resumo do que já foi dito","summary of what was said"],
+         ["Documentos recuperados","Retrieved documents","só os trechos relevantes","only the relevant passages"],
+         ["Resultados de ferramentas","Tool results","dados do pedido, do CRM etc.","order data, CRM data, etc."],
+         ["Pergunta atual","Current question","o que o usuário pediu agora","what the user just asked"]]},
+ deep:[["Mais contexto nem sempre é melhor","More context is not always better",
+  "Janelas de centenas de milhares de tokens tentam a colocar tudo lá dentro. Mas estudos mostram que a qualidade cai com contextos longos, especialmente para informações no meio. Além disso, cada token custa e aumenta a latência. A boa prática é tratar o contexto como um orçamento: cada bloco precisa justificar seu lugar. Se um trecho raramente muda a resposta, ele não deveria estar ali em toda chamada.",
+  "Windows of hundreds of thousands of tokens tempt you to put everything in. But studies show quality drops with long contexts, especially for information in the middle. Also, every token costs money and adds latency. The good practice is to treat context as a budget: each block must earn its place. If a passage rarely changes the answer, it should not be there on every call."],
+ ["Memória: o que guardar e por quanto tempo","Memory: what to keep and for how long",
+  "Boas candidatas à memória são preferências estáveis (idioma, tom, formato) e decisões já tomadas. Más candidatas são dados sensíveis e informações que mudam rápido. O produto precisa deixar claro o que foi memorizado e oferecer formas de ver, corrigir e apagar. Uma memória errada é pior que nenhuma, porque o assistente passa a repetir o erro com confiança em todas as conversas seguintes.",
+  "Good memory candidates are stable preferences (language, tone, format) and decisions already made. Bad candidates are sensitive data and fast-changing information. The product must make clear what was remembered and offer ways to view, correct and delete it. A wrong memory is worse than none, because the assistant starts repeating the error confidently in every following conversation."]]});
+M(17,{dg:{type:"flow",t:["O pipeline de RAG","The RAG pipeline"],
+  steps:[["Documentos","Documents","políticas, FAQs, manuais","policies, FAQs, manuals"],["Divisão em trechos","Chunking","com metadados e permissões","with metadata and permissions"],["Indexação","Indexing","embeddings + índice lexical","embeddings + lexical index"],["Busca","Retrieval","híbrida, filtrada por permissão","hybrid, permission-filtered"],["Reranking","Reranking","os 5 melhores","the top 5"],["Resposta","Answer","com citações","with citations"]],
+  note:["Avalie em duas partes: o trecho certo chegou (busca)? A resposta é fiel a ele (geração)?","Evaluate in two parts: did the right passage arrive (retrieval)? Is the answer faithful to it (generation)?"]},
+ deep:[["Decisões de divisão que mudam o resultado","Chunking decisions that change the outcome",
+  "Trechos pequenos demais perdem contexto: uma regra de troca separada da exceção que vem no parágrafo seguinte gera resposta errada. Trechos grandes demais diluem a relevância e gastam tokens. Na prática, divida respeitando a estrutura do documento (seções, títulos, listas), inclua o título da seção em cada trecho e guarde metadados como data de atualização, produto e quem pode ver. Esses metadados permitem filtrar antes de buscar, o que melhora qualidade e segurança.",
+  "Chunks that are too small lose context: a return rule separated from the exception in the next paragraph produces a wrong answer. Chunks that are too large dilute relevance and waste tokens. In practice, split along the document's structure (sections, headings, lists), include the section title in each chunk and store metadata such as last updated date, product and who can see it. That metadata lets you filter before searching, improving both quality and security."],
+ ["As quatro métricas que contam a história","The four metrics that tell the story",
+  "Precisão do contexto: dos trechos recuperados, quantos eram relevantes? Recall do contexto: a informação necessária estava entre eles? Fidelidade: a resposta só afirma o que está nos trechos? Relevância da resposta: ela responde à pergunta feita? Olhando as quatro juntas, você sabe onde agir: recall baixo pede ajuste na busca; fidelidade baixa pede ajuste no prompt ou no modelo.",
+  "Context precision: of the retrieved passages, how many were relevant? Context recall: was the needed information among them? Faithfulness: does the answer only state what the passages say? Answer relevance: does it answer the question asked? Looking at all four, you know where to act: low recall calls for retrieval work; low faithfulness calls for prompt or model work."]]});
+
+M(18,{dg:{type:"matrix",t:["Qual técnica usar","Which technique to use"],
+  x:["Conhecimento muda pouco → muda muito","Knowledge changes little → changes a lot"],y:["Precisa mudar comportamento ↑","Needs behavior change ↑"],
+  q:[["Fine-tuning","Fine-tuning","formato, estilo, tarefa específica","format, style, specific task"],["Fine-tuning + RAG","Fine-tuning + RAG","comportamento próprio e fatos atuais","custom behavior and current facts"],
+     ["Prompt + contexto longo","Prompt + long context","base pequena e estável","small, stable corpus"],["RAG","RAG","base grande, dinâmica ou com permissões","large, dynamic or permissioned corpus"]]},
+ deep:[["Um roteiro de decisão em quatro passos","A four-step decision path",
+  "Passo 1: comece com um bom prompt e meça no golden set. Passo 2: se faltar conhecimento e a base for pequena e estável, coloque os documentos no contexto com cache. Passo 3: se a base for grande, mudar com frequência ou exigir permissões, monte um RAG. Passo 4: só se ainda houver um problema de comportamento (formato inconsistente, estilo, custo em alto volume), considere fine-tuning. Cada passo deve ser justificado por números do passo anterior.",
+  "Step 1: start with a good prompt and measure on the golden set. Step 2: if knowledge is missing and the corpus is small and stable, put the documents in context with caching. Step 3: if the corpus is large, changes often or needs permissions, build RAG. Step 4: only if a behavior problem remains (inconsistent format, style, cost at high volume), consider fine-tuning. Each step should be justified by numbers from the previous one."],
+ ["O que o fine-tuning exige do produto","What fine-tuning demands from the product",
+  "Fine-tuning precisa de centenas a milhares de exemplos de alta qualidade, revisados por especialistas, e de um processo para atualizar esses exemplos. Quando o fornecedor lança um modelo base novo, o ajuste pode precisar ser refeito. Por isso, ele é uma decisão de manutenção contínua, e não um projeto único. Inclua no plano quem cuida dos dados, com que frequência e como medir se o modelo ajustado continua melhor que o original.",
+  "Fine-tuning needs hundreds to thousands of high-quality examples reviewed by experts, plus a process to update them. When the vendor releases a new base model, the tuning may need to be redone. That makes it an ongoing maintenance decision, not a one-off project. Include in the plan who owns the data, how often it is refreshed and how to measure whether the tuned model still beats the original."]]});
+
+M(19,{dg:{type:"spectrum",t:["Níveis de autonomia","Levels of autonomy"],
+  ends:[["Mais previsível","More predictable"],["Mais autônomo","More autonomous"]],
+  items:[["Chatbot de FAQ","FAQ chatbot","responde, não age","answers, does not act"],["Assistente com RAG","RAG assistant","responde com fontes","answers with sources"],["Workflow com LLM","LLM workflow","passos fixos em código","fixed steps in code"],["Agente com ferramentas","Agent with tools","decide os próximos passos","decides the next steps"],["Multiagente","Multi-agent","delega e coordena","delegates and coordinates"]]},
+ deep:[["Mapeando intenções para padrões","Mapping intents to patterns",
+  "Num atendimento real, as intenções não pedem o mesmo nível de autonomia. Perguntas sobre política pedem um assistente com RAG. Rastrear um pedido pede um workflow simples: identificar o pedido e consultar o sistema. Uma reclamação complexa, que pode envolver troca, reembolso ou investigação de entrega, pode justificar um agente, desde que com ações limitadas e aprovação humana para as sensíveis. Montar essa tabela de intenções é um dos primeiros entregáveis do PM.",
+  "In real support, intents do not call for the same level of autonomy. Policy questions call for a RAG assistant. Tracking an order calls for a simple workflow: identify the order and query the system. A complex complaint, which may involve an exchange, refund or delivery investigation, may justify an agent, as long as actions are limited and sensitive ones need human approval. Building this intent table is one of the PM's first deliverables."],
+ ["Por que medir tarefas longas importa","Why measuring long tasks matters",
+  "O estudo da METR mediu a duração das tarefas que modelos completam com sucesso e viu esse tempo dobrar a cada poucos meses. Para produto, isso significa que o limite do que um agente consegue fazer muda rápido, e decisões tomadas há um ano podem estar desatualizadas. Mas taxa de sucesso não é tudo: uma tarefa longa com 80% de sucesso ainda falha em uma de cada cinco vezes, e o produto precisa lidar bem com isso.",
+  "METR's study measured the length of tasks models complete successfully and saw that length double every few months. For product, this means the limit of what an agent can do moves fast, and decisions made a year ago may be outdated. But success rate is not everything: a long task with 80% success still fails one time in five, and the product must handle that well."]]});
+
+M(20,{dg:{type:"cycle",t:["O ciclo de um agente","An agent's loop"],
+  steps:[["Objetivo","Goal","\"resolver a troca do pedido 4821\"","\"resolve the exchange for order 4821\""],["Pensar","Think","qual o próximo passo?","what is the next step?"],["Agir","Act","chamar uma ferramenta","call a tool"],["Observar","Observe","ler o resultado","read the result"]],
+  note:["Guardrails: limite de passos, permissões mínimas e aprovação humana antes de ações irreversíveis.","Guardrails: step limit, minimal permissions and human approval before irreversible actions."]},
+ deep:[["Escrevendo a especificação de uma ferramenta","Writing a tool specification",
+  "Cada ferramenta precisa de nome claro, descrição do que faz e quando usar, parâmetros com tipos e exemplos, e o formato da resposta, inclusive em caso de erro. Descrições vagas fazem o modelo usar a ferramenta errada. Um exemplo bom: \"consultar_pedido(numero): retorna status, itens e data prevista. Use quando o cliente mencionar um pedido. Não altera nada.\" Deixar claro o que é só leitura e o que modifica dados ajuda o modelo e a revisão de segurança.",
+  "Each tool needs a clear name, a description of what it does and when to use it, typed parameters with examples, and the response format, including errors. Vague descriptions make the model pick the wrong tool. A good example: \"get_order(number): returns status, items and expected date. Use when the customer mentions an order. Changes nothing.\" Stating clearly what is read-only and what modifies data helps both the model and the security review."],
+ ["Onde colocar a aprovação humana","Where to place human approval",
+  "Use duas perguntas: a ação é reversível? Qual o custo se estiver errada? Consultar dados é reversível e barato: sem aprovação. Abrir um chamado é reversível, mas pode duplicar: sem aprovação, com idempotência. Emitir reembolso, enviar e-mail externo ou apagar dados são difíceis de desfazer: com aprovação. A aprovação deve mostrar exatamente o que será feito, para a pessoa decidir em segundos.",
+  "Use two questions: is the action reversible? What does it cost if wrong? Reading data is reversible and cheap: no approval. Opening a ticket is reversible but may duplicate: no approval, with idempotency. Issuing a refund, sending an external email or deleting data are hard to undo: require approval. The approval should show exactly what will happen, so the person can decide in seconds."]]});
+
+M(21,{dg:{type:"compare",t:["Arquiteturas de agentes","Agent architectures"],
+  cols:[["Workflow fixo","Fixed workflow"],["Agente único","Single agent"],["Orquestrador + subagentes","Orchestrator + subagents"]],
+  rows:[["Previsibilidade","Predictability",["Alta","Média","Baixa"],["High","Medium","Low"]],
+        ["Custo em tokens","Token cost",["Baixo","Médio","Alto (até ~15x)"],["Low","Medium","High (up to ~15x)"]],
+        ["Depuração","Debugging",["Simples","Moderada","Difícil"],["Simple","Moderate","Hard"]],
+        ["Bom para","Good for",["Passos conhecidos","Tarefas abertas e curtas","Pesquisas amplas e paralelas"],["Known steps","Short open-ended tasks","Broad, parallel research"]]]},
+ deep:[["Sinais de que você precisa de mais autonomia","Signs you need more autonomy",
+  "Considere subir de nível quando: o número de caminhos possíveis cresce a ponto de o workflow virar uma árvore impossível de manter; a tarefa exige explorar informações cujo próximo passo depende do que foi encontrado; ou partes independentes podem rodar em paralelo e o tempo total importa. Se nenhum desses sinais aparece, mais autonomia só traz custo e variabilidade.",
+  "Consider moving up a level when: the number of possible paths grows until the workflow becomes an unmaintainable tree; the task requires exploring information where the next step depends on what was found; or independent parts can run in parallel and total time matters. If none of these signs appears, more autonomy only brings cost and variability."],
+ ["Por que sistemas multiagente falham","Why multi-agent systems fail",
+  "As falhas mais comuns são: subagentes trabalhando com contexto incompleto e tomando decisões conflitantes; o orquestrador perdendo o objetivo original no caminho; subagentes repetindo trabalho; e ausência de critério claro de quando parar. As defesas são passar contexto suficiente na delegação, definir o formato do que cada subagente devolve e ter um passo final de síntese que verifica contradições.",
+  "The most common failures are: subagents working with incomplete context and making conflicting decisions; the orchestrator losing the original goal along the way; subagents duplicating work; and no clear criterion for when to stop. The defenses are passing enough context when delegating, defining what each subagent returns and having a final synthesis step that checks for contradictions."]]});
+
+M(22,{dg:{type:"compare",t:["Mapa do mercado de agentes","Agent market map"],
+  cols:[["Agentes prontos","Ready-made agents"],["Plataformas","Platforms"]],
+  rows:[["Exemplos","Examples",["Claude Code, Codex, Deep Research, Cursor","Copilot Studio, Agentforce, SDKs de agentes"],["Claude Code, Codex, Deep Research, Cursor","Copilot Studio, Agentforce, agent SDKs"]],
+        ["Quem usa","Who uses it",["O usuário final, direto","Times que constroem agentes próprios"],["End users, directly","Teams building their own agents"]],
+        ["Tempo até valor","Time to value",["Dias","Semanas a meses"],["Days","Weeks to months"]],
+        ["Diferencial","Differentiation",["Baixo: concorrentes usam o mesmo","Alto: ligado aos seus processos"],["Low: competitors use the same","High: tied to your processes"]]]},
+ deep:[["Como conduzir uma avaliação de fornecedores","How to run a vendor evaluation",
+  "Escolha de 10 a 20 tarefas reais e representativas, incluindo algumas difíceis. Defina antes o que é sucesso: tarefa concluída, quanto a pessoa precisou editar, tempo economizado e erros graves. Peça para usuários reais testarem, e não só o time técnico. Avalie também o que fica em volta: permissões, registros de auditoria, integração com seus sistemas, custo por usuário e política de uso dos seus dados.",
+  "Choose 10 to 20 real, representative tasks, including some hard ones. Define success beforehand: task completed, how much the person had to edit, time saved and serious errors. Have real users test, not only the technical team. Also evaluate what surrounds it: permissions, audit logs, integration with your systems, cost per user and the policy for using your data."],
+ ["Adoção é o verdadeiro desafio","Adoption is the real challenge",
+  "Muitas empresas compram ferramentas de IA que ficam pouco usadas. As causas mais comuns são falta de casos de uso claros, medo de errar, desconfiança dos resultados e ausência de tempo para aprender. O PM pode reduzir isso com casos de uso concretos por função, campeões internos que mostram resultados, métricas de uso acompanhadas por time e espaço para compartilhar o que funcionou.",
+  "Many companies buy AI tools that end up underused. The most common causes are lack of clear use cases, fear of mistakes, distrust of the results and no time to learn. The PM can reduce this with concrete use cases per role, internal champions who show results, usage metrics tracked by team and space to share what worked."]]});
+
+M(23,{dg:{type:"cycle",t:["O ciclo de evals","The eval loop"],
+  steps:[["Coletar casos reais","Collect real cases","incluindo falhas","including failures"],["Análise de erros","Error analysis","categorizar o que falhou","categorize what failed"],["Ajustar","Adjust","prompt, busca, modelo","prompt, retrieval, model"],["Medir no golden set","Measure on golden set","comparar com a versão anterior","compare with the previous version"]],
+  note:["Os casos de teste final ficam separados: eles medem, não ajustam.","Final test cases stay separate: they measure, they do not tune."]},
+ deep:[["Comece pela análise de erros","Start with error analysis",
+  "Antes de criar métricas, leia de 50 a 100 respostas reais e anote o que deu errado em cada uma, com suas palavras. Depois agrupe as anotações em categorias, como \"citou política antiga\", \"não pediu número do pedido\" ou \"tom inadequado\". Conte quantas vezes cada uma aparece. Essa lista mostra o que realmente importa e vira a base das métricas e do golden set, em vez de métricas genéricas que não refletem seus problemas.",
+  "Before creating metrics, read 50 to 100 real answers and note what went wrong in each, in your own words. Then group the notes into categories, such as \"cited an old policy\", \"did not ask for the order number\" or \"inappropriate tone\". Count how often each appears. This list shows what really matters and becomes the basis for metrics and the golden set, instead of generic metrics that do not reflect your problems."],
+ ["Escrevendo uma boa rubrica","Writing a good rubric",
+  "Uma rubrica útil tem critérios específicos e observáveis. Em vez de \"a resposta é boa?\", use perguntas como \"a resposta cita a política correta?\", \"pede os dados necessários antes de prometer algo?\" e \"tem no máximo três frases?\". Critérios binários, de sim ou não, costumam ser mais consistentes entre avaliadores do que escalas de 1 a 10. Teste a rubrica com duas pessoas avaliando os mesmos casos: se discordarem muito, o critério está ambíguo.",
+  "A useful rubric has specific, observable criteria. Instead of \"is the answer good?\", use questions such as \"does it cite the correct policy?\", \"does it ask for the required data before promising anything?\" and \"is it three sentences or fewer?\". Binary yes or no criteria tend to be more consistent across graders than 1 to 10 scales. Test the rubric with two people grading the same cases: if they disagree a lot, the criterion is ambiguous."]]});
+
+M(24,{dg:{type:"flow",t:["Quando algo falha","When something fails"],
+  steps:[["Chamada ao modelo","Model call","",""],["Timeout?","Timeout?","nova tentativa com espera crescente","retry with growing wait"],["Falhou de novo?","Failed again?","provedor alternativo","alternative provider"],["Ainda sem resposta?","Still no answer?","transferência para humano com contexto","handoff to a human with context"]],
+  note:["Ações de escrita usam chave de idempotência para não duplicar efeitos nas novas tentativas.","Write actions use an idempotency key so retries do not duplicate effects."]},
+ deep:[["Orçamento de erro na prática","Error budgets in practice",
+  "Se o SLO é que 99,5% das respostas cheguem em até 5 segundos, o orçamento de erro é 0,5%: em 100 mil respostas por semana, até 500 podem ser lentas. Enquanto o orçamento não acaba, o time lança novidades normalmente. Se ele se esgota, a prioridade muda para estabilidade até o sistema voltar ao normal. Esse acordo transforma discussões subjetivas sobre qualidade em uma regra clara entre produto e engenharia.",
+  "If the SLO is that 99.5% of answers arrive within 5 seconds, the error budget is 0.5%: out of 100 thousand answers a week, up to 500 may be slow. While the budget lasts, the team ships features normally. If it runs out, priority shifts to stability until the system recovers. This agreement turns subjective debates about quality into a clear rule between product and engineering."],
+ ["Confiabilidade além da disponibilidade","Reliability beyond availability",
+  "Em IA, um sistema pode estar no ar e ainda assim falhar: responder com formato inválido, variar a resposta para a mesma pergunta ou executar a ação errada. Por isso, além de disponibilidade e latência, vale acompanhar a taxa de saídas inválidas, a consistência em perguntas repetidas e a taxa de sucesso das ações. Para agentes, medir se ele acerta todas as vezes em várias tentativas revela instabilidades que uma única execução esconde.",
+  "In AI, a system can be up and still fail: return an invalid format, vary its answer to the same question or take the wrong action. So beyond availability and latency, track the rate of invalid outputs, consistency on repeated questions and the success rate of actions. For agents, measuring whether they succeed every time across several attempts reveals instability that a single run hides."]]});
+M(25,{dg:{type:"flow",t:["Um trace, passo a passo","A trace, step by step"],
+  steps:[["Pergunta","Question","\"cadê meu pedido?\"","\"where is my order?\""],["Contexto montado","Context built","prompt v12 + 3 trechos","prompt v12 + 3 passages"],["Ferramenta","Tool","consultar_pedido(4821) → ok","get_order(4821) → ok"],["Resposta","Answer","1,8 s e 2.140 tokens","1.8 s and 2,140 tokens"],["Avaliação","Evaluation","juiz: fiel às fontes","judge: faithful to sources"]],
+  note:["Cada etapa registra versão, tempo, tokens e resultado, com dados pessoais mascarados.","Each step logs version, time, tokens and result, with personal data masked."]},
+ deep:[["O ritual semanal de leitura","The weekly reading ritual",
+  "Reserve uma hora por semana para ler uma amostra de conversas reais, misturando aleatórias com as que tiveram nota baixa, recontato ou transferência para humano. Para cada falha, anote a causa provável usando o trace: faltou informação, a busca trouxe o trecho errado, o modelo ignorou uma regra, a ferramenta falhou. Em poucas semanas, surge um ranking de problemas que orienta o backlog melhor que qualquer opinião.",
+  "Set aside one hour a week to read a sample of real conversations, mixing random ones with those that got low ratings, re-contacts or human handoffs. For each failure, note the likely cause using the trace: missing information, retrieval brought the wrong passage, the model ignored a rule, the tool failed. Within a few weeks, a ranking of problems emerges that guides the backlog better than any opinion."],
+ ["Sinais de usuário como sensores","User signals as sensors",
+  "Além de avaliações explícitas, como joinha e nota, os sinais implícitos dizem muito: o usuário reformulou a pergunta logo depois, copiou a resposta, pediu um humano, abandonou a conversa ou voltou com o mesmo problema dias depois. Esses sinais aparecem em escala e sem esforço do usuário. Combinados com os traces, mostram onde investigar primeiro.",
+  "Beyond explicit ratings, such as thumbs up and scores, implicit signals say a lot: the user rephrased the question right away, copied the answer, asked for a human, abandoned the chat or came back with the same problem days later. These signals arrive at scale and without user effort. Combined with traces, they show where to investigate first."]]});
+
+M(26,{dg:{type:"stack",t:["As três camadas do painel","The three dashboard layers"],
+  items:[["Negócio","Business","adoção, retenção, custo evitado, receita","adoption, retention, cost avoided, revenue"],
+         ["Operação","Operations","disponibilidade, latência p95, custo por tarefa, transferências","availability, p95 latency, cost per task, handoffs"],
+         ["Qualidade","Quality","resolução correta, fidelidade às fontes, taxa de erro","correct resolution, faithfulness, error rate"],
+         ["Contrapesos","Counter metrics","satisfação, recontato em 7 dias, reclamações","satisfaction, 7-day re-contact, complaints"]]},
+ deep:[["Escolhendo a métrica norte","Choosing the north star metric",
+  "A métrica norte deve capturar o valor entregue ao usuário e se mover quando o produto melhora. Para um assistente de suporte, \"conversas\" é fraca, porque cresce mesmo se o assistente piorar; \"problemas resolvidos corretamente sem humano\" é forte, porque só cresce quando o cliente sai atendido. Ela precisa ser medida de forma confiável, por exemplo com amostragem e revisão, e vir acompanhada de contrapesos.",
+  "The north star should capture value delivered to users and move when the product improves. For a support assistant, \"conversations\" is weak, because it grows even if the assistant gets worse; \"issues resolved correctly without a human\" is strong, because it only grows when customers leave helped. It must be measured reliably, for example with sampling and review, and come with counter metrics."],
+ ["Traduzindo métricas em dinheiro","Translating metrics into money",
+  "Liderança decide com base em impacto financeiro. Um cálculo simples: se o assistente resolve 12 mil conversas por mês sem humano, o custo médio de um atendimento humano é R$ 18 e o custo de IA por conversa é R$ 0,30, a economia mensal é de cerca de R$ 212 mil. Some efeitos de receita, como menos cancelamentos, e subtraia custos de operação. Mostrar essa conta com premissas explícitas dá credibilidade e facilita priorização.",
+  "Leadership decides based on financial impact. A simple calculation: if the assistant resolves 12 thousand conversations a month without a human, the average human contact costs R$ 18 and the AI cost per conversation is R$ 0.30, monthly savings are about R$ 212 thousand. Add revenue effects, such as fewer cancellations, and subtract operating costs. Showing this math with explicit assumptions builds credibility and eases prioritization."]]});
+
+M(27,{dg:{type:"bars",t:["Exemplo: efeito de cada otimização no custo","Example: effect of each optimization on cost"],
+  items:[["Situação inicial","Starting point",100],["+ cache do prompt de sistema","+ system prompt caching",78],["+ respostas mais curtas","+ shorter answers",61],["+ modelo menor nas tarefas simples","+ smaller model for simple tasks",38],["+ lote nos relatórios noturnos","+ batching nightly reports",33]],
+  note:["Valores ilustrativos, em % do custo inicial. A ordem segue do menor para o maior esforço.","Illustrative values, as % of starting cost. Ordered from least to most effort."]},
+ deep:[["Latência percebida e latência real","Perceived and real latency",
+  "O usuário não sente a latência média; sente quanto tempo fica olhando para a tela sem nada acontecer. Por isso, o tempo até o primeiro token pesa tanto: com streaming, o texto começa a aparecer em menos de um segundo, mesmo que a resposta completa leve cinco. Mostrar o que o sistema está fazendo (\"consultando seu pedido\") também reduz a sensação de espera em tarefas com ferramentas.",
+  "Users do not feel average latency; they feel how long they stare at a screen with nothing happening. That is why time to first token matters so much: with streaming, text starts appearing in under a second, even if the full answer takes five. Showing what the system is doing (\"checking your order\") also reduces perceived waiting in tool-based tasks."],
+ ["Raciocínio tem preço","Reasoning has a price",
+  "Modelos com modo de raciocínio pensam antes de responder, o que melhora tarefas complexas mas aumenta tokens e tempo. Muitos fornecedores permitem controlar esse esforço. Uma boa prática é usar raciocínio alto só onde ele muda o resultado, como análise de casos difíceis, e baixo ou nenhum em tarefas simples, como classificar uma intenção. Meça a diferença de qualidade em cada tipo de tarefa antes de decidir.",
+  "Models with a reasoning mode think before answering, which improves complex tasks but adds tokens and time. Many vendors let you control this effort. A good practice is to use high reasoning only where it changes the outcome, such as analyzing hard cases, and low or none for simple tasks, such as classifying an intent. Measure the quality difference for each task type before deciding."]]});
+
+M(28,{dg:{type:"triad",t:["A tríade letal","The lethal trifecta"],
+  items:[["Dados privados","Private data","acesso a e-mails, CRM, arquivos","access to email, CRM, files"],["Conteúdo não confiável","Untrusted content","páginas, documentos, mensagens de terceiros","pages, documents, third-party messages"],["Comunicação externa","External communication","enviar e-mail, chamar APIs, abrir links","send email, call APIs, open links"]],
+  note:["Com os três juntos, uma instrução escondida pode vazar dados. Remover ou exigir aprovação para um deles quebra a cadeia.","With all three together, a hidden instruction can leak data. Removing one, or requiring approval for it, breaks the chain."]},
+ deep:[["Montando o registro de riscos","Building the risk register",
+  "Para cada risco, registre: descrição concreta (\"agente envia dados do cliente para endereço externo após ler e-mail malicioso\"), probabilidade, impacto, controles existentes, dono e status. Priorize pela combinação de probabilidade e impacto. Revise antes de cada lançamento relevante e depois de cada incidente. O registro também é a base para conversar com jurídico, segurança e clientes enterprise.",
+  "For each risk, record: a concrete description (\"agent sends customer data to an external address after reading a malicious email\"), likelihood, impact, existing controls, owner and status. Prioritize by the combination of likelihood and impact. Review before each relevant launch and after each incident. The register is also the basis for conversations with legal, security and enterprise clients."],
+ ["Como organizar um red teaming","How to organize red teaming",
+  "Reúna pessoas de áreas diferentes, inclusive de fora do time, e dê a elas objetivos claros: fazer o assistente revelar dados de outro cliente, prometer algo fora da política, executar uma ação sem autorização ou gerar conteúdo ofensivo. Registre cada tentativa bem-sucedida como caso de teste no golden set. Assim, cada vulnerabilidade encontrada vira uma proteção permanente contra regressões.",
+  "Bring together people from different areas, including outside the team, and give them clear goals: make the assistant reveal another customer's data, promise something outside policy, take an action without authorization or generate offensive content. Record every successful attempt as a test case in the golden set. That way, each vulnerability found becomes a permanent protection against regressions."]]});
+
+M(29,{dg:{type:"matrix",hl:1,t:["Onde começar com IA","Where to start with AI"],
+  x:["Frequência baixa → alta","Frequency low → high"],y:["Tolerância a erro alta ↑","Error tolerance high ↑"],
+  q:[["Experimentos","Experiments","baixo volume, risco baixo","low volume, low risk"],["Começar aqui","Start here","alto volume, erro barato","high volume, cheap errors"],
+     ["Evitar por ora","Avoid for now","pouco valor, erro caro","little value, costly errors"],["Com supervisão","With oversight","alto valor, erro caro: humano no circuito","high value, costly errors: human in the loop"]]},
+ deep:[["Perguntas de discovery para casos de IA","Discovery questions for AI cases",
+  "Além das perguntas clássicas de discovery, inclua estas: o resultado é fácil de verificar por quem recebe? Quanto custa um erro, e quem percebe? Existem dados suficientes e com permissão de uso? Qual é a alternativa sem IA, e quanto ela resolve? O usuário quer que a tarefa seja feita por ele (automação) ou com ele (aumento)? As respostas indicam não só se vale usar IA, mas também o desenho da experiência.",
+  "Beyond classic discovery questions, include these: is the result easy for the recipient to verify? What does an error cost, and who notices? Is there enough data, with permission to use it? What is the non-AI alternative, and how much does it solve? Does the user want the task done for them (automation) or with them (augmentation)? The answers indicate not only whether AI is worth it, but also the experience design."],
+ ["Prototipar para aprender rápido","Prototyping to learn fast",
+  "Com modelos de fundação, um protótipo funcional sai em dias. Use isso para testar valor antes de investir: mostre o protótipo a usuários reais, com dados reais, e observe se ele resolve o problema e se as pessoas confiam no resultado. Um protótipo também revela cedo os casos difíceis, que viram o primeiro golden set. Seu Design QA Agent é exatamente esse tipo de prova rápida de valor.",
+  "With foundation models, a working prototype takes days. Use that to test value before investing: show it to real users, with real data, and watch whether it solves the problem and whether people trust the result. A prototype also surfaces hard cases early, which become the first golden set. Your Design QA Agent is exactly this kind of quick proof of value."]]});
+
+M(30,{dg:{type:"spectrum",t:["Quanto o humano participa","How much the human participates"],
+  ends:[["Humano decide","Human decides"],["IA decide","AI decides"]],
+  items:[["Sugestão","Suggestion","a pessoa escolhe e edita","the person picks and edits"],["Rascunho","Draft","a IA prepara, a pessoa aprova","AI prepares, the person approves"],["Ação com confirmação","Action with confirmation","a IA propõe, a pessoa confirma","AI proposes, the person confirms"],["Ação automática","Automatic action","com registro e opção de desfazer","with a log and an undo option"]]},
+ deep:[["Desenhando os estados de falha","Designing failure states",
+  "Toda tela de IA precisa de pelo menos três estados além do sucesso: quando o sistema não sabe (\"não encontrei essa informação, quer falar com uma pessoa?\"), quando demora (com indicação do que está acontecendo) e quando erra (com forma fácil de corrigir e de reportar). Esses estados aparecem com frequência em produtos de IA, e tratá-los bem é o que diferencia um produto confiável de uma demonstração.",
+  "Every AI screen needs at least three states beyond success: when the system does not know (\"I couldn't find that information, would you like to talk to a person?\"), when it is slow (showing what is happening) and when it is wrong (with an easy way to correct and report). These states appear often in AI products, and handling them well is what separates a reliable product from a demo."],
+ ["Testes de usabilidade específicos para IA","Usability tests specific to AI",
+  "Além de medir se a pessoa completa a tarefa, observe se ela verifica as respostas, se percebe quando a IA erra e se sabe como corrigir. Inclua de propósito algumas respostas erradas no teste e veja quantas pessoas notam. Pergunte também o que ela acha que o sistema consegue ou não fazer: diferenças entre a expectativa e a capacidade real indicam onde a interface precisa comunicar melhor.",
+  "Beyond measuring whether people complete the task, watch whether they verify answers, notice when the AI is wrong and know how to correct it. Deliberately include some wrong answers in the test and see how many people notice. Also ask what they think the system can and cannot do: gaps between expectation and actual capability show where the interface needs to communicate better."]]});
+
+M(31,{dg:{type:"flow",t:["Do piloto ao lançamento","From pilot to launch"],
+  steps:[["Evals offline","Offline evals","golden set aprovado","golden set passed"],["Modo sombra","Shadow mode","IA roda sem afetar clientes","AI runs without affecting customers"],["Beta fechado","Closed beta","poucos clientes, feedback direto","few customers, direct feedback"],["Rollout gradual","Gradual rollout","5% → 25% → 100%","5% → 25% → 100%"],["Revisão","Review","avançar, ajustar ou encerrar","go, iterate or kill"]],
+  note:["Os critérios de avanço de cada etapa são definidos antes de ela começar.","Each stage's go criteria are defined before it starts."]},
+ deep:[["Escrevendo critérios de avanço","Writing go criteria",
+  "Bons critérios têm três partes: uma meta de valor (\"resolver 60% das conversas sem humano\"), uma meta de qualidade (\"satisfação de pelo menos 4,2 e recontato abaixo de 10%\") e uma condição de segurança (\"nenhum incidente grave de dados\"). Defina também o que acontece em cada cenário: avançar, ajustar e repetir, ou encerrar. Registrar isso antes do piloto evita que resultados ambíguos virem discussões intermináveis.",
+  "Good criteria have three parts: a value target (\"resolve 60% of conversations without a human\"), a quality target (\"satisfaction of at least 4.2 and re-contact below 10%\") and a safety condition (\"no serious data incident\"). Also define what happens in each scenario: go, iterate and repeat, or kill. Recording this before the pilot keeps ambiguous results from turning into endless debates."],
+ ["Construir ou comprar","Build or buy",
+  "Compre quando a funcionalidade não diferencia seu produto, quando existe um fornecedor maduro e quando o tempo importa. Construa quando o diferencial está nos seus dados e processos, quando requisitos de privacidade ou integração não são atendidos pelo mercado, ou quando o custo em escala de um fornecedor fica alto demais. Revise essa decisão periodicamente, porque o mercado de IA muda rápido e o que valia construir há um ano pode ter virado commodity.",
+  "Buy when the feature does not differentiate your product, a mature vendor exists and time matters. Build when the edge lies in your data and processes, when privacy or integration requirements are not met by the market, or when a vendor's cost at scale becomes too high. Revisit the decision periodically, because the AI market moves fast and what was worth building a year ago may have become a commodity."]]});
+
+M(32,{dg:{type:"stack",t:["Estrutura do seu caso de produto","Structure of your product case"],
+  items:[["1. Problema e público","1. Problem and audience","quem sofre, com que frequência, quanto custa","who suffers, how often, at what cost"],
+         ["2. Alternativa sem IA","2. Non-AI alternative","por que ela não basta","why it is not enough"],
+         ["3. Solução e arquitetura","3. Solution and architecture","decisões e trade-offs","decisions and trade-offs"],
+         ["4. Avaliação","4. Evaluation","golden set, métricas, linha de base","golden set, metrics, baseline"],
+         ["5. Custos e riscos","5. Costs and risks","custo por tarefa e registro de riscos","cost per task and risk register"],
+         ["6. Lançamento e resultado","6. Launch and outcome","critérios de avanço e impacto","go criteria and impact"]]},
+ deep:[["Contando a história em entrevista","Telling the story in an interview",
+  "Em entrevistas, organize o caso em dois minutos: problema, por que IA, o que você construiu, como mediu e o que aprendeu. Depois, esteja pronta para aprofundar qualquer parte. Os entrevistadores costumam explorar trade-offs (por que não fine-tuning?), métricas (como sabe que funciona?) e riscos (o que pode dar errado?). Ter números concretos, como os 100% de recall e 66% de precisão da sua linha de base, faz muita diferença.",
+  "In interviews, structure the case in two minutes: problem, why AI, what you built, how you measured and what you learned. Then be ready to go deep on any part. Interviewers usually probe trade-offs (why not fine-tuning?), metrics (how do you know it works?) and risks (what could go wrong?). Having concrete numbers, such as your baseline's 100% recall and 66% precision, makes a big difference."],
+ ["O que separa um caso júnior de um sênior","What separates a junior case from a senior one",
+  "Um caso júnior descreve o que foi construído. Um caso sênior explica por que, mostra alternativas descartadas, traz números antes e depois, reconhece limitações e conecta o resultado ao negócio. Também mostra como o trabalho envolveu outras áreas: engenharia, design, jurídico, operações. Revise seu caso procurando cada afirmação sem evidência e acrescente o dado ou a decisão que a sustenta.",
+  "A junior case describes what was built. A senior case explains why, shows discarded alternatives, brings before and after numbers, acknowledges limitations and connects the result to the business. It also shows how the work involved other areas: engineering, design, legal, operations. Review your case looking for every claim without evidence and add the data or decision that supports it."]]});
+/* ============ DIAGRAMAS ============ */
+const LT=a=>EN()?a[1]:a[0];
+function dgHTML(d){
+  if(!d) return "";
+  let body="";
+  if(d.type==="nest"){
+    let inner="";
+    for(let i=d.rings.length-1;i>=0;i--){const r=d.rings[i];
+      inner=`<div class="dg-ring" style="--lv:${i}"><div class="dg-ring-h"><b>${esc(LT(r))}</b><span>${esc(EN()?r[3]:r[2])}</span></div>${inner}</div>`;}
+    body=`<div class="dg-nest">${inner}</div>`;
+  } else if(d.type==="timeline"){
+    body=`<div class="dg-scroll"><ol class="dg-tl" style="--n:${d.items.length}">${d.items.map(x=>`<li><span class="y">${esc(x[0])}</span><i></i><span class="l">${esc(EN()?x[2]:x[1])}</span></li>`).join("")}</ol></div>`;
+  } else if(d.type==="flow"||d.type==="cycle"){
+    body=`<ol class="dg-flow ${d.type==="cycle"?"is-cycle":""} ${d.steps.length>4?"is-long":""}" style="--n:${d.steps.length}">${d.steps.map((s,i)=>`<li><span class="k">${i+1}</span><b>${esc(LT(s))}</b>${(EN()?s[3]:s[2])?`<span class="s">${esc(EN()?s[3]:s[2])}</span>`:""}</li>`).join("")}</ol>
+      ${d.type==="cycle"?`<div class="dg-loop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>${EN()?"Repeats until the goal is reached":"Repete até atingir o objetivo"}</div>`:""}`;
+  } else if(d.type==="compare"){
+    body=`<div class="dg-scroll"><table class="dg-table"><thead><tr><th></th>${d.cols.map(c=>`<th>${esc(LT(c))}</th>`).join("")}</tr></thead>
+      <tbody>${d.rows.map(r=>`<tr><th scope="row">${esc(LT(r))}</th>${(EN()?r[3]:r[2]).map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  } else if(d.type==="spectrum"){
+    body=`<div class="dg-spec"><div class="dg-spec-ends"><span>${esc(LT(d.ends[0]))}</span><span>${esc(LT(d.ends[1]))}</span></div>
+      <div class="dg-spec-bar"></div>
+      <ol class="dg-spec-items" style="--n:${d.items.length}">${d.items.map(x=>`<li><i></i><b>${esc(LT(x))}</b><span>${esc(EN()?x[3]:x[2])}</span></li>`).join("")}</ol></div>`;
+  } else if(d.type==="bars"){
+    const mx=Math.max(...d.items.map(x=>x[2]));
+    body=`<div class="dg-bars">${d.items.map(x=>`<div class="dg-bar"><span class="l">${esc(LT(x))}</span><div class="t"><i style="width:${x[2]/mx*100}%"></i></div><b>${x[2]}%</b></div>`).join("")}</div>`;
+  } else if(d.type==="stack"){
+    body=`<ol class="dg-stack">${d.items.map((x,i)=>`<li style="--i:${i}"><b>${esc(LT(x))}</b><span>${esc(EN()?x[3]:x[2])}</span></li>`).join("")}</ol>`;
+  } else if(d.type==="matrix"){
+    const q=d.q;
+    body=`<div class="dg-matrix"><div class="ylab">${esc(LT(d.y))}</div>
+      <div class="grid">${[q[0],q[1],q[2],q[3]].map((c,i)=>`<div class="cell c${i} ${d.hl===i?"hl":""}"><b>${esc(LT(c))}</b><span>${esc(EN()?c[3]:c[2])}</span></div>`).join("")}</div>
+      <div class="xlab">${esc(LT(d.x))}</div></div>`;
+  } else if(d.type==="triad"){
+    const it=d.items;
+    body=`<div class="dg-triad"><svg viewBox="0 0 300 250" role="img" aria-label="${esc(LT(d.t))}">
+        <circle cx="110" cy="95" r="72"/><circle cx="190" cy="95" r="72"/><circle cx="150" cy="160" r="72"/>
+        <text x="80" y="80">${esc(LT(it[0]).split(" ")[0])}</text><text x="220" y="80">${esc(LT(it[1]).split(" ")[0])}</text><text x="150" y="205">${esc(LT(it[2]).split(" ")[0])}</text>
+        <text x="150" y="120" class="mid">!</text></svg>
+      <ul>${it.map(x=>`<li><b>${esc(LT(x))}</b><span>${esc(EN()?x[3]:x[2])}</span></li>`).join("")}</ul></div>`;
+  }
+  return `<figure class="block dg" aria-label="${esc(LT(d.t))}"><figcaption><span class="ico" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a2 2 0 0 1 2 2V14"/></svg></span>${esc(LT(d.t))}</figcaption>${body}${d.note?`<p class="dg-note">${esc(LT(d.note))}</p>`:""}</figure>`;
+}
+function deepHTML(n){
+  const m=MORE[n]; if(!m||!m.deep) return "";
+  return `<section class="block deep deep-more"><h2><span class="ico" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg></span>${EN()?"Going deeper":"Aprofundando"}</h2>
+    ${m.deep.map(x=>`<h3>${esc(EN()?x[1]:x[0])}</h3>${paras(EN()?x[3]:x[2])}`).join("")}</section>`;
+}
+
 /* ============ ESTADO E PERSISTÊNCIA ============ */
 const LS_KEY="trilha-ai-pm-v1";
 const BLANK=()=>({done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null});
@@ -3883,10 +4756,12 @@ function renderLesson(app,l){
       </header>
       <section class="block"><h2>${u("about_h")}</h2><p>${esc(tx(l,"s"))}</p></section>
       ${DP&&DP.s?`<section class="simple"><div class="simple-h"><span class="ico" aria-hidden="true">${ic("bulb")}</span>${u("simple_h")}</div><p>${esc(EN()?DP.se:DP.s)}</p></section>`:""}
+      ${MORE[l.num]?dgHTML(MORE[l.num].dg):""}
       ${DP?`<section class="block deep"><h2><span class="ico" aria-hidden="true">${ic("clock")}</span>${u("hist_h")}</h2>${paras(EN()?DP.he:DP.h)}</section>`:""}
       <section class="block"><h2>${u("concepts_h")}</h2>
         <div class="concepts">${K.map(([k,v],i)=>`<div class="concept"><b>${esc(k)}</b><p>${esc(v)}</p><button class="ask-link" data-ask="${i}">${u("ask_example")}</button></div>`).join("")}</div>
       </section>
+      ${deepHTML(l.num)}
       ${DP?`<section class="block deep"><h2><span class="ico" aria-hidden="true">${ic("spark")}</span>${u("art_h")}</h2>${paras(EN()?DP.ae:DP.a)}</section>`:""}
       ${DP&&DP.c?`<section class="block deep case-block"><h2><span class="ico" aria-hidden="true">${ic("building")}</span>${u("case_h")}: ${esc(EN()&&DP.cte?DP.cte:DP.ct)}</h2><p>${esc(EN()?DP.ce:DP.c)}</p></section>`:""}
       ${DP?`<section class="block deep"><h2><span class="ico" aria-hidden="true">${ic("compass")}</span>${u("rot_h")}</h2>${paras(EN()?DP.re:DP.r)}</section>`:""}
@@ -3941,7 +4816,7 @@ function renderLesson(app,l){
     state.notes=Object.assign({},state.notes,{[l.num]:e.target.value}); $("#noteState").textContent=u("saving");
     clearTimeout(nt); nt=setTimeout(()=>{persist();$("#noteState").textContent=u("saved");},600);
   });
-  const ctx=`Current lesson: "${tx(l,"t")}" (module ${m.n}: ${tx(m,"title")}).\nSummary: ${tx(l,"s")}\nKey concepts: ${K.map(([a,b])=>a+": "+b).join(" | ")}`+(DP?`\nHistorical context: ${DP.he}\nState of the art: ${DP.ae}\nIn the AI PM routine: ${DP.re}\nPlain-words analogy: ${DP.se||""}\nReal-world case (${DP.cte||DP.ct||""}): ${DP.ce||""}\nReferences: ${DP.refs.map(r=>r[0]).join("; ")}`:"");
+  const ctx=`Current lesson: "${tx(l,"t")}" (module ${m.n}: ${tx(m,"title")}).\nSummary: ${tx(l,"s")}\nKey concepts: ${K.map(([a,b])=>a+": "+b).join(" | ")}`+(DP?`\nHistorical context: ${DP.he}\nState of the art: ${DP.ae}\nIn the AI PM routine: ${DP.re}\nPlain-words analogy: ${DP.se||""}\nReal-world case (${DP.cte||DP.ct||""}): ${DP.ce||""}`+(MORE[l.num]?`\nGoing deeper: ${MORE[l.num].deep.map(x=>x[1]+": "+x[3]).join(" ")}`:"")+`\nReferences: ${DP.refs.map(r=>r[0]).join("; ")}`:"");
   const chat=mountChat($("#chatBox"),{key:"a"+l.num,title:u("chat_title"),sub:u("chat_sub"),context:ctx,chips:u("chips")});
   app.querySelectorAll("[data-ask]").forEach(b=>b.addEventListener("click",()=>{
     chat.send(u("ask_prompt",K[+b.dataset.ask][0]));
