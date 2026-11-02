@@ -425,7 +425,7 @@ a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulati
 }
 
 /* Tablet na horizontal (tela de toque larga): a aula ocupa a tela toda e o tutor vira um painel lateral expansível */
-@media (pointer:coarse) and (min-width:1021px){
+@media (min-width:1021px){
   .lesson-grid{grid-template-columns:minmax(0,1fr)}
   .lesson-grid .block p,.lesson-grid .deep p,.lesson-grid .simple p,.lesson-grid .case p,.lesson-grid .pm-note p{max-width:88ch}
   .lesson-grid #chatBox{position:fixed;top:0;right:0;bottom:0;left:auto;z-index:45;width:min(460px,42vw);
@@ -445,7 +445,7 @@ a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulati
   .toast{bottom:calc(env(safe-area-inset-bottom,0px) + 92px)}
   .lesson-grid > div:first-child{padding-bottom:80px}
 }
-@media (pointer:coarse) and (min-width:1021px) and (max-height:700px) and (orientation:landscape){
+@media (min-width:1021px) and (max-height:700px) and (orientation:landscape){
   body .lesson-grid #chatBox .chat{max-height:none}
 }
 
@@ -737,6 +737,8 @@ body.sheet-open .lang-fab{visibility:hidden}
 .fq-card .fc-prac{margin-top:4px}
 .fc-wrap > .fc-only{margin:-6px 0 16px}
 @media (max-width:760px){.fq-sec{font-size:15px}.fq-card{min-height:clamp(420px,70vh,600px)}}
+/* Diagramas alinhados com os outros blocos da aula (o figure tem margem lateral padrão do navegador) */
+figure.dg{margin:0 0 16px}
 main:focus,main:focus-visible{outline:none}
 .legend i,.minibars a i{background:var(--c)}
 .btn:not(.ghost):not(.soft):not(.done){background:var(--brandi)}
@@ -845,7 +847,7 @@ details.about summary::after,.res-details summary::after{transition:transform .2
 .toast{transform:translate(-50%,10px);transition:opacity .16s var(--ease-in),transform .16s var(--ease-in)}
 .toast.show{transform:translate(-50%,0);transition:opacity .22s var(--ease),transform .22s var(--ease)}
 /* Painel do tutor */
-@media not ((pointer:coarse) and (min-width:1021px)){.lesson-grid #chatBox{transition:transform .32s var(--ease)}}
+@media (max-width:1020px){.lesson-grid #chatBox{transition:transform .32s var(--ease)}}
 .sheet-bd.show{animation:enter .2s var(--ease)}
 @media (prefers-reduced-motion: reduce){#app.enter,.bar i,.pts-bar i,.minibars a i{animation:none}}
 .pts-big .count{font-size:inherit;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
@@ -5257,7 +5259,7 @@ function resBlock(n,open){
     <div><h3>${u("videos")}</h3><ul class="res-list">${R.v.map(x=>item(x,"v")).join("")}</ul></div></div>
     <p class="refs-note">${u("res_note")}</p>`;
 }
-function sheetMode(){return matchMedia("(max-width:1020px), (pointer:coarse)").matches&&!!document.querySelector(".lesson-grid #chatBox");}
+function sheetMode(){return !!document.querySelector(".lesson-grid #chatBox");}
 function openChat(){
   const cb=$("#chatBox"); if(!cb) return;
   if(sheetMode()){cb.classList.add("open");const bd=$("#sheetBd");if(bd)bd.classList.add("show");document.body.classList.add("sheet-open");
