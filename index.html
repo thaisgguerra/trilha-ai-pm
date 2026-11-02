@@ -478,11 +478,11 @@ a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulati
 @media (pointer:coarse) and (min-width:1021px){.nav a{padding:10px 11px}}
 @media (min-width:1021px) and (max-width:1320px){.pts-pill{display:none}}
 /* Menu com 10 itens: mais compacto em telas médias, com a barra de progresso só na página inicial */
-@media (min-width:1021px){.nav a{padding:8px 9px;font-size:14.5px}.brand{font-size:17px}}
+@media (min-width:1021px){.nav a{padding:8px 8px;font-size:14.5px}.brand{font-size:17px}}
 @media (min-width:1021px){.pts-pill,#topProgress{display:none}}
-@media (min-width:1021px) and (max-width:1120px){.nav a{padding:8px 7px;font-size:14px}.top-in{gap:8px;padding-left:14px;padding-right:14px}}
-@media (pointer:coarse) and (min-width:1021px){.nav a{padding:10px 9px}}
-@media (pointer:coarse) and (min-width:1021px) and (max-width:1120px){.nav a{padding:10px 7px}}
+@media (min-width:1021px) and (max-width:1120px){.nav a{padding:8px 5px;font-size:13.5px}.top-in{gap:8px;padding-left:14px;padding-right:14px}}
+@media (pointer:coarse) and (min-width:1021px){.nav a{padding:10px 8px}}
+@media (pointer:coarse) and (min-width:1021px) and (max-width:1120px){.nav a{padding:10px 5px}}
 @media (pointer:coarse) and (min-width:1021px) and (max-width:1500px){.pts-pill{display:none}}
 /* Tablets na horizontal com tela mais baixa: cabeçalho rola junto para liberar espaço de leitura */
 @media (max-height:700px) and (orientation:landscape){
@@ -785,6 +785,40 @@ figure.dg{margin:0 0 16px}
   box-shadow:0 8px 24px rgba(20,23,42,.25);opacity:0;pointer-events:none;transition:opacity .15s;z-index:30}
 .gl-term:hover::after,.gl-term:focus-visible::after,.gl-term.show::after{opacity:1}
 @media print{.gl-term{border:0}.gl-term::after{display:none}}
+
+/* ===== Laboratório e backup ===== */
+.lab-wrap{max-width:1040px;margin:0 auto}
+.lab-tabs{margin-bottom:16px}.lab-tabs .seg[aria-pressed="true"]{background:var(--btn);border-color:var(--btn);color:#fff}
+.lab-d{color:var(--muted);margin:-4px 0 14px}.lab-d a{color:var(--brandi);font-weight:600}
+.lab-grid{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:820px){.lab-grid{grid-template-columns:1fr}}
+.lab-ctrls{display:grid;gap:12px}
+.lab-f{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--muted)}
+.lab-f b{color:var(--ink)}
+.lab-in{display:flex;align-items:center;gap:8px}
+.lab-in em{font-style:normal;font-size:13px;color:var(--muted);white-space:nowrap}
+.lab-f input[type=number],.lab-f select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface-2);color:var(--ink);font-size:15.5px;font-weight:600}
+.lab-f input[type=range]{width:100%;accent-color:var(--btn)}
+.lab-matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;align-items:stretch;font-size:13px}
+.lab-matrix>b{display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-weight:600;padding:4px}
+.lab-matrix .c{border-radius:14px;padding:12px;display:grid;gap:2px;text-align:center;border:1px solid var(--line)}
+.lab-matrix .c small{font-weight:700;color:var(--muted)}.lab-matrix .c span{font-family:var(--display);font-size:24px;font-weight:700}
+.lab-matrix .tp,.lab-matrix .tn{background:color-mix(in srgb,var(--oki) 10%,var(--surface))}
+.lab-matrix .fp,.lab-matrix .fn{background:color-mix(in srgb,var(--m3) 10%,var(--surface))}
+.lab-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:12px}
+.lab-kpis div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface-2)}
+.lab-kpis small{display:block;font-size:12.5px;color:var(--muted);font-weight:600}.lab-kpis b{font-family:var(--display);font-size:20px}
+.lab-kpis-big b{font-size:26px}
+.lab-tip{margin:12px 0 0;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--brand) 7%,var(--surface));font-size:15px;line-height:1.55}
+.block p.lab-note,.lab-note{font-size:13.5px!important;color:var(--muted);margin:14px 0 0!important;line-height:1.5}
+.sql-schema{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;font-size:14px}
+.sql-schema code,.sql-q{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.sql-schema code{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:13px}
+.sql-q{min-height:170px;margin:10px 0;font-size:14px;line-height:1.55;white-space:pre;tab-size:2}
+.sql-out{margin-top:14px}.sql-table td,.sql-table th{font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.lab-inline{border-top:6px solid var(--c)}
+.bk-imp{cursor:pointer}
+.ref-s{font-size:12.5px;color:var(--muted)}
 main:focus,main:focus-visible{outline:none}
 .legend i,.minibars a i{background:var(--c)}
 .btn:not(.ghost):not(.soft):not(.done){background:var(--brandi)}
@@ -1089,6 +1123,7 @@ details.about summary::after,.res-details summary::after{transition:transform .2
       <a href="#/flashcards" data-nav="flashcards">Flashcards</a>
       <a href="#/tutor" data-nav="tutor">Tutor</a>
       <a href="#/entrevista" data-nav="entrevista">Entrevista</a>
+      <a href="#/lab" data-nav="lab">Lab</a>
       <a href="#/modelos" data-nav="modelos">Modelos</a>
       <a href="#/bigtechs" data-nav="bigtechs">Big techs</a>
       <a href="#/biblioteca" data-nav="biblioteca">Biblioteca</a>
@@ -1888,7 +1923,7 @@ r:"No dia a dia, o AI PM é quem transforma \"vamos usar IA\" em uma pergunta de
 re:"Day to day, the AI PM is the one who turns \"let's use AI\" into a product question: which user task or decision will change, and how will we know it changed? In practice, that means writing the problem before the solution, mapping where simple rules are enough and where a model truly adds value, and explaining to stakeholders the difference between a model (a component) and a product (the full experience, with data, interface, operations and metrics). That clarity prevents projects that become beautiful demos with no adoption.",
 refs:[["Russell, S. e Norvig, P. (2020). Artificial Intelligence: A Modern Approach, 4ª ed. Pearson.","Artificial Intelligence: A Modern Approach Russell Norvig"],
 ["Stanford HAI (2025). AI Index Report 2025.","Stanford AI Index Report 2025","w"],
-["Bommasani, R. et al. (2021). On the Opportunities and Risks of Foundation Models. Stanford CRFM.","On the Opportunities and Risks of Foundation Models"]]
+["Bommasani, R. et al. (2021). On the Opportunities and Risks of Foundation Models. Stanford CRFM.","On the Opportunities and Risks of Foundation Models","https://arxiv.org/abs/2108.07258"]]
 });
 
 D(2,{
@@ -1898,9 +1933,9 @@ a:"A história recente reconciliou as duas tradições. O deep learning ganhou f
 ae:"Recent history has reconciled the two traditions. Deep learning took off with AlexNet (2012), and the 2018 Turing Award went to Hinton, LeCun and Bengio. In 2024, the Nobel Prize in Physics recognized Hopfield and Hinton for the foundations of neural networks, and the Chemistry prize went to Baker, Hassabis and Jumper, the latter two for AlphaFold. At the same time, neurosymbolic approaches are back: language models that call tools, run code or use formal verifiers combine statistical learning with explicit rules.",
 r:"Conhecer a história ajuda o AI PM a reconhecer padrões de hype. Quando alguém promete que \"a IA vai resolver tudo em seis meses\", vale lembrar que os invernos vieram justamente de promessas maiores do que a entrega. Na rotina, isso vira roadmaps com marcos verificáveis, pilotos pequenos antes de grandes compromissos e comunicação honesta sobre as incertezas técnicas. É uma postura que gera confiança com liderança e clientes enterprise.",
 re:"Knowing the history helps the AI PM recognize hype patterns. When someone promises that \"AI will solve everything in six months\", it is worth remembering that the winters came precisely from promises bigger than what was delivered. Day to day, this becomes roadmaps with verifiable milestones, small pilots before big commitments and honest communication about technical uncertainty. It is a stance that builds trust with leadership and enterprise clients.",
-refs:[["Turing, A. (1950). Computing Machinery and Intelligence. Mind, 59(236).","Computing Machinery and Intelligence Turing 1950"],
+refs:[["Turing, A. (1950). Computing Machinery and Intelligence. Mind, 59(236).","Computing Machinery and Intelligence Turing 1950","https://doi.org/10.1093/mind/LIX.236.433"],
 ["McCarthy, J. et al. (1955). A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence.","A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence"],
-["Rumelhart, D., Hinton, G. e Williams, R. (1986). Learning representations by back-propagating errors. Nature.","Learning representations by back-propagating errors"],
+["Rumelhart, D., Hinton, G. e Williams, R. (1986). Learning representations by back-propagating errors. Nature.","Learning representations by back-propagating errors","https://doi.org/10.1038/323533a0"],
 ["The Nobel Prize (2024). Prêmio Nobel de Física 2024: Hopfield e Hinton.","Nobel Prize Physics 2024 Hopfield Hinton","w"]]
 });
 
@@ -1913,7 +1948,7 @@ r:"Uma decisão recorrente do AI PM é \"regra ou modelo?\". No caso de atendime
 re:"A recurring AI PM decision is \"rule or model?\". In the support case, refund eligibility is a company policy rule that must be auditable, while understanding a customer's messy message is work for a model. Day to day, that means documenting decision tables with operations and legal, making clear what the model may decide on its own and ensuring every sensitive decision can be explained later.",
 refs:[["Shortliffe, E. (1976). Computer-Based Medical Consultations: MYCIN. Elsevier.","Computer-Based Medical Consultations MYCIN Shortliffe"],
 ["Feigenbaum, E. (1977). The Art of Artificial Intelligence: Themes and Case Studies of Knowledge Engineering. IJCAI.","The Art of Artificial Intelligence Themes and Case Studies of Knowledge Engineering"],
-["Edge, D. et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. Microsoft Research.","From Local to Global: A Graph RAG Approach to Query-Focused Summarization"]]
+["Edge, D. et al. (2024). From Local to Global: A Graph RAG Approach to Query-Focused Summarization. Microsoft Research.","From Local to Global: A Graph RAG Approach to Query-Focused Summarization","https://arxiv.org/abs/2404.16130"]]
 });
 
 D(4,{
@@ -1923,9 +1958,9 @@ a:"Com os LLMs, o efeito ELIZA ficou muito mais forte, porque agora a fluência 
 ae:"With LLMs, the ELIZA effect became much stronger, because the fluency is now real. Research by Anthropic (Sharma et al., 2023) documented sycophancy: models' tendency to agree with users even when they are wrong. Add hallucinations and overreliance, the subject of a Microsoft Research review (2022) showing that users accept wrong answers when they sound confident. The industry's path includes citing sources, communicating uncertainty in a calibrated way and training models to disagree respectfully.",
 r:"O AI PM desenha a confiança do usuário de propósito. Isso inclui deixar claro que a pessoa está falando com uma IA, mostrar fontes, facilitar a verificação e evitar antropomorfização que engane. Nas avaliações, vale incluir casos em que a resposta \"soa certa, mas está errada\" e medir quantas vezes usuários aceitam respostas incorretas. Com seu background em design, esse é um tema em que você pode se destacar nas entrevistas.",
 re:"The AI PM designs user trust on purpose. That includes making clear that the person is talking to an AI, showing sources, making verification easy and avoiding misleading anthropomorphism. In evaluations, it is worth including cases where the answer \"sounds right but is wrong\" and measuring how often users accept incorrect answers. With your design background, this is a topic where you can stand out in interviews.",
-refs:[["Weizenbaum, J. (1966). ELIZA: A Computer Program for the Study of Natural Language Communication Between Man and Machine. CACM.","ELIZA A Computer Program For the Study of Natural Language Communication Between Man And Machine"],
+refs:[["Weizenbaum, J. (1966). ELIZA: A Computer Program for the Study of Natural Language Communication Between Man and Machine. CACM.","ELIZA A Computer Program For the Study of Natural Language Communication Between Man And Machine","https://doi.org/10.1145/365153.365168"],
 ["Reeves, B. e Nass, C. (1996). The Media Equation. Cambridge University Press.","The Media Equation Reeves Nass"],
-["Sharma, M. et al. (2023). Towards Understanding Sycophancy in Language Models. Anthropic.","Towards Understanding Sycophancy in Language Models"],
+["Sharma, M. et al. (2023). Towards Understanding Sycophancy in Language Models. Anthropic.","Towards Understanding Sycophancy in Language Models","https://arxiv.org/abs/2310.13548"],
 ["Passi, S. e Vorvoreanu, M. (2022). Overreliance on AI: Literature Review. Microsoft Research.","Overreliance on AI Literature Review Passi Vorvoreanu","w"]]
 });
 
@@ -1936,8 +1971,8 @@ a:"Ainda não há definição consensual de AGI. O Google DeepMind propôs uma e
 ae:"There is still no consensus definition of AGI. Google DeepMind proposed a scale of \"levels of AGI\" (Morris et al., 2023) combining performance and generality. Foundation models blur the categories: the same model reads images, writes code and chats, yet still fails unpredictably on long tasks. Regulators and companies started using capability thresholds: the EU AI Act treats models trained above 10^25 operations as systemic risk, and Anthropic organizes its safeguards into AI Safety Levels (ASL) in its Responsible Scaling Policy.",
 r:"Para o AI PM, rótulos importam menos do que capacidades medidas. Quando um fornecedor fala em \"nível AGI\", a pergunta certa é: qual é o desempenho na nossa tarefa, no nosso conjunto de testes? Classificar a funcionalidade por abordagem e aplicação também ajuda na conversa com o jurídico, porque regulações como o AI Act definem obrigações de acordo com o uso (por exemplo, recrutamento e crédito são de alto risco), e não com a tecnologia.",
 re:"For the AI PM, labels matter less than measured capabilities. When a vendor talks about \"AGI level\", the right question is: what is the performance on our task, on our test set? Classifying the feature by approach and application also helps in conversations with legal, because regulations such as the AI Act set obligations according to the use (for example, hiring and credit are high risk), not the technology.",
-refs:[["Searle, J. (1980). Minds, Brains, and Programs. Behavioral and Brain Sciences.","Minds, Brains, and Programs Searle"],
-["Morris, M. R. et al. (2023). Levels of AGI for Operationalizing Progress on the Path to AGI. Google DeepMind.","Levels of AGI for Operationalizing Progress on the Path to AGI"],
+refs:[["Searle, J. (1980). Minds, Brains, and Programs. Behavioral and Brain Sciences.","Minds, Brains, and Programs Searle","https://doi.org/10.1017/S0140525X00005756"],
+["Morris, M. R. et al. (2023). Levels of AGI for Operationalizing Progress on the Path to AGI. Google DeepMind.","Levels of AGI for Operationalizing Progress on the Path to AGI","https://arxiv.org/abs/2311.02462"],
 ["Bostrom, N. (2014). Superintelligence: Paths, Dangers, Strategies. Oxford University Press.","Superintelligence Paths Dangers Strategies"],
 ["União Europeia (2024). Regulamento de Inteligência Artificial (AI Act).","EU AI Act official text","w"]]
 });
@@ -1949,10 +1984,10 @@ a:"A receita dominante hoje tem duas fases: pré-treino autossupervisionado em e
 ae:"Today's dominant recipe has two phases: self-supervised pre-training at massive scale and post-training, which includes supervised fine-tuning, reinforcement learning from human feedback (RLHF, popularized by InstructGPT in 2022) and principle-guided AI feedback (Constitutional AI, Anthropic, 2022). Since 2024, reinforcement learning with verifiable rewards has been used to train reasoning models such as OpenAI's o1 and DeepSeek-R1 (2025). Scaling laws (Kaplan, 2020; Hoffmann, 2022) guide how much data and compute to use. Even so, for tabular data, classic methods such as gradient boosting still tend to beat deep learning (Grinsztajn et al., 2022).",
 r:"Na rotina, o AI PM ajuda a escolher a ferramenta certa para cada problema. Previsão de churn ou detecção de fraude em dados de planilha? Machine learning clássico costuma ser mais barato e explicável. Entender textos livres de clientes? Um LLM brilha. Também é papel do PM saber se existem dados rotulados, quanto custaria rotular e como o feedback dos usuários pode virar dado de melhoria, sempre com atenção à privacidade.",
 re:"Day to day, the AI PM helps choose the right tool for each problem. Churn prediction or fraud detection on spreadsheet-like data? Classic machine learning is usually cheaper and more explainable. Understanding free text from customers? An LLM shines. It is also the PM's role to know whether labeled data exists, how much labeling would cost and how user feedback can become improvement data, always with attention to privacy.",
-refs:[["Samuel, A. (1959). Some Studies in Machine Learning Using the Game of Checkers. IBM Journal.","Some Studies in Machine Learning Using the Game of Checkers"],
-["Ouyang, L. et al. (2022). Training language models to follow instructions with human feedback. OpenAI.","Training language models to follow instructions with human feedback"],
-["DeepSeek-AI (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.","DeepSeek-R1 Incentivizing Reasoning Capability in LLMs via Reinforcement Learning"],
-["Grinsztajn, L. et al. (2022). Why do tree-based models still outperform deep learning on tabular data? NeurIPS.","Why do tree-based models still outperform deep learning on tabular data"]]
+refs:[["Samuel, A. (1959). Some Studies in Machine Learning Using the Game of Checkers. IBM Journal.","Some Studies in Machine Learning Using the Game of Checkers","https://doi.org/10.1147/rd.33.0210"],
+["Ouyang, L. et al. (2022). Training language models to follow instructions with human feedback. OpenAI.","Training language models to follow instructions with human feedback","https://arxiv.org/abs/2203.02155"],
+["DeepSeek-AI (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning.","DeepSeek-R1 Incentivizing Reasoning Capability in LLMs via Reinforcement Learning","https://arxiv.org/abs/2501.12948"],
+["Grinsztajn, L. et al. (2022). Why do tree-based models still outperform deep learning on tabular data? NeurIPS.","Why do tree-based models still outperform deep learning on tabular data","https://arxiv.org/abs/2207.08815"]]
 });
 
 D(7,{
@@ -1963,9 +1998,9 @@ ae:"In 2021, Andrew Ng popularized data-centric AI: improving data quality often
 r:"O AI PM faz as perguntas que evitam surpresas em produção: de onde vieram os dados de treino e de teste? O teste representa o que os usuários realmente fazem? Como vamos detectar mudanças no perfil dos dados depois do lançamento? Quando uma pontuação do modelo vira gatilho de decisão (por exemplo, aprovar automaticamente acima de 0,9), o PM deve exigir uma checagem de calibração e definir o custo de cada tipo de erro.",
 re:"The AI PM asks the questions that prevent surprises in production: where did training and test data come from? Does the test reflect what users actually do? How will we detect shifts in the data after launch? When a model score becomes a decision trigger (for example, auto-approve above 0.9), the PM should require a calibration check and define the cost of each type of error.",
 refs:[["Sculley, D. et al. (2015). Hidden Technical Debt in Machine Learning Systems. NeurIPS.","Hidden Technical Debt in Machine Learning Systems"],
-["Guo, C. et al. (2017). On Calibration of Modern Neural Networks. ICML.","On Calibration of Modern Neural Networks"],
-["Kapoor, S. e Narayanan, A. (2023). Leakage and the reproducibility crisis in machine-learning-based science. Patterns.","Leakage and the reproducibility crisis in machine-learning-based science"],
-["Deng, J. et al. (2009). ImageNet: A large-scale hierarchical image database. CVPR.","ImageNet A large-scale hierarchical image database"]]
+["Guo, C. et al. (2017). On Calibration of Modern Neural Networks. ICML.","On Calibration of Modern Neural Networks","https://arxiv.org/abs/1706.04599"],
+["Kapoor, S. e Narayanan, A. (2023). Leakage and the reproducibility crisis in machine-learning-based science. Patterns.","Leakage and the reproducibility crisis in machine-learning-based science","https://doi.org/10.1016/j.patter.2023.100804"],
+["Deng, J. et al. (2009). ImageNet: A large-scale hierarchical image database. CVPR.","ImageNet A large-scale hierarchical image database","https://doi.org/10.1109/CVPR.2009.5206848"]]
 });
 
 D(8,{
@@ -1975,10 +2010,10 @@ a:"Os modelos de fronteira hoje são nativamente multimodais (entendem texto, im
 ae:"Frontier models today are natively multimodal (they understand text, images and audio), work with contexts of hundreds of thousands of tokens, have reasoning modes and use tools. Video generation advanced quickly from 2024 onward. Open-weight models such as Llama, Qwen, DeepSeek and Mistral came close to closed ones on many tasks, and small models started running directly on phones. Another trend is generative UI, where the model creates the screen or document itself, not just chat text.",
 r:"O AI PM decide a forma da experiência: chat, sugestão embutida, geração em lote ou algo invisível no fluxo. Conteúdo gerado precisa de fluxo de revisão, voz de marca e política de propriedade intelectual. Na rotina, vale preferir saídas verificáveis (um rascunho que alguém aprova, um código que passa em testes) e estimar o custo por geração desde o início.",
 re:"The AI PM decides the shape of the experience: chat, embedded suggestion, batch generation or something invisible in the flow. Generated content needs a review workflow, brand voice and an intellectual property policy. Day to day, it is worth preferring verifiable outputs (a draft someone approves, code that passes tests) and estimating the cost per generation from the start.",
-refs:[["Vaswani, A. et al. (2017). Attention Is All You Need. NeurIPS.","Attention Is All You Need"],
-["Brown, T. et al. (2020). Language Models are Few-Shot Learners. NeurIPS.","Language Models are Few-Shot Learners"],
-["Ho, J., Jain, A. e Abbeel, P. (2020). Denoising Diffusion Probabilistic Models. NeurIPS.","Denoising Diffusion Probabilistic Models"],
-["Bommasani, R. et al. (2021). On the Opportunities and Risks of Foundation Models.","On the Opportunities and Risks of Foundation Models"]]
+refs:[["Vaswani, A. et al. (2017). Attention Is All You Need. NeurIPS.","Attention Is All You Need","https://arxiv.org/abs/1706.03762"],
+["Brown, T. et al. (2020). Language Models are Few-Shot Learners. NeurIPS.","Language Models are Few-Shot Learners","https://arxiv.org/abs/2005.14165"],
+["Ho, J., Jain, A. e Abbeel, P. (2020). Denoising Diffusion Probabilistic Models. NeurIPS.","Denoising Diffusion Probabilistic Models","https://arxiv.org/abs/2006.11239"],
+["Bommasani, R. et al. (2021). On the Opportunities and Risks of Foundation Models.","On the Opportunities and Risks of Foundation Models","https://arxiv.org/abs/2108.07258"]]
 });
 
 D(9,{
@@ -1988,10 +2023,10 @@ a:"Além da temperatura, estratégias como top-p (amostragem por núcleo, Holtzm
 ae:"Besides temperature, strategies such as top-p (nucleus sampling, Holtzman et al., 2019) control token selection. Context windows grew from about 2 thousand tokens (GPT-3) to hundreds of thousands and even millions. But long context is no guarantee: the \"Lost in the Middle\" study (Liu et al., 2023) showed that models make worse use of information placed in the middle of long texts. Reasoning models generate \"thinking\" tokens before answering, trading cost and time for quality. And tokenization is not neutral: Petrov et al. (2023) showed that languages other than English can cost many more tokens for the same content.",
 r:"Na rotina, o AI PM estima tokens por tarefa para projetar custos (lembrando que tokens de saída costumam ser mais caros que os de entrada), define limites de resposta e escolhe a temperatura por caso de uso: baixa para extração de dados, mais alta para brainstorming. Para usuários brasileiros, vale medir o custo real em português. E exibir a resposta em streaming melhora muito a percepção de velocidade.",
 re:"Day to day, the AI PM estimates tokens per task to project costs (remembering that output tokens usually cost more than input tokens), sets response limits and picks the temperature per use case: low for data extraction, higher for brainstorming. For Brazilian users, it is worth measuring the real cost in Portuguese. And streaming the answer greatly improves perceived speed.",
-refs:[["Sennrich, R., Haddow, B. e Birch, A. (2016). Neural Machine Translation of Rare Words with Subword Units. ACL.","Neural Machine Translation of Rare Words with Subword Units"],
-["Holtzman, A. et al. (2019). The Curious Case of Neural Text Degeneration. ICLR 2020.","The Curious Case of Neural Text Degeneration"],
-["Liu, N. et al. (2023). Lost in the Middle: How Language Models Use Long Contexts. TACL.","Lost in the Middle: How Language Models Use Long Contexts"],
-["Petrov, A. et al. (2023). Language Model Tokenizers Introduce Unfairness Between Languages. NeurIPS.","Language Model Tokenizers Introduce Unfairness Between Languages"]]
+refs:[["Sennrich, R., Haddow, B. e Birch, A. (2016). Neural Machine Translation of Rare Words with Subword Units. ACL.","Neural Machine Translation of Rare Words with Subword Units","https://arxiv.org/abs/1508.07909"],
+["Holtzman, A. et al. (2019). The Curious Case of Neural Text Degeneration. ICLR 2020.","The Curious Case of Neural Text Degeneration","https://arxiv.org/abs/1904.09751"],
+["Liu, N. et al. (2023). Lost in the Middle: How Language Models Use Long Contexts. TACL.","Lost in the Middle: How Language Models Use Long Contexts","https://arxiv.org/abs/2307.03172"],
+["Petrov, A. et al. (2023). Language Model Tokenizers Introduce Unfairness Between Languages. NeurIPS.","Language Model Tokenizers Introduce Unfairness Between Languages","https://arxiv.org/abs/2305.15425"]]
 });
 
 D(10,{
@@ -2001,11 +2036,11 @@ a:"Hoje, modelos de embedding multilíngues estão disponíveis por API e são c
 ae:"Today, multilingual embedding models are available via API and compared on the MTEB benchmark (Muennighoff et al., 2022). Hybrid search combined with reranking became standard. In 2024, Anthropic published Contextual Retrieval, a technique that adds context to each chunk before embedding it and substantially reduced retrieval failures in the company's tests. Traditional databases also started offering vector search, such as pgvector in Postgres, which often removes the need for a dedicated vector database.",
 r:"O AI PM decide que tipo de busca atende quais perguntas e mede o resultado com perguntas reais de usuários (por exemplo, quantas vezes o trecho certo aparece entre os cinco primeiros). Também precisa considerar o suporte ao português, o custo de regerar todos os embeddings ao trocar de modelo e as permissões de acesso aos documentos indexados.",
 re:"The AI PM decides which kind of search serves which questions and measures results with real user queries (for example, how often the right passage appears in the top five). They also need to consider Portuguese support, the cost of regenerating all embeddings when switching models and access permissions on indexed documents.",
-refs:[["Mikolov, T. et al. (2013). Efficient Estimation of Word Representations in Vector Space.","Efficient Estimation of Word Representations in Vector Space"],
-["Reimers, N. e Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP.","Sentence-BERT Sentence Embeddings using Siamese BERT-Networks"],
-["Muennighoff, N. et al. (2022). MTEB: Massive Text Embedding Benchmark. EACL 2023.","MTEB Massive Text Embedding Benchmark"],
+refs:[["Mikolov, T. et al. (2013). Efficient Estimation of Word Representations in Vector Space.","Efficient Estimation of Word Representations in Vector Space","https://arxiv.org/abs/1301.3781"],
+["Reimers, N. e Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP.","Sentence-BERT Sentence Embeddings using Siamese BERT-Networks","https://arxiv.org/abs/1908.10084"],
+["Muennighoff, N. et al. (2022). MTEB: Massive Text Embedding Benchmark. EACL 2023.","MTEB Massive Text Embedding Benchmark","https://arxiv.org/abs/2210.07316"],
 ["Anthropic (2024). Introducing Contextual Retrieval.","Anthropic Introducing Contextual Retrieval","w"],
-["Robertson, S. e Zaragoza, H. (2009). The Probabilistic Relevance Framework: BM25 and Beyond.","The Probabilistic Relevance Framework: BM25 and Beyond"]]
+["Robertson, S. e Zaragoza, H. (2009). The Probabilistic Relevance Framework: BM25 and Beyond.","The Probabilistic Relevance Framework: BM25 and Beyond","https://doi.org/10.1561/1500000019"]]
 });
 
 D(11,{
@@ -2015,10 +2050,10 @@ a:"Em outubro de 2024, a OSI publicou a Open Source AI Definition 1.0. Vários m
 ae:"In October 2024, the OSI published the Open Source AI Definition 1.0. Several models called \"open\", such as Llama, do not meet the definition because of license restrictions, a phenomenon researchers call open-washing. Truly open examples, with data, code and weights, include OLMo from the Allen Institute for AI. Open-weight model quality rose sharply: DeepSeek-R1 (2025) shipped under the MIT license, and OpenAI itself released open-weight models (gpt-oss) in 2025. Model cards, proposed by Mitchell et al. (2019), became standard documentation practice.",
 r:"O AI PM lê a licença junto com o jurídico: uso comercial é permitido? Há limite de usuários ou restrições de uso aceitável? A model card revela limitações e riscos que viram requisitos do produto. Modelos de pesos abertos podem ser a saída para clientes enterprise que exigem rodar dentro da própria infraestrutura ou ajustar o modelo, mas trazem responsabilidade de operação e segurança.",
 re:"The AI PM reads the license together with legal: is commercial use allowed? Are there user limits or acceptable use restrictions? The model card reveals limitations and risks that become product requirements. Open-weight models may be the answer for enterprise clients who require running inside their own infrastructure or fine-tuning the model, but they bring operational and security responsibility.",
-refs:[["Mitchell, M. et al. (2019). Model Cards for Model Reporting. FAT* 2019.","Model Cards for Model Reporting"],
+refs:[["Mitchell, M. et al. (2019). Model Cards for Model Reporting. FAT* 2019.","Model Cards for Model Reporting","https://arxiv.org/abs/1810.03993"],
 ["Open Source Initiative (2024). The Open Source AI Definition 1.0.","Open Source AI Definition 1.0 OSI","w"],
-["Groeneveld, D. et al. (2024). OLMo: Accelerating the Science of Language Models. ACL.","OLMo: Accelerating the Science of Language Models"],
-["Liesenfeld, A. e Dingemanse, M. (2024). Rethinking open source generative AI: open-washing and the EU AI Act. FAccT.","Rethinking open source generative AI: open-washing and the EU AI Act"]]
+["Groeneveld, D. et al. (2024). OLMo: Accelerating the Science of Language Models. ACL.","OLMo: Accelerating the Science of Language Models","https://arxiv.org/abs/2402.00838"],
+["Liesenfeld, A. e Dingemanse, M. (2024). Rethinking open source generative AI: open-washing and the EU AI Act. FAccT.","Rethinking open source generative AI: open-washing and the EU AI Act","https://doi.org/10.1145/3630106.3659005"]]
 });
 D(12,{
 h:"A computação passou de servidores próprios para a nuvem a partir de 2006, com o lançamento da AWS, e o modelo \"como serviço\" se espalhou. Por volta de 2016, grandes nuvens passaram a vender APIs de ML prontas, como visão e tradução. A API da OpenAI (2020) popularizou a ideia de acessar um modelo de linguagem como serviço. Por trás de tudo estão as GPUs: a plataforma CUDA da NVIDIA (2007) transformou placas gráficas no motor do deep learning.",
@@ -2027,7 +2062,7 @@ a:"Hoje, modelos proprietários estão disponíveis nas APIs dos próprios forne
 ae:"Today, proprietary models are available through the vendors' own APIs and inside the major clouds: Claude on Amazon Bedrock and Google Vertex AI, OpenAI models on Azure. Open models are offered by inference providers and cloud catalogs. Running them yourself became easier with engines such as vLLM (PagedAttention, Kwon et al., 2023) and tools such as llama.cpp and Ollama for local use. Small models started running on the device itself, and vendors offer data residency and zero data retention options.",
 r:"O AI PM levanta os requisitos não funcionais cedo: residência de dados (a LGPD no Brasil), questionários de segurança de clientes, SLAs e latência por região. Contratar o modelo pelo marketplace da nuvem que o cliente já usa pode simplificar muito a compra em contas enterprise. Também vale planejar uma camada de abstração para trocar de fornecedor sem reescrever o produto.",
 re:"The AI PM gathers non-functional requirements early: data residency (LGPD in Brazil), client security questionnaires, SLAs and latency by region. Buying the model through the cloud marketplace the client already uses can greatly simplify procurement in enterprise accounts. It is also worth planning an abstraction layer to switch vendors without rewriting the product.",
-refs:[["Kwon, W. et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention. SOSP.","Efficient Memory Management for Large Language Model Serving with PagedAttention"],
+refs:[["Kwon, W. et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention. SOSP.","Efficient Memory Management for Large Language Model Serving with PagedAttention","https://arxiv.org/abs/2309.06180"],
 ["Huyen, C. (2025). AI Engineering: Building Applications with Foundation Models. O'Reilly.","AI Engineering Building Applications with Foundation Models Chip Huyen","w"],
 ["Brasil (2018). Lei Geral de Proteção de Dados (Lei nº 13.709).","LGPD Lei 13.709","w"]]
 });
@@ -2051,11 +2086,11 @@ a:"Pesquisas como o FrugalGPT (Chen et al., 2023) mostraram que cascatas de mode
 ae:"Research such as FrugalGPT (Chen et al., 2023) showed that model cascades can cut costs drastically while keeping quality, and RouteLLM (Ong et al., 2024) trained routers from human preferences. Vendors organize their models into tiered families (for example, Haiku, Sonnet and Opus for Claude). Public rankings such as LMArena (formerly Chatbot Arena) and HELM help but suffer from benchmark optimization. That is why the final decision depends on internal evaluations on your task.",
 r:"Na rotina, o AI PM organiza uma \"disputa\" entre modelos: o mesmo conjunto de testes rodando em três ou quatro opções, comparando qualidade, custo e latência nos casos mais lentos. A decisão fica registrada numa matriz, e o produto é desenhado para permitir troca de modelo, porque surgem versões novas a cada poucos meses e reavaliar faz parte do trabalho.",
 re:"Day to day, the AI PM runs a \"bake-off\" between models: the same test set on three or four options, comparing quality, cost and latency in the slowest cases. The decision is recorded in a matrix, and the product is designed to allow model swaps, because new versions arrive every few months and re-evaluating is part of the job.",
-refs:[["Wolpert, D. e Macready, W. (1997). No Free Lunch Theorems for Optimization. IEEE TEC.","No Free Lunch Theorems for Optimization"],
-["Viola, P. e Jones, M. (2001). Rapid Object Detection using a Boosted Cascade of Simple Features. CVPR.","Rapid Object Detection using a Boosted Cascade of Simple Features"],
-["Chen, L., Zaharia, M. e Zou, J. (2023). FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance.","FrugalGPT How to Use Large Language Models While Reducing Cost and Improving Performance"],
-["Ong, I. et al. (2024). RouteLLM: Learning to Route LLMs with Preference Data.","RouteLLM Learning to Route LLMs with Preference Data"],
-["Chiang, W. et al. (2024). Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference. ICML.","Chatbot Arena An Open Platform for Evaluating LLMs by Human Preference"]]
+refs:[["Wolpert, D. e Macready, W. (1997). No Free Lunch Theorems for Optimization. IEEE TEC.","No Free Lunch Theorems for Optimization","https://doi.org/10.1109/4235.585893"],
+["Viola, P. e Jones, M. (2001). Rapid Object Detection using a Boosted Cascade of Simple Features. CVPR.","Rapid Object Detection using a Boosted Cascade of Simple Features","https://doi.org/10.1109/CVPR.2001.990517"],
+["Chen, L., Zaharia, M. e Zou, J. (2023). FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance.","FrugalGPT How to Use Large Language Models While Reducing Cost and Improving Performance","https://arxiv.org/abs/2305.05176"],
+["Ong, I. et al. (2024). RouteLLM: Learning to Route LLMs with Preference Data.","RouteLLM Learning to Route LLMs with Preference Data","https://arxiv.org/abs/2406.18665"],
+["Chiang, W. et al. (2024). Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference. ICML.","Chatbot Arena An Open Platform for Evaluating LLMs by Human Preference","https://arxiv.org/abs/2403.04132"]]
 });
 
 D(15,{
@@ -2065,9 +2100,9 @@ a:"Os modelos atuais seguem instruções bem, e os fornecedores publicam guias d
 ae:"Current models follow instructions well, and vendors publish best-practice guides (Anthropic's prompt engineering docs recommend clarity, examples, XML tag structure and room for the model to think). Structured output became a native feature. Tools such as DSPy (Khattab et al., 2023) optimize prompts automatically from metrics. With reasoning models, tricks like \"think step by step\" lost importance, and the focus shifted to specifying the goal and criteria well.",
 r:"Muitas vezes é o AI PM quem escreve ou revisa o prompt de sistema, porque ele funciona como especificação do produto: tom de voz, políticas, o que fazer em casos de borda. Na rotina, vale manter um histórico de mudanças do prompt ligado aos resultados das avaliações e revisar a linguagem das políticas junto com o jurídico.",
 re:"The AI PM often writes or reviews the system prompt, because it works as the product spec: tone of voice, policies, what to do in edge cases. Day to day, it is worth keeping a prompt changelog linked to evaluation results and reviewing policy language with legal.",
-refs:[["Wei, J. et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS.","Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"],
-["Kojima, T. et al. (2022). Large Language Models are Zero-Shot Reasoners. NeurIPS.","Large Language Models are Zero-Shot Reasoners"],
-["Khattab, O. et al. (2023). DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines.","DSPy Compiling Declarative Language Model Calls into Self-Improving Pipelines"],
+refs:[["Wei, J. et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS.","Chain-of-Thought Prompting Elicits Reasoning in Large Language Models","https://arxiv.org/abs/2201.11903"],
+["Kojima, T. et al. (2022). Large Language Models are Zero-Shot Reasoners. NeurIPS.","Large Language Models are Zero-Shot Reasoners","https://arxiv.org/abs/2205.11916"],
+["Khattab, O. et al. (2023). DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines.","DSPy Compiling Declarative Language Model Calls into Self-Improving Pipelines","https://arxiv.org/abs/2310.03714"],
 ["Anthropic. Prompt engineering overview (documentação).","Anthropic prompt engineering overview docs","w"]]
 });
 
@@ -2079,9 +2114,9 @@ ae:"In 2025, Anthropic published a guide on context engineering for agents, with
 r:"O AI PM define o que o assistente precisa saber em cada momento: perfil do usuário, dados da conta, políticas vigentes. Também decide o que a memória guarda, com controles para o usuário ver e apagar, o que é essencial para a LGPD. Na rotina, vale acompanhar o custo por conversa conforme o contexto cresce e investigar respostas ruins olhando primeiro o que chegou ao modelo.",
 re:"The AI PM defines what the assistant needs to know at each moment: user profile, account data, current policies. They also decide what memory stores, with controls for users to view and delete it, which is essential under LGPD. Day to day, it is worth tracking cost per conversation as context grows and investigating bad answers by first looking at what reached the model.",
 refs:[["Anthropic (2025). Effective context engineering for AI agents.","Anthropic Effective context engineering for AI agents","w"],
-["Liu, N. et al. (2023). Lost in the Middle: How Language Models Use Long Contexts.","Lost in the Middle: How Language Models Use Long Contexts"],
+["Liu, N. et al. (2023). Lost in the Middle: How Language Models Use Long Contexts.","Lost in the Middle: How Language Models Use Long Contexts","https://arxiv.org/abs/2307.03172"],
 ["Chroma (2025). Context Rot: How Increasing Input Tokens Impacts LLM Performance.","Chroma Context Rot increasing input tokens","w"],
-["Packer, C. et al. (2023). MemGPT: Towards LLMs as Operating Systems.","MemGPT Towards LLMs as Operating Systems"]]
+["Packer, C. et al. (2023). MemGPT: Towards LLMs as Operating Systems.","MemGPT Towards LLMs as Operating Systems","https://arxiv.org/abs/2310.08560"]]
 });
 
 D(17,{
@@ -2091,10 +2126,10 @@ a:"RAG virou o padrão para assistentes corporativos. As versões avançadas com
 ae:"RAG became the standard for enterprise assistants. Advanced versions combine hybrid search, reranking and contextual retrieval; GraphRAG uses knowledge graphs; and agentic RAG lets the model decide when to search, what to search for and whether to search again. For evaluation, frameworks such as RAGAS (Es et al., 2023) measure faithfulness to sources, answer relevance and retrieval quality. Long-context models reduced the need for small corpora, but RAG still wins for large, dynamic and permissioned corpora.",
 r:"O AI PM cuida de algo que ninguém costuma assumir: a qualidade do conteúdo. Documentos desatualizados geram respostas erradas, então é preciso uma governança de conteúdo junto com o time de suporte, definir a fonte da verdade, desenhar como as citações aparecem e criar um ciclo em que respostas erradas viram correções nos documentos. As métricas incluem resolução correta e taxa de encaminhamento para humanos.",
 re:"The AI PM takes care of something nobody usually owns: content quality. Outdated documents produce wrong answers, so content governance with the support team is needed, along with defining the source of truth, designing how citations appear and creating a loop where wrong answers become document fixes. Metrics include correct resolution and handoff rate to humans.",
-refs:[["Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS.","Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"],
-["Karpukhin, V. et al. (2020). Dense Passage Retrieval for Open-Domain Question Answering. EMNLP.","Dense Passage Retrieval for Open-Domain Question Answering"],
-["Es, S. et al. (2023). RAGAS: Automated Evaluation of Retrieval Augmented Generation.","RAGAS Automated Evaluation of Retrieval Augmented Generation"],
-["Gao, Y. et al. (2023). Retrieval-Augmented Generation for Large Language Models: A Survey.","Retrieval-Augmented Generation for Large Language Models: A Survey"]]
+refs:[["Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS.","Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks","https://arxiv.org/abs/2005.11401"],
+["Karpukhin, V. et al. (2020). Dense Passage Retrieval for Open-Domain Question Answering. EMNLP.","Dense Passage Retrieval for Open-Domain Question Answering","https://arxiv.org/abs/2004.04906"],
+["Es, S. et al. (2023). RAGAS: Automated Evaluation of Retrieval Augmented Generation.","RAGAS Automated Evaluation of Retrieval Augmented Generation","https://arxiv.org/abs/2309.15217"],
+["Gao, Y. et al. (2023). Retrieval-Augmented Generation for Large Language Models: A Survey.","Retrieval-Augmented Generation for Large Language Models: A Survey","https://arxiv.org/abs/2312.10997"]]
 });
 
 D(18,{
@@ -2104,10 +2139,10 @@ a:"O consenso atual, refletido nos guias dos fornecedores, é: comece pelo promp
 ae:"The current consensus, reflected in vendor guides, is: start with the prompt, use RAG for knowledge and reserve fine-tuning for format, style, specific tasks or to reduce cost and latency, for example by distilling a large model into a smaller one. Ovadia et al. (2023) showed that RAG beats fine-tuning when it comes to adding new knowledge. Vendors also began offering reinforcement fine-tuning with automated graders between 2024 and 2025.",
 r:"O AI PM transforma essa escolha num documento curto de decisão, com custo esperado, tempo, manutenção e forma de atualizar as informações. Vale lembrar que o ajuste fino exige um fluxo contínuo de dados rotulados e precisa ser refeito quando o modelo base muda. Saber justificar por que você não fez ajuste fino mostra maturidade em entrevistas.",
 re:"The AI PM turns this choice into a short decision document, with expected cost, time, maintenance and how information gets updated. Remember that fine-tuning requires a continuous flow of labeled data and must be redone when the base model changes. Being able to justify why you did not fine-tune shows maturity in interviews.",
-refs:[["Howard, J. e Ruder, S. (2018). Universal Language Model Fine-tuning for Text Classification. ACL.","Universal Language Model Fine-tuning for Text Classification"],
-["Hu, E. et al. (2021). LoRA: Low-Rank Adaptation of Large Language Models.","LoRA Low-Rank Adaptation of Large Language Models"],
-["Dettmers, T. et al. (2023). QLoRA: Efficient Finetuning of Quantized LLMs. NeurIPS.","QLoRA Efficient Finetuning of Quantized LLMs"],
-["Ovadia, O. et al. (2023). Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs.","Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs"]]
+refs:[["Howard, J. e Ruder, S. (2018). Universal Language Model Fine-tuning for Text Classification. ACL.","Universal Language Model Fine-tuning for Text Classification","https://arxiv.org/abs/1801.06146"],
+["Hu, E. et al. (2021). LoRA: Low-Rank Adaptation of Large Language Models.","LoRA Low-Rank Adaptation of Large Language Models","https://arxiv.org/abs/2106.09685"],
+["Dettmers, T. et al. (2023). QLoRA: Efficient Finetuning of Quantized LLMs. NeurIPS.","QLoRA Efficient Finetuning of Quantized LLMs","https://arxiv.org/abs/2305.14314"],
+["Ovadia, O. et al. (2023). Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs.","Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs","https://arxiv.org/abs/2312.05934"]]
 });
 
 D(19,{
@@ -2118,9 +2153,9 @@ ae:"The piece \"Building effective agents\" (Anthropic, December 2024) became a 
 r:"O AI PM escolhe o padrão certo para cada intenção do usuário. No atendimento: dúvida frequente pede um assistente com RAG; reembolso pede um workflow com aprovação; investigação de um problema complexo pode justificar um agente. Também cabe ao PM comunicar claramente ao usuário o que o sistema consegue fazer, evitando expectativas que a arquitetura não sustenta.",
 re:"The AI PM picks the right pattern for each user intent. In support: a frequent question calls for an assistant with RAG; a refund calls for a workflow with approval; investigating a complex issue may justify an agent. The PM is also responsible for clearly telling users what the system can do, avoiding expectations the architecture cannot support.",
 refs:[["Anthropic (2024). Building effective agents.","Anthropic Building effective agents","w"],
-["Yao, S. et al. (2024). τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains.","tau-bench A Benchmark for Tool-Agent-User Interaction in Real-World Domains"],
-["Kwa, T. et al. / METR (2025). Measuring AI Ability to Complete Long Tasks.","Measuring AI Ability to Complete Long Tasks METR"],
-["Maes, P. (1994). Agents that Reduce Work and Information Overload. CACM.","Agents that Reduce Work and Information Overload"]]
+["Yao, S. et al. (2024). τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains.","tau-bench A Benchmark for Tool-Agent-User Interaction in Real-World Domains","https://arxiv.org/abs/2406.12045"],
+["Kwa, T. et al. / METR (2025). Measuring AI Ability to Complete Long Software Tasks.","Measuring AI Ability to Complete Long Tasks METR","https://arxiv.org/abs/2503.14499"],
+["Maes, P. (1994). Agents that Reduce Work and Information Overload. CACM.","Agents that Reduce Work and Information Overload","https://doi.org/10.1145/176789.176792"]]
 });
 
 D(20,{
@@ -2130,8 +2165,8 @@ a:"Hoje, todos os modelos de fronteira usam ferramentas nativamente. O MCP, lan�
 ae:"Today, every frontier model uses tools natively. MCP, launched by Anthropic in November 2024, was adopted throughout 2025 by OpenAI, Google and Microsoft and became the de facto standard for connecting agents to tools. Google proposed the A2A protocol (2025) for agent-to-agent communication, and agent SDKs appeared, such as the Claude Agent SDK and the OpenAI Agents SDK. New risks came along, such as malicious tools and overly broad permissions.",
 r:"O AI PM escreve a especificação das ferramentas: quais ações existem, com quais parâmetros e permissões. No atendimento, \"consultar pedido\" é só leitura; \"abrir chamado\" escreve e precisa evitar duplicidade; \"reembolso\" exige aprovação humana. Também define orçamento de passos, condições de parada e as mensagens que o usuário vê quando algo dá errado.",
 re:"The AI PM writes the tool specification: which actions exist, with which parameters and permissions. In support, \"check order\" is read-only; \"open ticket\" writes and must avoid duplicates; \"refund\" requires human approval. They also define the step budget, stopping conditions and the messages users see when something goes wrong.",
-refs:[["Yao, S. et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023.","ReAct Synergizing Reasoning and Acting in Language Models"],
-["Schick, T. et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. NeurIPS.","Toolformer Language Models Can Teach Themselves to Use Tools"],
+refs:[["Yao, S. et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023.","ReAct Synergizing Reasoning and Acting in Language Models","https://arxiv.org/abs/2210.03629"],
+["Schick, T. et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. NeurIPS.","Toolformer Language Models Can Teach Themselves to Use Tools","https://arxiv.org/abs/2302.04761"],
 ["Anthropic (2024). Introducing the Model Context Protocol.","Anthropic Introducing the Model Context Protocol","w"],
 ["Nilsson, N. (1984). Shakey the Robot. SRI Technical Note 323.","Shakey the Robot Nilsson 1984"]]
 });
@@ -2145,8 +2180,8 @@ r:"O AI PM pesa valor contra custo: se a arquitetura multiagente consome 15 veze
 re:"The AI PM weighs value against cost: if a multi-agent architecture consumes 15 times more tokens, the quality gain must justify it. Day to day, the recommendation is to start with a workflow, measure, and only then add autonomy, presenting engineering with the trade-offs in cost, latency and debugging difficulty.",
 refs:[["Anthropic (2025). How we built our multi-agent research system.","Anthropic How we built our multi-agent research system","w"],
 ["Cognition (2025). Don't Build Multi-Agents.","Cognition Don't Build Multi-Agents","w"],
-["Cemri, M. et al. (2025). Why Do Multi-Agent LLM Systems Fail?","Why Do Multi-Agent LLM Systems Fail"],
-["Wu, Q. et al. (2023). AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.","AutoGen Enabling Next-Gen LLM Applications via Multi-Agent Conversation"]]
+["Cemri, M. et al. (2025). Why Do Multi-Agent LLM Systems Fail?","Why Do Multi-Agent LLM Systems Fail","https://arxiv.org/abs/2503.13657"],
+["Wu, Q. et al. (2023). AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.","AutoGen Enabling Next-Gen LLM Applications via Multi-Agent Conversation","https://arxiv.org/abs/2308.08155"]]
 });
 
 D(22,{
@@ -2156,8 +2191,8 @@ a:"Entre o fim de 2024 e 2025, os agentes chegaram ao mercado em peso: o Gemini 
 ae:"Between late 2024 and 2025, agents hit the market in force: Gemini Deep Research (December 2024), OpenAI's deep research (2025), Claude Code (preview in February and general availability in May 2025) and OpenAI's new Codex as an agent (2025). In the enterprise, Salesforce's Agentforce launched in 2024, and Copilot Studio shifted its focus to agents. On the SWE-bench Verified benchmark, which measures resolving real code issues, top results jumped from about a third in mid-2024 to over 70% during 2025.",
 r:"O AI PM avalia comprar ou construir testando fornecedores com tarefas reais da empresa, não com demonstrações. Define critérios de sucesso (tarefas concluídas, quanto as pessoas precisam editar o resultado), exige governança (permissões, registros de auditoria) e planeja a gestão da mudança para garantir adoção. Como você já usa Claude Code e Cursor, tem exemplos concretos para trazer às entrevistas.",
 re:"The AI PM evaluates buy versus build by testing vendors on real company tasks, not demos. They define success criteria (tasks completed, how much people need to edit the output), require governance (permissions, audit logs) and plan change management to drive adoption. Since you already use Claude Code and Cursor, you have concrete examples to bring to interviews.",
-refs:[["Chen, M. et al. (2021). Evaluating Large Language Models Trained on Code. OpenAI.","Evaluating Large Language Models Trained on Code"],
-["Jimenez, C. et al. (2023). SWE-bench: Can Language Models Resolve Real-World GitHub Issues? ICLR 2024.","SWE-bench Can Language Models Resolve Real-World GitHub Issues"],
+refs:[["Chen, M. et al. (2021). Evaluating Large Language Models Trained on Code. OpenAI.","Evaluating Large Language Models Trained on Code","https://arxiv.org/abs/2107.03374"],
+["Jimenez, C. et al. (2023). SWE-bench: Can Language Models Resolve Real-World GitHub Issues? ICLR 2024.","SWE-bench Can Language Models Resolve Real-World GitHub Issues","https://arxiv.org/abs/2310.06770"],
 ["Anthropic. Claude Code overview (documentação).","Anthropic Claude Code overview docs","w"],
 ["Salesforce (2024). Agentforce.","Salesforce Agentforce launch","w"]]
 });
@@ -2168,10 +2203,10 @@ a:"Os benchmarks públicos agora saturam em poucos meses, então as avaliações
 ae:"Public benchmarks now saturate within months, so evaluation moved to the product level. LLM-as-a-judge (Zheng et al., 2023) showed over 80% agreement with humans in comparisons, but with known biases: preference for the first position, for long answers and for its own style. Tools such as Promptfoo, Braintrust, LangSmith and Inspect (from the UK AI Security Institute) appeared. Practitioners such as Hamel Husain (\"Your AI Product Needs Evals\", 2024) advocate starting with error analysis on real data, and Shankar et al. (2024) studied how to validate the evaluators themselves.",
 r:"O AI PM é coautor das avaliações: define o que é sucesso, monta o golden set com especialistas do domínio, conduz análise de erros toda semana e usa limites de qualidade como critério para liberar versões. Seu Design QA Agent já tem 24 casos com recall e precisão medidos contra uma linha de base de diff de pixels: esse é exatamente o raciocínio que entrevistadores querem ouvir.",
 re:"The AI PM co-owns evaluations: defines what success means, builds the golden set with domain experts, runs error analysis weekly and uses quality thresholds as release gates. Your Design QA Agent already has 24 cases with recall and precision measured against a pixel-diff baseline: that is exactly the reasoning interviewers want to hear.",
-refs:[["Zheng, L. et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. NeurIPS.","Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"],
-["Liang, P. et al. (2022). Holistic Evaluation of Language Models (HELM).","Holistic Evaluation of Language Models"],
+refs:[["Zheng, L. et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. NeurIPS.","Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena","https://arxiv.org/abs/2306.05685"],
+["Liang, P. et al. (2022). Holistic Evaluation of Language Models (HELM).","Holistic Evaluation of Language Models","https://arxiv.org/abs/2211.09110"],
 ["Husain, H. (2024). Your AI Product Needs Evals.","Hamel Husain Your AI Product Needs Evals","w"],
-["Shankar, S. et al. (2024). Who Validates the Validators? Aligning LLM-Assisted Evaluation of LLM Outputs with Human Preferences.","Who Validates the Validators Aligning LLM-Assisted Evaluation"]]
+["Shankar, S. et al. (2024). Who Validates the Validators? Aligning LLM-Assisted Evaluation of LLM Outputs with Human Preferences.","Who Validates the Validators Aligning LLM-Assisted Evaluation","https://arxiv.org/abs/2404.12272"]]
 });
 
 D(24,{
@@ -2183,7 +2218,7 @@ r:"O AI PM negocia SLOs de latência, disponibilidade e correção junto com a e
 re:"The AI PM negotiates latency, availability and correctness SLOs with engineering, designs the failure experience (\"I couldn't solve this, I'm handing you to an agent with full context\"), defines what happens when the error budget runs out and uses these numbers as criteria for advancing the rollout.",
 refs:[["Beyer, B. et al. (2016). Site Reliability Engineering: How Google Runs Production Systems. O'Reilly.","Site Reliability Engineering How Google Runs Production Systems"],
 ["Nygard, M. (2007). Release It! Design and Deploy Production-Ready Software.","Release It Design and Deploy Production-Ready Software Nygard"],
-["Yao, S. et al. (2024). τ-bench (métrica pass^k).","tau-bench A Benchmark for Tool-Agent-User Interaction in Real-World Domains"],
+["Yao, S. et al. (2024). τ-bench (métrica pass^k).","tau-bench A Benchmark for Tool-Agent-User Interaction in Real-World Domains","https://arxiv.org/abs/2406.12045"],
 ["Stripe. Idempotent requests (documentação).","Stripe API idempotent requests","w"]]
 });
 
@@ -2206,7 +2241,7 @@ a:"Provar retorno de IA virou um desafio para muitas empresas. Um relatório do 
 ae:"Proving AI ROI became a challenge for many companies. An MIT NANDA report (2025), widely cited and also disputed, claimed that most generative AI pilots produced no measurable impact on financial results. Klarna is an illustrative case: in 2024 it announced its assistant was doing the work of about 700 agents and, in 2025, said it would invest in human support again to ensure quality. It is a clear example of why counter metrics matter.",
 r:"O AI PM monta o painel em três camadas, escolhe uma métrica norte (por exemplo, problemas resolvidos corretamente sem intervenção humana), define métricas de contrapeso (satisfação, taxa de recontato) e conecta tudo a dinheiro: custo evitado, receita protegida, tempo economizado. É essa ligação que convence liderança e sustenta o investimento.",
 re:"The AI PM builds the three-layer dashboard, picks a north star metric (for example, issues resolved correctly without human intervention), defines counter metrics (satisfaction, re-contact rate) and connects everything to money: cost avoided, revenue protected, time saved. That link is what convinces leadership and sustains investment.",
-refs:[["Rodden, K., Hutchinson, H. e Fu, X. (2010). Measuring the User Experience on a Large Scale: User-Centered Metrics for Web Applications. CHI.","Measuring the User Experience on a Large Scale User-Centered Metrics for Web Applications"],
+refs:[["Rodden, K., Hutchinson, H. e Fu, X. (2010). Measuring the User Experience on a Large Scale: User-Centered Metrics for Web Applications. CHI.","Measuring the User Experience on a Large Scale User-Centered Metrics for Web Applications","https://doi.org/10.1145/1753326.1753687"],
 ["Goodhart, C. (1975). Problems of Monetary Management: The U.K. Experience.","Goodhart 1975 Problems of Monetary Management"],
 ["Klarna (2024). Klarna AI assistant handles two-thirds of customer service chats.","Klarna AI assistant handles two-thirds of customer service chats in its first month","w"],
 ["MIT NANDA (2025). The GenAI Divide: State of AI in Business 2025.","MIT NANDA The GenAI Divide State of AI in Business 2025","w"]]
@@ -2220,8 +2255,8 @@ ae:"For LLMs, the optimization toolkit includes: prompt caching (Anthropic launc
 r:"O AI PM define orçamentos de latência por etapa, decide onde o streaming ajuda e onde processamento assíncrono ou em lote é aceitável (por exemplo, resumos gerados durante a noite) e acompanha o custo por ticket resolvido. A pergunta que guia a rotina é: qual é a métrica que o usuário sente, e quanto estamos pagando por ela?",
 re:"The AI PM sets latency budgets per step, decides where streaming helps and where async or batch processing is acceptable (for example, summaries generated overnight) and tracks cost per resolved ticket. The question guiding the routine is: which metric does the user feel, and how much are we paying for it?",
 refs:[["Nielsen, J. (1993). Response Times: The 3 Important Limits. Nielsen Norman Group.","Nielsen Response Times The 3 Important Limits","w"],
-["Leviathan, Y., Kalman, M. e Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. ICML.","Fast Inference from Transformers via Speculative Decoding"],
-["Dettmers, T. et al. (2022). LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale. NeurIPS.","LLM.int8() 8-bit Matrix Multiplication for Transformers at Scale"],
+["Leviathan, Y., Kalman, M. e Matias, Y. (2023). Fast Inference from Transformers via Speculative Decoding. ICML.","Fast Inference from Transformers via Speculative Decoding","https://arxiv.org/abs/2211.17192"],
+["Dettmers, T. et al. (2022). LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale. NeurIPS.","LLM.int8() 8-bit Matrix Multiplication for Transformers at Scale","https://arxiv.org/abs/2208.07339"],
 ["Anthropic (2024). Prompt caching with Claude.","Anthropic prompt caching with Claude","w"]]
 });
 
@@ -2233,9 +2268,9 @@ ae:"The OWASP Top 10 for LLM Applications (2025 edition) ranks prompt injection 
 r:"O AI PM mantém o registro de riscos, define políticas do que o agente não pode fazer, organiza sessões de red teaming antes do lançamento, desenha o processo de resposta a incidentes e envolve privacidade e jurídico cedo, com atenção à LGPD. Também decide como informar ao usuário que ele está interagindo com IA.",
 re:"The AI PM maintains the risk register, defines policies for what the agent must not do, organizes red teaming sessions before launch, designs the incident response process and involves privacy and legal early, with attention to LGPD. They also decide how to tell users they are interacting with AI.",
 refs:[["OWASP (2025). Top 10 for LLM Applications 2025.","OWASP Top 10 for LLM Applications 2025","w"],
-["Greshake, K. et al. (2023). Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection.","Not what you've signed up for Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection"],
+["Greshake, K. et al. (2023). Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection.","Not what you've signed up for Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection","https://arxiv.org/abs/2302.12173"],
 ["NIST (2024). AI 600-1: Artificial Intelligence Risk Management Framework: Generative AI Profile.","NIST AI 600-1 Generative AI Profile","w"],
-["Buolamwini, J. e Gebru, T. (2018). Gender Shades. FAT*.","Gender Shades Intersectional Accuracy Disparities in Commercial Gender Classification"],
+["Buolamwini, J. e Gebru, T. (2018). Gender Shades. FAT*.","Gender Shades Intersectional Accuracy Disparities in Commercial Gender Classification","https://proceedings.mlr.press/v81/buolamwini18a.html"],
 ["Willison, S. (2025). The lethal trifecta for AI agents.","Simon Willison lethal trifecta AI agents","w"]]
 });
 
@@ -2259,10 +2294,10 @@ a:"As 18 diretrizes de interação humano-IA da Microsoft (Amershi et al., 2019)
 ae:"Microsoft's 18 Guidelines for Human-AI Interaction (Amershi et al., 2019) and Google's People + AI Guidebook became references. New interface patterns emerged: side panels with editable artifacts, inline suggestions (the \"ghost text\" of coding assistants), agent activity logs, approval prompts and clickable citations. Research such as Bansal et al. (2021) showed that explanations do not always improve joint decisions and can increase overreliance.",
 r:"Aqui seu background em Product Design pesa muito. O AI PM desenha os padrões de confiança, os estados de falha, a transferência para humanos com contexto e um onboarding que ajusta expectativas. Na rotina, vale testar com usuários como eles verificam as respostas da IA, e não apenas se gostam da experiência.",
 re:"Your Product Design background carries a lot of weight here. The AI PM designs trust patterns, failure states, handoff to humans with context and onboarding that sets expectations. Day to day, it is worth testing with users how they verify AI answers, not just whether they like the experience.",
-refs:[["Amershi, S. et al. (2019). Guidelines for Human-AI Interaction. CHI.","Guidelines for Human-AI Interaction Amershi"],
-["Horvitz, E. (1999). Principles of Mixed-Initiative User Interfaces. CHI.","Principles of Mixed-Initiative User Interfaces"],
-["Parasuraman, R. e Riley, V. (1997). Humans and Automation: Use, Misuse, Disuse, Abuse. Human Factors.","Humans and Automation Use Misuse Disuse Abuse"],
-["Bansal, G. et al. (2021). Does the Whole Exceed its Parts? The Effect of AI Explanations on Complementary Team Performance. CHI.","Does the Whole Exceed its Parts The Effect of AI Explanations on Complementary Team Performance"]]
+refs:[["Amershi, S. et al. (2019). Guidelines for Human-AI Interaction. CHI.","Guidelines for Human-AI Interaction Amershi","https://doi.org/10.1145/3290605.3300233"],
+["Horvitz, E. (1999). Principles of Mixed-Initiative User Interfaces. CHI.","Principles of Mixed-Initiative User Interfaces","https://doi.org/10.1145/302979.303030"],
+["Parasuraman, R. e Riley, V. (1997). Humans and Automation: Use, Misuse, Disuse, Abuse. Human Factors.","Humans and Automation Use Misuse Disuse Abuse","https://doi.org/10.1518/001872097778543886"],
+["Bansal, G. et al. (2021). Does the Whole Exceed its Parts? The Effect of AI Explanations on Complementary Team Performance. CHI.","Does the Whole Exceed its Parts The Effect of AI Explanations on Complementary Team Performance","https://doi.org/10.1145/3411764.3445717"]]
 });
 
 D(31,{
@@ -4682,9 +4717,9 @@ ae:"The confusion matrix is still the foundation for evaluating any classifier, 
 r:"Na rotina, o AI PM usa a matriz para traduzir métricas técnicas em impacto de negócio. Isso significa definir com o time qual é a classe positiva, estimar o custo de cada tipo de erro junto com operações, financeiro ou jurídico, e escolher o limite de decisão com base nesses custos e na capacidade de revisão humana, já que uma fila de análise manual só aguenta um certo volume de alertas.\n\nDepois do lançamento, o PM acompanha a matriz em produção, e não só no teste, e pede a quebra dos resultados por segmento antes de cada mudança importante.",
 re:"In day-to-day work, the AI PM uses the matrix to translate technical metrics into business impact. That means agreeing with the team on which class is positive, estimating the cost of each error type together with operations, finance or legal, and choosing the decision threshold based on those costs and on human review capacity, since a manual review queue can only handle so many alerts.\n\nAfter launch, the PM tracks the matrix in production, not just in testing, and asks for results broken down by segment before every major change.",
 refs:[["van Rijsbergen, C. J. (1979). Information Retrieval. 2ª ed. Butterworths.","van Rijsbergen Information Retrieval 1979"],
-["Fawcett, T. (2006). An introduction to ROC analysis. Pattern Recognition Letters.","An introduction to ROC analysis Fawcett"],
-["Saito, T. e Rehmsmeier, M. (2015). The Precision-Recall Plot Is More Informative than the ROC Plot When Evaluating Binary Classifiers on Imbalanced Datasets. PLOS ONE.","The Precision-Recall Plot Is More Informative than the ROC Plot When Evaluating Binary Classifiers on Imbalanced Datasets"],
-["Wong, A. et al. (2021). External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients. JAMA Internal Medicine.","External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients"]]
+["Fawcett, T. (2006). An introduction to ROC analysis. Pattern Recognition Letters.","An introduction to ROC analysis Fawcett","https://doi.org/10.1016/j.patrec.2005.10.010"],
+["Saito, T. e Rehmsmeier, M. (2015). The Precision-Recall Plot Is More Informative than the ROC Plot When Evaluating Binary Classifiers on Imbalanced Datasets. PLOS ONE.","The Precision-Recall Plot Is More Informative than the ROC Plot When Evaluating Binary Classifiers on Imbalanced Datasets","https://doi.org/10.1371/journal.pone.0118432"],
+["Wong, A. et al. (2021). External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients. JAMA Internal Medicine.","External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients","https://doi.org/10.1001/jamainternmed.2021.2626"]]
 });
 X(8,{
 s:"Pense num alarme de incêndio. Ele pode tocar quando há fogo (acertou), ficar quieto quando não há fogo (acertou), tocar porque alguém queimou uma torrada (falso positivo) ou ficar quieto durante um incêndio de verdade (falso negativo). A matriz de confusão é só a tabela que conta quantas vezes cada uma dessas quatro situações aconteceu. Um alarme sensível demais irrita todo mundo, e um pouco sensível é perigoso: escolher esse ponto é uma decisão de produto.",
@@ -4750,9 +4785,9 @@ ae:"Today, large systems use two-tower models for candidate generation (one towe
 r:"Na rotina, o AI PM de recomendação define a função objetivo junto com ciência de dados e liderança, escolhe contramétricas (diversidade, reclamações, cancelamentos, satisfação declarada), decide quais regras de negócio entram no re-ranqueamento e acompanha a saúde do ecossistema: criadores novos conseguem alcance? Itens de nicho aparecem?\n\nTambém cabe ao PM desenhar os controles para o usuário, como \"não tenho interesse\" e explicações do tipo \"porque você assistiu X\", que aumentam a confiança e geram sinais melhores para o modelo.",
 re:"Day to day, the recommendation AI PM defines the objective function with data science and leadership, chooses counter metrics (diversity, complaints, cancellations, stated satisfaction), decides which business rules go into re-ranking and monitors ecosystem health: do new creators get reach? Do niche items show up?\n\nThe PM also designs user controls, like \"not interested\" and explanations such as \"because you watched X\", which increase trust and produce better signals for the model.",
 refs:[["Linden, G., Smith, B. e York, J. (2003). Amazon.com Recommendations: Item-to-Item Collaborative Filtering. IEEE Internet Computing.","Amazon.com Recommendations Item-to-Item Collaborative Filtering"],
-["Koren, Y., Bell, R. e Volinsky, C. (2009). Matrix Factorization Techniques for Recommender Systems. IEEE Computer.","Matrix Factorization Techniques for Recommender Systems"],
-["Gomez-Uribe, C. e Hunt, N. (2015). The Netflix Recommender System: Algorithms, Business Value, and Innovation. ACM TMIS.","The Netflix Recommender System: Algorithms, Business Value, and Innovation"],
-["Covington, P., Adams, J. e Sargin, E. (2016). Deep Neural Networks for YouTube Recommendations. RecSys.","Deep Neural Networks for YouTube Recommendations"]]
+["Koren, Y., Bell, R. e Volinsky, C. (2009). Matrix Factorization Techniques for Recommender Systems. IEEE Computer.","Matrix Factorization Techniques for Recommender Systems","https://doi.org/10.1109/MC.2009.263"],
+["Gomez-Uribe, C. e Hunt, N. (2015). The Netflix Recommender System: Algorithms, Business Value, and Innovation. ACM TMIS.","The Netflix Recommender System: Algorithms, Business Value, and Innovation","https://doi.org/10.1145/2843948"],
+["Covington, P., Adams, J. e Sargin, E. (2016). Deep Neural Networks for YouTube Recommendations. RecSys.","Deep Neural Networks for YouTube Recommendations","https://doi.org/10.1145/2959100.2959190"]]
 });
 X(34,{
 s:"Pense numa livraria com um vendedor experiente. Primeiro, ele separa umas vinte opções que combinam com você entre milhares de livros (geração de candidatos). Depois, ordena da mais provável de você gostar para a menos provável (ranqueamento). Por fim, garante que não sejam todos do mesmo autor e tira os que você já leu (re-ranqueamento). Um sistema de recomendação faz isso para milhões de pessoas ao mesmo tempo.",
@@ -4801,8 +4836,8 @@ ae:"Today, large companies run thousands of experiments a year on internal platf
 r:"Na rotina, o AI PM escreve o plano do experimento antes de começar, combina com ciência de dados o tamanho da amostra e a duração, confere SRM e guardrails nos primeiros dias e só lê a métrica principal no fim do período definido.\n\nNa leitura, separa significância de relevância prática, olha resultados por segmento com cuidado (muitos cortes geram falsos positivos) e registra a decisão e o aprendizado, mesmo quando o teste não mostra efeito. Um repositório de experimentos passados evita repetir testes e acelera decisões.",
 re:"Day to day, the AI PM writes the experiment plan before starting, agrees on sample size and duration with data science, checks SRM and guardrails in the first days and only reads the primary metric at the end of the planned period.\n\nWhen reading results, the PM separates significance from practical relevance, looks at segments carefully (many cuts create false positives) and records the decision and learning, even when the test shows no effect. A repository of past experiments avoids repeated tests and speeds up decisions.",
 refs:[["Kohavi, R., Tang, D. e Xu, Y. (2020). Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. Cambridge University Press.","Trustworthy Online Controlled Experiments Kohavi Tang Xu","w"],
-["Deng, A. et al. (2013). Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data. WSDM.","Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data"],
-["Fabijan, A. et al. (2019). Diagnosing Sample Ratio Mismatch in Online Controlled Experiments: A Taxonomy and Rules of Thumb for Practitioners. KDD.","Diagnosing Sample Ratio Mismatch in Online Controlled Experiments"],
+["Deng, A. et al. (2013). Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data. WSDM.","Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data","https://doi.org/10.1145/2433396.2433413"],
+["Fabijan, A. et al. (2019). Diagnosing Sample Ratio Mismatch in Online Controlled Experiments: A Taxonomy and Rules of Thumb for Practitioners. KDD.","Diagnosing Sample Ratio Mismatch in Online Controlled Experiments","https://doi.org/10.1145/3292500.3330722"],
 ["Kohavi, R. e Thomke, S. (2017). The Surprising Power of Online Experiments. Harvard Business Review.","The Surprising Power of Online Experiments Harvard Business Review","w"]]
 });
 X(35,{
@@ -4950,7 +4985,7 @@ a:"Hoje, LLMs escrevem SQL a partir de perguntas em linguagem natural (text-to-S
 ae:"Today, LLMs write SQL from natural language questions (text-to-SQL), and many BI tools already include this. It speeds up work but does not remove the need to understand the query: the model may join the wrong tables, forget filters or use the wrong metric definition, and the result looks plausible.\n\nSemantic layers and metric catalogs centrally define what \"active user\" or \"revenue\" means, reducing disagreements between teams. For PMs, being able to read and review SQL has become more important than writing it from scratch.",
 r:"Na rotina, o AI PM usa SQL para responder perguntas rápidas sem fila de pedidos: quantos usuários usaram a funcionalidade de IA esta semana, qual a taxa de aceitação por plano, quanto custa cada tarefa por segmento. Também revisa consultas de análises importantes antes de levar números para a liderança.\n\nUm bom hábito é sempre conferir a ordem de grandeza (o total bate com o dashboard oficial?), olhar algumas linhas brutas antes de agregar e anotar a definição usada junto com o número.",
 re:"Day to day, the AI PM uses SQL to answer quick questions without a request queue: how many users used the AI feature this week, what the acceptance rate is by plan, how much each task costs by segment. The PM also reviews queries behind important analyses before taking numbers to leadership.\n\nA good habit is to always check the order of magnitude (does the total match the official dashboard?), look at some raw rows before aggregating and write down the definition used next to the number.",
-refs:[["Codd, E. F. (1970). A Relational Model of Data for Large Shared Data Banks. Communications of the ACM.","A Relational Model of Data for Large Shared Data Banks"],
+refs:[["Codd, E. F. (1970). A Relational Model of Data for Large Shared Data Banks. Communications of the ACM.","A Relational Model of Data for Large Shared Data Banks","https://doi.org/10.1145/362384.362685"],
 ["Chamberlin, D. e Boyce, R. (1974). SEQUEL: A Structured English Query Language. ACM SIGFIDET.","SEQUEL: A Structured English Query Language"],
 ["Tanimura, C. (2021). SQL for Data Analysis. O'Reilly.","SQL for Data Analysis Cathy Tanimura","w"]]
 });
@@ -4997,7 +5032,7 @@ a:"Empresas maduras mantêm catálogos de métricas com definições oficiais, d
 ae:"Mature companies keep metric catalogs with official definitions, owners and versioned queries, and dashboards connected to those definitions to avoid diverging numbers across teams. Automatic alerts detect anomalies and instrumentation changes.\n\nIn AI products, dashboards now bring together metrics of different kinds side by side: quality (eval scores, acceptance, edits), safety (blocks, incidents), cost per task, percentile latency and escalation to humans, alongside the business metric. Seeing these metrics together is what reveals trade-offs, like a quality gain that doubled cost.",
 r:"Na rotina, o AI PM escreve a definição de cada métrica nova antes de lançar a funcionalidade, garante que os eventos necessários estão instrumentados e monta o dashboard com a métrica principal, as de entrada e os guardrails.\n\nQuando algo muda, segue um roteiro: checar se o dado é real (instrumentação, atrasos de pipeline), comparar com o mesmo período anterior, segmentar por plataforma, região, plano e tipo de usuário, verificar lançamentos e mudanças externas, e só então formular hipóteses de causa. O resultado vira um resumo curto com evidências e próximos passos.",
 re:"Day to day, the AI PM writes the definition of each new metric before launching the feature, makes sure the needed events are instrumented and builds the dashboard with the primary metric, the input metrics and the guardrails.\n\nWhen something changes, the PM follows a script: check whether the data is real (instrumentation, pipeline delays), compare with the same prior period, segment by platform, region, plan and user type, check launches and external changes, and only then form hypotheses about the cause. The result becomes a short summary with evidence and next steps.",
-refs:[["Simpson, E. H. (1951). The Interpretation of Interaction in Contingency Tables. Journal of the Royal Statistical Society, Series B.","The Interpretation of Interaction in Contingency Tables Simpson 1951"],
+refs:[["Simpson, E. H. (1951). The Interpretation of Interaction in Contingency Tables. Journal of the Royal Statistical Society, Series B.","The Interpretation of Interaction in Contingency Tables Simpson 1951","https://doi.org/10.1111/j.2517-6161.1951.tb00088.x"],
 ["Tukey, J. W. (1977). Exploratory Data Analysis. Addison-Wesley.","Exploratory Data Analysis Tukey 1977","w"],
 ["Strathern, M. (1997). 'Improving ratings': audit in the British University system. European Review.","Improving ratings audit in the British University system Strathern"],
 ["Croll, A. e Yoskovitz, B. (2013). Lean Analytics. O'Reilly.","Lean Analytics Croll Yoskovitz","w"]]
@@ -5246,7 +5281,7 @@ const UI={
   amazon:"Ver na Amazon",youtube:"Ver no YouTube",res_note:"Os links abrem uma busca na Amazon e no YouTube, para você achar a edição ou o vídeo mais atual.",
   lib_nav:"Biblioteca",lib_h:"Biblioteca",lib_sub:"Todos os livros e vídeos recomendados, organizados por módulo. Uma boa forma de seguir estudando além das aulas.",
   hist_h:"Contexto histórico",art_h:"Estado da arte",rot_h:"Na rotina do AI PM",pm_tip:"Dica para entrevistas",
-  refs_h:"Referências para se aprofundar",refs_note:"Os links abrem uma busca pela obra no Google Acadêmico ou no Google. O campo muda rápido: confira sempre a versão mais recente.",
+  refs_h:"Referências para se aprofundar",refs_note:"Artigos abrem direto na fonte (DOI ou arXiv), com links conferidos. Livros e documentos sem link estável abrem uma busca, marcada como (busca). O campo muda rápido: confira sempre a versão mais recente.",
   bottom_q:"Terminou esta aula?",bottom_sub:"Marque como concluída para acompanhar seu progresso na trilha.",
   back:"Voltar para a trilha",kicker:(m,l,t)=>`Módulo ${m}, aula ${l} de ${t}`,
   done_on:"✓ Aula concluída",done_off:"Marcar como concluída",ask_btn:"Tirar dúvida sobre esta aula",
@@ -5310,7 +5345,7 @@ const UI={
   amazon:"See on Amazon",youtube:"Watch on YouTube",res_note:"Links open a search on Amazon and YouTube, so you can find the latest edition or video.",
   lib_nav:"Library",lib_h:"Library",lib_sub:"All recommended books and videos, organized by module. A good way to keep studying beyond the lessons.",
   hist_h:"Historical context",art_h:"State of the art",rot_h:"In the AI PM's routine",pm_tip:"Interview tip",
-  refs_h:"References to go deeper",refs_note:"Links open a search for the work on Google Scholar or Google. The field moves fast: always check for the latest version.",
+  refs_h:"References to go deeper",refs_note:"Papers open directly at the source (DOI or arXiv), with verified links. Books and documents without a stable link open a search, marked (search). The field moves fast: always check for the latest version.",
   bottom_q:"Finished this lesson?",bottom_sub:"Mark it as completed to track your progress along the path.",
   back:"Back to the path",kicker:(m,l,t)=>`Module ${m}, lesson ${l} of ${t}`,
   done_on:"✓ Lesson completed",done_off:"Mark as completed",ask_btn:"Ask about this lesson",
@@ -5571,6 +5606,7 @@ function render(){
   else if(r.name==="glossario") renderGlossary(app);
   else if(r.name==="flashcards") renderFlashcards(app);
   else if(r.name==="desempenho") renderProgress(app);
+  else if(r.name==="lab") renderLab(app);
   else if(r.name==="resumo"&&r.id&&MODULES[r.id-1]) renderSummary(app,MODULES[r.id-1]);
   else if(r.name==="modelos") renderTemplates(app);
   else if(r.name==="bigtechs") renderBigTech(app);
@@ -5702,7 +5738,7 @@ function renderLesson(app,l){
       ${DP?`<section class="block deep"><h2><span class="ico" aria-hidden="true">${ic("compass")}</span>${u("rot_h")}</h2>${paras(EN()?DP.re:DP.r)}</section>`:""}
       <div class="pm-note"><b><span class="ico sm" aria-hidden="true">${ic("brief")}</span>${u("pm_tip")}</b><p>${esc(tx(l,"pm"))}</p></div>
       ${DP?`<section class="block refs"><h2><span class="ico" aria-hidden="true">${ic("book")}</span>${u("refs_h")}</h2>
-        <ol>${DP.refs.map(([t,q,k])=>`<li><a href="${k==="w"?"https://www.google.com/search?q=":"https://scholar.google.com/scholar?q="}${encodeURIComponent(q)}" target="_blank" rel="noopener">${esc(refLang(t))}</a></li>`).join("")}</ol>
+        <ol>${DP.refs.map(([t,q,k])=>{const d=k&&/^https?:/.test(k);return `<li><a href="${d?k:(k==="w"?"https://www.google.com/search?q=":"https://scholar.google.com/scholar?q=")+encodeURIComponent(q)}" target="_blank" rel="noopener">${esc(refLang(t))}</a>${d?"":` <span class="ref-s">${EN()?"(search)":"(busca)"}</span>`}</li>`;}).join("")}</ol>
         <p class="refs-note">${u("refs_note")}</p></section>`:""}
       <details class="block res-details"><summary><span class="ico" aria-hidden="true">${ic("play")}</span>${u("res_h")}</summary>${resBlock(m.n)}</details>
       ${QZ[l.num]?`<section class="block fq" id="fq"></section>`:""}
@@ -5759,6 +5795,7 @@ function renderLesson(app,l){
   }));
   $("#quizBtn").addEventListener("click",()=>makeQuiz(l));
   if(QZ[l.num]) drawFixedQuiz(l,chat);
+  try{addLessonLab(app,l.num);}catch(e){}
   try{addGlossaryTips(app,K.map(x=>x[0].replace(/\s*\(.*?\)\s*/g,"").toLowerCase()));}catch(e){}
   wireSheet();
 }
@@ -7078,9 +7115,10 @@ function renderProgress(app){
      <p class="pg-s">${open.length?du("reviewing",open.length)+" · "+du("due",due.length):""}</p>
      <div id="rqList">${due.length?due.slice(0,10).map(k=>rqCard(k)).join(""):`<p>${open.length?du("none"):du("nonew")}</p>`}</div>
    </section>
+   ${backupHTML()}
   </div>`;
   const j=app.querySelector('[data-jump="rq"]'); if(j) j.addEventListener("click",e=>{e.preventDefault();$("#rq").scrollIntoView({behavior:RM()?"auto":"smooth"});});
-  bindRq(app);
+  bindRq(app); bindBackup(app);
 }
 function rqCard(k){
   const it=rqItem(k); if(!it) return ""; const st=rqState[k]||{};
@@ -7136,7 +7174,7 @@ function glossaryTerms(){
 }
 function addGlossaryTips(root,exclude){
   const terms=glossaryTerms(), used=new Set(exclude||[]), esc2=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-  const nodes=[];root.querySelectorAll(".block > p, .simple p, .case p, .deep p, .pm-note p").forEach(p=>{if(p.closest(".concepts,.fq,.refs,.chat"))return;
+  const nodes=[];root.querySelectorAll(".block > p, .simple p, .case p, .deep p, .pm-note p").forEach(p=>{if(p.closest(".concepts,.fq,.refs,.chat,.lab-card"))return;
     const w=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode()))nodes.push(n);});
   let count=0;
   for(const t of terms){ if(count>=14) break; if(used.has(t.name.toLowerCase())) continue;
@@ -7150,6 +7188,197 @@ function addGlossaryTips(root,exclude){
 }
 document.addEventListener("click",e=>{const t=e.target.closest&&e.target.closest(".gl-term");document.querySelectorAll(".gl-term.show").forEach(x=>{if(x!==t)x.classList.remove("show");});if(t)t.classList.toggle("show");});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".gl-term.show").forEach(x=>x.classList.remove("show"));});
+
+
+/* ============ LABORATÓRIO: SIMULADORES INTERATIVOS (funcionam sem o Claude) ============ */
+const LBT=(pt,en)=>EN()?en:pt;
+const fmtP=x=>isFinite(x)?(Math.round(x*1000)/10).toLocaleString(EN()?"en-US":"pt-BR")+"%":"–";
+const fmtI=x=>Math.round(x).toLocaleString(EN()?"en-US":"pt-BR");
+const fmtM=(x,c)=>{const d=Math.abs(x)<1&&x!==0?4:2;return (c||"US$ ")+x.toLocaleString(EN()?"en-US":"pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});};
+function normCdf(x){const t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2),p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return x>0?1-p:p;}
+const labNum=(id,label,val,attrs,suffix)=>`<label class="lab-f"><span>${label}</span><span class="lab-in"><input type="number" id="${id}" value="${val}" ${attrs||""}>${suffix?`<em>${suffix}</em>`:""}</span></label>`;
+
+// 1. Matriz de confusão e limite de decisão
+function labConfusion(el){
+  el.innerHTML=`<div class="lab-grid">
+    <div class="lab-ctrls">
+      ${labNum("cmP",LBT("Casos positivos reais (ex.: fraudes)","Actual positive cases (e.g. fraud)"),100,'min="1" step="1"')}
+      ${labNum("cmN",LBT("Casos negativos reais","Actual negative cases"),9900,'min="1" step="1"')}
+      <label class="lab-f"><span>${LBT("Limite de decisão (threshold)","Decision threshold")}: <b id="cmTv">0,50</b></span><input type="range" id="cmT" min="0.05" max="0.95" step="0.01" value="0.5"></label>
+      <label class="lab-f"><span>${LBT("Qualidade do modelo (separação)","Model quality (separation)")}: <b id="cmSv"></b></span><input type="range" id="cmS" min="0.1" max="0.6" step="0.01" value="0.4"></label>
+      ${labNum("cmCfp",LBT("Custo de um falso positivo","Cost of a false positive"),20,'min="0" step="1"',"US$")}
+      ${labNum("cmCfn",LBT("Custo de um falso negativo","Cost of a false negative"),500,'min="0" step="1"',"US$")}
+    </div>
+    <div class="lab-out">
+      <div class="lab-matrix"><div></div><b>${LBT("Era positivo","Actually positive")}</b><b>${LBT("Era negativo","Actually negative")}</b>
+        <b>${LBT("Modelo disse sim","Model said yes")}</b><div class="c tp"><small>VP · TP</small><span id="cmTP"></span></div><div class="c fp"><small>FP</small><span id="cmFP"></span></div>
+        <b>${LBT("Modelo disse não","Model said no")}</b><div class="c fn"><small>FN</small><span id="cmFN"></span></div><div class="c tn"><small>VN · TN</small><span id="cmTN"></span></div></div>
+      <div class="lab-kpis" id="cmK"></div>
+      <p class="lab-tip" id="cmTip"></p>
+    </div></div>
+    <p class="lab-note">${LBT("Simulação didática: os scores dos casos positivos e negativos seguem duas curvas normais. Aumentar a qualidade do modelo afasta as curvas; mover o limite troca falsos positivos por falsos negativos.","Teaching simulation: positive and negative case scores follow two normal curves. Raising model quality pulls the curves apart; moving the threshold trades false positives for false negatives.")}</p>`;
+  const g=id=>el.querySelector("#"+id), sd=0.15;
+  const calc=t=>{const P=+g("cmP").value||0,N=+g("cmN").value||0,s=+g("cmS").value,mp=0.5+s/2,mn=0.5-s/2;
+    const TP=P*(1-normCdf((t-mp)/sd)),FP=N*(1-normCdf((t-mn)/sd));return {P,N,TP,FP,FN:P-TP,TN:N-FP};};
+  const upd=()=>{const t=+g("cmT").value,r=calc(t),cfp=+g("cmCfp").value||0,cfn=+g("cmCfn").value||0;
+    g("cmTv").textContent=t.toFixed(2).replace(".",EN()?".":",");g("cmSv").textContent=(+g("cmS").value).toFixed(2).replace(".",EN()?".":",");
+    ["TP","FP","FN","TN"].forEach(k=>g("cm"+k).textContent=fmtI(r[k]));
+    const prec=r.TP/(r.TP+r.FP),rec=r.TP/r.P,acc=(r.TP+r.TN)/(r.P+r.N),f1=2*prec*rec/(prec+rec),cost=r.FP*cfp+r.FN*cfn;
+    let best=0.5,bc=Infinity;for(let x=0.05;x<=0.951;x+=0.01){const q=calc(x),c=q.FP*cfp+q.FN*cfn;if(c<bc){bc=c;best=x;}}
+    g("cmK").innerHTML=[[LBT("Acurácia","Accuracy"),fmtP(acc)],[LBT("Precisão","Precision"),fmtP(prec)],["Recall",fmtP(rec)],["F1",fmtP(f1)],[LBT("Custo total dos erros","Total error cost"),fmtM(cost)]].map(x=>`<div><small>${x[0]}</small><b>${x[1]}</b></div>`).join("");
+    g("cmTip").innerHTML=LBT(`Com esses custos, o limite que gera o menor custo total fica perto de <b>${best.toFixed(2).replace(".",",")}</b> (${fmtM(bc)}). Repare como a acurácia quase não muda, mas o custo muda muito.`,`With these costs, the threshold with the lowest total cost is around <b>${best.toFixed(2)}</b> (${fmtM(bc)}). Notice how accuracy barely moves while cost changes a lot.`);};
+  el.querySelectorAll("input").forEach(i=>i.addEventListener("input",upd));upd();
+}
+
+// 2. Tamanho de amostra para teste A/B
+function labSample(el){
+  el.innerHTML=`<div class="lab-grid"><div class="lab-ctrls">
+      ${labNum("ssP",LBT("Taxa atual da métrica (conversão)","Current metric rate (conversion)"),5,'min="0.1" max="99" step="0.1"',"%")}
+      ${labNum("ssM",LBT("Menor efeito que vale detectar (relativo)","Smallest effect worth detecting (relative)"),10,'min="0.5" max="200" step="0.5"',"%")}
+      <label class="lab-f"><span>${LBT("Poder estatístico","Statistical power")}</span><select id="ssPow"><option value="0.8416">80%</option><option value="1.2816">90%</option></select></label>
+      <label class="lab-f"><span>${LBT("Significância","Significance")}</span><select id="ssA"><option value="1.96">5%</option><option value="2.5758">1%</option><option value="1.6449">10%</option></select></label>
+      ${labNum("ssT",LBT("Usuários por dia no teste (total)","Users per day in the test (total)"),4000,'min="1" step="1"')}
+    </div><div class="lab-out"><div class="lab-kpis lab-kpis-big" id="ssK"></div><p class="lab-tip" id="ssTip"></p></div></div>
+    <p class="lab-note">${LBT("Fórmula padrão para comparar duas proporções com teste bicaudal. Considere ao menos uma ou duas semanas completas para cobrir variações por dia da semana.","Standard formula for comparing two proportions with a two-sided test. Run for at least one or two full weeks to cover day-of-week patterns.")}</p>`;
+  const g=id=>el.querySelector("#"+id);
+  const upd=()=>{const p1=(+g("ssP").value||0)/100,m=(+g("ssM").value||0)/100,p2=p1*(1+m),zb=+g("ssPow").value,za=+g("ssA").value,T=+g("ssT").value||1;
+    const d=p2-p1,n=Math.ceil(Math.pow(za+zb,2)*(p1*(1-p1)+p2*(1-p2))/(d*d)),days=Math.ceil(2*n/T);
+    g("ssK").innerHTML=[[LBT("Usuários por grupo","Users per group"),fmtI(n)],[LBT("Total nos dois grupos","Total across both groups"),fmtI(2*n)],[LBT("Dias necessários","Days needed"),fmtI(days)],[LBT("Taxa a detectar","Rate to detect"),fmtP(p2)]].map(x=>`<div><small>${x[0]}</small><b>${x[1]}</b></div>`).join("");
+    g("ssTip").innerHTML=days>42?LBT("Mais de 6 semanas: considere detectar um efeito maior, usar uma métrica mais sensível ou outra forma de validação.","More than 6 weeks: consider a larger effect, a more sensitive metric or another way to validate."):LBT("Dica: reduza o efeito pela metade e veja a amostra quase quadruplicar.","Tip: halve the effect and watch the sample nearly quadruple.");};
+  el.querySelectorAll("input,select").forEach(i=>i.addEventListener("input",upd));upd();
+}
+
+// 3. Custo e margem de uma funcionalidade de IA
+function labUnit(el){
+  el.innerHTML=`<div class="lab-grid"><div class="lab-ctrls">
+      ${labNum("ueP",LBT("Preço do plano por mês","Plan price per month"),20,'min="0" step="1"',"US$")}
+      ${labNum("ueT",LBT("Tarefas por usuário típico no mês","Tasks per typical user per month"),150,'min="0" step="1"')}
+      ${labNum("ueIn",LBT("Tokens de entrada por tarefa","Input tokens per task"),3000,'min="0" step="100"')}
+      ${labNum("ueOut",LBT("Tokens de saída por tarefa","Output tokens per task"),500,'min="0" step="50"')}
+      ${labNum("uePi",LBT("Preço por 1M tokens de entrada","Price per 1M input tokens"),3,'min="0" step="0.1"',"US$")}
+      ${labNum("uePo",LBT("Preço por 1M tokens de saída","Price per 1M output tokens"),15,'min="0" step="0.1"',"US$")}
+      ${labNum("ueX",LBT("Outros custos por tarefa (busca, infra)","Other cost per task (retrieval, infra)"),0.002,'min="0" step="0.001"',"US$")}
+      ${labNum("ueC",LBT("Parte da entrada servida por cache","Share of input served from cache"),0,'min="0" max="100" step="5"',"%")}
+      ${labNum("ueH",LBT("Uso de um usuário intensivo (vezes o típico)","Heavy user usage (times typical)"),8,'min="1" step="1"',"x")}
+    </div><div class="lab-out"><div class="lab-kpis" id="ueK"></div><p class="lab-tip" id="ueTip"></p></div></div>
+    <p class="lab-note">${LBT("Valores ilustrativos: troque pelos preços do modelo que você usa. O cache considera desconto de 90% na parte da entrada reaproveitada, uma referência comum de mercado.","Illustrative values: replace them with your model's prices. Caching assumes a 90% discount on the reused share of input, a common market reference.")}</p>`;
+  const g=id=>+el.querySelector("#"+id).value||0;
+  const upd=()=>{const cache=g("ueC")/100,inC=g("ueIn")/1e6*g("uePi")*(1-cache*0.9),outC=g("ueOut")/1e6*g("uePo"),task=inC+outC+g("ueX");
+    const typ=task*g("ueT"),heavy=typ*g("ueH"),price=g("ueP"),mg=price?(price-typ)/price:0,brk=task?price/task:0;
+    el.querySelector("#ueK").innerHTML=[[LBT("Custo por tarefa","Cost per task"),fmtM(task)],[LBT("Custo do usuário típico","Typical user cost"),fmtM(typ)],[LBT("Margem bruta do típico","Typical user gross margin"),fmtP(mg)],[LBT("Custo do usuário intensivo","Heavy user cost"),fmtM(heavy)],[LBT("Tarefas até dar prejuízo","Tasks until it loses money"),fmtI(brk)]].map(x=>`<div><small>${x[0]}</small><b>${x[1]}</b></div>`).join("");
+    el.querySelector("#ueTip").innerHTML=heavy>price?LBT(`O usuário intensivo custa mais do que paga (${fmtM(heavy)} contra ${fmtM(price)}). Teste cache, um modelo menor para tarefas simples ou um plano com limite de uso.`,`The heavy user costs more than they pay (${fmtM(heavy)} vs ${fmtM(price)}). Try caching, a smaller model for simple tasks or a capped plan.`):LBT("Mesmo o usuário intensivo cabe no preço. Veja a partir de quantas vezes o uso típico isso muda.","Even the heavy user fits the price. See at what usage multiple that changes.");};
+  el.querySelectorAll("input").forEach(i=>i.addEventListener("input",upd));upd();
+}
+
+// 4. Editor de SQL com dados de exemplo (carrega o AlaSQL sob demanda)
+const SQLX=[
+ [["Quantos usuários existem em cada plano (tier)?","How many users are there in each plan?"],"SELECT tier, COUNT(*) AS users\nFROM users\nGROUP BY tier\nORDER BY users DESC"],
+ [["Qual é a taxa de aceitação das sugestões de IA por semana?","What is the weekly acceptance rate of AI suggestions?"],"SELECT week,\n  COUNT(*) AS suggestions,\n  AVG(CASE WHEN accepted THEN 1.0 ELSE 0 END) AS acceptance_rate\nFROM ai_suggestions\nGROUP BY week\nORDER BY week"],
+ [["Taxa de aceitação por plano (precisa de JOIN).","Acceptance rate by plan (needs a JOIN)."],"SELECT u.tier,\n  COUNT(*) AS suggestions,\n  AVG(CASE WHEN s.accepted THEN 1.0 ELSE 0 END) AS acceptance_rate\nFROM ai_suggestions AS s\nJOIN users AS u ON u.id = s.user_id\nGROUP BY u.tier"],
+ [["Quantos usuários diferentes usaram a IA por país?","How many different users used AI per country?"],"SELECT u.country, COUNT(DISTINCT s.user_id) AS active_users\nFROM ai_suggestions AS s\nJOIN users AS u ON u.id = s.user_id\nGROUP BY u.country\nORDER BY active_users DESC"],
+ [["Qual é o custo total e o custo médio por sugestão em cada plano?","What is the total and average cost per suggestion in each plan?"],"SELECT u.tier,\n  SUM(s.cost_usd) AS total_cost,\n  AVG(s.cost_usd) AS avg_cost\nFROM ai_suggestions AS s\nJOIN users AS u ON u.id = s.user_id\nGROUP BY u.tier"],
+ [["Quais são os 5 usuários que mais usam a IA (usuários intensivos)?","Who are the 5 heaviest AI users?"],"SELECT user_id, COUNT(*) AS suggestions, SUM(cost_usd) AS cost\nFROM ai_suggestions\nGROUP BY user_id\nORDER BY suggestions DESC\nLIMIT 5"],
+ [["Armadilha: compare COUNT(*) com COUNT(DISTINCT user_id).","Pitfall: compare COUNT(*) with COUNT(DISTINCT user_id)."],"SELECT COUNT(*) AS events, COUNT(DISTINCT user_id) AS unique_users\nFROM ai_suggestions"]
+];
+let _sqlDb=null,_sqlLoading=null;
+function sqlLoad(){
+  if(window.alasql) return Promise.resolve(window.alasql);
+  if(_sqlLoading) return _sqlLoading;
+  _sqlLoading=new Promise((res,rej)=>{const sc=document.createElement("script");
+    sc.src="https://cdn.jsdelivr.net/npm/alasql@4.6.6/dist/alasql.min.js";
+    sc.integrity="sha384-cRhVUcS2RBI69D2TaAdt6hQaE90lVlmkxoAiKr//pajosWUSEFafB8vjWa8WrJK9";sc.crossOrigin="anonymous";
+    sc.onload=()=>res(window.alasql);sc.onerror=()=>{_sqlLoading=null;rej(new Error("load"));};document.head.appendChild(sc);});
+  return _sqlLoading;
+}
+function sqlSeed(A){
+  if(_sqlDb) return _sqlDb;
+  let seed=7;const rnd=()=>{seed=(seed*1103515245+12345)%2147483648;return seed/2147483648;};
+  const plans=["free","pro","business"],countries=["BR","US","PT","MX","DE"];const users=[],sug=[];
+  for(let i=1;i<=200;i++){const r=rnd();users.push({id:i,tier:r<0.55?"free":r<0.85?"pro":"business",country:countries[Math.floor(rnd()*5)],signup_week:1+Math.floor(rnd()*4)});}
+  let sid=1;users.forEach(u=>{const heavy=rnd()<0.06,base=u.tier==="free"?3:u.tier==="pro"?9:14,n=Math.round(base*(heavy?8:0.5+rnd()));
+    for(let k=0;k<n;k++){const wk=1+Math.floor(rnd()*8),acc=rnd()<(u.tier==="free"?0.48:u.tier==="pro"?0.61:0.67)+wk*0.01;
+      sug.push({id:sid++,user_id:u.id,week:wk,accepted:acc,latency_ms:Math.round(600+rnd()*2400),cost_usd:Math.round((0.004+rnd()*0.012)*10000)/10000});}});
+  const db=new A.Database();db.exec("CREATE TABLE users (id INT, tier STRING, country STRING, signup_week INT)");
+  db.exec("CREATE TABLE ai_suggestions (id INT, user_id INT, week INT, accepted BOOLEAN, latency_ms INT, cost_usd NUMBER)");
+  db.tables.users.data=users;db.tables.ai_suggestions.data=sug;_sqlDb=db;return db;
+}
+function labSQL(el){
+  el.innerHTML=`<div class="sql-schema"><b>${LBT("Tabelas","Tables")}</b>
+      <code>users (id, tier, country, signup_week)</code><code>ai_suggestions (id, user_id, week, accepted, latency_ms, cost_usd)</code></div>
+    <label class="lab-f"><span>${LBT("Exercício","Exercise")}</span><select id="sqlEx">${SQLX.map((x,i)=>`<option value="${i}">${i+1}. ${esc(LBT(x[0][0],x[0][1]))}</option>`).join("")}</select></label>
+    <textarea id="sqlQ" class="sql-q" spellcheck="false" lang="en" aria-label="SQL"></textarea>
+    <div class="row"><button class="btn" id="sqlRun" type="button">${LBT("Rodar consulta","Run query")}</button><button class="btn ghost" id="sqlSol" type="button">${LBT("Ver solução","Show solution")}</button><button class="btn ghost" id="sqlClr" type="button">${LBT("Limpar","Clear")}</button></div>
+    <div id="sqlOut" class="sql-out"><p class="lab-note">${LBT("Escreva sua consulta e clique em Rodar. Os dados são fictícios e ficam só no seu navegador.","Write your query and click Run. The data is fictional and stays in your browser.")}</p></div>`;
+  const q=el.querySelector("#sqlQ"),out=el.querySelector("#sqlOut"),ex=el.querySelector("#sqlEx");
+  const setEx=()=>{q.value="-- "+LBT(SQLX[+ex.value][0][0],SQLX[+ex.value][0][1])+"\nSELECT ";};
+  ex.addEventListener("change",setEx);setEx();
+  el.querySelector("#sqlSol").addEventListener("click",()=>{q.value=SQLX[+ex.value][1];});
+  el.querySelector("#sqlClr").addEventListener("click",()=>{q.value="";q.focus();});
+  el.querySelector("#sqlRun").addEventListener("click",async()=>{
+    out.innerHTML=`<p class="lab-note">${LBT("Carregando o motor de SQL...","Loading the SQL engine...")}</p>`;
+    let A;try{A=await sqlLoad();}catch(e){out.innerHTML=`<p class="note-err">${LBT("Não foi possível carregar o motor de SQL. Verifique a conexão e tente de novo.","Could not load the SQL engine. Check your connection and try again.")}</p>`;return;}
+    try{const db=sqlSeed(A),sql=q.value.replace(/--.*$/gm,"").trim().replace(/;\s*$/,"");if(!sql)throw new Error(LBT("Consulta vazia.","Empty query."));
+      const rows=db.exec(sql);if(!Array.isArray(rows)||!rows.length){out.innerHTML=`<p class="lab-note">${LBT("Nenhuma linha retornada.","No rows returned.")}</p>`;return;}
+      const cols=Object.keys(rows[0]),cell=v=>typeof v==="number"?(Number.isInteger(v)?v:Math.round(v*10000)/10000):v===true?"true":v===false?"false":esc(String(v));
+      out.innerHTML=`<p class="lab-note">${rows.length} ${LBT("linha(s)","row(s)")}</p><div class="dg-scroll"><table class="dg-table sql-table"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.slice(0,50).map(r=>`<tr>${cols.map(c=>`<td>${cell(r[c])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    }catch(e){out.innerHTML=`<p class="note-err">${LBT("Erro na consulta","Query error")}: ${esc(e.message||String(e))}</p>`;}
+  });
+}
+
+const LABS=[
+ {id:"cm",t:["Matriz de confusão e limite de decisão","Confusion matrix and decision threshold"],d:["Mova o limite e veja precisão, recall e o custo dos erros mudarem.","Move the threshold and watch precision, recall and error cost change."],f:labConfusion,les:8},
+ {id:"ss",t:["Tamanho de amostra para teste A/B","A/B test sample size"],d:["Descubra quantos usuários e quantos dias um experimento precisa.","Find out how many users and days an experiment needs."],f:labSample,les:35},
+ {id:"ue",t:["Custo e margem de uma funcionalidade de IA","Cost and margin of an AI feature"],d:["Calcule o custo por tarefa, a margem e o risco dos usuários intensivos.","Calculate cost per task, margin and the heavy-user risk."],f:labUnit,les:36},
+ {id:"sql",t:["Editor de SQL com dados de exemplo","SQL editor with sample data"],d:["Pratique consultas de produto de IA em tabelas fictícias.","Practice AI product queries on fictional tables."],f:labSQL,les:37}
+];
+const LAB_BY_LESSON={8:"cm",35:"ss",36:"ue",37:"sql"};
+let labTab="cm";
+function renderLab(app){
+  app.innerHTML=`<div class="lab-wrap"><h1 class="page-title">${LBT("Laboratório","Lab")}</h1>
+    <p class="page-sub">${LBT("Simuladores para praticar os conceitos mais cobrados com números de verdade. Funcionam direto no navegador, inclusive fora do Claude.","Simulators to practice the most-tested concepts with real numbers. They run right in the browser, including outside Claude.")}</p>
+    <div class="segs lab-tabs" role="tablist">${LABS.map(L=>`<button class="seg" role="tab" data-lab="${L.id}" aria-pressed="${labTab===L.id}">${esc(LBT(L.t[0],L.t[1]))}</button>`).join("")}</div>
+    ${LABS.filter(L=>L.id===labTab).map(L=>`<section class="block lab-card"><h2>${esc(LBT(L.t[0],L.t[1]))}</h2><p class="lab-d">${esc(LBT(L.d[0],L.d[1]))} <a href="#/aula/${L.les}">${LBT("Aula","Lesson")} ${L.les}</a></p><div class="lab-body"></div></section>`).join("")}
+  </div>`;
+  app.querySelectorAll("[data-lab]").forEach(b=>b.addEventListener("click",()=>{labTab=b.dataset.lab;renderLab(app);}));
+  const L=LABS.find(x=>x.id===labTab);L.f(app.querySelector(".lab-body"));
+}
+function addLessonLab(app,n){
+  const id=LAB_BY_LESSON[n]; if(!id) return; const L=LABS.find(x=>x.id===id);
+  const sec=document.createElement("section");sec.className="block lab-card lab-inline";
+  sec.innerHTML=`<h2><span class="ico" aria-hidden="true">${ic("target")}</span>${LBT("Experimente","Try it")}: ${esc(LBT(L.t[0],L.t[1]))}</h2><p class="lab-d">${esc(LBT(L.d[0],L.d[1]))}</p><div class="lab-body"></div>`;
+  const anchor=app.querySelector(".lesson-grid > div:first-child .dg")||app.querySelector(".lesson-grid > div:first-child .simple");
+  if(anchor) anchor.after(sec); else return;
+  L.f(sec.querySelector(".lab-body"));
+}
+
+/* ============ BACKUP DO PROGRESSO (exportar e importar) ============ */
+async function exportProgress(){
+  const data=JSON.stringify(Object.assign({_app:"trilha-ai-pm",_v:1,_at:new Date().toISOString()},state),null,1);
+  const fname="trilha-ai-pm-progresso-"+new Date().toISOString().slice(0,10)+".json";
+  // Dentro do Claude, o arquivo é entregue pela capacidade de downloads (com confirmação do usuário)
+  if(window.claude&&window.claude.use){let dl=null;try{dl=await window.claude.use("downloads");}catch(e){}
+    if(dl){try{await dl.save({filename:fname,data});toast(LBT("Arquivo de progresso salvo","Progress file saved"));}
+      catch(e){if(!e||e.code!=="declined")toast(LBT("Não foi possível salvar o arquivo aqui","Could not save the file here"));}return;}}
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([data],{type:"application/json"}));
+  a.download=fname;document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);toast(LBT("Arquivo de progresso baixado","Progress file downloaded"));
+}
+function importProgress(file){
+  const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||d._app!=="trilha-ai-pm")throw 0;
+    if(!confirm(LBT("Substituir o progresso atual por este arquivo?","Replace your current progress with this file?")))return;
+    delete d._app;delete d._v;delete d._at;state=Object.assign(BLANK(),migrateLessons(d));state.updatedAt=Date.now();persist();applyTheme();render();
+    toast(LBT("Progresso importado","Progress imported"));}catch(e){toast(LBT("Arquivo inválido","Invalid file"));}};r.readAsText(file);
+}
+function backupHTML(){
+  return `<section class="block pg-backup"><h2>${LBT("Backup do progresso","Progress backup")}</h2>
+    <p>${LBT("O progresso fica salvo neste navegador. Para levar para outro computador, ou entre a versão do Claude e a do GitHub, exporte aqui e importe do outro lado.","Progress is saved in this browser. To move it to another computer, or between the Claude and GitHub versions, export it here and import it on the other side.")}</p>
+    <div class="row"><button class="btn" id="bkExp" type="button">${LBT("Exportar progresso (.json)","Export progress (.json)")}</button>
+    <label class="btn ghost bk-imp">${LBT("Importar progresso","Import progress")}<input type="file" id="bkImp" accept="application/json,.json" hidden></label></div></section>`;
+}
+function bindBackup(app){
+  const e=app.querySelector("#bkExp");if(e)e.addEventListener("click",exportProgress);
+  const i=app.querySelector("#bkImp");if(i)i.addEventListener("change",()=>{if(i.files&&i.files[0])importProgress(i.files[0]);i.value="";});
+}
 
 /* ============ MODELOS DE DOCUMENTOS (PRD, evals, lançamento, riscos, PR/FAQ, decisão) ============ */
 // Seção: [título PT, título EN, [perguntas PT], [perguntas EN]]
