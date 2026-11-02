@@ -89,7 +89,7 @@ main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
 .btn.done{background:var(--ok)}
 .btn:disabled{opacity:.55;cursor:not-allowed}
 
-/* Ribbon: 38 stops */
+/* Ribbon: 39 stops */
 .ribbon{margin:30px 0 8px;background:var(--surface);border-radius:24px;padding:20px 22px;box-shadow:var(--shadow)}
 .ribbon-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:14px;flex-wrap:wrap}
 .ribbon-head h2{font-family:var(--display);font-size:20px;margin:0}
@@ -1050,7 +1050,7 @@ details.about summary::after,.res-details summary::after{transition:transform .2
     <div class="top-right">
       <div class="lang" role="group" aria-label="Idioma da página"><button data-lang="pt" aria-pressed="true">PT</button><button data-lang="en" aria-pressed="false">EN</button></div>
       <span class="pill pts-pill" id="topPts">0 pts</span>
-      <span class="pill" id="topProgress">0 de 38 aulas</span>
+      <span class="pill" id="topProgress">0 de 39 aulas</span>
       <button class="theme-btn" id="themeBtn" aria-label="Alternar tema claro ou escuro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg></button>
     </div>
   </div>
@@ -1376,7 +1376,7 @@ const MODULES = [
    pm:"Seu Design QA Agent pode ser o projeto final. Use esta aula para transformá-lo num caso que você defenda com segurança em entrevistas."}
  ]},
  {n:10,c:"var(--m10);--ci:var(--m10i)",title:"Aprofundamento para big techs",
-  desc:"Recomendação e ranqueamento, experimentação avançada, estratégia de negócio de IA e dados para PMs: temas muito cobrados em entrevistas de AI PM nas grandes empresas.",
+  desc:"Recomendação e ranqueamento, experimentação avançada, estratégia de negócio de IA, dados para PMs e AI Center of Excellence: temas muito cobrados em entrevistas de AI PM nas grandes empresas.",
   ex:"Faça um treino completo: desenhe um sistema de recomendação, escreva o plano de um teste A/B com cálculo de amostra e proponha o modelo de preço de um produto de IA com cálculo de margem. Por fim, defina as métricas do produto e descreva a consulta SQL que mediria a principal.",
   lessons:[
   {t:"Sistemas de recomendação e ranqueamento",
@@ -1428,7 +1428,17 @@ const MODULES = [
       ["Efeito de mix e paradoxo de Simpson","A métrica geral pode cair mesmo com todos os segmentos melhorando, se a proporção entre segmentos mudar."],
       ["Instrumentação","Os eventos registrados no produto. Mudanças de versão ou de rastreamento podem criar quedas falsas em dashboards."],
       ["Métricas de IA no dashboard","Qualidade (nota de evals, aceitação, edição), segurança, custo por tarefa, latência p95 e taxa de escalonamento para humanos, lado a lado com a métrica de negócio."]],
-   pm:"Antes de comemorar ou de se preocupar com uma variação, pergunte: o dado é real, a definição mudou, o mix de usuários mudou ou é sazonal? Só depois procure a causa no produto."}
+   pm:"Antes de comemorar ou de se preocupar com uma variação, pergunte: o dado é real, a definição mudou, o mix de usuários mudou ou é sazonal? Só depois procure a causa no produto."},
+  {t:"AI Center of Excellence (CoE): como escalar IA na empresa",
+   s:"Como as empresas organizam a adoção de IA em escala: o que um AI Center of Excellence faz, quem faz parte dele, os modelos de operação (centralizado, híbrido e federado), como funciona a entrada e a priorização de casos de uso, como medir se o CoE gera valor e quando ele deve evoluir de guardião para conselheiro.",
+   k:[["AI Center of Excellence (CoE)","Time interno de especialistas que conduz a adoção de IA de forma consistente, segura e com resultado, evitando iniciativas fragmentadas e sem governança."],
+      ["Responsabilidades típicas","Estratégia e políticas de IA responsável, capacitação, projetos piloto, padrões, fluxo de entrada e priorização de casos, ativos reutilizáveis e medição de resultados."],
+      ["Comitê de direção","Líderes de negócio e de tecnologia que patrocinam o CoE, decidem prioridades e removem bloqueios."],
+      ["Modelo centralizado","Um único time define as regras, constrói as soluções e monitora. Bom para começar; vira gargalo quando a demanda cresce."],
+      ["Modelo híbrido (hub and spoke)","O centro define padrões e plataforma e oferece especialistas; os times de produto constroem dentro dessas regras. É o arranjo mais comum em escala."],
+      ["Modelo federado","As áreas de negócio são donas da entrega, e o CoE define padrões e atua por exceção. Exige times maduros; o risco é cada área seguir um padrão diferente."],
+      ["Fluxo de entrada (intake)","Processo para receber ideias de casos de uso, avaliar valor, risco e viabilidade, e decidir o que entra no portfólio."]],
+   pm:"Em entrevistas para vagas de AI PM em empresas grandes, saber explicar como um CoE funciona e como você trabalharia com ele mostra visão de escala. Se a vaga for de plataforma, você provavelmente fará parte do CoE."}
  ]}
 ];
 
@@ -1752,7 +1762,7 @@ const CONTENT_EN = [
    pm:"Your Design QA Agent can be the final project. Use this lesson to turn it into a case you can confidently defend in interviews."}
  ]},
  {title:"Going deeper for big tech",
-  desc:"Recommendation and ranking, advanced experimentation, AI business strategy and data for PMs: topics heavily tested in AI PM interviews at large companies.",
+  desc:"Recommendation and ranking, advanced experimentation, AI business strategy, data for PMs and the AI Center of Excellence: topics heavily tested in AI PM interviews at large companies.",
   ex:"Do a full practice round: design a recommender system, write an A/B test plan with a sample size calculation and propose a pricing model for an AI product with a margin calculation. Finally, define the product's metrics and describe the SQL query that would measure the primary one.",
   lessons:[
   {t:"Recommender and ranking systems",
@@ -1804,7 +1814,17 @@ const CONTENT_EN = [
       ["Mix effect and Simpson's paradox","The overall metric can drop even when every segment improves, if the proportion between segments changes."],
       ["Instrumentation","The events logged in the product. Version or tracking changes can create false drops in dashboards."],
       ["AI metrics on the dashboard","Quality (eval scores, acceptance, edits), safety, cost per task, p95 latency and escalation rate to humans, side by side with the business metric."]],
-   pm:"Before celebrating or worrying about a change, ask: is the data real, did the definition change, did the user mix change, or is it seasonal? Only then look for the cause in the product."}
+   pm:"Before celebrating or worrying about a change, ask: is the data real, did the definition change, did the user mix change, or is it seasonal? Only then look for the cause in the product."},
+  {t:"AI Center of Excellence (CoE): scaling AI across the company",
+   s:"How companies organize AI adoption at scale: what an AI Center of Excellence does, who is part of it, the operating models (centralized, hybrid and federated), how use-case intake and prioritization work, how to measure whether the CoE creates value and when it should evolve from gatekeeper to advisor.",
+   k:[["AI Center of Excellence (CoE)","An internal team of experts that drives AI adoption consistently, safely and with results, preventing fragmented and ungoverned initiatives."],
+      ["Typical responsibilities","AI strategy and responsible AI policies, upskilling, pilot projects, standards, use-case intake and prioritization, reusable assets and outcome measurement."],
+      ["Steering committee","Business and technology leaders who sponsor the CoE, set priorities and remove blockers."],
+      ["Centralized model","A single team sets the rules, builds the solutions and monitors them. Good to start; becomes a bottleneck as demand grows."],
+      ["Hybrid model (hub and spoke)","The center sets standards and platform and provides experts; product teams build within those rules. The most common arrangement at scale."],
+      ["Federated model","Business units own delivery, and the CoE sets standards and governs by exception. Requires mature teams; the risk is each area drifting to its own standard."],
+      ["Intake flow","A process to receive use-case ideas, assess value, risk and feasibility, and decide what enters the portfolio."]],
+   pm:"In AI PM interviews at large companies, explaining how a CoE works and how you would work with it shows a scale mindset. If the role is a platform role, you will likely be part of the CoE."}
  ]}
 ];
 MODULES.forEach((m,i)=>{const e=CONTENT_EN[i];m.en={title:e.title,desc:e.desc,ex:e.ex};m.lessons.forEach((l,j)=>{l.en=e.lessons[j];});});
@@ -4990,6 +5010,65 @@ S(10,3,["Uma métrica de \"tempo médio de uso\" só considera sessões com mais
  ["None, short sessions do not matter","The average gets inflated and can mislead whoever makes decisions with it","The metric becomes slower to compute","The dashboard stops working on mobile"],
  "Excluding short sessions from the denominator artificially raises the average. The definition must be explicit and consistent with the decision the metric supports."]);
 
+/* ============ MÓDULO 10: AI CENTER OF EXCELLENCE (aula 39) ============ */
+D(39,{
+h:"Centros de excelência existem há décadas em tecnologia: empresas criaram CoEs para ERP, para business intelligence, para nuvem e para automação de processos (RPA). A ideia é sempre a mesma: concentrar especialistas, padrões e boas práticas enquanto a capacidade ainda é nova e escassa, e depois espalhar esse conhecimento pela organização.\n\nCom o machine learning, nos anos 2010, muitas empresas montaram times centrais de ciência de dados. A chegada da IA generativa, a partir de 2023, fez a demanda explodir de uma vez em todas as áreas, e o AI CoE virou a forma mais comum de evitar dezenas de iniciativas isoladas, com fornecedores, riscos e padrões diferentes.",
+he:"Centers of excellence have existed in technology for decades: companies created CoEs for ERP, business intelligence, cloud and robotic process automation (RPA). The idea is always the same: concentrate experts, standards and best practices while a capability is new and scarce, then spread that knowledge across the organization.\n\nWith machine learning in the 2010s, many companies set up central data science teams. The arrival of generative AI, from 2023 on, made demand explode in every area at once, and the AI CoE became the most common way to avoid dozens of isolated initiatives with different vendors, risks and standards.",
+a:"Guias atuais, como o Cloud Adoption Framework da Microsoft, descrevem o AI CoE como um time interno de especialistas que evita a adoção fragmentada e sem governança. As responsabilidades citadas incluem estratégia e políticas de IA responsável, capacitação, pilotos, padrões, fluxo de entrada e priorização, ativos reutilizáveis e medição de resultados.\n\nA recomendação mais comum é começar centralizado e evoluir para um modelo híbrido ou federado à medida que os times amadurecem e a plataforma consegue aplicar regras automaticamente. Os sinais de que é hora de mudar são atrasos de aprovação, gargalos de conhecimento e disputas de prioridade entre o CoE e os times de produto. Com agentes de IA, o CoE também passou a cuidar de um registro central dos agentes em produção, do baseline de segurança e do monitoramento.",
+ae:"Current guides, such as Microsoft's Cloud Adoption Framework, describe the AI CoE as an internal team of experts that prevents fragmented and ungoverned adoption. The listed responsibilities include strategy and responsible AI policies, upskilling, pilots, standards, intake and prioritization, reusable assets and outcome measurement.\n\nThe most common recommendation is to start centralized and evolve toward a hybrid or federated model as teams mature and the platform can enforce rules automatically. The signals that it is time to change are approval delays, knowledge bottlenecks and priority disputes between the CoE and product teams. With AI agents, the CoE has also taken on a central registry of agents in production, the security baseline and monitoring.",
+r:"Na rotina, um AI PM pode estar dentro ou fora do CoE. Dentro, como PM de plataforma, trata os times internos como clientes: entende as dores, prioriza a plataforma comum (acesso a modelos, evals, guardrails, observabilidade), mede adoção e mostra valor. Fora, como PM de produto, usa o CoE como parceiro: segue os padrões, leva casos para revisão de risco cedo e contribui com aprendizados para os ativos reutilizáveis.\n\nNos dois casos, o PM ajuda a responder as perguntas centrais do portfólio: quais casos de uso geram mais valor, quais têm risco alto demais agora e o que pode ser reaproveitado entre áreas.",
+re:"Day to day, an AI PM can be inside or outside the CoE. Inside, as a platform PM, they treat internal teams as customers: understand pain points, prioritize the shared platform (model access, evals, guardrails, observability), measure adoption and show value. Outside, as a product PM, they use the CoE as a partner: follow its standards, bring cases to risk review early and contribute learnings to reusable assets.\n\nIn both cases, the PM helps answer the portfolio's core questions: which use cases create the most value, which carry too much risk right now and what can be reused across areas.",
+refs:[["Microsoft (2025). Establish an AI Center of Excellence. Cloud Adoption Framework for Azure.","Microsoft Cloud Adoption Framework Establish an AI Center of Excellence","w"],
+["Microsoft (2026). Choose your CoE structure and operating model. Microsoft Learn.","Microsoft Learn Choose your CoE structure and operating model agents","w"],
+["Davenport, T. e Mittal, N. (2023). All-in on AI: How Smart Companies Win Big with Artificial Intelligence. Harvard Business Review Press.","All-in on AI Davenport Mittal","w"],
+["Iansiti, M. e Lakhani, K. (2020). Competing in the Age of AI. Harvard Business Review Press.","Competing in the Age of AI Iansiti Lakhani","w"]]
+});
+X(39,{
+s:"Pense numa cozinha industrial que acabou de comprar um forno muito potente. No começo, só o chef sabe usar, então todos os pratos passam por ele (modelo centralizado). Com o tempo, ele treina os cozinheiros, escreve as regras de segurança e deixa cada estação usar o forno do seu jeito, dentro dessas regras (modelo híbrido). Se o chef continuar exigindo aprovar cada prato, vira gargalo e a cozinha atrasa. O AI CoE é esse chef: primeiro concentra, depois ensina e define regras."  ,
+se:"Think of an industrial kitchen that just bought a very powerful oven. At first, only the chef knows how to use it, so every dish goes through them (centralized model). Over time, the chef trains the cooks, writes safety rules and lets each station use the oven its own way within those rules (hybrid model). If the chef keeps insisting on approving every dish, they become a bottleneck and the kitchen slows down. The AI CoE is that chef: first it concentrates, then it teaches and sets rules."
+});
+Q(39,[
+["Uma empresa criou um AI CoE centralizado há um ano. Agora os times de produto reclamam de semanas de espera por aprovação. O que isso sugere?",
+ ["Que a empresa deve encerrar todos os projetos de IA","Que é hora de evoluir para um modelo híbrido, com padrões e plataforma no centro e entrega nos times","Que o CoE precisa aprovar ainda mais itens","Que cada time deve escolher seu próprio fornecedor de modelo sem regras"],1,
+ "Atrasos de aprovação são um sinal clássico de que o modelo centralizado virou gargalo. O caminho comum é manter padrões, plataforma e governança no centro e deixar os times construírem dentro dessas regras.",
+ "A company created a centralized AI CoE a year ago. Now product teams complain about weeks of waiting for approvals. What does this suggest?",
+ ["That the company should shut down all AI projects","That it is time to evolve to a hybrid model, with standards and platform at the center and delivery in the teams","That the CoE needs to approve even more items","That each team should pick its own model vendor with no rules"],
+ "Approval delays are a classic sign that the centralized model has become a bottleneck. The common path is to keep standards, platform and governance at the center and let teams build within those rules."],
+["Qual destas métricas mostra melhor se um AI CoE está gerando valor?",
+ ["Número de reuniões do comitê por mês","Número de aprovações concedidas","Valor entregue pelos casos de uso em produção e adoção da plataforma comum pelos times","Quantidade de políticas escritas"],2,
+ "Um CoE saudável mede o resultado que os times entregam com IA e quanto eles reaproveitam a plataforma e os padrões, e não a própria atividade burocrática.",
+ "Which of these metrics best shows whether an AI CoE is creating value?",
+ ["Number of committee meetings per month","Number of approvals granted","Value delivered by use cases in production and adoption of the shared platform by teams","Number of policies written"],
+ "A healthy CoE measures the outcomes teams deliver with AI and how much they reuse the platform and standards, not its own bureaucratic activity."],
+["Você é PM de produto fora do CoE e quer lançar um assistente que lê dados de clientes. Quando envolver o CoE?",
+ ["Só depois do lançamento, se der algum problema","Logo no início, para seguir os padrões, usar a plataforma comum e passar pela revisão de risco cedo","Nunca, porque o CoE só atrapalha","Só quando o assistente estiver pronto para o teste A/B"],1,
+ "Envolver o CoE cedo evita retrabalho: você aproveita plataforma, evals e guardrails existentes, e a revisão de risco acontece antes de o desenho estar fechado.",
+ "You are a product PM outside the CoE and want to launch an assistant that reads customer data. When should you involve the CoE?",
+ ["Only after launch, if something goes wrong","Right at the start, to follow standards, use the shared platform and go through risk review early","Never, because the CoE only gets in the way","Only when the assistant is ready for an A/B test"],
+ "Involving the CoE early avoids rework: you reuse existing platform, evals and guardrails, and risk review happens before the design is locked."]
+]);
+QLV[39]=[2,2,1];
+M(39,{dg:{type:"compare",t:["Modelos de operação de um AI CoE","AI CoE operating models"],
+  cols:[["Centralizado","Centralized"],["Híbrido (hub and spoke)","Hybrid (hub and spoke)"],["Federado","Federated"]],
+  rows:[["Quem constrói","Who builds",["O próprio CoE","Os times de produto, com apoio do CoE","As áreas de negócio"],["The CoE itself","Product teams, supported by the CoE","Business units"]],
+        ["Papel do CoE","CoE role",["Define regras, entrega e monitora","Padrões, plataforma e especialistas","Padrões e governança por exceção"],["Sets rules, delivers and monitors","Standards, platform and experts","Standards and governance by exception"]],
+        ["Quando faz sentido","When it fits",["No começo, com pouca maturidade","Em escala, o arranjo mais comum","Times maduros e governança automatizada"],["At the start, with low maturity","At scale, the most common arrangement","Mature teams and automated governance"]],
+        ["Principal risco","Main risk",["Virar gargalo","Coordenação complexa","Cada área com um padrão diferente"],["Becoming a bottleneck","Complex coordination","Each area drifting to its own standard"]]],
+  note:["Fonte: guias de AI CoE e de modelos de operação da Microsoft. A estrutura não é permanente: ela muda com a maturidade.","Source: Microsoft's AI CoE and operating model guides. The structure is not permanent: it changes with maturity."]},
+ deep:[["Como montar um AI CoE nos primeiros 90 dias","Setting up an AI CoE in the first 90 days",
+  "Dias 1 a 30: conseguir um patrocinador executivo e montar o comitê de direção, levantar as iniciativas de IA que já existem (muitas vezes há mais do que a liderança imagina) e definir as primeiras políticas de uso, como quais dados podem ir para quais fornecedores.\n\nDias 31 a 60: criar o fluxo de entrada com critérios de valor, risco e viabilidade, escolher dois ou três pilotos de alto valor e risco controlado, e definir a plataforma mínima comum (acesso a modelos aprovados, registro de uso, avaliação básica).\n\nDias 61 a 90: entregar os pilotos com métricas de resultado, publicar padrões e modelos reutilizáveis (prompts, evals, checklist de lançamento), lançar a capacitação dos times e apresentar ao comitê os resultados e o próximo portfólio.",
+  "Days 1 to 30: secure an executive sponsor and set up the steering committee, map the AI initiatives that already exist (often more than leadership imagines) and define the first usage policies, such as which data can go to which vendors.\n\nDays 31 to 60: create the intake flow with value, risk and feasibility criteria, pick two or three high-value, controlled-risk pilots and define the minimum shared platform (approved model access, usage logging, basic evaluation).\n\nDays 61 to 90: deliver the pilots with outcome metrics, publish reusable standards and templates (prompts, evals, launch checklist), launch team upskilling and present results and the next portfolio to the committee."],
+ ["Sinais de um CoE saudável e de um CoE com problemas","Signs of a healthy CoE and of a struggling one",
+  "Saudável: os times procuram o CoE por vontade própria, a plataforma comum é usada por várias áreas, o tempo entre ideia e piloto cai, os riscos são revisados cedo e o CoE mede o valor entregue pelos times.\n\nCom problemas: filas longas de aprovação, times contornando o CoE com ferramentas por conta própria, conhecimento concentrado em poucas pessoas, disputas frequentes de prioridade e métricas focadas na atividade do CoE (reuniões, documentos) em vez de resultados. Nesses casos, a recomendação comum é passar de guardião para conselheiro: o CoE define guardrails e a plataforma aplica as regras automaticamente.",
+  "Healthy: teams seek out the CoE willingly, the shared platform is used by several areas, time from idea to pilot drops, risks are reviewed early and the CoE measures the value teams deliver.\n\nStruggling: long approval queues, teams working around the CoE with their own tools, knowledge concentrated in a few people, frequent priority disputes and metrics focused on the CoE's activity (meetings, documents) instead of outcomes. In these cases, the usual recommendation is to move from gatekeeper to advisor: the CoE sets guardrails and the platform enforces the rules automatically."]]
+});
+S(10,2,["Qual é o modelo de operação de AI CoE mais comum em empresas que já usam IA em escala?",
+ ["Cada área decide tudo sozinha, sem padrões","Um único time constrói todas as soluções de IA da empresa","Híbrido: padrões e plataforma no centro, entrega nos times de produto","Terceirizar toda a IA para um fornecedor"],2,
+ "O arranjo mais citado em escala é o hub and spoke: o centro cuida de plataforma, padrões e governança, e os times constroem dentro dessas regras."],
+ ["What is the most common AI CoE operating model in companies already using AI at scale?",
+ ["Each area decides everything alone, with no standards","A single team builds every AI solution in the company","Hybrid: standards and platform at the center, delivery in product teams","Outsourcing all AI to a vendor"],
+ "The most cited arrangement at scale is hub and spoke: the center handles platform, standards and governance, and teams build within those rules."]);
+
 const LT=a=>EN()?a[1]:a[0];
 function dgHTML(d){
   if(!d) return "";
@@ -5095,7 +5174,7 @@ const UI={
   nav_trail:"Trilha",nav_gloss:"Glossário",nav_tutor:"Tutor",nav_aria:"Seções",
   top:(d,t)=>`${d} de ${t} aulas`,theme:"Alternar tema claro ou escuro",lang_aria:"Idioma da página",
   hero_h1:"Dos fundamentos de IA à cadeira de AI PM sênior",
-  hero_lead:"Trinta e oito aulas em dez módulos para saber quando usar IA, qual abordagem escolher, como provar a qualidade e como sustentar o resultado de negócio.",
+  hero_lead:"Trinta e nove aulas em dez módulos para saber quando usar IA, qual abordagem escolher, como provar a qualidade e como sustentar o resultado de negócio.",
   btn_continue:"Continuar a trilha",btn_start:"Começar pela aula 1",btn_final:"Ir para o projeto final",btn_ask:"Tirar uma dúvida",
   prog_aria:"Seu progresso",prog_done:(d,t)=>`${d} de ${t} aulas concluídas`,prog_ex:x=>`${x} de ${MODULES.length} exercícios feitos`,
   next_label:n=>`Próxima aula, módulo ${n}`,congrats:"Parabéns",congrats_b:"Você concluiu todas as aulas da trilha!",
@@ -5159,7 +5238,7 @@ const UI={
   nav_trail:"Path",nav_gloss:"Glossary",nav_tutor:"Tutor",nav_aria:"Sections",
   top:(d,t)=>`${d} of ${t} lessons`,theme:"Toggle light or dark theme",lang_aria:"Page language",
   hero_h1:"From AI fundamentals to the senior AI PM seat",
-  hero_lead:"Thirty-eight lessons in ten modules to learn when to use AI, which approach to choose, how to prove quality and how to sustain business results.",
+  hero_lead:"Thirty-nine lessons in ten modules to learn when to use AI, which approach to choose, how to prove quality and how to sustain business results.",
   btn_continue:"Continue the path",btn_start:"Start with lesson 1",btn_final:"Go to the final project",btn_ask:"Ask a question",
   prog_aria:"Your progress",prog_done:(d,t)=>`${d} of ${t} lessons completed`,prog_ex:x=>`${x} of ${MODULES.length} exercises done`,
   next_label:n=>`Next lesson, module ${n}`,congrats:"Congratulations",congrats_b:"You have completed every lesson in the path!",
@@ -6678,7 +6757,11 @@ const FQ=[
 {id:"q-ask",cat:"sit",g:1,q:["Você tem alguma pergunta para nós?","Do you have any questions for us?"],
  ev:["Interesse real e pensamento de PM.","Real interest and PM thinking."],
  st:["Pergunte sobre o primeiro projeto, como decisões chegam ao PM, métricas que cada área acompanha e o que define sucesso em 6 meses.","Ask about the first project, how requests reach the PM, the metrics each area tracks and what success looks like in 6 months."],
- ex:["Você já fez boas perguntas sobre fluxo de demandas e métricas por área.","You have already asked good questions about request flow and metrics by area."]}
+ ex:["Você já fez boas perguntas sobre fluxo de demandas e métricas por área.","You have already asked good questions about request flow and metrics by area."]},
+{id:"q-coe",cat:"aipm",g:0,q:["Como você estruturaria um AI Center of Excellence numa empresa que está começando com IA?","How would you set up an AI Center of Excellence in a company just starting with AI?"],
+ ev:["Visão de escala, governança e capacidade de organizar a adoção de IA além de um produto.","Scale mindset, governance and ability to organize AI adoption beyond a single product."],
+ st:["Patrocínio e comitê, mapeamento das iniciativas atuais, políticas de uso de dados, fluxo de entrada com critérios, 2 ou 3 pilotos, plataforma mínima comum, métricas de valor e plano de evoluir de centralizado para híbrido.","Sponsorship and committee, mapping current initiatives, data usage policies, an intake flow with criteria, 2 or 3 pilots, a minimum shared platform, value metrics and a plan to evolve from centralized to hybrid."],
+ ex:["Revise a aula 39 e o roteiro de 90 dias.","Review lesson 39 and the 90-day plan."]}
 ];
 
 const FQUI={
