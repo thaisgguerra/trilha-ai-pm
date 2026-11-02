@@ -779,12 +779,7 @@ figure.dg{margin:0 0 16px}
 .sum-terms div{border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;background:var(--surface-2)}
 .sum-terms b{display:block;font-size:15px}.sum-terms p{margin:4px 0 0;font-size:14px;color:var(--muted)}
 .pg-link{display:inline-block;margin-top:4px}
-.gl-term{position:relative;border-bottom:1.5px dotted color-mix(in srgb,var(--ci,var(--brand)) 70%,transparent);cursor:help;outline:none}
-.gl-term::after{content:attr(data-def);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:max-content;max-width:min(320px,80vw);
-  padding:10px 12px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13.5px;line-height:1.5;font-weight:500;white-space:normal;
-  box-shadow:0 8px 24px rgba(20,23,42,.25);opacity:0;pointer-events:none;transition:opacity .15s;z-index:30}
-.gl-term:hover::after,.gl-term:focus-visible::after,.gl-term.show::after{opacity:1}
-@media print{.gl-term{border:0}.gl-term::after{display:none}}
+
 
 /* ===== Laboratório e backup ===== */
 .lab-wrap{max-width:1040px;margin:0 auto}
@@ -819,6 +814,11 @@ figure.dg{margin:0 0 16px}
 .lab-inline{border-top:6px solid var(--c)}
 .bk-imp{cursor:pointer}
 .ref-s{font-size:12.5px;color:var(--muted)}
+.tg{color:inherit;text-decoration:underline;text-decoration-color:var(--oki);text-decoration-thickness:2px;text-underline-offset:3px;cursor:help;border-radius:3px;outline:none;-webkit-tap-highlight-color:transparent}
+.tg:hover,.tg:focus-visible{background:color-mix(in srgb,var(--oki) 14%,transparent)}
+.tg-pop{position:fixed;z-index:200;padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:14px;line-height:1.5;box-shadow:0 10px 28px rgba(20,23,42,.28);opacity:0;pointer-events:none;transition:opacity .12s}
+.tg-pop.show{opacity:1}.tg-pop b{display:block;font-size:12.5px;opacity:.75;margin-bottom:2px;letter-spacing:.02em}
+@media print{.tg{text-decoration:none}.tg-pop{display:none}}
 main:focus,main:focus-visible{outline:none}
 .legend i,.minibars a i{background:var(--c)}
 .btn:not(.ghost):not(.soft):not(.done){background:var(--brandi)}
@@ -5141,7 +5141,7 @@ M(39,{dg:{type:"compare",t:["Modelos de operação de um AI CoE","AI CoE operati
   "Dias 1 a 30: conseguir um patrocinador executivo e montar o comitê de direção, levantar as iniciativas de IA que já existem (muitas vezes há mais do que a liderança imagina) e definir as primeiras políticas de uso, como quais dados podem ir para quais fornecedores.\n\nDias 31 a 60: criar o fluxo de entrada com critérios de valor, risco e viabilidade, escolher dois ou três pilotos de alto valor e risco controlado, e definir a plataforma mínima comum (acesso a modelos aprovados, registro de uso, avaliação básica).\n\nDias 61 a 90: entregar os pilotos com métricas de resultado, publicar padrões e modelos reutilizáveis (prompts, evals, checklist de lançamento), lançar a capacitação dos times e apresentar ao comitê os resultados e o próximo portfólio.",
   "Days 1 to 30: secure an executive sponsor and set up the steering committee, map the AI initiatives that already exist (often more than leadership imagines) and define the first usage policies, such as which data can go to which vendors.\n\nDays 31 to 60: create the intake flow with value, risk and feasibility criteria, pick two or three high-value, controlled-risk pilots and define the minimum shared platform (approved model access, usage logging, basic evaluation).\n\nDays 61 to 90: deliver the pilots with outcome metrics, publish reusable standards and templates (prompts, evals, launch checklist), launch team upskilling and present results and the next portfolio to the committee."],
  ["Sinais de um CoE saudável e de um CoE com problemas","Signs of a healthy CoE and of a struggling one",
-  "Saudável: os times procuram o CoE por vontade própria, a plataforma comum é usada por várias áreas, o tempo entre ideia e piloto cai, os riscos são revisados cedo e o CoE mede o valor entregue pelos times.\n\nCom problemas: filas longas de aprovação, times contornando o CoE com ferramentas por conta própria, conhecimento concentrado em poucas pessoas, disputas frequentes de prioridade e métricas focadas na atividade do CoE (reuniões, documentos) em vez de resultados. Nesses casos, a recomendação comum é passar de guardião para conselheiro: o CoE define guardrails e a plataforma aplica as regras automaticamente.",
+  "Saudável: os times procuram o CoE por vontade própria, a plataforma comum é usada por várias áreas, o tempo entre ideia e piloto cai, os riscos são revisados cedo e o CoE mede o valor entregue pelos times.\n\nCom problemas: filas longas de aprovação, times contornando o CoE com ferramentas por conta própria, conhecimento concentrado em poucas pessoas, disputas frequentes de prioridade e métricas focadas na atividade do CoE (reuniões, documentos) em vez de resultados. Nesses casos, a recomendação comum é passar de guardião para conselheiro: o CoE define guardrails (regras de proteção que bloqueiam usos e respostas indesejados) e a plataforma aplica as regras automaticamente.",
   "Healthy: teams seek out the CoE willingly, the shared platform is used by several areas, time from idea to pilot drops, risks are reviewed early and the CoE measures the value teams deliver.\n\nStruggling: long approval queues, teams working around the CoE with their own tools, knowledge concentrated in a few people, frequent priority disputes and metrics focused on the CoE's activity (meetings, documents) instead of outcomes. In these cases, the usual recommendation is to move from gatekeeper to advisor: the CoE sets guardrails and the platform enforces the rules automatically."]]
 });
 S(10,2,["Qual é o modelo de operação de AI CoE mais comum em empresas que já usam IA em escala?",
@@ -5796,7 +5796,6 @@ function renderLesson(app,l){
   $("#quizBtn").addEventListener("click",()=>makeQuiz(l));
   if(QZ[l.num]) drawFixedQuiz(l,chat);
   try{addLessonLab(app,l.num);}catch(e){}
-  try{addGlossaryTips(app,K.map(x=>x[0].replace(/\s*\(.*?\)\s*/g,"").toLowerCase()));}catch(e){}
   wireSheet();
 }
 
@@ -7162,32 +7161,7 @@ function renderSummary(app,m){
   $("#sumSim").addEventListener("click",e=>{e.preventDefault();const S=simState();S.cfg=Object.assign({},S.cfg,{mods:[m.n]});S.view=null;simSave(S);location.hash="#/simulado";});
 }
 
-/* ============ DEFINIÇÕES AO PASSAR O MOUSE NAS AULAS ============ */
-let _glTerms=null,_glLang=null;
-function glossaryTerms(){
-  if(_glTerms&&_glLang===state.lang) return _glTerms;
-  const map=new Map(), STOP=new Set(["modelo","model","dados","data","produto","product","token","guardrails","responsabilidades típicas","typical responsibilities","ia generativa","generative ai"].map(s=>s.toLowerCase()));
-  const add=(name,def)=>{name=name.trim();if(name.length<4||STOP.has(name.toLowerCase())||map.has(name.toLowerCase()))return;map.set(name.toLowerCase(),{name,def});};
-  FC.forEach(c=>{const nm=EN()?c[2][1]:c[2][0],df=EN()?c[3][1]:c[3][0];nm.split(/\s+e\s+|\s+and\s+/).length===1&&add(nm.replace(/\s*\(.*?\)\s*/g,""),df);const pm=nm.match(/\(([^)]+)\)/);if(pm)add(pm[1],df);});
-  LESSONS.forEach(l=>tx(l,"k").forEach(([a,b])=>{const base=a.replace(/\s*\(.*?\)\s*/g,"");if(base.trim().split(/\s+/).length>=2)add(base,b);const pm=a.match(/\(([^)]+)\)/);if(pm&&!/[0-9]/.test(pm[1]))add(pm[1],b);}));
-  _glTerms=[...map.values()].filter(t=>!/[:,]/.test(t.name)).sort((a,b)=>b.name.length-a.name.length);_glLang=state.lang;return _glTerms;
-}
-function addGlossaryTips(root,exclude){
-  const terms=glossaryTerms(), used=new Set(exclude||[]), esc2=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-  const nodes=[];root.querySelectorAll(".block > p, .simple p, .case p, .deep p, .pm-note p").forEach(p=>{if(p.closest(".concepts,.fq,.refs,.chat,.lab-card"))return;
-    const w=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode()))nodes.push(n);});
-  let count=0;
-  for(const t of terms){ if(count>=14) break; if(used.has(t.name.toLowerCase())) continue;
-    const re=new RegExp("(^|[^\\p{L}\\p{N}])("+esc2(t.name)+")(?![\\p{L}\\p{N}])","iu");
-    for(const node of nodes){ if(!node.parentNode||node.parentNode.closest(".gl-term")) continue; const m=re.exec(node.nodeValue); if(!m) continue;
-      const start=m.index+m[1].length, mid=node.splitText(start); mid.splitText(m[2].length);
-      const span=document.createElement("span");span.className="gl-term";span.tabIndex=0;span.setAttribute("role","button");
-      span.setAttribute("aria-label",m[2]+": "+t.def);span.dataset.def=t.def;span.textContent=mid.nodeValue;mid.parentNode.replaceChild(span,mid);
-      nodes.push(span.nextSibling); used.add(t.name.toLowerCase()); count++; break; }
-  }
-}
-document.addEventListener("click",e=>{const t=e.target.closest&&e.target.closest(".gl-term");document.querySelectorAll(".gl-term.show").forEach(x=>{if(x!==t)x.classList.remove("show");});if(t)t.classList.toggle("show");});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".gl-term.show").forEach(x=>x.classList.remove("show"));});
+
 
 
 /* ============ LABORATÓRIO: SIMULADORES INTERATIVOS (funcionam sem o Claude) ============ */
@@ -7379,6 +7353,222 @@ function bindBackup(app){
   const e=app.querySelector("#bkExp");if(e)e.addEventListener("click",exportProgress);
   const i=app.querySelector("#bkImp");if(i)i.addEventListener("change",()=>{if(i.files&&i.files[0])importProgress(i.files[0]);i.value="";});
 }
+
+/* ============ TERMOS EM INGLÊS: EXPLICAÇÃO AO PASSAR O MOUSE OU TOCAR ============ */
+// [variações do termo, explicação PT, explicação EN]
+const TERMS_EN=[
+[["AI PM"],"Product Manager especializado em produtos com inteligência artificial.","A product manager specialized in products powered by artificial intelligence."],
+[["LLM","LLMs"],"Large Language Model: modelo de linguagem treinado com muito texto, capaz de entender e gerar texto, como o Claude.","Large Language Model: a language model trained on huge amounts of text that can understand and generate text, like Claude."],
+[["SLM"],"Small Language Model: modelo de linguagem menor, mais rápido e barato.","Small Language Model: a smaller, faster and cheaper language model."],
+[["AGI"],"Artificial General Intelligence: ideia de uma IA com capacidade geral parecida com a humana. Ainda é um conceito em debate.","Artificial General Intelligence: the idea of AI with general, human-like ability. Still a debated concept."],
+[["prompt","prompts"],"A instrução ou pergunta que você envia para o modelo de IA.","The instruction or question you send to the AI model."],
+[["system prompt"],"Instruções fixas que definem o papel, as regras e o tom do modelo em todas as conversas de um produto.","Fixed instructions that set the model's role, rules and tone in every conversation of a product."],
+[["prompt engineering"],"Técnica de escrever instruções claras e testáveis para o modelo responder melhor.","The practice of writing clear, testable instructions so the model answers better."],
+[["context engineering"],"Decidir quais informações entram no contexto do modelo a cada chamada: instruções, histórico, documentos e resultados de ferramentas.","Deciding which information goes into the model's context on each call: instructions, history, documents and tool results."],
+[["prompt injection"],"Ataque em que instruções escondidas num texto (e-mail, página, documento) tentam controlar o que a IA faz.","An attack where instructions hidden in text (an email, page or document) try to control what the AI does."],
+[["jailbreak"],"Tentativa do usuário de burlar as regras do modelo para obter respostas proibidas.","A user's attempt to get around the model's rules to obtain forbidden answers."],
+[["prompt caching","caching","cache"],"Guardar e reaproveitar uma parte que se repete (como instruções fixas) para gastar menos e responder mais rápido.","Storing and reusing a repeated part (like fixed instructions) to spend less and answer faster."],
+[["token","tokens"],"Pedaço de texto (palavra, parte de palavra ou sinal) que o modelo processa. Custo e velocidade são medidos em tokens.","A piece of text (word, part of a word or symbol) that the model processes. Cost and speed are measured in tokens."],
+[["fine-tuning","fine-tune"],"Continuar o treino de um modelo com exemplos próprios para ajustar comportamento, formato ou estilo.","Further training a model on your own examples to adjust its behavior, format or style."],
+[["LoRA","QLoRA"],"Forma econômica de fazer fine-tuning, treinando só uma pequena parte extra do modelo.","An efficient way to fine-tune, training only a small extra part of the model."],
+[["RLHF"],"Aprendizado por reforço com feedback humano: pessoas comparam respostas e o modelo aprende a preferir as melhores.","Reinforcement learning from human feedback: people compare answers and the model learns to prefer the better ones."],
+[["Constitutional AI"],"Método da Anthropic em que o modelo aprende a seguir um conjunto de princípios escritos.","Anthropic's method where the model learns to follow a written set of principles."],
+[["RAG"],"Retrieval-Augmented Generation: a IA busca trechos em documentos e usa esses trechos para responder, em vez de responder só de memória.","Retrieval-Augmented Generation: the AI looks up passages in documents and uses them to answer, instead of answering from memory."],
+[["retrieval"],"Etapa de busca: encontrar os documentos ou itens mais relevantes para uma pergunta.","The search step: finding the most relevant documents or items for a question."],
+[["embedding","embeddings"],"Representação de um texto como uma lista de números, em que significados parecidos ficam próximos. Permite busca por significado.","A representation of text as a list of numbers where similar meanings sit close together. It enables search by meaning."],
+[["reranking"],"Reordenar os resultados de uma busca com um modelo mais preciso antes de usá-los.","Reordering search results with a more precise model before using them."],
+[["chunking"],"Dividir documentos em pedaços menores antes de indexar para a busca.","Splitting documents into smaller pieces before indexing them for search."],
+[["BM25"],"Algoritmo clássico de busca por palavras-chave, bom para nomes, códigos e termos exatos.","A classic keyword search algorithm, good for names, codes and exact terms."],
+[["grounding"],"Fazer a IA responder com base em fontes fornecidas, para reduzir respostas inventadas.","Making the AI answer from provided sources to reduce made-up answers."],
+[["evals","eval"],"Testes que medem se um sistema de IA faz o que deveria, com critérios claros. São como testes automáticos para IA.","Tests that measure whether an AI system does what it should, with clear criteria. Like automated tests for AI."],
+[["golden set","golden dataset"],"Conjunto de exemplos de referência, revisados por especialistas, com a resposta esperada. Serve de régua para comparar versões.","A reference set of expert-reviewed examples with the expected answer. The yardstick for comparing versions."],
+[["benchmark","benchmarks"],"Teste público e padronizado para comparar modelos. Mede capacidade geral, não o seu caso de uso.","A public, standardized test to compare models. It measures general ability, not your use case."],
+[["LLM como juiz","LLM-as-a-judge"],"Usar um modelo de IA para avaliar as respostas de outro modelo, seguindo uma rubrica.","Using an AI model to grade another model's answers against a rubric."],
+[["red teaming","red team"],"Testes em que pessoas tentam de propósito fazer o sistema falhar, para achar riscos antes do lançamento.","Testing where people deliberately try to make the system fail, to find risks before launch."],
+[["human-in-the-loop"],"Uma pessoa revisa ou aprova o que a IA faz em pontos importantes do fluxo.","A person reviews or approves what the AI does at key points in the flow."],
+[["guardrails","guardrail"],"Barreiras de proteção em volta da IA: regras, filtros e checagens que bloqueiam ou corrigem respostas e ações indesejadas.","Protective barriers around the AI: rules, filters and checks that block or fix unwanted answers and actions."],
+[["fallback"],"Plano B: o que o produto faz quando a IA falha, demora ou não tem confiança, como responder algo padrão ou chamar um humano.","Plan B: what the product does when the AI fails, is slow or unsure, like a default answer or handing off to a person."],
+[["rollout"],"Liberação gradual de uma funcionalidade para os usuários, por etapas.","Releasing a feature to users gradually, in stages."],
+[["rollback"],"Voltar para a versão anterior quando algo dá errado.","Going back to the previous version when something goes wrong."],
+[["canary"],"Liberar uma versão nova para uma pequena parte dos usuários primeiro, para detectar problemas cedo.","Releasing a new version to a small share of users first, to catch problems early."],
+[["shadow mode"],"Rodar o sistema novo em paralelo, sem afetar os usuários, só para comparar com o atual.","Running the new system in parallel, without affecting users, just to compare with the current one."],
+[["streaming"],"Mostrar a resposta enquanto ela é gerada, pedaço por pedaço, em vez de esperar tudo ficar pronto.","Showing the answer as it is generated, piece by piece, instead of waiting for it all."],
+[["TTFT"],"Time to First Token: tempo até aparecer o primeiro pedaço da resposta. Define a sensação de rapidez.","Time to First Token: the time until the first piece of the answer appears. It shapes perceived speed."],
+[["p95","p99"],"Percentil: o tempo que 95% (ou 99%) das requisições não ultrapassam. Mostra a experiência dos casos mais lentos.","Percentile: the time that 95% (or 99%) of requests stay under. It shows the experience of the slowest cases."],
+[["throughput"],"Quanto o sistema consegue processar por unidade de tempo.","How much the system can process per unit of time."],
+[["rate limit"],"Limite de quantas requisições ou tokens podem ser enviados por minuto.","A cap on how many requests or tokens can be sent per minute."],
+[["timeout"],"Tempo máximo de espera; se passar, a chamada é cancelada.","The maximum wait time; past it, the call is cancelled."],
+[["retry","retries"],"Tentar de novo uma chamada que falhou.","Trying a failed call again."],
+[["backoff"],"Esperar um tempo cada vez maior entre novas tentativas, para não sobrecarregar o sistema.","Waiting longer and longer between retries so the system is not overloaded."],
+[["SLA"],"Service Level Agreement: compromisso contratual de nível de serviço, como disponibilidade mínima.","Service Level Agreement: a contractual service commitment, like minimum uptime."],
+[["SLO"],"Service Level Objective: meta interna de qualidade do serviço, como 99,9% de disponibilidade.","Service Level Objective: an internal service quality target, like 99.9% uptime."],
+[["SLI"],"Service Level Indicator: o indicador medido, como tempo de resposta ou taxa de erro.","Service Level Indicator: the measured indicator, like response time or error rate."],
+[["SRE"],"Site Reliability Engineering: área que cuida da confiabilidade dos sistemas em produção.","Site Reliability Engineering: the discipline that keeps production systems reliable."],
+[["trace","traces","tracing"],"Registro passo a passo de uma execução (prompt, ferramentas, resposta, custo e tempo) para entender onde algo falhou.","A step-by-step record of a run (prompt, tools, answer, cost and time) to see where something failed."],
+[["observability"],"Capacidade de entender o que acontece dentro do sistema a partir de logs, métricas e traces.","The ability to understand what happens inside the system from logs, metrics and traces."],
+[["workflow","workflows"],"Fluxo de trabalho com etapas definidas. Em IA, o caminho é definido no código e o modelo executa as etapas.","A work flow with defined steps. In AI, the path is set in code and the model carries out the steps."],
+[["agent"],"Agente de IA: sistema em que o modelo decide os próximos passos e usa ferramentas até atingir um objetivo.","AI agent: a system where the model decides the next steps and uses tools until it reaches a goal."],
+[["tool use","function calling"],"Capacidade do modelo de chamar ferramentas externas, como buscar dados ou enviar um e-mail.","The model's ability to call external tools, like fetching data or sending an email."],
+[["MCP"],"Model Context Protocol: padrão aberto para conectar modelos de IA a ferramentas e fontes de dados.","Model Context Protocol: an open standard for connecting AI models to tools and data sources."],
+[["copilot"],"IA que sugere e ajuda, mas deixa a decisão final com a pessoa.","AI that suggests and helps but leaves the final decision to the person."],
+[["chatbot"],"Programa que conversa com o usuário por texto ou voz.","A program that talks with the user through text or voice."],
+[["API","APIs"],"Application Programming Interface: forma padronizada de um sistema pedir dados ou ações a outro.","Application Programming Interface: a standard way for one system to request data or actions from another."],
+[["SDK"],"Kit de desenvolvimento: bibliotecas que facilitam usar uma API numa linguagem de programação.","Software development kit: libraries that make an API easy to use in a programming language."],
+[["webhook"],"Aviso automático que um sistema envia a outro quando algo acontece.","An automatic notice one system sends to another when something happens."],
+[["JSON"],"Formato de texto estruturado para trocar dados entre sistemas.","A structured text format for exchanging data between systems."],
+[["open source"],"Código aberto: qualquer pessoa pode ver, usar e modificar.","Open source: anyone can see, use and modify it."],
+[["open-weight"],"Modelo cujos pesos podem ser baixados e rodados na sua própria infraestrutura.","A model whose weights can be downloaded and run on your own infrastructure."],
+[["self-hosted"],"Hospedado na própria infraestrutura da empresa, e não acessado pela API de um fornecedor.","Hosted on the company's own infrastructure rather than accessed through a vendor's API."],
+[["open-washing"],"Chamar um modelo de aberto quando, na prática, ele libera pouco (por exemplo, só os pesos, sem dados nem código).","Calling a model open when in practice it releases little (for example, only weights, without data or code)."],
+[["model card"],"Documento que descreve um modelo: para que serve, como foi avaliado e quais são suas limitações.","A document describing a model: what it is for, how it was evaluated and its limitations."],
+[["transformer"],"Arquitetura de rede neural, de 2017, que é a base dos LLMs atuais.","A 2017 neural network architecture that underpins today's LLMs."],
+[["attention"],"Mecanismo que permite ao modelo relacionar cada palavra com as outras do texto para entender o contexto.","The mechanism that lets a model relate each word to the others in the text to understand context."],
+[["machine learning","ML"],"Aprendizado de máquina: o sistema aprende padrões a partir de exemplos, em vez de seguir regras escritas.","Machine learning: the system learns patterns from examples instead of following written rules."],
+[["deep learning"],"Tipo de machine learning com redes neurais de muitas camadas.","A type of machine learning that uses neural networks with many layers."],
+[["GPU","GPUs"],"Processador especializado em cálculos em paralelo, usado para treinar e rodar modelos de IA.","A processor specialized in parallel computation, used to train and run AI models."],
+[["perceptron"],"Um dos primeiros modelos de neurônio artificial, criado nos anos 1950.","One of the first artificial neuron models, created in the 1950s."],
+[["boosting"],"Técnica que combina vários modelos simples, cada um corrigindo os erros do anterior.","A technique that combines many simple models, each fixing the previous one's errors."],
+[["overfitting"],"Quando o modelo decora os exemplos de treino e vai mal com dados novos.","When the model memorizes training examples and performs poorly on new data."],
+[["data leakage","leakage"],"Vazamento de dados: informação do teste contamina o treino e deixa as métricas boas demais.","Data leakage: test information contaminates training and makes metrics look too good."],
+[["drift"],"Mudança nos dados ou no comportamento ao longo do tempo, que faz o modelo piorar.","A change in data or behavior over time that makes the model get worse."],
+[["dataset"],"Conjunto de dados usado para treinar ou avaliar um modelo.","A collection of data used to train or evaluate a model."],
+[["score"],"Pontuação que o modelo dá para um caso, como a chance estimada de ser fraude.","The number a model gives a case, like the estimated chance of fraud."],
+[["threshold"],"Limite de decisão: a partir de qual score o modelo diz sim.","Decision threshold: the score above which the model says yes."],
+[["recall"],"Dos casos reais, quantos o modelo encontrou.","Of the real cases, how many the model found."],
+[["precision"],"Dos casos que o modelo marcou, quantos estavam certos.","Of the cases the model flagged, how many were right."],
+[["F1"],"Nota que combina precisão e recall em um só número.","A score that combines precision and recall into one number."],
+[["ROC","AUC"],"Curva que mostra o equilíbrio entre acertos e alarmes falsos; a AUC resume a curva num número de 0,5 a 1.","A curve showing the trade-off between hits and false alarms; AUC summarizes it from 0.5 to 1."],
+[["precision@k","recall@k"],"Métricas de busca: quantos itens relevantes aparecem entre os k primeiros resultados.","Search metrics: how many relevant items appear among the top k results."],
+[["NDCG"],"Métrica de ranking que valoriza ter os itens mais relevantes no topo da lista.","A ranking metric that rewards having the most relevant items at the top."],
+[["pass@k"],"Chance de pelo menos uma de k tentativas acertar a tarefa.","The chance that at least one of k attempts solves the task."],
+[["few-shot"],"Dar alguns exemplos no prompt para o modelo seguir o padrão.","Giving a few examples in the prompt so the model follows the pattern."],
+[["chain-of-thought"],"Pedir ao modelo para raciocinar em etapas antes de responder.","Asking the model to reason step by step before answering."],
+[["reasoning"],"Raciocínio: modelos que pensam em etapas antes de responder, gastando mais tempo e tokens.","Reasoning: models that think in steps before answering, using more time and tokens."],
+[["sycophancy"],"Tendência do modelo de concordar com o usuário mesmo quando ele está errado.","The model's tendency to agree with the user even when the user is wrong."],
+[["hype"],"Expectativa exagerada em torno de uma tecnologia.","Exaggerated expectations around a technology."],
+[["cold start"],"Dificuldade de recomendar para usuários ou itens novos, sem histórico.","The difficulty of recommending for new users or items with no history."],
+[["feed"],"Lista de conteúdos que aparece para cada usuário, como numa rede social.","The list of content shown to each user, as on a social network."],
+[["ranking"],"Ordenação de itens do mais relevante para o menos relevante.","Ordering items from most to least relevant."],
+[["bandits"],"Método que testa opções e, aos poucos, mostra mais as que funcionam melhor.","A method that tests options and gradually shows the ones that work best more often."],
+[["A/B"],"Teste A/B: experimento que divide os usuários em grupos para comparar duas versões.","A/B test: an experiment that splits users into groups to compare two versions."],
+[["SRM"],"Sample Ratio Mismatch: quando a divisão de usuários entre os grupos foge do esperado. Indica erro no teste.","Sample Ratio Mismatch: when the user split between groups deviates from plan. It signals a test bug."],
+[["MDE"],"Minimum Detectable Effect: o menor efeito que um teste consegue detectar com a amostra disponível.","Minimum Detectable Effect: the smallest effect a test can detect with the available sample."],
+[["CUPED"],"Técnica que usa dados de antes do teste para detectar efeitos menores com a mesma amostra.","A technique that uses pre-test data to detect smaller effects with the same sample."],
+[["peeking"],"Olhar o resultado do teste antes da hora e parar cedo, o que aumenta falsos positivos.","Checking test results early and stopping, which increases false positives."],
+[["p-valor","p-value"],"Chance de ver um resultado tão extremo se não houvesse efeito real. Abaixo de 0,05 costuma ser considerado significativo.","The chance of seeing a result this extreme if there were no real effect. Below 0.05 is usually called significant."],
+[["CSAT"],"Customer Satisfaction: nota de satisfação do cliente depois de um atendimento.","Customer Satisfaction: the customer's rating after an interaction."],
+[["CTR"],"Click-through rate: porcentagem de pessoas que clicam no que foi mostrado.","Click-through rate: the share of people who click on what was shown."],
+[["churn"],"Taxa de clientes que cancelam ou deixam de usar o produto.","The rate of customers who cancel or stop using the product."],
+[["retention"],"Retenção: quantos usuários continuam usando o produto ao longo do tempo.","How many users keep using the product over time."],
+[["engagement"],"Engajamento: quanto e com que frequência as pessoas usam o produto.","How much and how often people use the product."],
+[["North Star"],"Métrica principal que melhor representa o valor que o produto entrega.","The primary metric that best captures the value the product delivers."],
+[["KPI","KPIs"],"Key Performance Indicator: indicador acompanhado para saber se o produto ou negócio vai bem.","Key Performance Indicator: a metric tracked to know whether the product or business is doing well."],
+[["OKR","OKRs"],"Objectives and Key Results: objetivo qualitativo com resultados-chave mensuráveis.","Objectives and Key Results: a qualitative goal with measurable key results."],
+[["MVP"],"Minimum Viable Product: a menor versão do produto que permite aprender com usuários reais.","Minimum Viable Product: the smallest version of the product that lets you learn from real users."],
+[["PRD"],"Product Requirements Document: documento com problema, objetivos, escopo e requisitos de uma iniciativa.","Product Requirements Document: a document with the problem, goals, scope and requirements of an initiative."],
+[["PR/FAQ"],"Comunicado de imprensa fictício e perguntas frequentes, escritos antes de construir, no método da Amazon.","A fictional press release and FAQ written before building, from Amazon's method."],
+[["Working Backwards"],"Método da Amazon de começar pelo cliente e pelo resultado desejado, e só depois pensar na solução.","Amazon's method of starting from the customer and desired outcome before thinking about the solution."],
+[["roadmap"],"Plano que mostra a direção do produto ao longo do tempo.","A plan showing the product's direction over time."],
+[["backlog"],"Lista priorizada de tudo o que o time pode construir.","A prioritized list of everything the team could build."],
+[["discovery"],"Fase de descobrir quais problemas valem ser resolvidos e validar ideias antes de construir.","The phase of finding which problems are worth solving and validating ideas before building."],
+[["delivery"],"Fase de construir e entregar a solução escolhida.","The phase of building and shipping the chosen solution."],
+[["stakeholder","stakeholders"],"Pessoa ou área com interesse ou influência no produto, como liderança, vendas ou jurídico.","A person or team with interest or influence in the product, like leadership, sales or legal."],
+[["onboarding"],"Primeiros passos do usuário (ou de um novo funcionário) até começar a usar bem.","A user's (or new hire's) first steps until they use something well."],
+[["sprint"],"Ciclo curto de trabalho, normalmente de uma a duas semanas.","A short work cycle, usually one to two weeks."],
+[["user story"],"Descrição curta de uma necessidade do ponto de vista do usuário.","A short description of a need from the user's point of view."],
+[["Jobs to be Done"],"Abordagem que vê o produto como algo que o cliente contrata para realizar um trabalho.","An approach that sees the product as something customers hire to get a job done."],
+[["product-market fit"],"Quando o produto atende tão bem a uma necessidade que os clientes voltam e recomendam.","When the product meets a need so well that customers return and recommend it."],
+[["go-to-market","GTM"],"Plano para levar o produto ao mercado: público, preço, canais e comunicação.","The plan to bring a product to market: audience, price, channels and messaging."],
+[["RICE"],"Método de priorização: Reach (alcance), Impact (impacto), Confidence (confiança) e Effort (esforço).","A prioritization method: Reach, Impact, Confidence and Effort."],
+[["MoSCoW"],"Priorização em Must, Should, Could e Won't (deve, deveria, poderia e não vai).","Prioritization into Must, Should, Could and Won't."],
+[["STAR"],"Estrutura para respostas comportamentais: Situação, Tarefa, Ação e Resultado.","A structure for behavioral answers: Situation, Task, Action and Result."],
+[["framework","frameworks"],"Estrutura ou modelo de referência para organizar o raciocínio ou o trabalho.","A structure or reference model for organizing reasoning or work."],
+[["trade-off","trade-offs"],"Escolha em que ganhar em um aspecto significa perder em outro.","A choice where gaining in one aspect means losing in another."],
+[["moat"],"Vantagem que impede concorrentes de copiar o produto facilmente.","An advantage that keeps competitors from easily copying the product."],
+[["unit economics"],"Quanto custa e quanto rende cada usuário ou cada tarefa.","How much each user or task costs and earns."],
+[["commodity"],"Algo padronizado e fácil de substituir, que não diferencia o produto.","Something standardized and easy to replace that does not differentiate the product."],
+[["marketplace"],"Plataforma que conecta compradores e vendedores.","A platform that connects buyers and sellers."],
+[["B2B"],"Business to Business: produto vendido para empresas.","Business to Business: a product sold to companies."],
+[["B2C"],"Business to Consumer: produto vendido para pessoas.","Business to Consumer: a product sold to individuals."],
+[["SaaS"],"Software as a Service: software usado pela internet, normalmente por assinatura.","Software as a Service: software used over the internet, usually by subscription."],
+[["CoE"],"Center of Excellence: time central que define padrões, plataforma e governança de IA para a empresa.","Center of Excellence: a central team that sets AI standards, platform and governance for the company."],
+[["hub and spoke"],"Modelo em que um centro define padrões e plataforma, e os times constroem dentro dessas regras.","A model where a central hub sets standards and platform and teams build within those rules."],
+[["intake"],"Fluxo de entrada: como as ideias e pedidos chegam e são avaliados.","Intake flow: how ideas and requests come in and get evaluated."],
+[["PII"],"Personally Identifiable Information: dados que identificam uma pessoa, como nome, CPF ou e-mail.","Personally Identifiable Information: data that identifies a person, like name, ID number or email."],
+[["LGPD"],"Lei Geral de Proteção de Dados: lei brasileira de privacidade de dados pessoais.","Brazil's General Data Protection Law for personal data privacy."],
+[["EU AI Act"],"Lei da União Europeia que regula sistemas de IA de acordo com o nível de risco.","The European Union law that regulates AI systems by risk level."],
+[["NIST"],"Instituto de padrões dos Estados Unidos, que publicou um framework de gestão de riscos de IA.","The US standards institute that published an AI risk management framework."],
+[["QA"],"Quality Assurance: verificação de qualidade antes de entregar ou lançar.","Quality Assurance: checking quality before delivering or launching."],
+[["UX"],"User Experience: a experiência da pessoa ao usar o produto.","User Experience: the person's experience using the product."],
+[["dashboard","dashboards"],"Painel com gráficos e indicadores para acompanhar métricas.","A panel with charts and indicators to track metrics."],
+[["SQL"],"Linguagem para consultar e organizar dados em bancos de dados.","A language to query and organize data in databases."],
+[["JOIN"],"Comando de SQL que junta duas tabelas por uma informação em comum, como o id do usuário.","A SQL command that combines two tables by a shared field, like the user id."],
+[["GROUP BY"],"Comando de SQL que agrupa linhas para calcular totais ou médias por grupo.","A SQL command that groups rows to compute totals or averages per group."],
+[["CTE"],"Consulta intermediária com nome (WITH) para organizar uma consulta SQL em etapas.","A named intermediate query (WITH) that organizes SQL into steps."],
+[["text-to-SQL"],"IA que transforma uma pergunta em linguagem natural numa consulta SQL.","AI that turns a natural language question into a SQL query."],
+[["pipeline"],"Sequência de etapas automáticas pelas quais os dados ou as tarefas passam.","A sequence of automated steps that data or tasks go through."],
+[["baseline"],"Linha de base: o valor de referência antes de uma mudança, para comparar depois.","The reference value before a change, used for comparison later."],
+[["batch"],"Processar muitas tarefas juntas, sem resposta imediata, normalmente mais barato.","Processing many tasks together, without an immediate answer, usually cheaper."],
+[["vibe coding"],"Criar software descrevendo o que se quer para uma IA, que escreve o código.","Building software by describing what you want to an AI that writes the code."],
+[["multimodal"],"Modelo que entende ou gera mais de um tipo de dado, como texto, imagem e áudio.","A model that understands or generates more than one data type, like text, images and audio."],
+[["data flywheel","flywheel"],"Ciclo em que mais uso gera mais dados, que melhoram o produto, que atrai mais uso.","A loop where more usage creates more data, which improves the product, which attracts more usage."],
+[["training-serving skew"],"Diferença entre os dados usados no treino e os dados em produção, que faz o modelo piorar.","A mismatch between training data and production data that makes the model worse."],
+[["product sense"],"Capacidade de entender usuários, priorizar problemas e propor boas soluções de produto.","The ability to understand users, prioritize problems and propose good product solutions."],
+[["system design"],"Desenho de um sistema completo: dados, arquitetura, avaliação, operação e riscos.","Designing a complete system: data, architecture, evaluation, operations and risks."],
+[["retrieval-augmented generation"],"Geração aumentada por recuperação: o nome completo de RAG.","Retrieval-augmented generation: the full name of RAG."],
+[["LLMflation"],"Termo usado para a queda rápida do preço por token de uma mesma capacidade de modelo.","A term for the fast drop in price per token for the same model capability."],
+[["PagedAttention"],"Técnica de gerenciamento de memória que acelera o serviço de LLMs, usada no vLLM.","A memory management technique that speeds up LLM serving, used in vLLM."],
+[["vLLM"],"Software de código aberto para servir LLMs com eficiência.","Open source software for serving LLMs efficiently."],
+[["ollama"],"Ferramenta para rodar modelos abertos no próprio computador.","A tool for running open models on your own computer."]
+];
+const _tMap=new Map();TERMS_EN.forEach(([al,pt,en])=>al.forEach(a=>_tMap.set(a.toLowerCase(),[al[0],pt,en])));
+const _tRe=new RegExp("(^|[^\\p{L}\\p{N}@/^-])("+[..._tMap.keys()].sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")(?![\\p{L}\\p{N}@/-])","giu");
+const T_SKIP="a,button,label,input,textarea,select,code,pre,script,style,h1,h2,h3,summary,.tg,.nav,.top,.lesson-bar,.chat,.lab-ctrls,.sql-q,.sql-out,.fc-front,.fc-term,.dg,.pager,.lang,.l-kicker,.page-title,.toast,.tg-pop,.fq-opts,.opts,.sim-opts,.fq-l,.hist,.tpl-actions,.res-item,.refs";
+const T_BLOCK="p,li,td,th,dd,.fc-def,.fc-prac,.fq-sec,.fq-why,.fq-text,.why,.sim-text,.concept p,.case p,.bt-case p";
+function markTerms(root){
+  if(!root) return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){
+    if(!n.nodeValue||n.nodeValue.trim().length<2) return NodeFilter.FILTER_REJECT;
+    const el=n.parentElement; if(!el||el.closest(T_SKIP)) return NodeFilter.FILTER_REJECT;
+    return NodeFilter.FILTER_ACCEPT;}});
+  const nodes=[];let n;while((n=w.nextNode()))nodes.push(n);
+  const seen=new WeakMap();
+  nodes.forEach(node=>{
+    const blk=node.parentElement.closest(T_BLOCK)||node.parentElement; let used=seen.get(blk);
+    if(!used){used=new Set([...blk.querySelectorAll(".tg")].map(x=>x.dataset.k));seen.set(blk,used);}
+    const txt=node.nodeValue; _tRe.lastIndex=0; let m, last=0, frag=null;
+    while((m=_tRe.exec(txt))){const term=m[2], info=_tMap.get(term.toLowerCase()); if(!info) continue; const key=info[0].toLowerCase();
+      if(used.has(key)) continue; used.add(key);
+      const start=m.index+m[1].length; frag=frag||document.createDocumentFragment();
+      frag.appendChild(document.createTextNode(txt.slice(last,start)));
+      const s=document.createElement("span");s.className="tg";s.tabIndex=0;s.setAttribute("role","button");s.dataset.k=key;s.textContent=term;
+      s.setAttribute("aria-label",term+": "+(EN()?info[2]:info[1]));frag.appendChild(s);last=start+term.length;}
+    if(frag){frag.appendChild(document.createTextNode(txt.slice(last)));node.parentNode.replaceChild(frag,node);}
+  });
+}
+// Balão de explicação (posicionado na tela, funciona com mouse, teclado e toque)
+let _tgPop=null,_tgCur=null,_tgAt=0;
+function tgShow(el){
+  const info=_tMap.get(el.dataset.k)||_tMap.get(el.textContent.toLowerCase()); if(!info) return;
+  if(!_tgPop){_tgPop=document.createElement("div");_tgPop.className="tg-pop";_tgPop.setAttribute("role","tooltip");document.body.appendChild(_tgPop);}
+  _tgPop.innerHTML=`<b>${esc(info[0])}</b><span>${esc(EN()?info[2]:info[1])}</span>`;_tgPop.classList.add("show");if(_tgCur!==el)_tgAt=Date.now();_tgCur=el;
+  const r=el.getBoundingClientRect(),pw=Math.min(320,window.innerWidth-24);_tgPop.style.width=pw+"px";
+  const ph=_tgPop.offsetHeight;let left=r.left+r.width/2-pw/2;left=Math.max(12,Math.min(left,window.innerWidth-pw-12));
+  let top=r.top-ph-10;_tgPop.classList.toggle("below",top<70);if(top<70)top=r.bottom+10;
+  _tgPop.style.left=left+"px";_tgPop.style.top=top+"px";
+}
+function tgHide(){if(_tgPop)_tgPop.classList.remove("show");_tgCur=null;}
+document.addEventListener("mouseover",e=>{const t=e.target.closest&&e.target.closest(".tg");if(t&&matchMedia("(hover:hover)").matches)tgShow(t);});
+document.addEventListener("mouseout",e=>{const t=e.target.closest&&e.target.closest(".tg");if(t&&matchMedia("(hover:hover)").matches&&!(e.relatedTarget&&t.contains(e.relatedTarget)))tgHide();});
+document.addEventListener("click",e=>{const t=e.target.closest&&e.target.closest(".tg");if(t){e.preventDefault();e.stopPropagation();if(_tgCur===t&&Date.now()-_tgAt>500)tgHide();else tgShow(t);}else if(_tgCur)tgHide();},true);
+document.addEventListener("focusin",e=>{if(e.target.classList&&e.target.classList.contains("tg"))tgShow(e.target);});
+document.addEventListener("focusout",e=>{if(e.target.classList&&e.target.classList.contains("tg"))tgHide();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")tgHide();});
+window.addEventListener("scroll",()=>{if(_tgCur)tgHide();},{passive:true});
+// Marca os termos sempre que o conteúdo da página muda
+let _tgRaf=0;
+function scheduleMark(){if(_tgRaf)return;_tgRaf=requestAnimationFrame(()=>{_tgRaf=0;try{markTerms(document.getElementById("app"));}catch(e){}});}
+new MutationObserver(muts=>{for(const m of muts){for(const a of m.addedNodes){if(a.nodeType===1&&!(a.classList&&a.classList.contains("tg"))){scheduleMark();return;}if(a.nodeType===3&&!(a.parentElement&&a.parentElement.classList.contains("tg"))){scheduleMark();return;}}}}).observe(document.getElementById("app"),{childList:true,subtree:true});
 
 /* ============ MODELOS DE DOCUMENTOS (PRD, evals, lançamento, riscos, PR/FAQ, decisão) ============ */
 // Seção: [título PT, título EN, [perguntas PT], [perguntas EN]]
