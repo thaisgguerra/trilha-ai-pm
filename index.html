@@ -739,6 +739,52 @@ body.sheet-open .lang-fab{visibility:hidden}
 @media (max-width:760px){.fq-sec{font-size:15px}.fq-card{min-height:clamp(420px,70vh,600px)}}
 /* Diagramas alinhados com os outros blocos da aula (o figure tem margem lateral padrão do navegador) */
 figure.dg{margin:0 0 16px}
+
+/* ===== Respostas-modelo, Meu desempenho, Resumo do módulo e definições ===== */
+.fq-model{margin-top:16px}
+.fq-model summary{cursor:pointer;font-family:var(--display);font-weight:650;font-size:18px;list-style:none;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.fq-model summary::-webkit-details-marker{display:none}
+.fq-model summary::after{content:"+";margin-left:auto;color:var(--muted);font-size:22px}
+.fq-model[open] summary::after{content:"−"}
+.fq-model summary span{font-family:var(--body);font-weight:500;font-size:13.5px;color:var(--muted)}
+.fq-ans-lang{margin:14px 0 6px}.fq-ans-lang .seg[aria-pressed="true"]{background:var(--btn);border-color:var(--btn);color:#fff}
+.fq-ans{margin-top:10px}.fq-ans p{font-size:17px;line-height:1.75;margin:0 0 12px;max-width:72ch}
+.fq-ans-note{font-size:14px;color:var(--muted);margin:4px 0 12px}
+.pg-wrap{max-width:960px;margin:0 auto}
+.pg-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:10px;margin-bottom:16px}
+.pg-stats>div{border:1px solid var(--line);border-radius:var(--r-lg);padding:14px 16px;background:var(--surface)}
+.pg-stats small{display:block;color:var(--muted);font-size:13px;font-weight:600}
+.pg-stats b{font-family:var(--display);font-size:28px;font-weight:700}.pg-stats b span{font-size:15px;color:var(--muted);font-weight:600}
+.pg-s{display:block;font-size:13px;color:var(--muted)}
+.pg-rec{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pg-rec li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface-2)}
+.pg-rec li .ask-link{margin:0;white-space:nowrap}
+.pg-mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px}
+.pg-mod{display:grid;gap:6px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface-2);text-decoration:none;color:var(--ink)}
+.pg-mod:hover{border-color:color-mix(in srgb,var(--c) 50%,var(--line))}
+.pg-mt{font-size:14.5px;line-height:1.35}.pg-mt b{color:var(--ci)}
+.pg-mm{font-size:13px;color:var(--muted)}
+.pg-bar{height:7px;border-radius:99px;background:var(--line);overflow:hidden}.pg-bar i{display:block;height:100%;background:var(--ci,var(--c));border-radius:99px}
+.pg-fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:10px}
+.pg-fc>div{display:grid;gap:4px;font-size:14.5px}
+.pg-h3{font-size:14px;color:var(--muted);margin:14px 0 8px}.pg-h3:first-of-type{margin-top:0}
+.rq-card{background:var(--surface-2)}
+.rq-src{font-size:13px;margin-bottom:6px}.rq-src a{color:var(--brandi);font-weight:600;text-decoration:none}
+.sum-wrap{max-width:960px;margin:0 auto}
+.sum-desc{margin:0 0 16px;color:var(--muted);max-width:70ch}
+.sum-ideas{margin:0;padding-left:22px;display:grid;gap:12px}
+.sum-ideas a{color:var(--ink);text-decoration:none}.sum-ideas a:hover b{color:var(--ci)}
+.sum-ideas p{margin:4px 0 0;color:var(--muted);font-size:15.5px}
+.sum-terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px}
+.sum-terms div{border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;background:var(--surface-2)}
+.sum-terms b{display:block;font-size:15px}.sum-terms p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.pg-link{display:inline-block;margin-top:4px}
+.gl-term{position:relative;border-bottom:1.5px dotted color-mix(in srgb,var(--ci,var(--brand)) 70%,transparent);cursor:help;outline:none}
+.gl-term::after{content:attr(data-def);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:max-content;max-width:min(320px,80vw);
+  padding:10px 12px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13.5px;line-height:1.5;font-weight:500;white-space:normal;
+  box-shadow:0 8px 24px rgba(20,23,42,.25);opacity:0;pointer-events:none;transition:opacity .15s;z-index:30}
+.gl-term:hover::after,.gl-term:focus-visible::after,.gl-term.show::after{opacity:1}
+@media print{.gl-term{border:0}.gl-term::after{display:none}}
 main:focus,main:focus-visible{outline:none}
 .legend i,.minibars a i{background:var(--c)}
 .btn:not(.ghost):not(.soft):not(.done){background:var(--brandi)}
@@ -4221,6 +4267,7 @@ function simFinish(app,S){
   const ok=c.ids.filter(id=>c.ans[id]!=null&&c.ord[id][c.ans[id]]===simQ(id).a).length;
   const p=Math.round(ok/c.ids.length*100);
   S.hist=[{d:Date.now(),n:c.ids.length,c:ok,p,mode:c.mode,s:c.el}].concat(S.hist||[]).slice(0,30);
+  c.ids.forEach(id=>{if(c.ans[id]!=null&&c.ord[id][c.ans[id]]!==simQ(id).a)addWrong("S"+id);});
   simSave(S); renderSim(app); window.scrollTo({top:0,behavior:"smooth"}); toast(sv("resScore",ok,c.ids.length,p));
 }
 function renderSimResult(app,S){
@@ -5120,7 +5167,7 @@ function deepHTML(n){
 
 /* ============ ESTADO E PERSISTÊNCIA ============ */
 const LS_KEY="trilha-ai-pm-v1";
-const BLANK=()=>({lv:2,done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null,fc:{},tplChk:{},fcq:{},fcDeck:"t"});
+const BLANK=()=>({lv:2,done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null,fc:{},tplChk:{},fcq:{},fcDeck:"t",wrong:{}});
 let state = BLANK();
 let dbRef=null, saveTimer=null, saving=false, pending=false;
 
@@ -5523,6 +5570,8 @@ function render(){
   else if(r.name==="exercicio"&&r.id&&MODULES[r.id-1]) renderExercise(app,MODULES[r.id-1]);
   else if(r.name==="glossario") renderGlossary(app);
   else if(r.name==="flashcards") renderFlashcards(app);
+  else if(r.name==="desempenho") renderProgress(app);
+  else if(r.name==="resumo"&&r.id&&MODULES[r.id-1]) renderSummary(app,MODULES[r.id-1]);
   else if(r.name==="modelos") renderTemplates(app);
   else if(r.name==="bigtechs") renderBigTech(app);
   else if(r.name==="tutor") renderTutor(app);
@@ -5576,6 +5625,7 @@ function renderHome(app){
           :`<div class="next-box"><small>${u("congrats")}</small><b>${u("congrats_b")}</b></div>`}
       <div class="minibars" aria-hidden="true">${MODULES.map(m=>`<a href="#/aula/${m.lessons[0].num}" tabindex="-1" style="--c:${m.c}" title="${u("mod_bar",m.n,modDone(m),m.lessons.length)}"><i style="height:${modDone(m)/m.lessons.length*100}%"></i></a>`).join("")}</div>
       <div class="minibars-l" aria-hidden="true">${MODULES.map(m=>`<span>M${m.n}</span>`).join("")}</div>
+      <a class="ask-link pg-link" href="#/desempenho">${EN()?"See my progress and what to review":"Ver meu desempenho e o que revisar"}</a>
     </aside>
     <aside class="continue pts-card" aria-label="${u("hp_title")}">
       ${(()=>{const tp=totalPts(),tm=totalMax(),R=u("ranks"),rk=R.filter(r=>tp>=r[0]).pop(),nr=R.find(r=>r[0]>tp);
@@ -5616,6 +5666,7 @@ function renderHome(app){
       </div>
       <ul class="lessons">
         ${m.lessons.map(l=>`<li><a href="#/aula/${l.num}"><span class="chk ${state.done[l.num]?"on":""}" aria-hidden="true">${state.done[l.num]?"✓":""}</span><span class="t"><span class="n">${u("lesson_word")} ${l.num}${lessonPts(l.num)?` <span class="lp">${ic("star")} ${lessonPts(l.num)}</span>`:""}</span>${esc(tx(l,"t"))}</span></a></li>`).join("")}
+        <li class="ex"><a href="#/resumo/${m.n}"><span class="chk" aria-hidden="true">${ic("book")}</span><span class="t"><span class="n">${EN()?"Review":"Revisão"}</span>${EN()?"Module summary":"Resumo do módulo"}</span></a></li>
         <li class="ex"><a href="#/exercicio/${m.n}"><span class="chk ${state.exDone[m.n]?"on":""}" aria-hidden="true">${state.exDone[m.n]?"✓":ic("target")}</span><span class="t"><span class="n">${m.n===9?u("final_deliv"):u("mod_ex")}</span>${m.n===9?u("your_case"):u("practice")}</span></a></li>
       </ul>
     </article>`}).join("")}
@@ -5708,6 +5759,7 @@ function renderLesson(app,l){
   }));
   $("#quizBtn").addEventListener("click",()=>makeQuiz(l));
   if(QZ[l.num]) drawFixedQuiz(l,chat);
+  try{addGlossaryTips(app,K.map(x=>x[0].replace(/\s*\(.*?\)\s*/g,"").toLowerCase()));}catch(e){}
   wireSheet();
 }
 
@@ -5746,7 +5798,7 @@ function drawFixedQuiz(l,chat){
   }));
   box.querySelectorAll(".fq-ok").forEach(b=>b.addEventListener("click",()=>{
     const i=+b.dataset.i, j=(fqPend[n]||{})[i]; if(j==null) return;
-    const arr=copy(); arr[i]={p:j,t:(arr[i].t||0)+1}; delete fqPend[n][i]; save(arr);
+    const arr=copy(); arr[i]={p:j,t:(arr[i].t||0)+1}; delete fqPend[n][i]; if(j!==qs[i][2]) addWrong("L"+n+"-"+i); save(arr);
     _fqJust={n,i}; const y=window.scrollY; drawFixedQuiz(l,chat); window.scrollTo(0,y); _fqJust=null;
     const pts=qEarned(n,i); toast(pts?u("fq_earn",pts,arr[i].t>1):u("fq_miss"));
   }));
@@ -6858,6 +6910,7 @@ function renderFlashQ(app){
       <a class="ask-link" href="#/entrevista" id="fqTrain">${qu("train")}</a>
       <button class="sim-exit" id="fqNext" type="button" ${fqS.i>=deck.length-1?"disabled":""}>${fu("next")} ›</button>
     </div>
+    ${fqModelHTML(card)}
     <p class="sim-keys">${fu("keys")}</p>
     <p class="fc-srs">${fu("srs")}</p>`
     :`<div class="iv-empty">${fqS.mode==="due"?fu("due_empty"):fu("empty")}<div style="margin-top:12px"><button class="btn ghost" id="fqAll" type="button">${fu("showall")}</button></div></div>`}
@@ -6884,6 +6937,7 @@ function renderFlashQ(app){
   $("#fqYes").addEventListener("click",()=>mark("ok"));
   $("#fqPrev").addEventListener("click",()=>go(-1));
   $("#fqNext").addEventListener("click",()=>go(1));
+  bindFqModel(app,card);
   $("#fqTrain").addEventListener("click",e=>{e.preventDefault();
     const tmap={you:"behavioral",beh:"behavioral",ps:"product",exe:"execution",aipm:"tradeoff",sit:"behavioral"};
     if(!state.iv) state.iv={topic:"mixed",type:"behavioral",level:"senior",cur:null,history:[]};
@@ -6900,6 +6954,202 @@ function renderFlashQ(app){
     else if(e.key==="1")mark("rev");else if(e.key==="2")mark("ok");
   };
 }
+
+const FQ_ANS={"q-tell": ["Sou Senior Product Manager com cerca de oito anos de experiência e comecei a carreira como product designer. Hoje lidero o produto de uma plataforma B2B e B2C de reciclagem usada por grandes marcas globais: cuido de discovery, roadmap e da ponte entre clientes, engenharia, design e operações.\n\nNos últimos dois anos, liderei as iniciativas de IA da empresa. Construímos um agente que centraliza os tickets de suporte de vários canais, o que reduziu o tempo de resposta em cerca de 30%, e um modelo de visão computacional que identifica o tipo de resíduo por foto.\n\nO que me trouxe até aqui foi a combinação de design com decisões de negócio. Agora quero levar essa experiência para um ambiente internacional, com produtos de IA em escala, e por isso esta vaga faz tanto sentido para mim.", "I'm a Senior Product Manager with about eight years of experience, and I started my career as a product designer. Today I lead the product for a B2B and B2C recycling platform used by large global brands. I own discovery, the roadmap and the bridge between clients, engineering, design and operations.\n\nOver the last two years, I've led the company's AI initiatives. We built an agent that centralizes support tickets from several channels, which cut response time by about 30%, and a computer vision model that identifies the type of waste from a photo.\n\nWhat brought me here is the combination of design and business decisions. Now I want to bring that experience to an international environment, working on AI products at scale, and that's why this role makes so much sense to me."], "q-why-change": ["Passei seis anos construindo um produto do zero numa startup de sustentabilidade, e foi uma fase muito rica: trabalhei com times de outros países, ganhamos reconhecimento internacional e a operação hoje está estável, com os sócios alinhados.\n\nO que eu busco agora é escala e um contexto novo. Quero trabalhar em produtos de IA com mais usuários, aprender com times maiores e aplicar o que construí, principalmente discovery e IA aplicada, num setor diferente. Não estou fugindo de nada; estou buscando o próximo desafio.", "I spent six years building a product from scratch at a sustainability startup, and it was a very rich phase: I worked with teams in other countries, we gained international recognition and operations are now stable, with my partners aligned.\n\nWhat I'm looking for now is scale and a new context. I want to work on AI products with more users, learn from larger teams and apply what I've built, especially discovery and applied AI, in a different industry. I'm not running away from anything; I'm looking for my next challenge."], "q-design-pm": ["A transição aconteceu de forma natural. Numa startup, comecei cuidando do design, mas aos poucos passei a negociar com clientes, definir prioridades e coordenar engenharia, design e operações. Em algum momento percebi que eu já estava fazendo o trabalho de produto, e assumi formalmente.\n\nO design continua sendo meu diferencial. Ele me ajuda a enxergar o que o cliente não consegue explicar, a fazer discovery com profundidade e a prototipar rápido, hoje com ajuda de IA, para validar ideias antes de gastar tempo de engenharia.", "The transition happened naturally. At a startup, I started out owning design, but gradually I began negotiating with clients, setting priorities and coordinating engineering, design and operations. At some point I realized I was already doing the product job, and I took it on formally.\n\nDesign is still my edge. It helps me see what clients can't articulate, run deep discovery and prototype quickly, now with AI, to validate ideas before spending engineering time."], "q-proud": ["Um projeto de que tenho muito orgulho é o redesenho da jornada de um quiosque de reciclagem nas lojas de uma marca global de bens de consumo.\n\nA situação era que o quiosque tinha baixa adesão. Minha responsabilidade era aumentar a reciclagem e também gerar valor para o negócio do cliente. Fiz pesquisas nas lojas, mapeei os pontos de atrito e redesenhei o fluxo para ser mais simples, conectando a reciclagem a um benefício na próxima compra.\n\nO resultado foi um aumento de 40% na taxa de reciclagem e de 30% nas novas compras, boa parte de clientes de alto valor. O aprendizado foi que, quando a experiência resolve o problema do usuário e o objetivo do negócio ao mesmo tempo, a adoção vem.", "One project I'm very proud of is redesigning the journey of an in-store recycling kiosk for a global consumer brand.\n\nThe kiosk had low adoption. My goal was to increase recycling and also create value for the client's business. I ran in-store research, mapped the friction points and redesigned the flow to be simpler, linking recycling to a benefit on the next purchase.\n\nThe result was a 40% increase in the recycling rate and a 30% increase in new purchases, many of them from high-value customers. What I learned is that when the experience solves the user's problem and the business goal at the same time, adoption follows."], "q-failure": ["Um projeto que não deu certo foi a instalação de um quiosque de reciclagem numa escola pública.\n\nEu parti do princípio de que as crianças iam se engajar naturalmente e pulei a pesquisa presencial com professores e alunos. Na prática, o sistema era lento para o ritmo do recreio, formavam-se filas, virava bagunça, e a direção da escola ficou insatisfeita.\n\nA responsabilidade foi minha. Ajustamos o que deu, mas o principal aprendizado foi outro: hoje eu faço discovery em campo antes de lançar em qualquer contexto novo, principalmente quando o público é diferente do habitual. Esse erro mudou meu processo.", "One project that didn't work was installing a recycling kiosk at a public school.\n\nI assumed the kids would engage naturally and skipped in-person research with teachers and students. In practice, the system was too slow for the pace of recess, lines formed, it got chaotic, and the school director was unhappy.\n\nThat was on me. We fixed what we could, but the main lesson was different: today I do field discovery before launching in any new context, especially when the audience is different from usual. That mistake changed my process."], "q-disagree-eng": ["Um cliente do setor de energia precisava registrar cada item de resíduo descartado com detalhe. O time de engenharia resistiu, com razão: era mais complexo, mais caro e levaria mais tempo.\n\nEu comecei entendendo as preocupações técnicas e depois mostrei o valor estratégico: aquele dado detalhado nos permitiria escalar para outras unidades do cliente e vender para novos clientes. Negociamos um escopo inicial menor e um plano de evolução.\n\nA funcionalidade ficou pronta em um mês e hoje é usada por vários clientes, virando um diferencial competitivo. O aprendizado: discordância com engenharia se resolve com contexto de negócio, não com autoridade.", "An energy sector client needed to record every discarded waste item in detail. Engineering pushed back, and they had a point: it was more complex, more expensive and would take longer.\n\nI started by understanding their technical concerns, then showed the strategic value: that granular data would let us scale to the client's other sites and sell to new clients. We agreed on a smaller initial scope and an evolution plan.\n\nThe feature was ready in a month and is now used by many clients, becoming a competitive differentiator. The lesson: disagreements with engineering are solved with business context, not authority."], "q-milestone": ["Numa campanha de uma marca de bebidas em 14 cidades, percebi no meio do projeto que o engajamento estava abaixo da meta em várias delas. No início, o cliente tinha recusado elementos de gamificação.\n\nLevei os dados de forma transparente, cidade por cidade, e propus uma mudança pequena: um fluxo de cashback com um comprovante enviado pelo WhatsApp a cada descarte, que exigia só uma tela nova.\n\nO resultado foi mais de 25% de novos usuários engajados, e todas as cidades bateram a meta até o fim da campanha. Aprendi que avisar cedo, com dados e com uma proposta concreta, transforma um problema numa decisão conjunta.", "In a beverage brand campaign across 14 cities, I noticed mid-project that engagement was below target in several of them. At the start, the client had declined gamification.\n\nI shared the data transparently, city by city, and proposed a small change: a cashback flow with a receipt sent through WhatsApp for every disposal, which only required one new screen.\n\nThe result was more than 25% new engaged users, and every city hit its target by the end of the campaign. I learned that flagging problems early, with data and a concrete proposal, turns a problem into a shared decision."], "q-say-no": ["Um cliente queria coletar muitos dados dos usuários no cadastro do quiosque de reciclagem. Eu entendia o interesse de negócio, mas sabia que cada campo a mais aumentaria o abandono na loja.\n\nMostrei dados de atrito e propus começar só com dois campos essenciais, com a opção de coletar mais informações depois, quando o usuário já estivesse engajado.\n\nO cliente aceitou, e o engajamento na loja subiu cerca de 30%. Dizer não com uma alternativa e com dados preservou a relação e entregou mais resultado do que o pedido original.", "A client wanted to collect a lot of user data at sign-up on the recycling kiosk. I understood the business interest, but I knew every extra field would increase drop-off in the store.\n\nI showed friction data and proposed starting with just two essential fields, with the option to collect more later, once the user was engaged.\n\nThe client agreed, and in-store engagement rose about 30%. Saying no with an alternative and with data protected the relationship and delivered more than the original request."], "q-constraint": ["Nossos clientes queriam saber exatamente que tipo de resíduo era descartado, mas o sensor infravermelho que usávamos era impreciso, e um sensor a laser importado era caro demais, ainda mais durante a crise global de microcontroladores.\n\nComparei as opções por custo, prazo e qualidade do dado e propus outro caminho: uma webcam simples e um modelo de machine learning que reconhece o resíduo pela foto a cada descarte.\n\nEntregamos os dados qualitativos que os clientes pediam sem o custo do hardware importado. O aprendizado é que a restrição me obrigou a voltar ao problema real: o cliente queria a informação, não o sensor.", "Our clients wanted to know exactly what type of waste was discarded, but our infrared sensor was inaccurate, and an imported laser sensor was too expensive, especially during the global chip shortage.\n\nI compared the options on cost, timeline and data quality and proposed a different path: a simple webcam and a machine learning model that recognizes the waste from a photo at every disposal.\n\nWe delivered the qualitative data clients asked for without the cost of imported hardware. The lesson is that the constraint forced me back to the real problem: the client wanted the information, not the sensor."], "q-prioritize": ["Uso critérios explícitos: impacto no negócio, que costuma ter o maior peso, escala da solução, urgência, esforço e o quanto confio nas estimativas. Para comparar iniciativas, pontuo cada uma, mas uso a nota para guiar a conversa, não para substituir o julgamento.\n\nUm exemplo: priorizei um projeto com uma multinacional de alimentos e bebidas mesmo exigindo uma integração de API construída do zero com o time de TI deles. O valor financeiro, o potencial de escala e o prazo do cliente justificavam colocá-lo à frente de outras demandas.\n\nE sempre deixo claro o que ficou de fora e por quê, para que os stakeholders entendam o trade-off.", "I use explicit criteria: business impact, which usually carries the most weight, scalability, urgency, effort and how confident I am in the estimates. To compare initiatives I score each one, but I use the score to guide the conversation, not to replace judgment.\n\nFor example, I prioritized a project with a food and beverage multinational even though it required an API integration built from scratch with their IT team. The financial value, the scale potential and the client's timeline justified putting it ahead of other requests.\n\nAnd I always make clear what was left out and why, so stakeholders understand the trade-off."], "q-discovery": ["Combino dois tipos de evidência. A primeira é comportamento: uso gravações de sessão e dados de uso para ver onde as pessoas travam, desistem ou não encontram uma funcionalidade. A segunda são conversas: entrevistas em tom de conversa, sem vender nada, e visitas de campo quando o contexto importa.\n\nO mais valioso é comparar o que as pessoas dizem com o que elas fazem. Num app para catadores de recicláveis, por exemplo, as entrevistas mostraram que um app nativo não fazia sentido para a realidade deles, e mudamos para um web app com notificações pelo WhatsApp.\n\nComo PM, meu papel é garantir que design e engenharia tenham contato direto com essa realidade, não só com relatórios.", "I combine two kinds of evidence. The first is behavior: I use session recordings and usage data to see where people get stuck, drop off or miss a feature. The second is conversation: interviews in a conversational tone, without selling anything, and field visits when context matters.\n\nThe most valuable part is comparing what people say with what they do. In an app for waste pickers, for example, interviews showed that a native app didn't fit their reality, so we switched to a web app with WhatsApp notifications.\n\nAs a PM, my role is to make sure design and engineering have direct contact with that reality, not just reports."], "q-drop": ["Primeiro eu confirmaria se a queda é real: mudanças de instrumentação, atraso no pipeline de dados ou uma nova versão do app podem criar quedas falsas. Depois veria se é sazonal, comparando com o mesmo período da semana ou do ano anterior.\n\nSe for real, segmentaria: por plataforma, versão, região, tipo de usuário e canal de aquisição, para ver se é geral ou localizada. Em paralelo, listaria o que mudou: lançamentos, experimentos, mudanças de modelo ou de prompt, incidentes e fatores externos.\n\nCom isso, formularia duas ou três hipóteses, priorizadas pela evidência, e definiria a próxima ação e a métrica que confirmaria cada uma.", "First, I'd confirm the drop is real: instrumentation changes, data pipeline delays or a new app version can create false drops. Then I'd check whether it's seasonal by comparing with the same period last week or last year.\n\nIf it's real, I'd segment by platform, version, region, user type and acquisition channel to see whether it's broad or localized. In parallel, I'd list what changed: launches, experiments, model or prompt changes, incidents and external factors.\n\nWith that, I'd form two or three hypotheses, prioritized by evidence, and define the next action and the metric that would confirm each one."], "q-adoption": ["Eu começaria entendendo o comportamento antes de conversar com usuários. Com ferramentas de gravação de sessão, olharia se as pessoas chegam até a funcionalidade, onde clicam, se há cliques mortos e quanto tempo ficam na página.\n\nIsso me ajuda a separar as hipóteses: a funcionalidade está escondida, a interface é confusa, falta onboarding ou o valor simplesmente não está claro. Depois, escolheria alguns usuários de perfis diferentes, inclusive quem não usa, para confirmar ou descartar essas hipóteses.\n\nSó então proporia a solução, com uma métrica de adoção e uma meta para medir se funcionou.", "I'd start by understanding behavior before talking to users. With session recording tools, I'd check whether people reach the feature, where they click, whether there are dead clicks and how long they stay on the page.\n\nThat helps me separate the hypotheses: the feature is hidden, the interface is confusing, onboarding is missing or the value simply isn't clear. Then I'd pick a few users with different profiles, including non-users, to confirm or rule out those hypotheses.\n\nOnly then would I propose a solution, with an adoption metric and a target to measure whether it worked."], "q-ai-success": ["Eu mediria em quatro camadas. Valor: a métrica principal seria tarefas concluídas com sucesso, ou tempo economizado por tarefa. Qualidade: notas nas evals, taxa de aceitação das respostas e quanto os usuários editam o que a IA produz. Confiança: satisfação e recontato, ou seja, se a pessoa precisou voltar com o mesmo problema.\n\nPor fim, guardrails: custo por tarefa, latência, taxa de escalonamento para humanos e incidentes de segurança. No agente de tickets que construímos, por exemplo, acompanhávamos o tempo de resposta, que caiu cerca de 30%, junto com a qualidade das respostas.\n\nVolume de conversas sozinho não diz se o assistente está ajudando.", "I'd measure it in four layers. Value: the primary metric would be tasks successfully completed, or time saved per task. Quality: eval scores, answer acceptance rate and how much users edit what the AI produces. Trust: satisfaction and repeat contacts, meaning whether the person had to come back with the same problem.\n\nFinally, guardrails: cost per task, latency, escalation rate to humans and safety incidents. In the ticket agent we built, for example, we tracked response time, which dropped about 30%, alongside answer quality.\n\nConversation volume alone doesn't tell you whether the assistant is helping."], "q-ai-daily": ["Uso IA em dois níveis. No meu trabalho, integrei o Claude com as ferramentas do time: as notas das reuniões viram tarefas no ClickUp com responsáveis e prazos, e o time recebe avisos no Discord. Também uso IA para criar protótipos de média e alta fidelidade logo depois das reuniões, o que acelera a validação com clientes e engenharia.\n\nNo produto, liderei funcionalidades de IA em produção: um agente que centraliza tickets de vários canais, com cerca de 30% de ganho no tempo de resposta, um agente de QA que confere designs com o manual da marca do cliente antes da entrega e um modelo de visão computacional para identificar resíduos.\n\nNo total, são mais de dez casos de uso de IA no trabalho.", "I use AI on two levels. In my own work, I integrated Claude with the team's tools: meeting notes become ClickUp tasks with owners and deadlines, and the team gets alerts in Discord. I also use AI to build medium- to high-fidelity prototypes right after meetings, which speeds up validation with clients and engineering.\n\nIn the product, I've led AI features in production: an agent that centralizes tickets from several channels, with about a 30% gain in response time, a QA agent that checks designs against the client's brand guidelines before delivery and a computer vision model to identify waste.\n\nIn total, that's more than ten AI use cases at work."], "q-ai-built": ["O problema era que os tickets de suporte chegavam por WhatsApp, e-mail e bots, e o time perdia tempo juntando informações e priorizando. Uma regra simples não resolvia, porque as mensagens eram livres e confusas.\n\nConstruímos um agente que lê as mensagens de todos os canais, extrai os dados importantes, classifica a prioridade e cria o ticket no nosso painel interno. Antes de liberar, testamos com mensagens reais e ajustamos as categorias com o time de suporte, revisando amostras toda semana no começo.\n\nO tempo de resposta caiu cerca de 30%. Se fizesse de novo, montaria um conjunto de avaliação formal desde o primeiro dia, em vez de depender só da revisão de amostras.", "The problem was that support tickets came in through WhatsApp, email and bots, and the team lost time gathering information and prioritizing. A simple rule couldn't solve it, because messages were free-form and messy.\n\nWe built an agent that reads messages from every channel, extracts the key data, classifies priority and creates the ticket in our internal admin. Before rolling it out, we tested it with real messages and tuned the categories with the support team, reviewing samples every week at first.\n\nResponse time dropped about 30%. If I did it again, I'd build a formal evaluation set from day one instead of relying only on sample reviews."], "q-ai-eval": ["Começo definindo o que é sucesso para o usuário e quais falhas são inaceitáveis. Depois monto um golden set com casos reais, incluindo os difíceis e os casos de borda, com a resposta ou o comportamento esperado revisado por especialistas.\n\nPara cada comportamento, defino uma métrica e uma rubrica clara. Uso checagens automáticas onde dá, um LLM como juiz calibrado com avaliação humana para critérios subjetivos, e revisão humana numa amostra. Defino a meta mínima para lançar e as falhas que bloqueiam o lançamento sozinhas.\n\nAntes do lançamento, faço red teaming. Depois, as evals viram teste de regressão a cada mudança, e acompanho sinais de produção, como aceitação e escalonamentos.", "I start by defining what success means for the user and which failures are unacceptable. Then I build a golden set from real cases, including hard and edge cases, with the expected answer or behavior reviewed by experts.\n\nFor each behavior, I define a metric and a clear rubric. I use automated checks where possible, an LLM judge calibrated against human review for subjective criteria, and human review on a sample. I set the minimum bar to launch and the failures that block launch on their own.\n\nBefore launch, I run red teaming. After that, the evals become regression tests on every change, and I track production signals such as acceptance and escalations."], "q-not-ai": ["Eu não usaria IA quando uma regra resolve: se a lógica é clara, auditável e cobre os casos, a regra é mais barata, previsível e fácil de explicar. Também evitaria quando o erro é caro e difícil de verificar, quando não há dados suficientes ou com permissão de uso, ou quando o custo de operar supera o valor gerado.\n\nUm exemplo: num fluxo de reembolso, a elegibilidade é regra de política e deve continuar sendo regra. Já entender a mensagem confusa do cliente para encaminhá-la ao fluxo certo é um bom trabalho para um modelo.\n\nMinha pergunta inicial é sempre: qual é o problema, e qual é a solução mais simples que resolve?", "I wouldn't use AI when a rule solves it: if the logic is clear, auditable and covers the cases, a rule is cheaper, more predictable and easier to explain. I'd also avoid it when errors are costly and hard to verify, when there isn't enough data or permission to use it, or when operating cost exceeds the value created.\n\nFor example, in a refund flow, eligibility is a policy rule and should stay a rule. But understanding a customer's messy message to route it to the right flow is a good job for a model.\n\nMy starting question is always: what's the problem, and what's the simplest solution that solves it?"], "q-halluc": ["Eu trataria em três frentes. Na arquitetura: respostas baseadas em fontes oficiais com RAG, citação do trecho usado e recusa quando não há fonte, em vez de deixar o modelo inventar. Na avaliação: evals de fidelidade no golden set e monitoramento de amostras em produção.\n\nNa experiência: mostrar as fontes para o usuário conferir, deixar claro o que é gerado por IA e oferecer um caminho fácil para falar com uma pessoa em temas sensíveis.\n\nO caso da companhia aérea que teve de honrar uma política inventada pelo chatbot mostra por que isso importa: para o cliente, o que a IA diz é o que a empresa diz.", "I'd handle it on three fronts. Architecture: answers grounded in official sources with RAG, citing the passage used and refusing when there's no source, instead of letting the model make things up. Evaluation: faithfulness evals on the golden set and monitoring of production samples.\n\nExperience: showing sources so users can check them, making clear what's AI-generated and offering an easy path to a person on sensitive topics.\n\nThe case of the airline that had to honor a policy its chatbot invented shows why this matters: for customers, what the AI says is what the company says."], "q-conflict": ["Primeiro eu reuniria as partes, em vez de negociar separadamente com cada uma. Na conversa, ancoraria a discussão em objetivos e métricas compartilhados: receita, impacto para clientes, compromissos com investidores e os KPIs de cada produto.\n\nCom isso na mesa, mapeamos o peso estratégico de cada pedido e o esforço envolvido, e normalmente as semelhanças aparecem: muitas vezes dá para dividir uma demanda grande em partes menores e atender o mais urgente de cada lado.\n\nNo fim, a ordem é acordada pelo grupo, registrada e comunicada, e se ainda houver impasse, levo as opções com dados para quem decide.", "First, I'd bring the parties together instead of negotiating with each one separately. In that conversation, I'd anchor the discussion on shared goals and metrics: revenue, customer impact, investor commitments and each product's KPIs.\n\nWith that on the table, we map the strategic weight of each request and the effort involved, and similarities usually emerge: often we can split a large request into smaller parts and serve the most urgent piece for each side.\n\nIn the end, the order is agreed by the group, documented and communicated, and if there's still a deadlock, I take the options with data to the decision-maker."], "q-coe": ["Começaria pelo patrocínio: um executivo responsável e um comitê com líderes de negócio e tecnologia. No primeiro mês, mapearia as iniciativas de IA que já existem e definiria as políticas iniciais, como quais dados podem ir para quais fornecedores.\n\nDepois, criaria um fluxo de entrada para casos de uso, com critérios de valor, risco e viabilidade, e escolheria dois ou três pilotos de alto valor e risco controlado. Em paralelo, montaria uma plataforma mínima comum: acesso a modelos aprovados, registro de uso e avaliação básica.\n\nMediria o CoE pelo valor que os times entregam e pela adoção da plataforma, e planejaria desde o início a evolução de um modelo centralizado para um híbrido, para o CoE não virar gargalo.", "I'd start with sponsorship: an accountable executive and a committee of business and technology leaders. In the first month, I'd map the AI initiatives that already exist and define the initial policies, such as which data can go to which vendors.\n\nThen I'd create an intake flow for use cases, with value, risk and feasibility criteria, and pick two or three high-value, controlled-risk pilots. In parallel, I'd set up a minimum shared platform: approved model access, usage logging and basic evaluation.\n\nI'd measure the CoE by the value teams deliver and by platform adoption, and I'd plan from day one to evolve from a centralized model to a hybrid one, so the CoE doesn't become a bottleneck."]};
+
+/* ============ RESPOSTAS-MODELO NOS FLASHCARDS DE PERGUNTAS ============ */
+FQ.forEach(c=>{if(FQ_ANS[c.id])c.ans=FQ_ANS[c.id];});
+function fqModelHTML(card){
+  if(!card||!card.ans) return "";
+  const pt=EN()?false:!!fqS.ansPt;
+  return `<details class="block fq-model" ${fqS.ansOpen?"open":""}><summary>${EN()?"Model answer":"Resposta-modelo"} <span>${EN()?"about 1 to 2 minutes spoken":"cerca de 1 a 2 minutos falando"}</span></summary>
+    ${EN()?"":`<div class="segs fq-ans-lang"><button class="seg" data-anslang="en" aria-pressed="${!pt}">Inglês</button><button class="seg" data-anslang="pt" aria-pressed="${pt}">Português</button></div>`}
+    <div class="fq-ans" lang="${pt?"pt-BR":"en"}">${paras(pt?card.ans[0]:card.ans[1])}</div>
+    <p class="fq-ans-note">${EN()?"Use it as a reference, not a script: say it in your own words and adjust the numbers to what you can defend.":"Use como referência, não como roteiro decorado: fale com as suas palavras e só cite números que você consegue defender."}</p>
+    <div class="row"><button class="btn ghost" id="fqCopyAns" type="button">${EN()?"Copy answer in English":"Copiar resposta em inglês"}</button></div>
+  </details>`;
+}
+function bindFqModel(app,card){
+  const d=app.querySelector(".fq-model"); if(!d) return;
+  d.addEventListener("toggle",()=>{fqS.ansOpen=d.open;});
+  d.querySelectorAll("[data-anslang]").forEach(b=>b.addEventListener("click",()=>{fqS.ansPt=b.dataset.anslang==="pt";const y=window.scrollY;renderFlashQ(app);window.scrollTo(0,y);}));
+  const c=$("#fqCopyAns"); if(c) c.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(card.ans[1]);toast(EN()?"Copied!":"Copiado!");}catch(e){}});
+}
+
+/* ============ QUESTÕES ERRADAS: REGISTRO E REVISÃO ESPAÇADA ============ */
+// Chaves: "L{aula}-{i}" para testes das aulas e "S{id}" para o simulado. state.wrong[k] = {b,d,at}
+function wrongMarks(){if(!state.wrong||typeof state.wrong!=="object")state.wrong={};return state.wrong;}
+function addWrong(k){const w=wrongMarks();if(!w[k]||w[k].b>=3){state.wrong=Object.assign({},w,{[k]:{b:0,d:0,at:Date.now()}});}}
+// Herda erros antigos (feitos antes deste recurso): resposta errada atual ou acerto só na segunda tentativa
+function syncWrongFromHistory(){
+  const qs=state.qs||{}; let added=false; const w=wrongMarks();
+  Object.keys(qs).forEach(n=>{(qs[n]||[]).forEach((e,i)=>{const q=(QZ[n]||[])[i];if(!q||!e||e.p==null)return;
+    if((e.p!==q[2]||e.t>1)&&!w["L"+n+"-"+i]){w["L"+n+"-"+i]={b:0,d:0,at:Date.now()};added=true;}});});
+  if(added){state.wrong=Object.assign({},w);persist();}
+}
+function rqItem(k){
+  if(k[0]==="L"){const [n,i]=k.slice(1).split("-").map(Number),q=(QZ[n]||[])[i];if(!q)return null;const l=LESSONS[n-1];
+    return {k,mod:l?l.mod.n:0,src:(EN()?"Lesson ":"Aula ")+n,link:"#/aula/"+n,q:EN()?q[4]:q[0],o:EN()?q[5]:q[1],a:q[2],w:EN()?q[6]:q[3]};}
+  if(k[0]==="S"){const q=simQ(+k.slice(1));if(!q)return null;return {k,mod:q.m,src:(EN()?"Mock exam · module ":"Simulado · módulo ")+q.m,link:"#/simulado",q:sqT(q),o:sqO(q),a:q.a,w:sqW(q)};}
+  return null;
+}
+const rqOpen=()=>Object.keys(wrongMarks()).filter(k=>wrongMarks()[k].b<3&&rqItem(k));
+const rqDue=()=>rqOpen().filter(k=>(wrongMarks()[k].d||0)<=Date.now());
+
+/* ============ MEU DESEMPENHO ============ */
+const DU={
+ pt:{h:"Meu desempenho",sub:"Um retrato do que você já domina e do que vale revisar, calculado com as suas respostas nas aulas, no simulado, nos flashcards e nos treinos de entrevista.",
+  lessons:"Aulas concluídas",quiz:"Acerto nos testes das aulas",sim:"Simulados feitos",cards:"Flashcards dominados",iv:"Treinos de entrevista",
+  todo:"O que revisar agora",bymod:"Por módulo",fc:"Flashcards por categoria",ivh:"Entrevista por tipo de pergunta",review:"Revisão das questões erradas",
+  none:"Nenhuma questão para revisar hoje.",nonew:"Quando você errar uma questão nas aulas ou no simulado, ela aparece aqui para revisão espaçada.",
+  check:"Conferir",right:"Acertou! A questão volta em",wrong:"Ainda não. Ela volta para revisão amanhã.",days:d=>d===1?"1 dia":`${d} dias`,
+  start:"Para ter um ponto de partida, faça um simulado curto: ele mostra rapidamente seus pontos fortes e fracos.",go_sim:"Fazer um simulado",
+  r_due:n=>n>1?`Você tem ${n} questões erradas para revisar hoje.`:"Você tem 1 questão errada para revisar hoje.",r_mod:(m,p)=>`Seu acerto no módulo ${m} está em ${p}%. Vale reler o resumo e refazer o teste.`,
+  r_untested:(m)=>`Você concluiu aulas do módulo ${m}, mas ainda não respondeu os testes delas.`,
+  r_fc:(c,n)=>`Nos flashcards, a categoria "${c}" tem ${n} cartões que você ainda não sabe.`,r_iv:t=>`Nas entrevistas, sua menor nota média de conteúdo está em "${t}".`,
+  r_ivnew:t=>`Você ainda não treinou perguntas do tipo "${t}", muito comuns em big techs.`,
+  open:"Abrir",summary:"Resumo",accuracy:p=>`${p}% de acerto`,noq:"sem respostas",avg:"média",tries:n=>`${n} treino${n>1?"s":""}`,terms:"Termos",questions:"Perguntas",
+  sim_avg:p=>`média de ${p}%`,reviewing:n=>`${n} na fila de revisão`,due:n=>`${n} para hoje`},
+ en:{h:"My progress",sub:"A snapshot of what you already master and what is worth reviewing, calculated from your answers in lessons, mock exams, flashcards and interview practice.",
+  lessons:"Lessons completed",quiz:"Lesson quiz accuracy",sim:"Mock exams taken",cards:"Flashcards mastered",iv:"Interview practice",
+  todo:"What to review now",bymod:"By module",fc:"Flashcards by category",ivh:"Interview by question type",review:"Review of missed questions",
+  none:"No questions to review today.",nonew:"When you miss a question in lessons or the mock exam, it shows up here for spaced review.",
+  check:"Check",right:"Correct! It comes back in",wrong:"Not yet. It comes back for review tomorrow.",days:d=>d===1?"1 day":`${d} days`,
+  start:"To get a starting point, take a short mock exam: it quickly shows your strengths and weak spots.",go_sim:"Take a mock exam",
+  r_due:n=>`You have ${n} missed question${n>1?"s":""} to review today.`,r_mod:(m,p)=>`Your accuracy in module ${m} is ${p}%. Reread the summary and retake the quiz.`,
+  r_untested:(m)=>`You completed lessons in module ${m} but have not answered their quizzes yet.`,
+  r_fc:(c,n)=>`In flashcards, the "${c}" category has ${n} cards you don't know yet.`,r_iv:t=>`In interviews, your lowest average content score is in "${t}".`,
+  r_ivnew:t=>`You have not practiced "${t}" questions yet, very common at big tech.`,
+  open:"Open",summary:"Summary",accuracy:p=>`${p}% correct`,noq:"no answers",avg:"average",tries:n=>`${n} round${n>1?"s":""}`,terms:"Terms",questions:"Questions",
+  sim_avg:p=>`${p}% average`,reviewing:n=>`${n} in the review queue`,due:n=>`${n} due today`}
+};
+const du=(k,...a)=>{const v=DU[EN()?"en":"pt"][k];return typeof v==="function"?v(...a):v;};
+function modQuiz(m){let n=0,c=0;m.lessons.forEach(l=>{((state.qs||{})[l.num]||[]).forEach((e,i)=>{if(e&&e.p!=null){n++;if(e.p===QZ[l.num][i][2])c++;}});});return {n,c,p:n?Math.round(c/n*100):null};}
+let rqState={};
+function renderProgress(app){
+  syncWrongFromHistory();
+  const d=doneCount(), qAll=MODULES.reduce((a,m)=>{const r=modQuiz(m);a.n+=r.n;a.c+=r.c;return a;},{n:0,c:0});
+  const qp=qAll.n?Math.round(qAll.c/qAll.n*100):null;
+  const H=(state.sim&&state.sim.hist)||[], simAvg=H.length?Math.round(H.reduce((a,h)=>a+h.p,0)/H.length):null;
+  const fcOk=FC.filter(c=>fcStatus(c[0])==="ok").length, fqOk=FQ.filter(c=>fqStatus(c.id)==="ok").length;
+  const IH=(state.iv&&state.iv.history)||[];
+  const due=rqDue(), open=rqOpen();
+  // Recomendações
+  const rec=[];
+  if(due.length) rec.push([du("r_due",due.length),"#rq",du("open")]);
+  const mods=MODULES.map(m=>({m,q:modQuiz(m),done:modDone(m)}));
+  mods.filter(x=>x.q.n>=3&&x.q.p<70).sort((a,b)=>a.q.p-b.q.p).slice(0,2).forEach(x=>rec.push([du("r_mod",x.m.n,x.q.p),"#/resumo/"+x.m.n,du("summary")]));
+  mods.filter(x=>x.done>0&&x.q.n===0).slice(0,1).forEach(x=>rec.push([du("r_untested",x.m.n),"#/aula/"+x.m.lessons.find(l=>state.done[l.num]).num,du("open")]));
+  const fcRev=FC_CATS.map(c=>[c,FC.filter(x=>x[1]===c[0]&&fcStatus(x[0])==="rev").length]).sort((a,b)=>b[1]-a[1])[0];
+  if(fcRev&&fcRev[1]>=3) rec.push([du("r_fc",EN()?fcRev[0][2]:fcRev[0][1],fcRev[1]),"#/flashcards",du("open")]);
+  const types=iv("types"), byType={};IH.forEach(h=>{(byType[h.type]=byType[h.type]||[]).push(h.cs);});
+  const tAvg=Object.keys(byType).map(t=>[t,byType[t].reduce((a,b)=>a+b,0)/byType[t].length]).sort((a,b)=>a[1]-b[1]);
+  if(tAvg.length&&tAvg[0][1]<4) rec.push([du("r_iv",types[tAvg[0][0]]||tAvg[0][0]),"#/entrevista",du("open")]);
+  else{const miss=["execution","sysdesign","product"].find(t=>!byType[t]);if(miss&&IH.length)rec.push([du("r_ivnew",types[miss]),"#/entrevista",du("open")]);}
+  const empty=!qAll.n&&!H.length&&!IH.length&&!fcOk&&!fqOk&&!d;
+  const bar=(p,c)=>`<div class="pg-bar" style="--c:${c}"><i style="width:${p||0}%"></i></div>`;
+  app.innerHTML=`<div class="pg-wrap">
+   <h1 class="page-title">${du("h")}</h1><p class="page-sub">${du("sub")}</p>
+   <div class="pg-stats">
+     <div><small>${du("lessons")}</small><b>${d}<span>/${TOTAL}</span></b></div>
+     <div><small>${du("quiz")}</small><b>${qp==null?"–":qp+"%"}</b><span class="pg-s">${qAll.n?`${qAll.c}/${qAll.n}`:du("noq")}</span></div>
+     <div><small>${du("sim")}</small><b>${H.length}</b><span class="pg-s">${simAvg==null?"":du("sim_avg",simAvg)}</span></div>
+     <div><small>${du("cards")}</small><b>${fcOk+fqOk}<span>/${FC.length+FQ.length}</span></b></div>
+     <div><small>${du("iv")}</small><b>${IH.length}</b></div>
+   </div>
+   <section class="block pg-todo"><h2>${du("todo")}</h2>
+     ${empty||!rec.length?`<p>${du("start")}</p><a class="btn" href="#/simulado">${du("go_sim")}</a>`
+       :`<ul class="pg-rec">${rec.slice(0,5).map(r=>`<li><span>${esc(r[0])}</span><a class="ask-link" href="${r[1]}" ${r[1]==="#rq"?'data-jump="rq"':""}>${esc(r[2])}</a></li>`).join("")}</ul>`}
+   </section>
+   <section class="block"><h2>${du("bymod")}</h2>
+     <div class="pg-mods">${mods.map(x=>`<a class="pg-mod" href="#/resumo/${x.m.n}" style="--c:${x.m.c}">
+       <span class="pg-mt"><b>M${x.m.n}</b> ${esc(tx(x.m,"title"))}</span>
+       <span class="pg-mm">${x.done}/${x.m.lessons.length} · ${x.q.n?du("accuracy",x.q.p):du("noq")}</span>
+       ${bar(x.q.p,x.m.c)}</a>`).join("")}</div>
+   </section>
+   <section class="block"><h2>${du("fc")}</h2>
+     <h3 class="pg-h3">${du("terms")}</h3>
+     <div class="pg-fc">${FC_CATS.map(c=>{const all=FC.filter(x=>x[1]===c[0]),ok=all.filter(x=>fcStatus(x[0])==="ok").length;return `<div style="--c:${c[3]}"><span>${esc(EN()?c[2]:c[1])}</span><span class="pg-mm">${ok}/${all.length}</span>${bar(Math.round(ok/all.length*100),c[3])}</div>`;}).join("")}</div>
+     <h3 class="pg-h3">${du("questions")}</h3>
+     <div class="pg-fc">${FQ_CATS.map(c=>{const all=FQ.filter(x=>x.cat===c[0]),ok=all.filter(x=>fqStatus(x.id)==="ok").length;return `<div style="--c:${c[3]}"><span>${esc(EN()?c[2]:c[1])}</span><span class="pg-mm">${ok}/${all.length}</span>${bar(Math.round(ok/all.length*100),c[3])}</div>`;}).join("")}</div>
+   </section>
+   ${IH.length?`<section class="block"><h2>${du("ivh")}</h2><div class="pg-fc">${Object.keys(types).map(t=>{const a=byType[t];if(!a)return "";const av=a.reduce((x,y)=>x+y,0)/a.length;return `<div><span>${esc(types[t])}</span><span class="pg-mm">${du("tries",a.length)} · ${du("avg")} ${av.toFixed(1)}/5</span>${bar(Math.round(av/5*100),"var(--m6);--ci:var(--m6i)")}</div>`;}).join("")}</div></section>`:""}
+   <section class="block" id="rq"><h2>${du("review")}</h2>
+     <p class="pg-s">${open.length?du("reviewing",open.length)+" · "+du("due",due.length):""}</p>
+     <div id="rqList">${due.length?due.slice(0,10).map(k=>rqCard(k)).join(""):`<p>${open.length?du("none"):du("nonew")}</p>`}</div>
+   </section>
+  </div>`;
+  const j=app.querySelector('[data-jump="rq"]'); if(j) j.addEventListener("click",e=>{e.preventDefault();$("#rq").scrollIntoView({behavior:RM()?"auto":"smooth"});});
+  bindRq(app);
+}
+function rqCard(k){
+  const it=rqItem(k); if(!it) return ""; const st=rqState[k]||{};
+  return `<div class="fq-q rq-card ${st.done?(st.ok?"ok":"no"):""}" data-k="${k}">
+    <div class="rq-src"><a href="${it.link}">${esc(it.src)}</a></div>
+    <p class="fq-text">${esc(it.q)}</p>
+    <div class="fq-opts">${it.o.map((o,j)=>`<button type="button" class="fq-opt ${st.p===j&&!st.done?"sel":""} ${st.done&&j===it.a?"right":""} ${st.done&&j===st.p&&st.p!==it.a?"wrong":""}" data-j="${j}" ${st.done?"disabled":""}><span class="fq-l">${"ABCD"[j]}</span><span>${esc(o)}</span></button>`).join("")}</div>
+    ${st.done?`<div class="fq-why"><b>${st.ok?du("right")+" "+du("days",st.days):du("wrong")}</b><br>${esc(it.w)}</div>`
+      :`<div class="fq-confirm"><button type="button" class="btn rq-ok" ${st.p==null?"disabled":""}>${du("check")}</button></div>`}
+  </div>`;
+}
+function bindRq(app){
+  app.querySelectorAll(".rq-card").forEach(card=>{
+    const k=card.dataset.k, redraw=()=>{card.outerHTML=rqCard(k);bindRq(app);};
+    card.querySelectorAll(".fq-opt").forEach(b=>b.addEventListener("click",()=>{if((rqState[k]||{}).done)return;rqState[k]={p:+b.dataset.j};redraw();}));
+    const ok=card.querySelector(".rq-ok"); if(ok) ok.addEventListener("click",()=>{
+      const st=rqState[k]; if(!st||st.p==null) return; const it=rqItem(k), good=st.p===it.a, w=wrongMarks(), cur=w[k]||{b:0};
+      const b=good?Math.min(3,(cur.b||0)+1):0, days=good?[1,3,7,14][b-1]||14:1;
+      state.wrong=Object.assign({},w,{[k]:{b,d:Date.now()+days*DAY,at:cur.at||Date.now()}}); persist();
+      rqState[k]={p:st.p,done:true,ok:good,days}; redraw();
+    });
+  });
+}
+
+/* ============ RESUMO DO MÓDULO ============ */
+function renderSummary(app,m){
+  const ex=EN()?"Module exercise":"Exercício do módulo";
+  const q=modQuiz(m);
+  app.innerHTML=`<a class="back" href="#/">${u("back")}</a>
+  <div class="sum-wrap" style="--c:${m.c}">
+    <header class="l-head"><div class="l-kicker">${EN()?"Module "+m.n+" summary":"Resumo do módulo "+m.n}</div><h1>${esc(tx(m,"title"))}</h1><p class="sum-desc">${esc(tx(m,"desc"))}</p>
+      <div class="l-actions"><a class="btn" href="#/simulado" id="sumSim">${EN()?"Test this module":"Testar este módulo"}</a><a class="btn soft" href="#/exercicio/${m.n}">${ex}</a></div></header>
+    <section class="block"><h2>${EN()?"Key ideas":"Ideias principais"}</h2>
+      <ol class="sum-ideas">${m.lessons.map(l=>`<li><a href="#/aula/${l.num}"><b>${l.num}. ${esc(tx(l,"t"))}</b></a><p>${esc(tx(l,"pm"))}</p></li>`).join("")}</ol></section>
+    <section class="block"><h2>${EN()?"Key terms":"Termos-chave"}</h2>
+      <div class="sum-terms">${m.lessons.flatMap(l=>tx(l,"k").map(([a,b])=>`<div><b>${esc(a)}</b><p>${esc(b)}</p></div>`)).join("")}</div></section>
+    <section class="block"><h2>${EN()?"How you are doing":"Como você está"}</h2>
+      <p>${EN()?`${modDone(m)} of ${m.lessons.length} lessons completed. Quiz accuracy: ${q.n?q.p+"%":"no answers yet"}.`:`${modDone(m)} de ${m.lessons.length} aulas concluídas. Acerto nos testes: ${q.n?q.p+"%":"ainda sem respostas"}.`}</p>
+      <a class="ask-link" href="#/desempenho">${EN()?"See my full progress":"Ver meu desempenho completo"}</a></section>
+  </div>`;
+  $("#sumSim").addEventListener("click",e=>{e.preventDefault();const S=simState();S.cfg=Object.assign({},S.cfg,{mods:[m.n]});S.view=null;simSave(S);location.hash="#/simulado";});
+}
+
+/* ============ DEFINIÇÕES AO PASSAR O MOUSE NAS AULAS ============ */
+let _glTerms=null,_glLang=null;
+function glossaryTerms(){
+  if(_glTerms&&_glLang===state.lang) return _glTerms;
+  const map=new Map(), STOP=new Set(["modelo","model","dados","data","produto","product","token","guardrails","responsabilidades típicas","typical responsibilities","ia generativa","generative ai"].map(s=>s.toLowerCase()));
+  const add=(name,def)=>{name=name.trim();if(name.length<4||STOP.has(name.toLowerCase())||map.has(name.toLowerCase()))return;map.set(name.toLowerCase(),{name,def});};
+  FC.forEach(c=>{const nm=EN()?c[2][1]:c[2][0],df=EN()?c[3][1]:c[3][0];nm.split(/\s+e\s+|\s+and\s+/).length===1&&add(nm.replace(/\s*\(.*?\)\s*/g,""),df);const pm=nm.match(/\(([^)]+)\)/);if(pm)add(pm[1],df);});
+  LESSONS.forEach(l=>tx(l,"k").forEach(([a,b])=>{const base=a.replace(/\s*\(.*?\)\s*/g,"");if(base.trim().split(/\s+/).length>=2)add(base,b);const pm=a.match(/\(([^)]+)\)/);if(pm&&!/[0-9]/.test(pm[1]))add(pm[1],b);}));
+  _glTerms=[...map.values()].filter(t=>!/[:,]/.test(t.name)).sort((a,b)=>b.name.length-a.name.length);_glLang=state.lang;return _glTerms;
+}
+function addGlossaryTips(root,exclude){
+  const terms=glossaryTerms(), used=new Set(exclude||[]), esc2=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+  const nodes=[];root.querySelectorAll(".block > p, .simple p, .case p, .deep p, .pm-note p").forEach(p=>{if(p.closest(".concepts,.fq,.refs,.chat"))return;
+    const w=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode()))nodes.push(n);});
+  let count=0;
+  for(const t of terms){ if(count>=14) break; if(used.has(t.name.toLowerCase())) continue;
+    const re=new RegExp("(^|[^\\p{L}\\p{N}])("+esc2(t.name)+")(?![\\p{L}\\p{N}])","iu");
+    for(const node of nodes){ if(!node.parentNode||node.parentNode.closest(".gl-term")) continue; const m=re.exec(node.nodeValue); if(!m) continue;
+      const start=m.index+m[1].length, mid=node.splitText(start); mid.splitText(m[2].length);
+      const span=document.createElement("span");span.className="gl-term";span.tabIndex=0;span.setAttribute("role","button");
+      span.setAttribute("aria-label",m[2]+": "+t.def);span.dataset.def=t.def;span.textContent=mid.nodeValue;mid.parentNode.replaceChild(span,mid);
+      nodes.push(span.nextSibling); used.add(t.name.toLowerCase()); count++; break; }
+  }
+}
+document.addEventListener("click",e=>{const t=e.target.closest&&e.target.closest(".gl-term");document.querySelectorAll(".gl-term.show").forEach(x=>{if(x!==t)x.classList.remove("show");});if(t)t.classList.toggle("show");});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".gl-term.show").forEach(x=>x.classList.remove("show"));});
 
 /* ============ MODELOS DE DOCUMENTOS (PRD, evals, lançamento, riscos, PR/FAQ, decisão) ============ */
 // Seção: [título PT, título EN, [perguntas PT], [perguntas EN]]
