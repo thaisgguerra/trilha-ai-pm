@@ -824,6 +824,146 @@ figure.dg{margin:0 0 16px}
 .to-top svg{width:20px;height:20px}
 @media (min-width:1021px){.to-top{right:24px}}
 @media print{.to-top{display:none}}
+.hist-intro{color:var(--muted);margin:0 0 14px}
+.hist-eras{list-style:none;margin:0;padding:0 0 0 6px;position:relative}
+.hist-eras::before{content:"";position:absolute;left:13px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.hist-era{position:relative;margin:0 0 10px}
+.hist-era summary{list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;cursor:pointer;padding:8px 10px 8px 30px;border-radius:12px;position:relative}
+.hist-era summary::-webkit-details-marker{display:none}
+.hist-era summary:hover{background:color-mix(in srgb,var(--hc) 8%,transparent)}
+.hist-era summary::after{content:"+";margin-left:auto;font-weight:700;color:var(--muted)}
+.hist-era details[open] summary::after{content:"−"}
+.hist-dot{position:absolute;left:1px;top:13px;width:14px;height:14px;border-radius:50%;background:var(--hc);box-shadow:0 0 0 4px var(--surface)}
+.hist-per{font-size:12.5px;font-weight:700;letter-spacing:.03em;color:var(--hc);text-transform:uppercase}
+.hist-name{font-weight:700;font-size:16.5px}
+.hist-ev{list-style:none;margin:4px 0 0;padding:0 0 0 30px}
+.hist-ev li{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:10px 0;border-top:1px dashed var(--line)}
+.hist-ev li:first-child{border-top:0}
+.hist-y{font-weight:800;font-variant-numeric:tabular-nums;color:var(--hc)}
+.hist-ev b{display:block}.hist-ev p{margin:3px 0 0;color:var(--muted);font-size:14.5px;line-height:1.55}
+.hist-lesson{margin:6px 0 4px 30px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--hc) 9%,transparent);font-size:14.5px}
+.hist-ctrl{margin-top:8px}
+@media (max-width:520px){.hist-ev li{grid-template-columns:1fr;gap:2px}.hist-ev{padding-left:24px}.hist-lesson{margin-left:24px}}
+@media print{.aih details{display:block}.hist-ctrl{display:none}}
+.gam-chip{display:inline-flex;align-items:center;gap:8px;padding:5px 10px 5px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);text-decoration:none;font-weight:800;font-size:14px;line-height:1}
+.gam-chip:hover{border-color:var(--warn)}
+.gam-chip .gc-fl{display:inline-flex;align-items:center;gap:3px}.gam-chip .i{width:18px;height:18px}
+.gam-chip.lit .gc-fl{color:#E8590C}.gam-chip.risk .gc-fl{color:var(--muted)}
+.gam-chip .gc-xp{width:22px;height:22px;border-radius:50%;background:conic-gradient(var(--ok) calc(var(--p)*1%),color-mix(in srgb,var(--ok) 18%,transparent) 0);display:grid;place-items:center}
+.gam-chip .gc-xp i{width:14px;height:14px;border-radius:50%;background:var(--surface)}
+.xp-float{position:fixed;z-index:300;transform:translate(-50%,0);font-weight:800;font-size:17px;color:var(--ok);text-shadow:0 1px 0 var(--surface),0 0 8px var(--surface);pointer-events:none;animation:xpUp 1.25s var(--ease,ease) forwards}
+@keyframes xpUp{0%{opacity:0;transform:translate(-50%,6px) scale(.8)}15%{opacity:1;transform:translate(-50%,-4px) scale(1.1)}100%{opacity:0;transform:translate(-50%,-56px) scale(1)}}
+.combo-b{position:fixed;z-index:301;left:50%;top:84px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;background:#E8590C;color:#fff;font-weight:800;font-size:15px;box-shadow:0 8px 22px rgba(232,89,12,.35);animation:comboIn 1.7s ease forwards;pointer-events:none}
+.combo-b .i{width:18px;height:18px}.combo-b small{opacity:.85;font-weight:700}
+@keyframes comboIn{0%{opacity:0;transform:translate(-50%,-10px) scale(.7)}12%{opacity:1;transform:translate(-50%,0) scale(1.08)}22%{transform:translate(-50%,0) scale(1)}85%{opacity:1}100%{opacity:0;transform:translate(-50%,-8px)}}
+.ach-toast{position:fixed;z-index:302;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:16px;background:var(--ink);color:var(--bg);box-shadow:0 12px 30px rgba(20,23,42,.3);transition:transform .3s,opacity .3s;max-width:calc(100vw - 32px)}
+.ach-toast.show{transform:translate(-50%,0);opacity:1}
+.ach-toast.fire .ach-ico{background:#E8590C;color:#fff}.ach-toast.goal .ach-ico{background:var(--ok);color:#fff}.ach-toast small.sub{text-transform:none;letter-spacing:0;font-size:13px;margin-top:2px}
+.ach-toast .ach-ico{width:42px;height:42px;border-radius:12px;background:#F2B705;color:#14172A;display:grid;place-items:center;flex:none}.ach-toast .ach-ico .i{width:24px;height:24px}
+.ach-toast small{display:block;font-size:12px;opacity:.75;font-weight:700;letter-spacing:.02em;text-transform:uppercase}.ach-toast b{font-size:16px}
+.gc-ov{position:fixed;inset:0;z-index:400;background:rgba(15,14,35,.55);display:grid;place-items:center;padding:16px;animation:gcFade .2s ease}
+.gc-ov.out{opacity:0;transition:opacity .2s}
+@keyframes gcFade{from{opacity:0}to{opacity:1}}
+.gc-card{position:relative;overflow:hidden;width:min(440px,100%);max-height:calc(100vh - 32px);overflow-y:auto;background:var(--surface);border-radius:24px;padding:26px 22px 22px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:gcPop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes gcPop{from{transform:scale(.85) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.gc-card h2{margin:6px 0 6px;font-size:26px}.gc-card>p{margin:0 0 16px;color:var(--muted)}
+.gc-cf{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.cf{position:absolute;top:-12px;width:8px;height:13px;border-radius:2px;animation:cfFall linear forwards}
+@keyframes cfFall{to{top:105%;transform:rotate(720deg) translateX(30px)}}
+.mascot{width:110px;height:110px;display:block;margin:0 auto}
+.mascot.party{animation:mBounce 1s ease-in-out infinite}
+@keyframes mBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.gc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 18px}
+.gc-s{border:2px solid var(--c);border-radius:14px;overflow:hidden}
+.gc-s small{display:block;background:var(--c);color:#fff;font-weight:800;font-size:12px;padding:5px 4px;text-transform:uppercase;letter-spacing:.03em}
+.gc-s b{display:flex;align-items:center;justify-content:center;gap:4px;font-size:22px;padding:10px 4px;color:var(--c)}.gc-s .i{width:20px;height:20px}
+.gc-s.xp{--c:#E0A000}.gc-s.fire{--c:#E8590C}.gc-s.acc{--c:var(--ok)}
+.gc-flame{display:flex;align-items:center;justify-content:center;gap:8px;color:#E8590C;margin:0 0 14px}.gc-flame .i{width:56px;height:56px;animation:mBounce 1.2s ease-in-out infinite}.gc-flame b{font-size:52px;font-weight:800}
+.gc-ring{width:110px;height:110px;margin:0 auto 18px;border-radius:50%;background:conic-gradient(var(--ok) calc(var(--p)*1%),color-mix(in srgb,var(--ok) 15%,transparent) 0);display:grid;place-items:center}
+.gc-ring span{width:84px;height:84px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--ok)}.gc-ring .i{width:40px;height:40px}
+.gc-act{display:grid;gap:8px}.gc-act .btn{width:100%;justify-content:center;min-height:48px;font-size:16px}
+.week-strip{display:flex;justify-content:space-between;gap:4px;margin:0 0 14px}
+.ws-d{display:grid;justify-items:center;gap:3px;flex:1}
+.ws-d i{width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--muted) 14%,transparent);display:grid;place-items:center;color:#fff}
+.ws-d.on i{background:#E8590C}.ws-d i .i{width:17px;height:17px}
+.ws-d.today i{box-shadow:0 0 0 2px var(--surface),0 0 0 4px color-mix(in srgb,#E8590C 50%,transparent)}
+.ws-d small{font-size:11.5px;font-weight:700;color:var(--muted)}
+.gam-card{display:grid;gap:4px}
+.gam-card.risk{border-color:color-mix(in srgb,#E8590C 50%,var(--line))}
+.gm-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.gm-fire{display:flex;align-items:center;gap:10px;color:var(--muted)}.gm-fire>span .i{width:44px;height:44px}
+.gm-fire.lit{color:#E8590C}.gm-fire b{display:block;font-size:30px;line-height:1;color:var(--ink)}.gm-fire small{color:var(--muted);font-weight:700;font-size:13px}
+.gm-goal{display:grid;justify-items:center;gap:3px}.gm-goal>small{font-size:12px;color:var(--muted);font-weight:700}
+.gm-ring{width:62px;height:62px;border-radius:50%;background:conic-gradient(var(--ok) calc(var(--p)*1%),color-mix(in srgb,var(--ok) 16%,transparent) 0);display:grid;place-items:center}
+.gm-ring span{width:48px;height:48px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-weight:800;font-size:15px;line-height:1}
+.gm-ring small{display:block;font-size:10.5px;color:var(--muted);font-weight:700}
+.gm-msg{margin:0 0 10px;font-size:14.5px;font-weight:600}
+.gm-lv{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:12px}
+.gm-lvbar{flex:1;height:10px;border-radius:99px;background:color-mix(in srgb,#E0A000 18%,var(--surface))}.gm-lvbar i{display:block;height:100%;border-radius:99px;background:#E0A000}
+.gm-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gm-sel{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)}
+.gm-sel select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+.gm-snd{font:inherit;font-size:13px;font-weight:700;color:var(--muted);background:none;border:1px solid var(--line);border-radius:10px;padding:6px 10px;cursor:pointer}
+.gm-go{min-height:40px}
+.stop.is-next{position:relative;animation:stopPulse 1.8s ease-in-out infinite}
+.stop.is-next::before{content:attr(data-go);position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%);background:var(--ci,var(--brand));color:#fff;font-size:11px;font-weight:800;letter-spacing:.04em;padding:4px 8px;border-radius:8px;white-space:nowrap;animation:goBob 1.4s ease-in-out infinite;pointer-events:none}
+.stop.is-next::after{content:"";position:absolute;bottom:calc(100% + 3px);left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ci,var(--brand));border-bottom:0;animation:goBob 1.4s ease-in-out infinite}
+@keyframes goBob{0%,100%{translate:0 0}50%{translate:0 -4px}}
+@keyframes stopPulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 45%,transparent)}50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--c) 0%,transparent)}}
+.stops{padding-top:30px}
+.fq-q.just.ok{animation:okPop .45s ease}.fq-q.just.no{animation:noShake .4s ease}
+@keyframes okPop{0%{transform:scale(1)}40%{transform:scale(1.02)}100%{transform:scale(1)}}
+@keyframes noShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.lb-prog{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--ok);border-radius:0 3px 3px 0;transition:width .15s}
+.ga-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px}
+.ga-stats>div{border:1px solid var(--line);border-radius:14px;padding:10px 12px}.ga-stats small{display:block;color:var(--muted);font-weight:700;font-size:12.5px}
+.ga-stats b{display:flex;align-items:center;gap:4px;font-size:24px}.ga-stats .i{width:20px;height:20px;color:#E8590C}
+.ga-chart{position:relative;display:grid;grid-template-columns:repeat(14,1fr);gap:6px;align-items:end;height:130px;margin-bottom:18px;padding-bottom:20px}
+.ga-chart span{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.ga-chart i{display:block;width:100%;max-width:26px;border-radius:6px 6px 2px 2px;background:color-mix(in srgb,var(--ok) 45%,var(--surface))}.ga-chart i.hit{background:var(--ok)}
+.ga-chart small{position:absolute;bottom:-19px;font-size:11px;color:var(--muted)}
+.ga-chart em{position:absolute;left:0;right:0;border-top:2px dashed color-mix(in srgb,var(--ok) 60%,transparent);margin-bottom:20px;pointer-events:none}
+.ga-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.ga-b{border:1px solid var(--line);border-radius:16px;padding:14px 12px;text-align:center;display:grid;justify-items:center;gap:4px;opacity:.85}
+.ga-b .ga-i{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--muted) 14%,transparent);color:var(--muted);margin-bottom:4px}.ga-b .ga-i .i{width:28px;height:28px}
+.ga-b.on{opacity:1;border-color:color-mix(in srgb,#E0A000 50%,var(--line));background:color-mix(in srgb,#E0A000 6%,var(--surface))}
+.ga-b.on .ga-i{background:#F2B705;color:#14172A}
+.ga-b b{font-size:14.5px}.ga-b small{color:var(--muted);font-size:12.5px;line-height:1.35}
+.ga-ok{font-size:12px;font-weight:800;color:#B07F00}
+.ga-pr{width:100%;height:7px;border-radius:99px;background:color-mix(in srgb,var(--muted) 16%,transparent);margin-top:4px}.ga-pr i{display:block;height:100%;border-radius:99px;background:var(--ok)}
+.ga-n{font-size:12px;color:var(--muted);font-weight:700}
+@media (prefers-reduced-motion: reduce){.mascot.party,.gc-flame .i,.stop.is-next,.stop.is-next::before,.stop.is-next::after,.fq-q.just{animation:none}.gc-card{animation:none}}
+@media (max-width:600px){.top-right .lang:not(.lang-fab){display:none}.gam-chip{padding:4px 8px}}
+body:has(.gc-ov) .ach-toast,body:has(.gc-ov) .toast{opacity:0;visibility:hidden}
+.gc-card>*:not(.gc-cf){position:relative;z-index:1}
+@media print{.gam-chip,.gc-ov,.xp-float,.combo-b,.ach-toast{display:none}}
+.mg-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:14px}
+.mg-head h2{margin:0 0 4px}.mg-sub{margin:0;color:var(--muted)}
+.mg-opts{display:flex;gap:10px;flex-wrap:wrap}.mg-opts label{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)}
+.mg-opts select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 9px;max-width:220px}
+.mg-top{display:flex;align-items:center;gap:12px;margin-bottom:8px;font-weight:800;font-size:14px}
+.mg-prog{flex:1;height:12px;border-radius:99px;background:color-mix(in srgb,var(--ok) 15%,var(--surface));overflow:hidden}
+.mg-prog i{display:block;height:100%;border-radius:99px;background:var(--ok);transition:width .3s}
+.mg-miss{color:var(--muted);font-weight:700}.mg-miss b{color:var(--warn)}
+.mg-help{margin:0 0 12px;color:var(--muted);font-size:13.5px}
+.mg-cols{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:12px;align-items:start}
+.mg-col{display:grid;gap:8px}
+.mg-it{font:inherit;text-align:left;border:2px solid var(--line);border-bottom-width:4px;background:var(--surface);color:var(--ink);border-radius:14px;padding:11px 13px;cursor:pointer;line-height:1.4;transition:transform .1s,border-color .15s,background .15s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.mg-t{font-weight:800;font-size:15px}.mg-d{font-size:14px}
+.mg-it:hover:not(:disabled){border-color:color-mix(in srgb,var(--brand) 55%,var(--line))}
+.mg-it:active:not(:disabled){transform:translateY(2px);border-bottom-width:2px}
+.mg-it:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.mg-it.sel{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 10%,var(--surface))}
+.mg-d.over{border-color:var(--brand);border-style:dashed}
+.mg-it.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface));color:color-mix(in srgb,var(--ok) 70%,var(--ink));cursor:default;opacity:.75}
+.mg-it.pop{animation:okPop .35s ease}
+.mg-it.bad{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--surface));animation:noShake .4s ease}
+.mg-end{margin-top:16px;text-align:center;padding:18px;border-radius:18px;background:color-mix(in srgb,var(--ok) 8%,var(--surface));border:1px solid color-mix(in srgb,var(--ok) 35%,var(--line));display:grid;justify-items:center;gap:6px}
+.mg-end p{margin:0;color:var(--muted)}
+.mg-stars{display:flex;gap:6px}.mg-stars span{color:color-mix(in srgb,var(--muted) 35%,transparent)}.mg-stars span.on{color:#F2B705;animation:okPop .4s ease}.mg-stars .i{width:34px;height:34px}
+.mg-lesson .mg-cols{grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr)}
+@media (max-width:640px){.mg-cols,.mg-lesson .mg-cols{grid-template-columns:1fr}.mg-terms{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:var(--mg-top,118px);z-index:5;background:var(--surface);padding:8px 0;border-bottom:1px solid var(--line)}.mg-t{padding:9px 12px;font-size:14px}.mg-t.ok{display:none}}
+@media (prefers-reduced-motion: reduce){.mg-it.pop,.mg-it.bad,.mg-stars span.on{animation:none}}
 main:focus,main:focus-visible{outline:none}
 .legend i,.minibars a i{background:var(--c)}
 .btn:not(.ghost):not(.soft):not(.done){background:var(--brandi)}
@@ -4308,6 +4448,7 @@ function simFinish(app,S){
   const p=Math.round(ok/c.ids.length*100);
   S.hist=[{d:Date.now(),n:c.ids.length,c:ok,p,mode:c.mode,s:c.el}].concat(S.hist||[]).slice(0,30);
   c.ids.forEach(id=>{if(c.ans[id]!=null&&c.ord[id][c.ans[id]]!==simQ(id).a)addWrong("S"+id);});
+  gcount("sim");{const x=gx();x.c=Object.assign({},x.c,{simBest:Math.max(x.c.simBest||0,p)});state.xp=Object.assign({},x);} gainXP(10+ok*2);
   simSave(S); renderSim(app); window.scrollTo({top:0,behavior:"smooth"}); toast(sv("resScore",ok,c.ids.length,p));
 }
 function renderSimResult(app,S){
@@ -5207,7 +5348,85 @@ function deepHTML(n){
 
 /* ============ ESTADO E PERSISTÊNCIA ============ */
 const LS_KEY="trilha-ai-pm-v1";
-const BLANK=()=>({lv:2,done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null,fc:{},tplChk:{},fcq:{},fcDeck:"t",wrong:{}});
+// Questões extras: cada aula passa a ter 5 questões
+[[1, 1, ["Qual destes exemplos é um algoritmo, mas não é IA?", ["Classificar e-mails como spam a partir de exemplos", "Transcrever áudio de reuniões para texto", "Recomendar filmes com base no histórico de cada pessoa", "Ordenar uma lista de pedidos pela data de entrega"], 3, "Ordenar por data segue passos fixos e não aprende nem decide nada novo. As outras opções dependem de modelos que aprenderam padrões a partir de dados.", "Which of these is an algorithm but not AI?", ["Classifying emails as spam from examples", "Transcribing meeting audio into text", "Recommending movies from each person's history", "Sorting a list of orders by delivery date"], "Sorting by date follows fixed steps and neither learns nor decides anything new. The other options rely on models that learned patterns from data."]],
+[1, 2, ["O time diz que \"já tem a IA pronta\" porque o modelo funciona no notebook do cientista de dados. O que ainda falta para virar produto?", ["Nada, pois o modelo é a parte mais importante", "Somente publicar o modelo numa API interna para outros times", "Interface, integração, monitoramento, regras de negócio e operação", "Apenas trocar o modelo por um maior, mais caro e mais preciso"], 2, "Produto de IA é a experiência completa: modelo, dados, interface, regras, integrações e operação. Um modelo isolado ainda não entrega valor ao usuário.", "The team says \"the AI is ready\" because the model works in the data scientist's notebook. What is still missing to make it a product?", ["Nothing, since the model is the most important part", "Only publishing the model on an internal API for other teams", "Interface, integration, monitoring, business rules and operations", "Just swapping the model for a bigger, pricier and more accurate one"], "An AI product is the full experience: model, data, interface, rules, integrations and operations. A model on its own does not yet deliver value to users."]],
+[2, 1, ["O que foi a Conferência de Dartmouth, em 1956?", ["A publicação do artigo que apresentou o Transformer", "O encontro que consolidou a IA como campo de pesquisa", "O primeiro computador a vencer um campeão mundial de xadrez", "A criação do primeiro chatbot comercial vendido a empresas"], 1, "Dartmouth reuniu pesquisadores como McCarthy, Minsky, Shannon e Rochester e consolidou o termo inteligência artificial como área de estudo.", "What was the 1956 Dartmouth workshop?", ["The publication of the paper that introduced the Transformer", "The meeting that established AI as a research field", "The first computer to beat a world chess champion", "The launch of the first commercial chatbot sold to businesses"], "Dartmouth gathered researchers such as McCarthy, Minsky, Shannon and Rochester and established artificial intelligence as a field of study."]],
+[2, 2, ["Os dois invernos da IA tiveram um padrão em comum. Qual?", ["Promessas maiores que os resultados, seguidas de corte de investimento", "Excesso de dados disponíveis para treinar modelos", "Proibição legal de pesquisas com redes neurais em vários países", "Falta total de interesse acadêmico e de publicações sobre o tema"], 0, "Nos dois casos, demonstrações impressionantes geraram promessas grandes demais. Quando os resultados ficaram abaixo do esperado, o financiamento caiu.", "The two AI winters shared a common pattern. Which one?", ["Promises bigger than results, followed by funding cuts", "Too much data available to train models", "A legal ban on neural network research in several countries", "A total lack of academic interest and publications on the topic"], "In both cases, impressive demos led to promises that were too big. When results fell short, funding dropped."]],
+[3, 1, ["Num sistema especialista, qual é o papel do motor de inferência?", ["Gerar texto livre a partir de exemplos", "Coletar dados de usuários para treinar uma rede neural", "Aplicar as regras aos fatos para chegar a conclusões", "Armazenar os documentos da empresa para busca"], 2, "A base de conhecimento guarda fatos e regras; o motor de inferência encadeia essas regras para chegar a uma conclusão.", "In an expert system, what does the inference engine do?", ["Generates free text from examples it has seen", "Collects user data to train a neural network", "Applies rules to the facts to reach conclusions", "Stores company documents for search"], "The knowledge base holds facts and rules; the inference engine chains those rules to reach a conclusion."]],
+[3, 3, ["Um time quer usar um LLM para ler pedidos de reembolso escritos livremente e decidir se o cliente tem direito. Qual desenho é mais seguro?", ["O LLM lê o pedido e decide sozinho, sem nenhuma regra auditável", "Um humano lê todos os pedidos e o LLM só resume depois", "O LLM extrai os fatos e regras determinísticas aplicam a política", "Regras de palavras-chave fazem toda a análise, sem usar o LLM"], 2, "O padrão híbrido usa o LLM no que ele faz bem, entender texto livre, e deixa a decisão com regras auditáveis. A última opção é segura, mas não aproveita a automação.", "A team wants an LLM to read free-text refund requests and decide whether the customer is eligible. Which design is safest?", ["The LLM reads the request and decides alone, with no auditable rules", "A person reads every request and the LLM only summarizes later", "The LLM extracts the facts and deterministic rules apply the policy", "Keyword rules do the whole analysis, without using the LLM"], "The hybrid pattern uses the LLM for what it does well, understanding free text, and leaves the decision to auditable rules. The last option is safe but wastes the automation."]],
+[4, 1, ["O que é o efeito ELIZA?", ["Um erro técnico em que o chatbot repete a mesma frase várias vezes seguidas", "Uma lei que obriga chatbots a se identificarem", "A tendência de atribuir compreensão a um sistema só porque ele conversa bem", "Uma técnica de compressão para reduzir o custo de tokens em conversas longas"], 2, "Mesmo sendo apenas regras de texto, a ELIZA fazia pessoas acharem que eram compreendidas. Fluência na conversa não prova competência.", "What is the ELIZA effect?", ["A technical bug where the chatbot repeats the same sentence several times in a row", "A law requiring chatbots to identify themselves", "The tendency to credit a system with understanding just because it chats well", "A compression technique for cutting token costs in long conversations"], "Even though it was only text rules, ELIZA made people feel understood. Fluent conversation does not prove competence."]],
+[4, 2, ["Um assistente responde com muita confiança mesmo quando não sabe. Qual métrica ajuda a medir o risco disso?", ["Tempo médio que o usuário leva para digitar a pergunta", "Quantidade de emojis nas respostas", "Taxa de respostas erradas dadas com alta confiança", "Número total de mensagens trocadas por dia no assistente"], 2, "O perigo está nos erros que parecem certos, porque o usuário não tem motivo para checar. Medir erros com alta confiança mostra esse risco diretamente.", "An assistant answers with high confidence even when it does not know. Which metric helps measure that risk?", ["Average time users take to type their question", "Number of emojis in the answers", "Rate of wrong answers given with high confidence", "Total number of messages exchanged per day in the assistant"], "The danger lies in errors that look right, because users have no reason to check them. Measuring confident errors shows that risk directly."]],
+[5, 1, ["Qual destas classificações de IA é feita por abordagem técnica?", ["Simbólica, machine learning e deep learning", "Alto risco, risco limitado e risco mínimo, pelo AI Act", "Saúde, varejo, finanças e setor público", "IA estreita, IA geral e superinteligência artificial"], 0, "Os tipos de IA se organizam em eixos diferentes: capacidade (estreita ou geral), abordagem (simbólica ou aprendizado), aplicação (setor) e risco regulatório.", "Which of these AI classifications is by technical approach?", ["Symbolic, machine learning and deep learning", "High, limited and minimal risk under the AI Act", "Healthcare, retail, finance and public sector", "Narrow AI, general AI and artificial superintelligence"], "AI types sit on different axes: capability (narrow or general), approach (symbolic or learning), application (industry) and regulatory risk."]],
+[5, 2, ["Por que é útil tratar os tipos de IA como eixos, e não como caixas?", ["Porque as categorias de IA mudam toda semana e caixas fixas ficam desatualizadas rápido", "Porque eixos facilitam esconder limitações do produto", "Porque cada sistema de IA só pode pertencer a uma única categoria por vez, sem sobreposição", "Porque um mesmo sistema pode ser, ao mesmo tempo, deep learning, IA estreita e de alto risco"], 3, "Um sistema de triagem médica, por exemplo, usa deep learning, é IA estreita e pode ser de alto risco. Pensar em eixos evita confusão entre conceitos.", "Why is it useful to treat AI types as axes rather than boxes?", ["Because AI categories change every week and fixed boxes go stale quickly", "Because axes make it easier to hide product limitations", "Because each AI system can belong to only one category at a time, with no overlap", "Because one system can be deep learning, narrow AI and high risk at once"], "A medical triage system, for example, uses deep learning, is narrow AI and may be high risk. Thinking in axes avoids mixing concepts."]],
+[6, 1, ["Um modelo aprende a classificar fotos de produtos a partir de milhares de imagens já rotuladas. Que tipo de aprendizado é esse?", ["Simbólico", "Por reforço", "Não supervisionado", "Supervisionado"], 3, "Quando há exemplos com a resposta certa (rótulos), o modelo aprende de forma supervisionada.", "A model learns to classify product photos from thousands of already labeled images. What kind of learning is this?", ["Symbolic", "Reinforcement", "Unsupervised", "Supervised"], "When there are examples with the right answer (labels), the model learns in a supervised way."]],
+[6, 2, ["O time quer agrupar clientes em perfis de comportamento, sem categorias definidas antes. Qual abordagem se encaixa?", ["Aprendizado por reforço com recompensas", "Aprendizado supervisionado com rótulos de cancelamento", "Aprendizado não supervisionado, como clustering", "Um sistema especialista com regras fixas"], 2, "Sem rótulos e com o objetivo de descobrir grupos, o caminho é o aprendizado não supervisionado. Depois, o time interpreta e nomeia os grupos.", "The team wants to group customers into behavior profiles without predefined categories. Which approach fits?", ["Reinforcement learning with rewards", "Supervised learning with churn labels", "Unsupervised learning, such as clustering", "An expert system with fixed rules"], "With no labels and the goal of discovering groups, the way to go is unsupervised learning. The team then interprets and names the groups."]],
+[7, 1, ["Para que serve o conjunto de teste?", ["Guardar uma cópia de segurança dos dados", "Escolher os hiperparâmetros durante o desenvolvimento do modelo", "Treinar o modelo com mais exemplos e ajustar seus parâmetros", "Medir o desempenho final em dados que o modelo nunca viu"], 3, "O teste fica separado até o fim para dar uma estimativa honesta de como o modelo vai se comportar com dados novos.", "What is the test set for?", ["Keeping a backup copy of the data", "Choosing hyperparameters while the model is being developed", "Training the model with more examples and tuning its parameters", "Measuring final performance on data the model has never seen"], "The test set stays aside until the end to give an honest estimate of how the model will behave on new data."]],
+[7, 3, ["Um modelo de risco usa a coluna \"data do cancelamento\" para prever quem vai cancelar e acerta 99%. O que provavelmente aconteceu?", ["O conjunto de teste estava pequeno demais", "Vazamento de dados: a coluna só existe depois do evento previsto", "O modelo é excelente e pode ir direto para produção sem ajustes", "Faltou treinar o modelo por mais tempo e com mais exemplos"], 1, "Se a informação só existe depois do resultado, o modelo está \"colando\". Em produção essa coluna não estará disponível e o desempenho vai despencar.", "A risk model uses the \"cancellation date\" column to predict who will cancel and scores 99%. What most likely happened?", ["The test set was too small", "Data leakage: the column only exists after the predicted event", "The model is excellent and can go straight to production as is", "It needed more training time and more examples"], "If the information only exists after the outcome, the model is cheating. In production that column will not be available and performance will collapse."]],
+[8, 1, ["Na matriz de confusão de um detector de fraude, o que é um falso positivo?", ["Uma fraude que o modelo não detectou", "Uma compra legítima aprovada corretamente", "Uma fraude corretamente detectada", "Uma compra legítima marcada como fraude"], 3, "Falso positivo é o alarme falso: o modelo disse sim (fraude), mas a resposta real era não.", "In a fraud detector's confusion matrix, what is a false positive?", ["A fraud the model missed", "A legitimate purchase correctly approved", "A fraud correctly detected", "A legitimate purchase flagged as fraud"], "A false positive is a false alarm: the model said yes (fraud), but the real answer was no."]],
+[8, 2, ["Ao subir o limite de decisão (threshold) de um classificador, o que costuma acontecer?", ["A precisão tende a subir e o recall tende a cair", "O recall tende a subir e a precisão tende a cair", "Precisão e recall tendem a subir juntos, na mesma medida", "Nada muda, pois o modelo é o mesmo"], 0, "Com um limite mais alto, o modelo marca menos casos: os que marca tendem a estar certos (mais precisão), mas ele deixa passar mais casos reais (menos recall).", "When you raise a classifier's decision threshold, what usually happens?", ["Precision tends to go up and recall tends to go down", "Recall tends to go up and precision tends to go down", "Precision and recall tend to rise together by the same amount", "Nothing changes, since the model is the same"], "With a higher threshold the model flags fewer cases: the ones it flags tend to be right (higher precision), but it misses more real cases (lower recall)."]],
+[9, 1, ["O que é um modelo de fundação?", ["Um modelo pequeno criado para resolver uma única tarefa muito específica do negócio", "Um modelo grande treinado com muitos dados, que serve de base para várias tarefas", "Um conjunto de regras escrito por especialistas", "A primeira versão de um produto de IA lançada para validar a ideia com usuários"], 1, "Modelos de fundação são treinados de forma ampla e depois adaptados por prompt, RAG ou fine-tuning para muitas aplicações diferentes.", "What is a foundation model?", ["A small model built to solve one very specific business task", "A large model trained on lots of data that serves as a base for many tasks", "A set of rules written by experts", "The first version of an AI product launched to validate the idea with users"], "Foundation models are trained broadly and then adapted through prompts, RAG or fine-tuning for many different applications."]],
+[9, 2, ["Qual destas tarefas combina melhor com IA generativa?", ["Calcular o valor exato do imposto de cada nota fiscal emitida pela empresa", "Validar se o CPF informado no cadastro tem dígitos verificadores corretos", "Rascunhar respostas para tickets de suporte que um atendente revisa", "Somar o total de vendas do mês"], 2, "IA generativa brilha ao criar texto, imagens e código, especialmente com revisão humana. Cálculos exatos e validações formais funcionam melhor com regras.", "Which of these tasks fits generative AI best?", ["Calculating the exact tax on every invoice the company issues", "Checking whether the ID number entered at sign-up has valid check digits", "Drafting replies to support tickets that an agent reviews", "Adding up the month's total sales"], "Generative AI shines at creating text, images and code, especially with human review. Exact calculations and formal validations work better with rules."]],
+[10, 1, ["O que é a janela de contexto de um modelo?", ["O tempo que o modelo leva para gerar a resposta completa", "A tela onde o usuário digita a pergunta", "O número de usuários que o modelo atende ao mesmo tempo no produto", "A quantidade máxima de tokens que ele consegue considerar de uma vez"], 3, "A janela de contexto limita quanto texto (instruções, histórico e documentos) cabe numa única chamada ao modelo.", "What is a model's context window?", ["The time the model takes to generate the full answer", "The screen where the user types the question", "The number of users the model serves at the same time in the product", "The maximum number of tokens it can consider at once"], "The context window limits how much text (instructions, history and documents) fits into a single call to the model."]],
+[10, 2, ["Por que um LLM pode afirmar algo falso com total confiança?", ["Porque ele consulta a internet em tempo real e às vezes pega fontes erradas", "Porque a temperatura zero sempre gera erros", "Porque gera o token mais provável, e provável não é o mesmo que verdadeiro", "Porque foi programado para inventar uma resposta sempre que não sabe"], 2, "O modelo aprende padrões de linguagem e escolhe continuações prováveis. Isso produz texto fluente, mas não garante que o conteúdo seja verdadeiro.", "Why can an LLM state something false with full confidence?", ["Because it searches the internet in real time and sometimes picks bad sources", "Because temperature zero always produces errors", "Because it generates the most likely next token, and likely is not the same as true", "Because it was programmed to make up an answer whenever it does not know"], "The model learns language patterns and picks likely continuations. That produces fluent text but does not guarantee the content is true."]],
+[11, 1, ["O que um embedding faz com um texto?", ["Traduz o texto para inglês antes de enviar ao modelo, para melhorar a resposta", "Transforma o texto numa lista de números em que significados parecidos ficam próximos", "Comprime o arquivo de texto para que ele ocupe menos espaço no banco de dados", "Corrige erros de ortografia do texto"], 1, "Embeddings representam significado como vetores. Assim, \"cancelar assinatura\" e \"encerrar plano\" ficam perto, mesmo sem palavras em comum.", "What does an embedding do to a piece of text?", ["Translates the text into English before sending it to the model to improve answers", "Turns it into a list of numbers where similar meanings sit close together", "Compresses the text file so it takes up less space in the database", "Fixes the text's spelling mistakes"], "Embeddings represent meaning as vectors. That way \"cancel subscription\" and \"end my plan\" sit close together even without shared words."]],
+[11, 2, ["Quando a busca híbrida costuma ser a melhor escolha?", ["Quando a base de conhecimento tem só dez documentos curtos e todos sobre o mesmo tema", "Quando a busca não é usada por nenhum usuário do produto", "Quando os usuários misturam perguntas por significado com códigos e nomes exatos", "Quando todos os documentos estão em imagens escaneadas, sem nenhum texto extraído"], 2, "A busca vetorial entende significado e a lexical acerta termos exatos. Combinar as duas cobre os dois tipos de pergunta.", "When is hybrid search usually the best choice?", ["When the knowledge base has only ten short documents, all on the same topic", "When no user ever uses the product's search", "When users mix meaning-based questions with exact codes and names", "When every document is a scanned image with no extracted text"], "Vector search understands meaning and lexical search nails exact terms. Combining both covers both kinds of question."]],
+[12, 1, ["O que caracteriza um modelo open-weight?", ["O uso é sempre gratuito e sem nenhuma restrição de licença comercial", "Só pode ser acessado pela API do fornecedor", "Os pesos podem ser baixados e rodados na sua própria infraestrutura", "O código de treino, todos os dados e a receita completa são públicos"], 2, "Open-weight libera os pesos, mas não necessariamente os dados, o código de treino ou uma licença livre. Por isso é preciso ler a licença.", "What defines an open-weight model?", ["Use is always free with no commercial license restrictions at all", "It can only be accessed through the vendor's API", "Its weights can be downloaded and run on your own infrastructure", "Its training code, all its data and the full recipe are public"], "Open-weight releases the weights, but not necessarily the data, the training code or a permissive license. That is why you must read the license."]],
+[12, 2, ["Antes de usar um modelo aberto num produto comercial, o que o PM deve checar primeiro?", ["Quantas estrelas e contribuidores o repositório do modelo tem no GitHub", "A licença, incluindo limites de uso comercial e de número de usuários", "Se o modelo tem nome em inglês", "Se o modelo aparece no topo dos rankings públicos de benchmarks atuais"], 1, "Algumas licenças de modelos abertos restringem usos, setores ou empresas acima de certo tamanho. Ignorar isso vira risco jurídico.", "Before using an open model in a commercial product, what should the PM check first?", ["How many stars and contributors the model's GitHub repository has", "The license, including limits on commercial use and user counts", "Whether the model has an English name", "Whether the model sits at the top of current public benchmark rankings"], "Some open model licenses restrict uses, industries or companies above a certain size. Ignoring that becomes a legal risk."]],
+[13, 1, ["Qual é a principal vantagem de usar um modelo por API de um fornecedor?", ["Pagar um custo fixo mensal, independente do volume de uso", "Poder alterar os pesos do modelo livremente", "Ter controle total sobre onde os dados ficam guardados", "Começar rápido, sem cuidar de servidores e GPUs"], 3, "Pela API, o fornecedor cuida da infraestrutura e você paga pelo uso. Em troca, há menos controle sobre hospedagem e personalização profunda.", "What is the main advantage of using a model through a vendor's API?", ["Paying a fixed monthly cost regardless of usage volume", "Being free to change the model's weights", "Full control over where the data is stored", "Starting fast, without managing servers and GPUs"], "With an API the vendor runs the infrastructure and you pay per use. In return, you get less control over hosting and deep customization."]],
+[13, 2, ["Um banco quer usar IA, mas a área de segurança proíbe que dados saiam da rede da empresa. Qual caminho atende?", ["Enviar os dados anonimizados por e-mail para o fornecedor processar", "Rodar um modelo open-weight em infraestrutura própria ou nuvem privada", "Usar a versão gratuita de um chatbot público com uma conta corporativa", "Desistir de IA, pois não há alternativa"], 1, "Modelos open-weight podem rodar dentro do ambiente controlado pela empresa, o que atende requisitos rígidos de localização e controle de dados.", "A bank wants to use AI, but security forbids data leaving the company network. Which path works?", ["Emailing anonymized data to the vendor for processing", "Running an open-weight model on its own infrastructure or private cloud", "Using the free version of a public chatbot with a corporate account", "Giving up on AI, since there is no alternative"], "Open-weight models can run inside the company's controlled environment, which meets strict data location and control requirements."]],
+[14, 1, ["Por que tokens de saída costumam pesar mais na conta?", ["Porque a saída é cobrada por caractere", "Porque normalmente custam mais por token que os de entrada", "Porque sempre são gerados em maior número que os tokens de entrada", "Porque os fornecedores cobram apenas pelos tokens de saída"], 1, "A maioria dos fornecedores cobra mais caro pelo token gerado do que pelo token lido. Respostas longas aumentam o custo rapidamente.", "Why do output tokens often weigh more on the bill?", ["Because output is billed per character", "Because they usually cost more per token than input tokens", "Because they are always generated in larger numbers than input tokens", "Because vendors charge only for output tokens"], "Most vendors charge more for each generated token than for each token read. Long answers raise costs quickly."]],
+[14, 3, ["Com volume baixo e irregular, por que reservar GPUs próprias costuma sair mais caro que pagar por consumo?", ["Porque GPUs próprias são sempre mais lentas que as dos fornecedores de API", "Porque você paga pela capacidade ociosa mesmo quando ninguém usa", "Porque a nuvem proíbe volumes baixos", "Porque a cobrança por consumo não inclui o custo de tokens de entrada"], 1, "Capacidade reservada tem custo fixo. Com pouco uso, esse custo é dividido por poucas requisições e o custo por tarefa dispara.", "With low, irregular volume, why does reserving your own GPUs usually cost more than paying per use?", ["Because your own GPUs are always slower than API vendors' GPUs", "Because you pay for idle capacity even when nobody uses it", "Because the cloud forbids low volumes", "Because pay-per-use pricing does not include input token costs"], "Reserved capacity has a fixed cost. With little use, that cost is split across few requests and the cost per task soars."]],
+[15, 1, ["O que é roteamento de modelos?", ["Enviar cada pedido para o modelo mais adequado em custo e qualidade", "Treinar um único modelo grande para atender todas as tarefas da empresa", "Trocar de fornecedor de modelo todo mês para conseguir o menor preço", "Mostrar ao usuário qual modelo respondeu"], 0, "Um roteador manda tarefas simples para modelos menores e baratos e as difíceis para modelos maiores, equilibrando custo e qualidade.", "What is model routing?", ["Sending each request to the best-fit model on cost and quality", "Training one large model to handle every task in the company", "Switching model vendors every month to get the lowest price", "Showing users which model answered"], "A router sends simple tasks to small, cheap models and hard ones to bigger models, balancing cost and quality."]],
+[15, 2, ["Um benchmark público coloca o modelo A à frente do B. O que o PM deve fazer antes de decidir?", ["Perguntar qual modelo é mais famoso", "Escolher o mais barato e ajustar o prompt depois do lançamento", "Escolher o modelo A, pois benchmarks públicos são definitivos", "Testar os dois com exemplos reais da própria tarefa"], 3, "Benchmarks medem capacidade geral. O que importa é o desempenho no seu caso de uso, medido com seus dados e critérios.", "A public benchmark ranks model A ahead of model B. What should the PM do before deciding?", ["Ask which model is more famous", "Pick the cheapest and tune the prompt after launch", "Pick model A, since public benchmarks are definitive", "Test both with real examples from the actual task"], "Benchmarks measure general ability. What matters is performance on your use case, measured with your data and criteria."]],
+[16, 1, ["O que é few-shot num prompt?", ["Incluir alguns exemplos de entrada e saída para o modelo seguir o padrão", "Pedir que o modelo responda em poucas palavras para economizar tokens", "Treinar o modelo com poucos dados rotulados antes de colocar em produção", "Fazer poucas chamadas ao modelo por dia para reduzir custo"], 0, "Exemplos no prompt mostram ao modelo o formato e o estilo esperados, sem precisar de treino adicional.", "What is few-shot in a prompt?", ["Including a few input and output examples for the model to follow", "Asking the model to answer in few words to save tokens", "Training the model on little labeled data before putting it into production", "Making few model calls per day to cut costs"], "Examples in the prompt show the model the expected format and style without any extra training."]],
+[16, 2, ["Por que versionar prompts como se fossem código?", ["Porque prompts versionados consomem menos tokens a cada chamada", "Para impedir que pessoas de fora do time leiam ou alterem os prompts", "Para saber o que mudou, comparar versões e voltar atrás se piorar", "Porque o modelo exige um número de versão"], 2, "Pequenas mudanças no prompt alteram o comportamento. Com versão e histórico, dá para medir o impacto e fazer rollback.", "Why version prompts as if they were code?", ["Because versioned prompts use fewer tokens on each call", "To stop people outside the team from reading or changing prompts", "To know what changed, compare versions and roll back if it gets worse", "Because the model requires a version number"], "Small prompt changes alter behavior. With versions and history you can measure impact and roll back."]],
+[17, 1, ["O que é o orçamento de contexto?", ["O limite de horas que o time de IA pode dedicar ao projeto em cada sprint", "Dividir o espaço do contexto entre instruções, histórico, documentos e ferramentas", "O prazo para entregar o projeto", "O valor total gasto com o fornecedor do modelo a cada mês, por produto e por área"], 1, "A janela tem limite e cada token custa. Distribuir bem o espaço entre os tipos de informação melhora qualidade e custo.", "What is the context budget?", ["The cap on hours the AI team can spend on the project each sprint", "Splitting context space across instructions, history, documents and tools", "The deadline for delivering the project", "The total spent with the model vendor each month, by product and team"], "The window is limited and every token costs money. Splitting the space well across information types improves quality and cost."]],
+[17, 2, ["Um agente de longa duração começa a esquecer decisões tomadas no início da tarefa. O que ajuda?", ["Apagar todo o histórico a cada mensagem para economizar espaço na janela", "Trocar o idioma da conversa", "Aumentar a temperatura do modelo para ele variar mais as respostas", "Resumir e guardar as decisões importantes num estado ou memória persistente"], 3, "Compactar o histórico em resumos e manter um estado explícito preserva o que importa sem lotar a janela de contexto.", "A long-running agent starts forgetting decisions made early in the task. What helps?", ["Clearing the whole history after each message to save window space", "Switching the conversation language", "Raising the model's temperature so its answers vary more", "Summarizing and storing key decisions in persistent state or memory"], "Compacting history into summaries and keeping explicit state preserves what matters without filling the context window."]],
+[18, 1, ["No RAG, o que é chunking?", ["Juntar várias perguntas do usuário numa só chamada ao modelo", "Apagar os documentos antigos da base antes de cada nova indexação", "Dividir os documentos em pedaços menores antes de indexar", "Traduzir os documentos para inglês antes da busca"], 2, "Os pedaços são o que a busca recupera. O tamanho e o corte dos chunks influenciam muito a qualidade da resposta.", "In RAG, what is chunking?", ["Merging several user questions into a single model call", "Deleting old documents from the base before each new indexing run", "Splitting documents into smaller pieces before indexing", "Translating documents into English before search"], "Chunks are what search retrieves. Their size and boundaries strongly affect answer quality."]],
+[18, 2, ["Por que pedir citações das fontes nas respostas de um RAG?", ["Para deixar a resposta mais longa e com aparência mais profissional", "Para reduzir o custo por token, já que citações são mais baratas", "Para esconder que a resposta veio de um modelo", "Para o usuário conferir a informação e o time diagnosticar erros"], 3, "Citações aumentam a confiança e mostram de onde veio cada afirmação. Quando há erro, fica claro se o problema foi na busca ou na geração.", "Why ask for source citations in RAG answers?", ["To make the answer longer and look more professional", "To lower the cost per token, since citations are cheaper", "To hide that the answer came from a model", "So users can verify the facts and the team can diagnose errors"], "Citations build trust and show where each claim came from. When there is an error, it is clear whether search or generation failed."]],
+[19, 1, ["Qual é geralmente o primeiro passo para melhorar a qualidade de um assistente?", ["Fazer fine-tuning logo no início do projeto", "Treinar um modelo próprio do zero com dados", "Contratar mais GPUs", "Melhorar o prompt e medir com exemplos"], 3, "Melhorar o prompt é rápido e barato. Só depois de esgotar essa alavanca vale considerar RAG ou fine-tuning.", "What is usually the first step to improve an assistant's quality?", ["Fine-tuning right at the start of the project", "Training your own model from scratch on data", "Buying more GPUs", "Improving the prompt and measuring with examples"], "Improving the prompt is fast and cheap. Only after exhausting that lever is it worth considering RAG or fine-tuning."]],
+[19, 3, ["O assistente precisa responder com o tom da marca e também com dados de estoque que mudam a cada hora. Qual combinação faz sentido?", ["Só fine-tuning, refeito a cada hora com os dados novos de estoque", "Só RAG, sem nenhuma instrução de tom", "Só um prompt longo com o estoque copiado à mão várias vezes ao dia", "Fine-tuning ou prompt para o tom e RAG ou ferramenta para o estoque"], 3, "Fine-tuning e prompt ajustam comportamento e estilo; RAG e ferramentas trazem dados atualizados. Problemas diferentes pedem alavancas diferentes.", "The assistant must answer in the brand's voice and also with stock data that changes every hour. Which combination makes sense?", ["Only fine-tuning, redone every hour with new stock data", "Only RAG, with no voice instructions", "Only a long prompt with stock pasted by hand several times a day", "Fine-tuning or prompt for voice and RAG or a tool for stock"], "Fine-tuning and prompts shape behavior and style; RAG and tools bring fresh data. Different problems call for different levers."]],
+[20, 1, ["Qual é a principal característica de um agente de IA?", ["O modelo decide os próximos passos e usa ferramentas até cumprir um objetivo", "Ele não usa nenhum modelo de linguagem", "Ele responde apenas perguntas frequentes pré-cadastradas pelo time", "Ele sempre segue um fluxo fixo de etapas definido no código pelo time"], 0, "No workflow o caminho é definido no código. No agente, o modelo escolhe o que fazer a cada passo, o que traz flexibilidade e também mais risco.", "What is the main trait of an AI agent?", ["The model decides the next steps and uses tools until it meets a goal", "It uses no language model at all", "It only answers FAQs the team has preloaded", "It always follows a fixed sequence of steps the team defined in code"], "In a workflow the path is set in code. In an agent, the model chooses what to do at each step, which brings flexibility and also more risk."]],
+[20, 2, ["Um usuário vê uma interface de chat. Isso significa que por trás existe um agente?", ["Sim, toda interface de chat é um agente que decide sozinho os passos", "Sim, se o chat tiver nome de pessoa e responder em linguagem natural", "Não, a mesma tela pode esconder um chatbot, um workflow ou um agente", "Não, agentes nunca usam chat"], 2, "Experiência e arquitetura são coisas diferentes. A mesma tela de chat pode esconder um fluxo fixo simples ou um agente autônomo.", "A user sees a chat interface. Does that mean there is an agent behind it?", ["Yes, every chat interface is an agent that decides its own steps", "Yes, if the chat has a human name and answers in natural language", "No, the same screen can hide a chatbot, a workflow or an agent", "No, agents never use chat"], "Experience and architecture are different things. The same chat screen may hide a simple fixed flow or an autonomous agent."]],
+[21, 1, ["Por que todo agente precisa de uma condição de parada clara?", ["Para dispensar testes antes do lançamento", "Para responder mais rápido na primeira mensagem de cada conversa", "Para não ficar em loop gastando tokens e executando ações sem fim", "Para poder usar mais ferramentas ao mesmo tempo sem conflito entre elas"], 2, "Sem saber quando terminou, o agente pode repetir ações, gastar muito e causar efeitos indesejados.", "Why does every agent need a clear stopping condition?", ["To skip testing before launch", "To answer faster on the first message of each conversation", "So it does not loop, burning tokens and running actions endlessly", "To use more tools at the same time without conflicts between them"], "Without knowing when it is done, an agent may repeat actions, spend a lot and cause unwanted effects."]],
+[21, 2, ["O que significa aplicar o princípio do menor privilégio a um agente?", ["Usar o modelo mais barato disponível para reduzir o custo das ações", "Dar ao agente só as permissões e ferramentas necessárias para a tarefa", "Liberar acesso a todos os sistemas para dar ao agente mais flexibilidade", "Limitar o número de usuários do produto"], 1, "Quanto menos o agente pode fazer, menor o estrago possível em caso de erro ou ataque, como uma prompt injection.", "What does applying least privilege to an agent mean?", ["Using the cheapest model available to cut the cost of actions", "Giving the agent only the permissions and tools the task needs", "Granting access to every system to give the agent more flexibility", "Limiting the number of product users"], "The less the agent can do, the smaller the possible damage after an error or an attack such as prompt injection."]],
+[22, 1, ["Quando um fluxo fixo é melhor que um agente autônomo?", ["Quando a tarefa muda completamente a cada pedido", "Quando as etapas são sempre as mesmas e previsíveis", "Quando o objetivo é explorar caminhos desconhecidos", "Quando não há nenhuma regra de negócio"], 1, "Se o caminho é conhecido, o fluxo fixo é mais barato, rápido, previsível e fácil de testar.", "When is a fixed flow better than an autonomous agent?", ["When the task changes completely with each request", "When the steps are always the same and predictable", "When the goal is to explore unknown paths", "When there are no business rules at all"], "If the path is known, a fixed flow is cheaper, faster, more predictable and easier to test."]],
+[22, 3, ["Num sistema com orquestrador e subagentes, qual é o principal custo escondido?", ["Mais tokens, mais latência e mais pontos de falha para depurar", "O orquestrador proíbe o uso de RAG nos subagentes", "Os subagentes não conseguem usar ferramentas externas nem APIs", "Os resultados não podem ser avaliados"], 0, "Cada subagente consome tokens e adiciona etapas. A qualidade pode subir, mas o custo e a complexidade de operação sobem junto.", "In an orchestrator-and-subagents system, what is the main hidden cost?", ["More tokens, more latency and more failure points to debug", "The orchestrator forbids RAG in the subagents", "Subagents cannot use any external tools or APIs at all", "Results cannot be evaluated"], "Each subagent consumes tokens and adds steps. Quality may rise, but cost and operational complexity rise with it."]],
+[23, 1, ["Qual é a diferença entre comprar um agente pronto e usar uma plataforma para construir agentes?", ["O agente pronto sempre custa mais", "A plataforma nunca exige configuração e o agente pronto sempre exige", "Não há diferença real, os dois nomes descrevem o mesmo tipo de produto", "O pronto resolve uma tarefa definida; a plataforma dá blocos para criar"], 3, "Agentes prontos entregam valor rápido num caso específico. Plataformas dão flexibilidade, mas exigem construção, avaliação e operação pelo seu time.", "What is the difference between buying a ready-made agent and using a platform to build agents?", ["The ready-made agent always costs more", "The platform never needs setup, while the ready-made agent always does", "There is no real difference, both names describe the same kind of product", "The ready-made one solves a set task; a platform gives blocks to build"], "Ready-made agents deliver value quickly for a specific case. Platforms add flexibility but require your team to build, evaluate and operate."]],
+[23, 2, ["Num piloto de um agente de programação, qual métrica mostra melhor o valor real?", ["Número de linhas de código geradas pelo agente", "Quantas vezes por dia o time abriu o agente no editor", "Quantidade de prompts escritos pelo time", "Mudanças aceitas e entregues, com qualidade mantida"], 3, "Linhas geradas não dizem se o código foi útil. O que importa é o trabalho entregue com qualidade e o tempo economizado.", "In a coding agent pilot, which metric best shows real value?", ["Number of lines of code the agent generated", "How many times a day the team opened the agent in the editor", "Number of prompts the team wrote", "Changes accepted and shipped, with quality maintained"], "Generated lines do not say whether the code was useful. What matters is work shipped with quality and time saved."]],
+[24, 1, ["O que é um golden set?", ["A lista dos clientes mais importantes, usada para priorizar o roadmap do produto", "Um conjunto de exemplos revisados, com a resposta esperada, usado para comparar versões", "Um pacote de prompts vendido por fornecedores", "O melhor modelo disponível no mercado, escolhido como referência de qualidade"], 1, "O golden set é a régua de qualidade: sempre que algo muda, você roda os mesmos casos e compara os resultados.", "What is a golden set?", ["The list of top customers, used to prioritize the product roadmap", "Reviewed examples with expected answers, used to compare versions", "A bundle of prompts sold by vendors", "The best model on the market, chosen as the quality reference"], "The golden set is the quality yardstick: whenever something changes, you run the same cases and compare the results."]],
+[24, 2, ["Quais casos não podem faltar num golden set?", ["Casos comuns, casos difíceis e casos de risco, como pedidos fora da política", "Só casos com respostas longas", "Só os casos em que o modelo atual já acerta, para provar que ele funciona", "Só perguntas criadas pelo time de engenharia durante o desenvolvimento"], 0, "Um bom golden set representa o uso real e inclui os casos que mais doem quando dão errado. Se só tiver casos fáceis, a nota engana.", "Which cases must a golden set include?", ["Common cases, hard cases and risky ones, such as out-of-policy requests", "Only cases with long answers", "Only cases the current model already gets right, to prove it works", "Only questions created by engineering during development"], "A good golden set reflects real use and includes the cases that hurt most when wrong. If it only has easy cases, the score misleads."]],
+[25, 1, ["O que é um SLO?", ["Um tipo de ataque de segurança", "Uma meta interna de qualidade do serviço, como 99,9% de disponibilidade", "Um contrato com multa assinado com o cliente, que define o nível de serviço", "O indicador medido em produção, como o tempo de resposta ou a taxa de erro"], 1, "O SLO define o nível de serviço que o time se compromete a manter. O SLI é o indicador medido e o SLA é o compromisso contratual.", "What is an SLO?", ["A type of security attack", "An internal service quality target, such as 99.9% uptime", "A contract with penalties signed with the customer that defines service levels", "The indicator measured in production, such as response time or error rate"], "The SLO sets the service level the team commits to. The SLI is the measured indicator and the SLA is the contractual commitment."]],
+[25, 2, ["Uma nova versão do prompt aumentou as reclamações logo após o lançamento. Qual prática permite reagir em minutos?", ["Esperar o próximo ciclo de planejamento para priorizar a correção", "Aumentar o timeout das chamadas ao modelo para reduzir os erros", "Ter versionamento e um rollback rápido para a versão anterior", "Desligar o produto inteiro"], 2, "Com versões registradas e rollback pronto, o time volta ao estado anterior rapidamente e investiga com calma.", "A new prompt version increased complaints right after launch. Which practice lets you react within minutes?", ["Waiting for the next planning cycle to prioritize the fix", "Raising the model call timeout to reduce errors", "Having versioning and a fast rollback to the previous version", "Shutting down the whole product"], "With recorded versions and a ready rollback, the team returns to the previous state quickly and investigates calmly."]],
+[26, 1, ["O que é um trace?", ["A lista de usuários ativos com o histórico de uso de cada um no último mês", "O documento de requisitos do produto", "O registro passo a passo de uma execução: prompt, ferramentas, resposta, custo e tempo", "O resumo mensal de custos por produto, enviado ao time de finanças da empresa"], 2, "Com o trace, dá para ver exatamente onde a execução falhou: na busca, numa ferramenta ou na resposta final.", "What is a trace?", ["The list of active users with each one's usage history over the last month", "The product requirements document", "A step-by-step record of a run: prompt, tools, answer, cost and time", "The monthly cost summary by product, sent to the company's finance team"], "With a trace you can see exactly where a run failed: in search, in a tool or in the final answer."]],
+[26, 2, ["Por que registrar a versão do prompt e do modelo em cada execução?", ["Para ligar cada problema à mudança que pode ter causado", "Para deixar os logs mais organizados e bonitos", "Para impedir que o fornecedor atualize o modelo sem avisar o time", "Para cobrar o cliente de acordo com a versão usada em cada chamada"], 0, "Quando algo piora, saber qual versão estava ativa permite comparar antes e depois e encontrar a causa rapidamente.", "Why record the prompt and model version on every run?", ["To link each problem to the change that may have caused it", "To make the logs tidier and nicer", "To stop the vendor from updating the model without telling the team", "To bill the customer based on the version used in each call"], "When something gets worse, knowing which version was live lets you compare before and after and find the cause quickly."]],
+[27, 1, ["O que é uma métrica de contrapeso?", ["Uma métrica que só o time de engenharia acompanha no dia a dia", "O peso de cada usuário no cálculo da média", "A métrica mais importante do produto, que orienta todo o roadmap", "Uma métrica que impede que a melhora da principal esconda um dano"], 3, "Ao otimizar uma métrica, outra pode piorar. A de contrapeso, como recontato ou reclamações, protege contra ganhos falsos.", "What is a guardrail (counter) metric?", ["A metric only engineering tracks day to day", "The weight of each user in an average", "The product's most important metric, which guides the whole roadmap", "A metric that keeps gains in the main one from hiding harm"], "Optimizing one metric can hurt another. The counter metric, such as repeat contacts or complaints, protects against false gains."]],
+[27, 2, ["Para provar o impacto de um assistente de IA no negócio, o que comparar?", ["O resultado com IA contra uma linha de base sem IA, no mesmo período", "A nota do modelo num benchmark público antes e depois do lançamento", "O número de reuniões sobre o projeto", "A quantidade de tokens consumidos por mês desde o início do projeto"], 0, "Impacto no negócio é a diferença em relação ao que aconteceria sem a IA. Sem linha de base, não dá para separar o efeito da IA de outras mudanças.", "To prove an AI assistant's business impact, what should you compare?", ["Results with AI against a no-AI baseline over the same period", "The model's public benchmark score before and after launch", "The number of meetings about the project", "The number of tokens consumed per month since the project started"], "Business impact is the difference from what would happen without AI. Without a baseline you cannot separate AI's effect from other changes."]],
+[28, 1, ["O que mede o TTFT?", ["O número de tokens gerados por mês", "O tempo que o usuário leva para concluir o cadastro", "O tempo até aparecer o primeiro pedaço da resposta", "O tempo total de treino do modelo antes do lançamento"], 2, "O TTFT define a sensação de rapidez. Com streaming, um TTFT baixo faz a resposta parecer imediata mesmo que o total demore mais.", "What does TTFT measure?", ["The number of tokens generated per month", "The time users take to finish signing up", "The time until the first part of the answer appears", "The model's total training time before it was launched"], "TTFT shapes perceived speed. With streaming, a low TTFT makes the answer feel instant even if the total takes longer."]],
+[28, 2, ["Por que acompanhar o custo por tarefa concluída, e não só o custo por chamada?", ["Porque o custo por chamada é sempre zero nos planos empresariais", "Porque assim os números ficam menores", "Porque uma tarefa pode exigir várias chamadas, retries e etapas", "Porque os fornecedores cobram por tarefa concluída, e não por token"], 2, "Agentes e fluxos fazem várias chamadas por tarefa. O que importa para o negócio é quanto custa entregar o resultado, do começo ao fim.", "Why track cost per completed task and not just cost per call?", ["Because cost per call is always zero on enterprise plans", "Because it makes the numbers smaller", "Because one task may need several calls, retries and steps", "Because vendors bill per completed task, not per token"], "Agents and flows make several calls per task. What matters for the business is the cost to deliver the outcome, end to end."]],
+[29, 2, ["O que é red teaming?", ["Testar o sistema tentando de propósito fazê-lo falhar, antes do lançamento", "Montar um time de vendas dedicado ao produto de IA antes do lançamento", "Revisar a identidade visual e o tom de voz do produto com o time de marca", "Medir o NPS dos usuários"], 0, "No red teaming, pessoas tentam provocar respostas perigosas, vazamentos e abusos. Os achados viram correções e casos no golden set.", "What is red teaming?", ["Testing the system by deliberately trying to make it fail before launch", "Building a dedicated sales team for the AI product before launch", "Reviewing the product's visual identity and voice with the brand team", "Measuring users' NPS"], "In red teaming, people try to trigger harmful answers, leaks and abuse. The findings become fixes and golden set cases."]],
+[30, 1, ["Qual é a primeira pergunta de um bom discovery de IA?", ["Qual é o modelo mais avançado disponível no mercado hoje?", "Qual problema do usuário vale a pena resolver?", "Quantas GPUs a empresa tem disponíveis?", "Qual concorrente lançou IA primeiro e o que ele fez?"], 1, "Discovery começa pelo problema, sua frequência e seu valor. A tecnologia vem depois, se fizer sentido.", "What is the first question in good AI discovery?", ["Which is the most advanced model on the market today?", "Which user problem is worth solving?", "How many GPUs does the company have?", "Which competitor launched AI first and what did it do?"], "Discovery starts with the problem, how often it happens and its value. Technology comes later, if it makes sense."]],
+[30, 2, ["Em qual destas situações a IA tem a maior tolerância a erro?", ["Bloquear contas de clientes suspeitos sem revisão humana nem chance de contestar", "Sugerir títulos de e-mail que a pessoa revisa antes de enviar", "Definir sozinha a dose de um medicamento", "Aprovar automaticamente empréstimos de alto valor, sem revisão de um analista"], 1, "Quando uma pessoa revisa e o erro custa pouco, a IA pode errar às vezes e ainda gerar valor. Decisões de alto impacto exigem muito mais controle.", "In which of these situations does AI have the highest error tolerance?", ["Blocking suspicious customer accounts with no human review or chance to appeal", "Suggesting email subject lines that a person reviews before sending", "Setting a medication dose on its own", "Automatically approving high-value loans with no analyst review"], "When a person reviews and mistakes cost little, AI can be wrong sometimes and still add value. High-impact decisions require much more control."]],
+[31, 1, ["Por que mostrar ao usuário que um conteúdo foi gerado por IA?", ["Para evitar que o usuário dê feedback", "Para que ele saiba quando checar e confie na medida certa", "Para reduzir o custo de tokens gerados em cada resposta", "Para deixar a interface do produto com uma aparência mais moderna"], 1, "Transparência ajuda a calibrar a confiança: o usuário entende que pode haver erro e sabe quando revisar.", "Why tell users that content was generated by AI?", ["To stop users from giving feedback", "So they know when to check and trust it the right amount", "To lower the cost of tokens generated in each answer", "To give the product interface a more modern look"], "Transparency calibrates trust: users understand there may be errors and know when to review."]],
+[31, 2, ["Qual destes é um bom padrão de feedback numa resposta de IA?", ["Botões simples de útil ou não útil, com motivo opcional", "Nenhuma forma de feedback, para não interromper o usuário", "Um e-mail semanal pedindo avaliação", "Um formulário obrigatório de 20 perguntas após cada resposta"], 0, "Feedback leve e no momento certo aumenta a participação e gera dados para melhorar prompts, golden sets e o produto.", "Which of these is a good feedback pattern on an AI answer?", ["Simple helpful or not buttons, with optional reason", "No feedback at all, so as not to interrupt users", "A weekly email asking for a rating", "A mandatory 20-question form after every answer"], "Light feedback at the right moment boosts participation and creates data to improve prompts, golden sets and the product."]],
+[32, 1, ["Por que fazer um lançamento gradual de uma funcionalidade de IA?", ["Para detectar problemas com poucos usuários antes de liberar para todos", "Para que só a liderança teste a funcionalidade", "Porque a legislação obriga a liberar primeiro para 1% dos usuários", "Para ter mais tempo de ajustar o design antes de comunicar a liderança"], 0, "Liberar por etapas limita o impacto de falhas e permite comparar métricas antes de ampliar.", "Why roll out an AI feature gradually?", ["To catch problems with few users before releasing to everyone", "So only leadership can test the feature", "Because the law requires releasing to 1% of users first", "To have more time to adjust the design before telling leadership"], "Releasing in stages limits the impact of failures and lets you compare metrics before expanding."]],
+[32, 3, ["O piloto atingiu a meta de qualidade, mas o custo por tarefa ficou o dobro do previsto. Qual é a decisão mais madura?", ["Ajustar o desenho para reduzir custo e repetir o piloto antes de escalar", "Escalar para todos os usuários, pois a meta de qualidade foi atingida", "Esconder o custo no relatório para não atrasar", "Encerrar o projeto imediatamente, sem analisar alternativas de desenho"], 0, "Os critérios de decisão incluem qualidade e viabilidade econômica. Com um critério falhando, o caminho é ajustar e medir de novo, não ignorar.", "The pilot hit the quality target, but cost per task came in at twice the forecast. What is the most mature decision?", ["Adjust the design to cut cost and rerun the pilot before scaling", "Scale to all users, since the quality target was met", "Hide the cost in the report to avoid delays", "End the project immediately without analyzing design alternatives"], "Decision criteria include quality and economic viability. With one criterion failing, the path is to adjust and measure again, not to ignore it."]],
+[33, 1, ["Numa defesa de produto de IA, por que apresentar a alternativa sem IA?", ["Para mostrar que a IA foi escolhida por gerar mais valor, e não por moda", "Para aumentar o número de slides da apresentação", "Porque toda solução sem IA é mais barata e por isso sempre melhor", "Porque a banca exige que a IA seja descartada em pelo menos um cenário"], 0, "Comparar com a alternativa mais simples prova que a decisão foi pensada e que o ganho justifica o custo e o risco da IA.", "In an AI product defense, why present the no-AI alternative?", ["To show AI was chosen for creating more value, not as a fad", "To add more slides to the deck", "Because every no-AI solution is cheaper and therefore always better", "Because the panel requires AI to be ruled out in at least one scenario"], "Comparing with the simplest alternative proves the decision was considered and that the gain justifies AI's cost and risk."]],
+[33, 2, ["Na defesa, alguém do jurídico pergunta o que acontece quando a IA erra. O que a resposta precisa ter?", ["A promessa de que o modelo não erra quando os prompts estão bem escritos", "O preço do modelo por token", "Os detalhes técnicos da arquitetura do modelo e do pipeline de dados", "Os controles, o caminho de revisão humana e quem responde por cada risco"], 3, "Áreas de risco querem saber como os erros são detectados, contidos e corrigidos, e quem é responsável. Prometer zero erro tira credibilidade.", "During the defense, someone from legal asks what happens when the AI is wrong. What must the answer include?", ["A promise that the model makes no mistakes when prompts are well written", "The model's price per token", "Technical details of the model architecture and data pipeline", "The controls, the human review path and who owns each risk"], "Risk teams want to know how errors are detected, contained and fixed, and who is accountable. Promising zero errors kills credibility."]],
+[34, 1, ["O que é o problema de cold start em recomendação?", ["A dificuldade de recomendar para usuários ou itens novos, sem histórico", "O sistema demorar para carregar as recomendações logo de manhã", "Recomendações repetidas demais para usuários antigos e muito ativos", "O custo alto de servidores no inverno"], 0, "Sem histórico de interações, o modelo tem pouca informação. Atributos do item, popularidade e perguntas iniciais ajudam a contornar.", "What is the cold start problem in recommendations?", ["The difficulty of recommending for new users or items with no history", "The system taking long to load recommendations early in the morning", "Too many repeated recommendations for long-time, very active users", "High server costs in winter"], "With no interaction history the model has little information. Item attributes, popularity and onboarding questions help work around it."]],
+[34, 2, ["Por que reservar uma pequena parte das recomendações para exploração?", ["Para mostrar com mais frequência os itens mais caros e de maior margem", "Para reduzir o número de cliques de propósito e baixar o custo de servir", "Para testar a velocidade do servidor", "Para descobrir itens e interesses novos, em vez de repetir sempre o mesmo"], 3, "Sem exploração, o sistema reforça o que já sabe e fica preso numa bolha. Explorar um pouco gera dados novos e melhora a recomendação no longo prazo.", "Why reserve a small share of recommendations for exploration?", ["To show the most expensive, highest-margin items more often", "To lower clicks on purpose and reduce serving costs", "To test server speed", "To find new items and interests instead of repeating the same"], "Without exploration the system reinforces what it already knows and gets stuck in a bubble. Exploring a little creates new data and improves recommendations over time."]],
+[35, 1, ["O que é o MDE num teste A/B?", ["A métrica principal do produto, usada para decidir o teste", "A diferença entre média e mediana", "O menor efeito que o teste consegue detectar com a amostra disponível", "O tempo máximo que o teste pode ficar no ar antes de ser encerrado"], 2, "Quanto menor o efeito que você quer detectar, maior a amostra necessária. Definir o MDE antes evita testes que nunca terão resposta.", "What is the MDE in an A/B test?", ["The product's main metric, used to decide the test", "The difference between mean and median", "The smallest effect the test can detect with its sample", "The maximum time the test can run before it is stopped"], "The smaller the effect you want to detect, the larger the sample you need. Setting the MDE upfront avoids tests that will never give an answer."]],
+[35, 2, ["Antes de começar um teste A/B, o que precisa estar definido?", ["Apenas a cor e o texto do botão da nova versão", "O resultado esperado, para confirmar no fim do teste", "Só a data de lançamento para todos os usuários", "Hipótese, métrica de decisão, tamanho da amostra e duração"], 3, "Definir tudo antes evita escolher métricas convenientes depois e reduz o risco de conclusões falsas.", "Before starting an A/B test, what must be defined?", ["Only the color and text of the new version's button", "The expected result, to confirm at the end of the test", "Only the launch date for all users", "Hypothesis, decision metric, sample size and duration"], "Defining everything upfront avoids picking convenient metrics later and lowers the risk of false conclusions."]],
+[36, 1, ["O que é um moat em produtos de IA?", ["O nome do contrato com o fornecedor", "Uma vantagem que impede concorrentes de copiar o produto facilmente", "O modelo mais caro e mais capaz disponível no mercado no momento", "Um tipo de ataque que tenta extrair dados de treino de modelos"], 1, "Com modelos acessíveis a todos, a vantagem costuma vir de dados próprios, distribuição, integração ao fluxo de trabalho e confiança do cliente.", "What is a moat in AI products?", ["The name of the vendor contract", "An advantage that keeps competitors from easily copying the product", "The most expensive, most capable model on the market right now", "A type of attack that tries to extract training data from models"], "With models available to everyone, the edge usually comes from proprietary data, distribution, workflow integration and customer trust."]],
+[36, 2, ["Por que a margem bruta de um produto de IA costuma ser menor que a de um software tradicional?", ["Porque produtos de IA não podem ser cobrados por assinatura mensal", "Porque cada uso gera custo de inferência que cresce com o consumo", "Porque o custo de servidor é sempre zero no software tradicional moderno", "Porque os impostos são maiores para IA"], 1, "No software tradicional, servir mais um usuário custa quase nada. Em IA, cada chamada ao modelo tem custo, o que pressiona a margem.", "Why is an AI product's gross margin usually lower than traditional software's?", ["Because AI products cannot be sold on monthly subscriptions", "Because each use creates inference cost that grows with consumption", "Because server cost is always zero for modern traditional software", "Because taxes are higher for AI"], "In traditional software, serving one more user costs almost nothing. In AI, every model call has a cost, which squeezes the margin."]],
+[37, 1, ["Para que serve a cláusula WHERE numa consulta SQL?", ["Agrupar linhas para calcular totais", "Filtrar as linhas que entram no resultado", "Juntar duas tabelas por uma coluna em comum", "Ordenar as linhas do resultado final"], 1, "WHERE filtra linhas antes de qualquer agregação. ORDER BY ordena, JOIN junta tabelas e GROUP BY agrupa.", "What is the WHERE clause for in a SQL query?", ["Grouping rows to compute totals", "Filtering which rows enter the result", "Joining two tables on a shared column", "Sorting the rows of the final result"], "WHERE filters rows before any aggregation. ORDER BY sorts, JOIN combines tables and GROUP BY groups."]],
+[37, 2, ["Por que COUNT(coluna) pode dar um número diferente de COUNT(*)?", ["Porque COUNT(*) ignora linhas duplicadas", "Porque COUNT(coluna) soma os valores numéricos daquela coluna", "Porque COUNT(*) conta apenas os valores distintos de cada coluna", "Porque COUNT(coluna) ignora as linhas em que a coluna é NULL"], 3, "COUNT(*) conta todas as linhas; COUNT(coluna) só as que têm valor. Valores ausentes mudam o resultado sem aviso.", "Why can COUNT(column) give a different number from COUNT(*)?", ["Because COUNT(*) ignores duplicate rows", "Because COUNT(column) adds up that column's numeric values", "Because COUNT(*) counts only the distinct values of each column", "Because COUNT(column) skips rows where the column is NULL"], "COUNT(*) counts every row; COUNT(column) only those with a value. Missing values change the result silently."]],
+[38, 1, ["O que é uma definição operacional de métrica?", ["A regra exata: o que entra, o que sai, o período e a fonte", "A meta que a liderança quer atingir até o fim do trimestre", "O nome amigável da métrica que aparece no topo do dashboard", "O gráfico usado para mostrar a métrica"], 0, "Sem uma definição exata, cada área calcula de um jeito e os números não batem. A definição deixa a métrica reproduzível.", "What is an operational metric definition?", ["The exact rule: what is in, what is out, the period and the source", "The target leadership wants to hit by the end of the quarter", "The friendly metric name shown at the top of the dashboard", "The chart used to show the metric"], "Without an exact definition, each team calculates differently and numbers do not match. The definition makes the metric reproducible."]],
+[38, 2, ["As vendas caíram 15% em relação à semana anterior, que tinha um feriado com promoção. Qual é o primeiro cuidado?", ["Comparar com um período equivalente para descontar a sazonalidade", "Concluir que o produto piorou e reverter a última mudança publicada no app", "Ignorar o dado, pois quedas desse tipo sempre se corrigem sozinhas em dias", "Trocar a fórmula da métrica para a queda sumir"], 0, "Datas especiais distorcem comparações. Antes de buscar culpados, compare com períodos parecidos, como a mesma semana do ano anterior.", "Sales fell 15% compared with the previous week, which had a holiday with a promotion. What is the first precaution?", ["Compare with an equivalent period to account for seasonality", "Conclude the product got worse and revert the last change shipped in the app", "Ignore the data, since drops like this always fix themselves within days", "Change the metric formula so the drop disappears"], "Special dates distort comparisons. Before looking for culprits, compare with similar periods, such as the same week last year."]],
+[39, 1, ["No modelo híbrido (hub and spoke) de um AI CoE, quem faz o quê?", ["O centro define padrões e plataforma, e os times de produto constroem as soluções", "Cada time define suas próprias regras e fornecedores, sem nenhum centro de referência", "Um fornecedor externo decide tudo pela empresa", "O centro constrói todas as soluções de IA e os times de produto apenas usam o que recebem"], 0, "O hub cuida de governança, plataforma e capacitação; os spokes, perto do negócio, constroem com autonomia dentro dessas regras.", "In a hybrid (hub and spoke) AI CoE model, who does what?", ["The hub sets standards and platform, and product teams build the solutions", "Each team sets its own rules and vendors, with no central reference", "An outside vendor decides everything for the company", "The hub builds every AI solution and product teams just use what they receive"], "The hub handles governance, platform and enablement; the spokes, close to the business, build with autonomy within those rules."]],
+[39, 2, ["Para que serve o fluxo de entrada (intake) de um AI CoE?", ["Receber, avaliar e priorizar as ideias de IA da empresa com critérios claros", "Registrar o horário de entrada dos funcionários", "Comprar licenças de modelos e ferramentas de IA para todos os funcionários", "Contratar e integrar novas pessoas para o time central de IA da empresa"], 0, "Um intake bem desenhado evita filas confusas e projetos sem valor, usando critérios como impacto, viabilidade, dados e risco.", "What is an AI CoE's intake flow for?", ["Receiving, assessing and ranking the company's AI ideas by clear criteria", "Logging employees' arrival times", "Buying model and AI tool licenses for every employee", "Hiring and onboarding new people for the company's central AI team"], "A well-designed intake avoids messy queues and low-value projects by using criteria such as impact, feasibility, data and risk."]]].forEach(([n,lv,q])=>{(QZ[n]=QZ[n]||[]).push(q);QLV[n]=(QLV[n]||[]).concat([lv]);});
+const BLANK=()=>({lv:2,done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null,fc:{},tplChk:{},fcq:{},fcDeck:"t",wrong:{},xp:{},ach:{}});
 let state = BLANK();
 let dbRef=null, saveTimer=null, saving=false, pending=false;
 
@@ -5276,10 +5495,10 @@ const UI={
   fq_earn:(n,half)=>half?`+${n} pts (metade, por ser nova tentativa)`:`+${n} pts`,fq_zero:"0 pts",fq_lpts:(a,b)=>`${a} de ${b} pts`,
   fq_rule:"Acertar na primeira tentativa vale os pontos completos. Depois de refazer, um acerto vale metade.",fq_miss:"Não foi dessa vez. Leia a explicação.",
   hp_title:"Sua pontuação",hp_sub:(a,t)=>`${a} de ${t} questões respondidas`,hp_lv:"Nível",hp_next:(n,r)=>`<span class="pts-next">Faltam ${n} pts para ${r}</span>`,
-  ranks:[[0,"Explorador(a)"],[250,"Aprendiz de IA"],[600,"Praticante"],[1000,"AI PM em formação"],[1350,"AI PM avançado(a)"]],
-  fq_h:"Teste seu conhecimento",fq_p:"Três questões de nível médio a avançado, com situações do dia a dia de PM. Selecione uma alternativa e clique em Confirmar para ver a explicação.",
+  ranks:[[0,"Explorador(a)"],[400,"Aprendiz de IA"],[1000,"Praticante"],[1650,"AI PM em formação"],[2250,"AI PM avançado(a)"]],
+  fq_h:"Teste seu conhecimento",fq_p:"Cinco questões de nível médio a avançado, com situações do dia a dia de PM. Selecione uma alternativa e clique em Confirmar para ver a explicação.",
   fq_score:(s,t)=>`Você acertou ${s} de ${t}`,fq_redo:"Refazer as questões",fq_ok:"Correta!",fq_no:"Não é essa.",fq_discuss:"Discutir com o tutor",
-  fq_msg3:"Excelente! Você domina os pontos principais desta aula.",fq_msg2:"Muito bem! Vale revisar a explicação da questão que você errou.",fq_msg1:"Vale reler os conceitos-chave e a rotina do AI PM antes de seguir. Você também pode tirar dúvidas com o tutor.",
+  fq_msg3:"Excelente! Você domina os pontos principais desta aula.",fq_msg2:"Muito bem! Vale revisar a explicação das questões que você errou.",fq_msg1:"Vale reler os conceitos-chave e a rotina do AI PM antes de seguir. Você também pode tirar dúvidas com o tutor.",
   fq_progress:(a,t)=>`${a} de ${t} respondidas`,more_h:"Quer treinar mais?",
   fq_ask:(q,mine,right)=>`Sobre a questão "${q}": eu escolhi "${mine}", mas a resposta certa é "${right}". Pode me explicar melhor o raciocínio, com um exemplo prático de PM?`,
   simple_h:"Em palavras simples",case_h:"Case real",res_h:"Livros e vídeos deste módulo",books:"Livros",videos:"Vídeos",pt_ed:"Tem edição em português",
@@ -5340,10 +5559,10 @@ const UI={
   fq_earn:(n,half)=>half?`+${n} pts (half, since it was a retry)`:`+${n} pts`,fq_zero:"0 pts",fq_lpts:(a,b)=>`${a} of ${b} pts`,
   fq_rule:"Getting it right on the first try earns full points. After a retry, a correct answer earns half.",fq_miss:"Not this time. Read the explanation.",
   hp_title:"Your score",hp_sub:(a,t)=>`${a} of ${t} questions answered`,hp_lv:"Level",hp_next:(n,r)=>`<span class="pts-next">${n} pts to reach ${r}</span>`,
-  ranks:[[0,"Explorer"],[250,"AI apprentice"],[600,"Practitioner"],[1000,"AI PM in training"],[1350,"Advanced AI PM"]],
-  fq_h:"Test your knowledge",fq_p:"Three medium to advanced questions based on everyday PM situations. Select an option and click Confirm to see the explanation.",
+  ranks:[[0,"Explorer"],[400,"AI apprentice"],[1000,"Practitioner"],[1650,"AI PM in training"],[2250,"Advanced AI PM"]],
+  fq_h:"Test your knowledge",fq_p:"Five medium to advanced questions based on everyday PM situations. Select an option and click Confirm to see the explanation.",
   fq_score:(s,t)=>`You got ${s} of ${t} right`,fq_redo:"Retake the questions",fq_ok:"Correct!",fq_no:"Not this one.",fq_discuss:"Discuss with the tutor",
-  fq_msg3:"Excellent! You have mastered the key points of this lesson.",fq_msg2:"Well done! Review the explanation for the question you missed.",fq_msg1:"Consider rereading the key concepts and the AI PM routine before moving on. You can also ask the tutor.",
+  fq_msg3:"Excellent! You have mastered the key points of this lesson.",fq_msg2:"Well done! Review the explanations for the questions you missed.",fq_msg1:"Consider rereading the key concepts and the AI PM routine before moving on. You can also ask the tutor.",
   fq_progress:(a,t)=>`${a} of ${t} answered`,more_h:"Want more practice?",
   fq_ask:(q,mine,right)=>`About the question "${q}": I chose "${mine}", but the right answer is "${right}". Can you explain the reasoning better, with a practical PM example?`,
   simple_h:"In plain words",case_h:"Real-world case",res_h:"Books and videos for this module",books:"Books",videos:"Videos",pt_ed:"Available in Portuguese",
@@ -5439,6 +5658,11 @@ function wireSheet(){
   if(f)f.addEventListener("click",openChat); if(bd)bd.addEventListener("click",closeChat); if(cl)cl.addEventListener("click",closeChat);
 }
 const ICONS={
+ flame:'<path d="M12 2.5c.6 3.2 2.6 4.9 4.3 6.8 1.5 1.7 2.7 3.6 2.7 6.2a7 7 0 0 1-14 0c0-2.3 1-4 2.3-5.3.3 1.6 1.1 2.8 2.4 3.4-.6-3.9 1-7.6 2.3-11.1z" fill="currentColor" stroke="none"/><path d="M12 21.5a3 3 0 0 1-3-3c0-1.6 1.2-2.6 2.2-3.7.3 1 .9 1.6 1.7 1.9.2-1 .6-1.6 1-2.2.7 1 1.1 2.1 1.1 3.9a3 3 0 0 1-3 3.1z" fill="#FFD43B" stroke="none"/>',
+ trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5v1.5A3.5 3.5 0 0 0 8.5 11M16 6h3v1.5a3.5 3.5 0 0 1-3.5 3.5"/><path d="M12 13v4M8.5 20h7M9.5 17h5v3h-5z"/>',
+ rocket:'<path d="M12 15l-3-3c1.5-4.5 4.5-8 10-8.5-.5 5.5-4 8.5-8.5 10z"/><path d="M9 12l-3.5.5L4 15l3.5.5M12 15l-.5 3.5L14 20l.5-3.5"/><circle cx="15" cy="9" r="1.4"/><path d="M6.5 17.5c-1 .4-1.8 1.5-2 3 1.5-.2 2.6-1 3-2"/>',
+ flag:'<path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/>',
+ map:'<path d="M9 4l-5 2v14l5-2 6 2 5-2V4l-5 2z"/><path d="M9 4v14M15 6v14"/>',
  bulb:'<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>',
  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/>',
  spark:'<path d="M11 3.5l1.8 4.9 4.9 1.8-4.9 1.8L11 16.9l-1.8-4.9-4.9-1.8 4.9-1.8z"/><path d="M18.5 14.5l.8 2.1 2.1.8-2.1.8-.8 2.1-.8-2.1-2.1-.8 2.1-.8z"/>',
@@ -5673,7 +5897,7 @@ function renderHome(app){
         return `<div class="pts-top"><div><small>${u("hp_title")}</small><div class="pts-big"><span class="star">${ic("star")}</span><span class="count" data-to="${tp}">${fmtN(tp)}</span> <span>/ ${fmtN(tm)} pts</span></div></div>
         <div class="rank"><small>${u("hp_lv")}</small><b>${rk[1]}</b></div></div>
         <div class="pts-bar"><i style="width:${tm?tp/tm*100:0}%"></i>${nr?`<em style="left:${nr[0]/tm*100}%" title="${nr[1]}"></em>`:""}</div>
-        <p class="pts-sub">${u("hp_sub",answeredCount(),TOTAL*3)}${nr?u("hp_next",fmtN(nr[0]-tp),nr[1]):""}</p>`;})()}
+        <p class="pts-sub">${u("hp_sub",answeredCount(),LESSONS.reduce((a,l)=>a+(QZ[l.num]||[]).length,0))}${nr?u("hp_next",fmtN(nr[0]-tp),nr[1]):""}</p>`;})()}
     </aside>
     </div>
   </section>
@@ -5785,6 +6009,9 @@ function renderLesson(app,l){
     $("#doneBar").classList.toggle("is-done",on);
     $("#topProgress").textContent=u("top",doneCount(),TOTAL);
     if(on) toast(modDone(m)===m.lessons.length?u("toast_mod",m.n):u("toast_done"));
+    if(on){const x=gx(),key="ld"+l.num,first=!x.c[key];if(first)gcount(key);
+      const st=(state.qs||{})[l.num]||[],qq=QZ[l.num]||[],ans=qq.filter((_,i)=>st[i]&&st[i].p!=null).length,ok=qq.filter((q,i)=>st[i]&&st[i].p===q[2]).length;
+      gamCelebrate("lesson",{next,add:first?20:0,acc:ans?Math.round(ok/ans*100):null,direct:true});if(first)gainXP(20,null,true);else checkAch();}
   }
   app.querySelectorAll(".done-toggle").forEach(b=>b.addEventListener("click",()=>setDone(!state.done[l.num])));
   $("#askJump").addEventListener("click",openChat);
@@ -5801,6 +6028,8 @@ function renderLesson(app,l){
   $("#quizBtn").addEventListener("click",()=>makeQuiz(l));
   if(QZ[l.num]) drawFixedQuiz(l,chat);
   try{addLessonLab(app,l.num);}catch(e){}
+  try{addHistoryTimeline(app,l.num);}catch(e){}
+  try{addLessonMatch(app,l);}catch(e){}
   wireSheet();
 }
 
@@ -5822,14 +6051,14 @@ function drawFixedQuiz(l,chat){
       const just=_fqJust&&_fqJust.n===n&&_fqJust.i===i;
       return `<div class="fq-q ${has?(e.p===q[2]?"ok":"no"):""} ${just?"just":""}">
       <div class="fq-meta"><span class="fq-lv lv${lvn}">${u("lv")[lvn]}</span><span class="fq-pts">${u("pts",qMax(n,i))}</span></div>
-      <p class="fq-text"><span class="fq-n">${i+1}</span>${esc(qt(q))}</p>
+      <p class="fq-text"><span class="fq-n">${i+1}</span><span>${esc(qt(q))}</span></p>
       <div class="fq-opts" role="radiogroup">${ops(q).map((o,j)=>`<button type="button" role="radio" aria-checked="${!has&&pend===j}" class="fq-opt ${!has&&pend===j?"sel":""} ${has&&j===q[2]?"right":""} ${has&&j===e.p&&e.p!==q[2]?"wrong":""}" data-i="${i}" data-j="${j}" ${has?"disabled":""}><span class="fq-l">${L[j]}</span><span>${esc(o)}</span></button>`).join("")}</div>
       ${has?`<div class="fq-why"><div class="fq-res"><b>${e.p===q[2]?u("fq_ok"):u("fq_no")}</b><span class="fq-earn ${earned?"pos":""}">${earned?u("fq_earn",earned,e.t>1):u("fq_zero")}</span></div>${esc(why(q))}
         <div class="fq-actions">${e.p!==q[2]?`<button type="button" class="ask-link fq-disc" data-i="${i}">${u("fq_discuss")}</button>`:""}
         <button type="button" class="ask-link fq-retry" data-i="${i}">↻ ${u("fq_redo1")}</button></div></div>`
       :`<div class="fq-confirm"><button type="button" class="btn fq-ok" data-i="${i}" ${pend==null?"disabled":""}>${u("fq_confirm")}</button>${pend==null?`<span class="fq-hint">${u("fq_pick")}</span>`:""}</div>`}
     </div>`}).join("")}
-    ${done?`<div class="fq-result r${correct>=3?3:correct===2?2:1}"><b>${u("fq_score",correct,qs.length)}, ${u("fq_lpts",lessonPts(n),lessonMax(n))}</b><p>${correct===3?u("fq_msg3"):correct===2?u("fq_msg2"):u("fq_msg1")}</p>
+    ${done?`<div class="fq-result r${correct===qs.length?3:correct/qs.length>=0.6?2:1}"><b>${u("fq_score",correct,qs.length)}, ${u("fq_lpts",lessonPts(n),lessonMax(n))}</b><p>${correct===qs.length?u("fq_msg3"):correct/qs.length>=0.6?u("fq_msg2"):u("fq_msg1")}</p>
       <button type="button" class="btn ghost" id="fqRedo">${u("fq_redo")}</button></div>`:""}`;
   const save=arr=>{state.qs=Object.assign({},state.qs||{},{[n]:arr});persist();updPts();};
   const copy=()=>qs.map((_,k)=>Object.assign({p:null,t:0},st[k]||{}));
@@ -5841,7 +6070,7 @@ function drawFixedQuiz(l,chat){
     const i=+b.dataset.i, j=(fqPend[n]||{})[i]; if(j==null) return;
     const arr=copy(); arr[i]={p:j,t:(arr[i].t||0)+1}; delete fqPend[n][i]; if(j!==qs[i][2]) addWrong("L"+n+"-"+i); save(arr);
     _fqJust={n,i}; const y=window.scrollY; drawFixedQuiz(l,chat); window.scrollTo(0,y); _fqJust=null;
-    const pts=qEarned(n,i); toast(pts?u("fq_earn",pts,arr[i].t>1):u("fq_miss"));
+    const pts=qEarned(n,i), okk=j===qs[i][2]; toast((okk?encPick(ENC_OK):encPick(ENC_NO))+(pts?" "+u("fq_earn",pts,arr[i].t>1):"")); gamAnswer(okk,arr[i].t,box.querySelectorAll(".fq-q")[i],n);
   }));
   box.querySelectorAll(".fq-retry").forEach(b=>b.addEventListener("click",()=>{
     const i=+b.dataset.i, arr=copy(); arr[i]=Object.assign({},arr[i],{p:null}); save(arr);
@@ -5984,6 +6213,7 @@ function renderExercise(app,m){
     const ne=Object.assign({},state.exDone); if(ne[m.n]) delete ne[m.n]; else ne[m.n]=true; state.exDone=ne; persist();
     const on=!!state.exDone[m.n]; e.currentTarget.classList.toggle("done",on); e.currentTarget.textContent=on?u("ex_on"):u("ex_off");
     if(on) toast(u("toast_ex",m.n));
+    if(on){const x=gx();if(!x.c["ex"+m.n]){gcount("ex"+m.n);gainXP(30,e.currentTarget);}}
   });
   let t; $("#exText").addEventListener("input",e=>{state.ex=Object.assign({},state.ex,{[m.n]:e.target.value});$("#exState").textContent=u("saving");clearTimeout(t);t=setTimeout(()=>{persist();$("#exState").textContent=u("saved");},600);});
   $("#fbBtn").addEventListener("click",async()=>{
@@ -6609,7 +6839,7 @@ function renderFlash(app){
     c.setAttribute("aria-label",L(card[2])+". "+(fcS.flip?fu("tapb"):fu("tap")));}};
   const mark=v=>{if(!card)return;const id=card[0],g=fcGet(id)||{b:0};
     const b=v==="ok"?Math.min(5,(g.s==="ok"?g.b:0)+1):0, days=FC_INT[b];
-    state.fc=Object.assign({},fcMarks(),{[id]:{s:v,b,d:Date.now()+days*DAY}});persist();
+    state.fc=Object.assign({},fcMarks(),{[id]:{s:v,b,d:Date.now()+days*DAY}});persist();gcount("fc");gainXP(2,document.getElementById("fcCard"));
     toast(fu("next_in",days));fcS.flip=false;
     const nd=fcDeck(),k=nd.indexOf(id);
     if(k>=0) fcS.i=Math.min(k+1,nd.length-1); else fcS.i=Math.min(fcS.i,Math.max(0,nd.length-1));
@@ -6886,15 +7116,16 @@ function fqDeck(){
   return ids;
 }
 function fcDeckTabs(){
-  const cur=state.fcDeck==="q"?"q":"t";
+  const cur=state.fcDeck==="q"?"q":state.fcDeck==="g"?"g":"t";
   return `<div class="segs fc-decks" role="tablist" aria-label="${EN()?"Deck":"Baralho"}">
     <button class="seg" role="tab" data-deck="t" aria-pressed="${cur==="t"}">${qu("deck_terms")} · ${FC.length}</button>
-    <button class="seg" role="tab" data-deck="q" aria-pressed="${cur==="q"}">${qu("deck_q")} · ${FQ.length}</button></div>`;
+    <button class="seg" role="tab" data-deck="q" aria-pressed="${cur==="q"}">${qu("deck_q")} · ${FQ.length}</button>
+    <button class="seg" role="tab" data-deck="g" aria-pressed="${cur==="g"}">${EN()?"Matching game":"Jogo de pares"}</button></div>`;
 }
 function bindDeckTabs(app){
   app.querySelectorAll("[data-deck]").forEach(b=>b.addEventListener("click",()=>{if(state.fcDeck===b.dataset.deck)return;state.fcDeck=b.dataset.deck;persist();renderFlashcards(app);window.scrollTo(0,0);}));
 }
-function renderFlashcards(app){ if(state.fcDeck==="q") renderFlashQ(app); else renderFlash(app); }
+function renderFlashcards(app){ if(state.fcDeck==="q") renderFlashQ(app); else if(state.fcDeck==="g") renderMatch(app); else renderFlash(app); }
 function renderFlashQ(app){
   const L=a=>EN()?a[1]:a[0];
   const deck=fqDeck();
@@ -6962,7 +7193,7 @@ function renderFlashQ(app){
     c.querySelector(".fc-front").toggleAttribute("aria-hidden",fqS.flip);c.querySelector(".fc-back").toggleAttribute("aria-hidden",!fqS.flip);}};
   const mark=v=>{if(!card)return;const id=card.id,g=fqGet(id)||{b:0};
     const b=v==="ok"?Math.min(5,(g.s==="ok"?g.b:0)+1):0, days=FC_INT[b];
-    state.fcq=Object.assign({},fqMarks(),{[id]:{s:v,b,d:Date.now()+days*DAY}});persist();
+    state.fcq=Object.assign({},fqMarks(),{[id]:{s:v,b,d:Date.now()+days*DAY}});persist();gcount("fc");gainXP(2,document.getElementById("fqCard"));
     toast(fu("next_in",days));fqS.flip=false;
     const nd=fqDeck(),k=nd.indexOf(id);
     if(k>=0) fqS.i=Math.min(k+1,nd.length-1); else fqS.i=Math.min(fqS.i,Math.max(0,nd.length-1));
@@ -7128,7 +7359,7 @@ function rqCard(k){
   const it=rqItem(k); if(!it) return ""; const st=rqState[k]||{};
   return `<div class="fq-q rq-card ${st.done?(st.ok?"ok":"no"):""}" data-k="${k}">
     <div class="rq-src"><a href="${it.link}">${esc(it.src)}</a></div>
-    <p class="fq-text">${esc(it.q)}</p>
+    <p class="fq-text"><span>${esc(it.q)}</span></p>
     <div class="fq-opts">${it.o.map((o,j)=>`<button type="button" class="fq-opt ${st.p===j&&!st.done?"sel":""} ${st.done&&j===it.a?"right":""} ${st.done&&j===st.p&&st.p!==it.a?"wrong":""}" data-j="${j}" ${st.done?"disabled":""}><span class="fq-l">${"ABCD"[j]}</span><span>${esc(o)}</span></button>`).join("")}</div>
     ${st.done?`<div class="fq-why"><b>${st.ok?du("right")+" "+du("days",st.days):du("wrong")}</b><br>${esc(it.w)}</div>`
       :`<div class="fq-confirm"><button type="button" class="btn rq-ok" ${st.p==null?"disabled":""}>${du("check")}</button></div>`}
@@ -7141,7 +7372,7 @@ function bindRq(app){
     const ok=card.querySelector(".rq-ok"); if(ok) ok.addEventListener("click",()=>{
       const st=rqState[k]; if(!st||st.p==null) return; const it=rqItem(k), good=st.p===it.a, w=wrongMarks(), cur=w[k]||{b:0};
       const b=good?Math.min(3,(cur.b||0)+1):0, days=good?[1,3,7,14][b-1]||14:1;
-      state.wrong=Object.assign({},w,{[k]:{b,d:Date.now()+days*DAY,at:cur.at||Date.now()}}); persist();
+      state.wrong=Object.assign({},w,{[k]:{b,d:Date.now()+days*DAY,at:cur.at||Date.now()}}); persist(); sfx(good?"ok":"no"); gainXP(good?5:1,card);
       rqState[k]={p:st.p,done:true,ok:good,days}; redraw();
     });
   });
@@ -7593,6 +7824,439 @@ new MutationObserver(muts=>{for(const m of muts){for(const a of m.addedNodes){if
   window.addEventListener("scroll",q,{passive:true});window.addEventListener("resize",q);window.addEventListener("hashchange",()=>setTimeout(q,50));document.addEventListener("click",()=>setTimeout(q,60));
   q();
 })();
+
+/* ============ LINHA DO TEMPO HISTÓRICA DA IA (aula 2) ============ */
+// Cada era: [nome PT, nome EN, período, lição PT, lição EN, eventos[[ano, título PT, título EN, texto PT, texto EN]]]
+const AI_HIST=[
+["As primeiras ideias","The first ideas","1943 a 1955",
+ "Antes de existir o nome IA, a pergunta já estava posta: dá para descrever o pensamento com lógica e matemática?",
+ "Before the name AI existed, the question was already there: can thinking be described with logic and mathematics?",
+ [["1943","O primeiro neurônio artificial","The first artificial neuron","Warren McCulloch e Walter Pitts descrevem um modelo matemático simples de neurônio, que liga ou desliga conforme as entradas. É a semente das redes neurais.","Warren McCulloch and Walter Pitts describe a simple mathematical neuron that switches on or off based on its inputs. It is the seed of neural networks."],
+  ["1950","Teste de Turing","The Turing Test","Alan Turing troca a pergunta \"máquinas pensam?\" por um jogo de imitação: se não dá para distinguir a máquina de uma pessoa numa conversa, o que isso significa?","Alan Turing replaces \"can machines think?\" with an imitation game: if you cannot tell the machine from a person in conversation, what does that mean?"]]],
+["O nascimento e o otimismo","Birth and optimism","1956 a 1973",
+ "Demonstrações impressionantes geraram promessas grandes demais. Parecer inteligente não é o mesmo que ser confiável.",
+ "Impressive demos led to promises that were too big. Looking intelligent is not the same as being reliable.",
+ [["1956","Conferência de Dartmouth","The Dartmouth workshop","John McCarthy, Marvin Minsky, Claude Shannon e Nathaniel Rochester reúnem pesquisadores e consolidam o termo \"inteligência artificial\" como campo de estudo.","John McCarthy, Marvin Minsky, Claude Shannon and Nathaniel Rochester gather researchers and establish \"artificial intelligence\" as a field."],
+  ["1958","Perceptron","The perceptron","Frank Rosenblatt cria uma máquina que aprende a classificar padrões simples a partir de exemplos. É o primeiro passo do aprendizado de máquina com redes.","Frank Rosenblatt builds a machine that learns to classify simple patterns from examples. It is the first step of machine learning with networks."],
+  ["1966","ELIZA","ELIZA","Joseph Weizenbaum cria um programa que conversa reformulando frases como um terapeuta. Muitas pessoas acharam que ele entendia, mesmo sendo só regras de texto.","Joseph Weizenbaum builds a program that chats by rephrasing sentences like a therapist. Many people felt it understood them, even though it was only text rules."],
+  ["1969","Os limites do perceptron","The limits of the perceptron","Minsky e Papert mostram que um perceptron de uma camada não resolve problemas simples, como o XOR. O interesse por redes neurais esfria por anos.","Minsky and Papert show that a single-layer perceptron cannot solve simple problems like XOR. Interest in neural networks cools for years."]]],
+["Invernos e sistemas especialistas","Winters and expert systems","1973 a 1993",
+ "Quando o resultado fica abaixo da promessa, o investimento some. Calibrar expectativas é parte do trabalho do PM.",
+ "When results fall short of the promise, funding disappears. Managing expectations is part of a PM's job.",
+ [["1973","Primeiro inverno da IA","First AI winter","O Relatório Lighthill, no Reino Unido, critica a falta de resultados práticos. Governos cortam verbas e a pesquisa desacelera até o fim da década.","The Lighthill Report in the UK criticizes the lack of practical results. Governments cut funding and research slows down until the end of the decade."],
+  ["1970s","MYCIN","MYCIN","Sistema especialista de Stanford que sugere tratamentos para infecções com centenas de regras SE/ENTÃO escritas com médicos.","A Stanford expert system that suggests treatments for infections using hundreds of IF/THEN rules written with doctors."],
+  ["1980s","A onda dos sistemas especialistas","The expert systems boom","Empresas adotam sistemas de regras para configurar pedidos e apoiar decisões. Funcionam bem em domínios estreitos, mas são caros de manter.","Companies adopt rule systems to configure orders and support decisions. They work well in narrow domains but are expensive to maintain."],
+  ["1986","Backpropagation","Backpropagation","Rumelhart, Hinton e Williams popularizam um método para treinar redes com várias camadas, resolvendo o limite apontado em 1969.","Rumelhart, Hinton and Williams popularize a method to train multi-layer networks, solving the limit pointed out in 1969."],
+  ["1987","Segundo inverno da IA","Second AI winter","O mercado de máquinas especializadas em IA desaba e muitos sistemas de regras se mostram frágeis fora do caso previsto. O investimento cai de novo.","The market for specialized AI machines collapses and many rule systems prove brittle outside expected cases. Funding drops again."]]],
+["Dados e estatística","Data and statistics","1993 a 2011",
+ "A IA deixa de depender só de regras escritas e passa a aprender com dados. Quem tem bons dados passa a ter vantagem.",
+ "AI stops depending only on written rules and starts learning from data. Whoever has good data gains an advantage.",
+ [["1997","Deep Blue vence Kasparov","Deep Blue beats Kasparov","O computador da IBM vence o campeão mundial de xadrez usando busca em grande escala e conhecimento de especialistas.","IBM's computer beats the world chess champion using large-scale search and expert knowledge."],
+  ["1998","Redes que leem dígitos","Networks that read digits","Yann LeCun e colegas usam redes convolucionais para reconhecer números escritos à mão, aplicadas na leitura de cheques.","Yann LeCun and colleagues use convolutional networks to recognize handwritten digits, used to read checks."],
+  ["2000s","Machine learning nos produtos","Machine learning in products","Filtros de spam, recomendações e busca passam a usar modelos estatísticos treinados com o comportamento dos usuários.","Spam filters, recommendations and search start using statistical models trained on user behavior."],
+  ["2009","ImageNet","ImageNet","Fei-Fei Li e equipe publicam um banco com milhões de imagens rotuladas, que vira a principal régua para comparar modelos de visão.","Fei-Fei Li and team release a dataset with millions of labeled images, which becomes the main yardstick for vision models."]]],
+["A virada do deep learning","The deep learning breakthrough","2012 a 2016",
+ "Três ingredientes se juntam: muitos dados, GPUs baratas e redes profundas. A qualidade dá um salto e chega aos produtos.",
+ "Three ingredients come together: lots of data, cheap GPUs and deep networks. Quality jumps and reaches products.",
+ [["2012","AlexNet","AlexNet","Uma rede profunda treinada em GPUs vence o desafio ImageNet com folga. Começa a corrida do deep learning.","A deep network trained on GPUs wins the ImageNet challenge by a wide margin. The deep learning race begins."],
+  ["2013","Embeddings de palavras","Word embeddings","O word2vec representa palavras como listas de números em que significados parecidos ficam próximos. É a base da busca por significado.","word2vec represents words as lists of numbers where similar meanings sit close together. It is the basis of search by meaning."],
+  ["2014","Atenção e redes generativas","Attention and generative networks","Surge o mecanismo de atenção para tradução e as GANs, redes que geram imagens novas. A IA começa a criar, não só classificar.","The attention mechanism appears for translation, along with GANs, networks that generate new images. AI starts to create, not only classify."],
+  ["2016","AlphaGo","AlphaGo","O sistema da DeepMind vence Lee Sedol no Go, um jogo considerado difícil demais para máquinas por causa do número de jogadas possíveis.","DeepMind's system beats Lee Sedol at Go, a game thought too hard for machines because of its number of possible moves."]]],
+["Transformers e grandes modelos de linguagem","Transformers and large language models","2017 a 2021",
+ "Uma arquitetura que melhora de forma previsível com mais dados e computação muda a escala do que é possível.",
+ "An architecture that improves predictably with more data and compute changes the scale of what is possible.",
+ [["2017","Transformer","The Transformer","O artigo \"Attention Is All You Need\", do Google, apresenta o Transformer, base de praticamente todos os LLMs atuais.","Google's paper \"Attention Is All You Need\" introduces the Transformer, the basis of nearly all current LLMs."],
+  ["2018","BERT e GPT","BERT and GPT","Modelos pré-treinados em muito texto e depois ajustados para tarefas específicas superam abordagens anteriores em linguagem.","Models pretrained on lots of text and then adapted to specific tasks outperform earlier language approaches."],
+  ["2020","GPT-3","GPT-3","Com 175 bilhões de parâmetros, o modelo resolve tarefas novas só com alguns exemplos no prompt (few-shot), sem treino adicional.","With 175 billion parameters, the model solves new tasks from just a few examples in the prompt (few-shot), with no extra training."]]],
+["IA generativa para todos","Generative AI for everyone","2022 a 2023",
+ "A interface de conversa leva a IA para centenas de milhões de pessoas. O desafio passa a ser qualidade, custo e confiança em escala.",
+ "The chat interface brings AI to hundreds of millions of people. The challenge becomes quality, cost and trust at scale.",
+ [["2022","RLHF e assistentes","RLHF and assistants","O ajuste com feedback humano (RLHF) torna os modelos mais úteis e mais fáceis de instruir. Geradores de imagem a partir de texto também se popularizam.","Tuning with human feedback (RLHF) makes models more helpful and easier to instruct. Text-to-image generators also become popular."],
+  ["2022","ChatGPT","ChatGPT","Lançado em novembro, alcança 100 milhões de usuários em cerca de dois meses e coloca a IA generativa no centro da estratégia das empresas.","Launched in November, it reaches 100 million users in about two months and puts generative AI at the center of company strategy."],
+  ["2023","Modelos multimodais e abertos","Multimodal and open models","Chegam GPT-4 e Claude, modelos que também entendem imagens, e modelos com pesos abertos, como o Llama. RAG vira o padrão para usar dados da empresa.","GPT-4 and Claude arrive, models that also understand images, along with open-weight models like Llama. RAG becomes the standard way to use company data."]]],
+["Raciocínio, agentes e regulação","Reasoning, agents and regulation","2024 até hoje",
+ "O foco sai de \"o modelo responde bem?\" para \"o sistema executa tarefas com segurança, custo e governança?\". Esse é o território do AI PM.",
+ "The focus shifts from \"does the model answer well?\" to \"does the system carry out tasks safely, affordably and with governance?\". This is the AI PM's territory.",
+ [["2024","EU AI Act","EU AI Act","A União Europeia aprova a primeira lei ampla de IA, com regras de acordo com o nível de risco de cada uso.","The European Union passes the first broad AI law, with rules based on the risk level of each use."],
+  ["2024","Modelos de raciocínio","Reasoning models","Surgem modelos que pensam em etapas antes de responder, melhores em matemática, código e problemas com várias etapas, com mais custo e tempo por resposta.","Models that think in steps before answering appear, better at math, code and multi-step problems, at a higher cost and time per answer."],
+  ["2024","MCP","MCP","A Anthropic lança o Model Context Protocol, um padrão aberto para conectar modelos a ferramentas e dados, adotado depois por vários fornecedores.","Anthropic releases the Model Context Protocol, an open standard to connect models to tools and data, later adopted by many vendors."],
+  ["2025","Agentes no trabalho","Agents at work","Agentes que usam ferramentas, escrevem código e executam tarefas de várias etapas entram no dia a dia das empresas. Modelos abertos de raciocínio também ganham força.","Agents that use tools, write code and run multi-step tasks enter everyday company work. Open reasoning models also gain ground."],
+  ["Hoje","IA como sistema de produto","AI as a product system","O diferencial está em evals, guardrails, custo por tarefa, observabilidade e governança. A tecnologia ficou acessível; fazer funcionar bem é o desafio.","The edge lies in evals, guardrails, cost per task, observability and governance. The technology is accessible; making it work well is the challenge."]]]
+];
+function addHistoryTimeline(app,n){
+  if(n!==2) return;
+  const sec=document.createElement("section");sec.className="block aih";
+  sec.innerHTML=`<h2><span class="ico" aria-hidden="true">${ic("clock")}</span>${LBT("Linha do tempo da IA, das primeiras ideias até hoje","AI timeline, from the first ideas to today")}</h2>
+  <p class="hist-intro">${LBT("Oito eras, em ordem. Toque em uma era para abrir os marcos e ver a lição que ela deixa para o PM.","Eight eras, in order. Tap an era to open its milestones and see the lesson it leaves for PMs.")}</p>
+  <ol class="hist-eras">${AI_HIST.map((e,i)=>`<li class="hist-era" style="--hc:var(--m${(i%10)+1},var(--brand))">
+    <details${i===0?" open":""}><summary><span class="hist-dot" aria-hidden="true"></span><span class="hist-per">${esc(e[2].replace("até hoje",EN()?"to today":"até hoje").replace(" a ",EN()?" to ":" a "))}</span><span class="hist-name">${esc(LBT(e[0],e[1]))}</span></summary>
+    <ul class="hist-ev">${e[5].map(v=>`<li><span class="hist-y">${esc(v[0]==="Hoje"&&EN()?"Today":v[0])}</span><div><b>${esc(LBT(v[1],v[2]))}</b><p>${esc(LBT(v[3],v[4]))}</p></div></li>`).join("")}</ul>
+    <p class="hist-lesson"><b>${LBT("Lição para o PM","Lesson for PMs")}:</b> ${esc(LBT(e[3],e[4]))}</p></details></li>`).join("")}</ol>
+  <div class="hist-ctrl"><button type="button" class="btn ghost" id="histAll">${LBT("Abrir todas as eras","Open all eras")}</button></div>`;
+  const anchor=app.querySelector(".lesson-grid > div:first-child .dg")||app.querySelector(".lesson-grid > div:first-child .simple");
+  if(!anchor) return; anchor.after(sec);
+  const btn=sec.querySelector("#histAll");
+  btn.addEventListener("click",()=>{const ds=[...sec.querySelectorAll("details")],open=!ds.every(d=>d.open);ds.forEach(d=>d.open=open);
+    btn.textContent=open?LBT("Fechar todas as eras","Close all eras"):LBT("Abrir todas as eras","Open all eras");});
+}
+
+/* ============ GAMIFICAÇÃO: XP, OFENSIVA, META DIÁRIA, CONQUISTAS E CELEBRAÇÕES ============ */
+const GT=(pt,en)=>EN()?en:pt;
+const dayKey=(t)=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
+const dayShift=(k,n)=>{const [y,m,d]=k.split("-").map(Number);return dayKey(new Date(y,m-1,d+n).getTime());};
+function gx(){
+  if(!state.xp||typeof state.xp!=="object") state.xp={};
+  const x=state.xp; x.d=x.d||{}; x.c=x.c||{}; if(!x.goal) x.goal=30; x.tot=x.tot||0; x.best=x.best||0; x.goals=x.goals||{};
+  return x;
+}
+const xpToday=()=>gx().d[dayKey()]||0;
+function streakInfo(){
+  const d=gx().d, t=dayKey(); let k=d[t]?t:dayShift(t,-1), n=0;
+  while(d[k]){n++;k=dayShift(k,-1);}
+  return {n, today:!!d[t], risk:!d[t]&&n>0};
+}
+const GOALS=[[10,"Leve","Light"],[30,"Regular","Regular"],[50,"Puxado","Serious"],[100,"Intenso","Intense"]];
+const XP_LV=[0,100,250,500,900,1400,2000,2800,3800,5000,6500,8500];
+function xpLevel(t){let i=0;while(i<XP_LV.length-1&&t>=XP_LV[i+1])i++;const a=XP_LV[i],b=XP_LV[i+1];return {lv:i+1,a,b,p:b?Math.round((t-a)/(b-a)*100):100};}
+
+// Sons curtos gerados no navegador (sem arquivos externos)
+let _ac=null;
+function sfx(kind){
+  if(gx().mute) return;
+  try{_ac=_ac||new (window.AudioContext||window.webkitAudioContext)();if(_ac.state==="suspended")_ac.resume();
+    const N={ok:[[660,0,.09],[880,.09,.14]],no:[[220,0,.16],[185,.12,.2]],win:[[523,0,.12],[659,.12,.12],[784,.24,.12],[1047,.36,.28]],tap:[[520,0,.05]],combo:[[700,0,.07],[940,.07,.07],[1180,.14,.12]]}[kind]||[];
+    const t0=_ac.currentTime;
+    N.forEach(([f,s,d])=>{const o=_ac.createOscillator(),g=_ac.createGain();o.type=kind==="no"?"triangle":"sine";o.frequency.value=f;
+      g.gain.setValueAtTime(0.0001,t0+s);g.gain.exponentialRampToValueAtTime(0.13,t0+s+0.015);g.gain.exponentialRampToValueAtTime(0.0001,t0+s+d);
+      o.connect(g);g.connect(_ac.destination);o.start(t0+s);o.stop(t0+s+d+0.02);});
+  }catch(e){}
+}
+
+// "+10 XP" flutuando a partir do elemento
+function xpFloat(n,el){
+  const f=document.createElement("div");f.className="xp-float";f.textContent="+"+n+" XP";document.body.appendChild(f);
+  let x=window.innerWidth/2,y=120;
+  if(el&&el.getBoundingClientRect){const r=el.getBoundingClientRect();if(r.width){x=r.left+r.width/2;y=r.top;}}
+  f.style.left=Math.max(40,Math.min(window.innerWidth-40,x))+"px";f.style.top=Math.max(70,y)+"px";
+  setTimeout(()=>f.remove(),1300);
+}
+
+// Concede XP, atualiza ofensiva e meta, e verifica conquistas
+function gainXP(n,el,silent){
+  if(!n) return;
+  const x=gx(), k=dayKey(), before=x.d[k]||0, sBefore=streakInfo().n;
+  x.d=Object.assign({},x.d,{[k]:before+n}); x.tot+=n;
+  const keys=Object.keys(x.d).sort(); if(keys.length>400){const nd={};keys.slice(-400).forEach(z=>nd[z]=x.d[z]);x.d=nd;}
+  const s=streakInfo(); x.best=Math.max(x.best||0,s.n);
+  state.xp=Object.assign({},x); persist();
+  if(!silent) xpFloat(n,el);
+  updGamChip();
+  const queue=[];
+  if(before===0&&s.n>sBefore) queue.push(silent?()=>gamCelebrate("streak",{n:s.n}):()=>gamBanner("flame",s.n===1?GT("Ofensiva iniciada!","Streak started!"):GT(`${s.n} dias de ofensiva!`,`${s.n}-day streak!`),GT("Volte amanhã para manter o fogo aceso","Come back tomorrow to keep it going"),"fire"));
+  if(before<x.goal&&before+n>=x.goal&&!x.goals[k]){x.goals=Object.assign({},x.goals,{[k]:1});state.xp=Object.assign({},x);persist();queue.push(silent?()=>gamCelebrate("goal",{xp:before+n}):()=>gamBanner("target",GT("Meta diária concluída!","Daily goal reached!"),GT(`${before+n} XP hoje`,`${before+n} XP today`),"goal"));}
+  const newA=checkAch(); newA.forEach(a=>queue.push(()=>achToast(a)));
+  if(queue.length) gamQueue(queue);
+}
+let _gq=[],_gqBusy=false;
+function gamQueue(fns){_gq.push(...fns);if(!_gqBusy)gamNext();}
+function gamNext(){if(document.querySelector(".gc-ov")){_gqBusy=true;setTimeout(gamNext,500);return;}const f=_gq.shift();if(!f){_gqBusy=false;return;}_gqBusy=true;setTimeout(()=>{f();},250);}
+function gcount(key,n){const x=gx();x.c=Object.assign({},x.c,{[key]:(x.c[key]||0)+(n||1)});state.xp=Object.assign({},x);}
+
+// Conquistas
+const firstTryOk=()=>LESSONS.reduce((a,l)=>a+((state.qs||{})[l.num]||[]).filter((e,i)=>e&&e.p!=null&&e.t<=1&&QZ[l.num][i]&&e.p===QZ[l.num][i][2]).length,0);
+const perfectLessons=()=>LESSONS.filter(l=>{const st=(state.qs||{})[l.num]||[],q=QZ[l.num]||[];return q.length&&q.every((qq,i)=>st[i]&&st[i].p===qq[2]&&st[i].t<=1);}).length;
+const fullMods=()=>MODULES.filter(m=>m.lessons.every(l=>state.done[l.num])).length;
+const ACH=[
+ ["first","rocket","Primeiro passo","First step","Conclua sua primeira aula","Complete your first lesson",()=>doneCount(),1],
+ ["mod","flag","Módulo completo","Module complete","Conclua todas as aulas de um módulo","Finish every lesson in a module",()=>fullMods(),1],
+ ["half","map","Meio do caminho","Halfway there","Conclua metade da trilha","Complete half of the path",()=>doneCount(),()=>Math.ceil(TOTAL/2)],
+ ["all","trophy","Trilha completa","Path complete","Conclua todas as aulas","Complete every lesson",()=>doneCount(),()=>TOTAL],
+ ["s3","flame","Pegando fogo","On fire","Ofensiva de 3 dias","3-day streak",()=>Math.max(gx().best||0,streakInfo().n),3],
+ ["s7","flame","Semana em chamas","Week on fire","Ofensiva de 7 dias","7-day streak",()=>Math.max(gx().best||0,streakInfo().n),7],
+ ["s30","flame","Hábito formado","Habit built","Ofensiva de 30 dias","30-day streak",()=>Math.max(gx().best||0,streakInfo().n),30],
+ ["goal1","target","Meta batida","Goal reached","Bata a meta diária","Hit your daily goal",()=>Object.keys(gx().goals).length,1],
+ ["goal7","target","Constância","Consistency","Bata a meta diária em 7 dias","Hit your daily goal on 7 days",()=>Object.keys(gx().goals).length,7],
+ ["ok10","bulb","Mente afiada","Sharp mind","10 acertos de primeira","10 right on the first try",()=>firstTryOk(),10],
+ ["ok50","bulb","Especialista","Expert","50 acertos de primeira","50 right on the first try",()=>firstTryOk(),50],
+ ["perfect","star","Perfeccionista","Perfectionist","Acerte todas as questões de uma aula de primeira","Ace every question in a lesson on the first try",()=>perfectLessons(),1],
+ ["combo5","spark","Em sequência","On a roll","Acerte 5 questões seguidas","Get 5 questions right in a row",()=>gx().c.combo||0,5],
+ ["fc50","book","Memória de elefante","Elephant memory","Revise 50 flashcards","Review 50 flashcards",()=>gx().c.fc||0,50],
+ ["sim1","clock","Prova de fogo","Trial by fire","Conclua um simulado","Finish a mock exam",()=>gx().c.sim||0,1],
+ ["sim80","trophy","Aprovado(a)","Passed","Tire 80% ou mais em um simulado","Score 80% or more on a mock exam",()=>gx().c.simBest||0,80],
+ ["xp500","star","500 XP","500 XP","Acumule 500 XP","Earn 500 XP",()=>gx().tot,500],
+ ["xp2000","star","2.000 XP","2,000 XP","Acumule 2.000 XP","Earn 2,000 XP",()=>gx().tot,2000]
+];
+const achGoal=a=>typeof a[7]==="function"?a[7]():a[7];
+function checkAch(){
+  if(!state.ach||typeof state.ach!=="object") state.ach={};
+  const got=[];
+  ACH.forEach(a=>{if(!state.ach[a[0]]&&a[6]()>=achGoal(a)){got.push(a);}});
+  if(got.length){const na=Object.assign({},state.ach);got.forEach(a=>na[a[0]]=Date.now());state.ach=na;persist();}
+  return got;
+}
+function achToast(a){gamBanner(a[1],GT(a[2],a[3]),GT("Conquista desbloqueada","Achievement unlocked"),"ach",true);}
+function gamBanner(icon,title,small,kind,smallTop){
+  sfx("win");
+  const t=document.createElement("div");t.className="ach-toast "+(kind||"");t.setAttribute("role","status");
+  t.innerHTML=`<span class="ach-ico">${ic(icon)}</span><span>${smallTop?`<small>${esc(small)}</small><b>${esc(title)}</b>`:`<b>${esc(title)}</b><small class="sub">${esc(small)}</small>`}</span>`;
+  document.body.appendChild(t);requestAnimationFrame(()=>t.classList.add("show"));
+  setTimeout(()=>{t.classList.remove("show");setTimeout(()=>{t.remove();gamNext();},300);},2600);
+}
+
+// Mascote original: Pixel, um robozinho que acompanha a trilha
+function mascot(mood){
+  const eyes=mood==="sad"?'<path d="M40 54q5-4 10 0M70 54q5-4 10 0" stroke="#14172A" stroke-width="3.5" fill="none" stroke-linecap="round"/>'
+    :'<circle cx="45" cy="54" r="5.5" fill="#14172A"/><circle cx="75" cy="54" r="5.5" fill="#14172A"/><circle cx="47" cy="52" r="1.8" fill="#fff"/><circle cx="77" cy="52" r="1.8" fill="#fff"/>';
+  const mouth=mood==="sad"?'<path d="M50 72q10-6 20 0" stroke="#14172A" stroke-width="3.5" fill="none" stroke-linecap="round"/>'
+    :'<path d="M48 68q12 12 24 0" stroke="#14172A" stroke-width="3.5" fill="#fff" stroke-linecap="round"/>';
+  const arms=mood==="party"?'<path d="M22 70l-12-18M98 70l12-18" stroke="var(--oki)" stroke-width="7" stroke-linecap="round"/>':'<path d="M22 74l-10 8M98 74l10 8" stroke="var(--oki)" stroke-width="7" stroke-linecap="round"/>';
+  return `<svg class="mascot ${mood||""}" viewBox="0 0 120 120" aria-hidden="true"><line x1="60" y1="14" x2="60" y2="26" stroke="var(--oki)" stroke-width="4"/><circle cx="60" cy="11" r="6" fill="var(--warn)"/>
+  ${arms}<rect x="22" y="26" width="76" height="64" rx="24" fill="var(--ok)"/><rect x="30" y="36" width="60" height="46" rx="16" fill="#E9FBF1"/>${eyes}${mouth}
+  <rect x="44" y="92" width="10" height="14" rx="4" fill="var(--oki)"/><rect x="66" y="92" width="10" height="14" rx="4" fill="var(--oki)"/></svg>`;
+}
+function confetti(box){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const C=["var(--m1)","var(--m2)","var(--m3)","var(--m4)","var(--m5)","var(--m6)","var(--ok)","var(--warn)"];
+  for(let i=0;i<46;i++){const p=document.createElement("i");p.className="cf";p.style.left=Math.random()*100+"%";p.style.background=C[i%C.length];
+    p.style.animationDelay=(Math.random()*.5)+"s";p.style.animationDuration=(1.6+Math.random()*1.2)+"s";p.style.transform=`rotate(${Math.random()*360}deg)`;box.appendChild(p);}
+}
+// Tela de celebração (aula concluída, ofensiva, meta do dia)
+function gamCelebrate(kind,o){
+  o=o||{}; sfx("win");
+  const s=streakInfo(), x=gx(), td=xpToday()+(o.add||0), sN=(o.add&&!streakInfo().today)?streakInfo().n+1:streakInfo().n, gp=Math.min(100,Math.round(td/x.goal*100));
+  let title,sub,mood="party",body="",actions="";
+  if(kind==="lesson"){
+    title=GT("Aula concluída!","Lesson complete!");
+    sub=o.msg||GT("Mais um passo na sua trilha de AI PM.","One more step on your AI PM path.");
+    body=`<div class="gc-stats"><div class="gc-s xp"><small>${GT("XP de hoje","Today's XP")}</small><b>${td}</b></div>
+      <div class="gc-s fire"><small>${GT("Ofensiva","Streak")}</small><b>${ic("flame")} ${sN}</b></div>
+      <div class="gc-s acc"><small>${GT("Acertos","Accuracy")}</small><b>${o.acc==null?"–":o.acc+"%"}</b></div></div>`;
+    actions=o.next?`<a class="btn gc-go" href="#/aula/${o.next.num}">${GT("Continuar","Continue")}</a><button type="button" class="btn ghost gc-close">${GT("Ficar nesta aula","Stay on this lesson")}</button>`
+      :`<a class="btn gc-go" href="#/">${GT("Ver minha trilha","See my path")}</a>`;
+  }else if(kind==="streak"){
+    title=o.n===1?GT("Ofensiva iniciada!","Streak started!"):GT(`${o.n} dias de ofensiva!`,`${o.n}-day streak!`);
+    sub=o.n===1?GT("Volte amanhã para manter o fogo aceso.","Come back tomorrow to keep the fire going."):GT("Você estudou em dias seguidos. Continue assim!","You studied on consecutive days. Keep it up!");
+    body=`<div class="gc-flame">${ic("flame")}<b>${o.n}</b></div>${weekStrip()}`;
+    actions=`<button type="button" class="btn gc-close">${GT("Continuar","Continue")}</button>`;
+  }else{
+    title=GT("Meta diária concluída!","Daily goal reached!");
+    sub=GT(`Você fez ${o.xp} XP hoje. Amanhã tem mais!`,`You earned ${o.xp} XP today. More tomorrow!`);
+    body=`<div class="gc-ring" style="--p:${gp}"><span>${ic("target")}</span></div>`;
+    actions=`<button type="button" class="btn gc-close">${GT("Continuar","Continue")}</button>`;
+  }
+  const ov=document.createElement("div");ov.className="gc-ov";ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");ov.setAttribute("aria-label",title);
+  ov.innerHTML=`<div class="gc-card"><div class="gc-cf" aria-hidden="true"></div>${mascot(mood)}<h2>${title}</h2><p>${sub}</p>${body}<div class="gc-act">${actions}</div></div>`;
+  document.body.appendChild(ov); confetti(ov.querySelector(".gc-cf"));
+  const close=()=>{ov.classList.add("out");setTimeout(()=>{ov.remove();if(!o.direct)gamNext();},200);document.removeEventListener("keydown",esc_);};
+  const esc_=e=>{if(e.key==="Escape")close();};document.addEventListener("keydown",esc_);
+  ov.addEventListener("click",e=>{if(e.target===ov||e.target.closest(".gc-close")||e.target.closest(".gc-go"))close();});
+  setTimeout(()=>{const b=ov.querySelector(".gc-go,.gc-close");if(b)b.focus();},50);
+}
+function weekStrip(){
+  const d=gx().d,t=dayKey(),L=EN()?["S","M","T","W","T","F","S"]:["D","S","T","Q","Q","S","S"];
+  const out=[];for(let i=6;i>=0;i--){const k=dayShift(t,-i),[y,m,dd]=k.split("-").map(Number),wd=new Date(y,m-1,dd).getDay();
+    out.push(`<span class="ws-d ${d[k]?"on":""} ${k===t?"today":""}"><i>${d[k]?ic("flame"):""}</i><small>${L[wd]}</small></span>`);}
+  return `<div class="week-strip" aria-label="${GT("Últimos 7 dias","Last 7 days")}">${out.join("")}</div>`;
+}
+
+// Chip de ofensiva e XP no topo
+function updGamChip(){
+  let c=document.getElementById("gamChip");
+  if(!c){const tr=document.querySelector(".top-right");if(!tr)return;c=document.createElement("a");c.id="gamChip";c.className="gam-chip";c.href="#/desempenho";tr.insertBefore(c,tr.querySelector(".theme-btn"));}
+  const s=streakInfo(),td=xpToday(),g=gx().goal,p=Math.min(100,Math.round(td/g*100));
+  c.classList.toggle("risk",s.risk);c.classList.toggle("lit",s.today);
+  c.innerHTML=`<span class="gc-fl">${ic("flame")}<b>${s.n}</b></span><span class="gc-xp" style="--p:${p}"><i></i></span>`;
+  const lbl=GT(`Ofensiva de ${s.n} dia${s.n===1?"":"s"}. ${td} de ${g} XP da meta de hoje.`,`${s.n}-day streak. ${td} of ${g} XP toward today's goal.`);
+  c.setAttribute("aria-label",lbl);c.title=lbl;
+}
+
+// Cartão "Hoje" na página inicial
+function gamHomeCard(){
+  const s=streakInfo(),x=gx(),td=xpToday(),p=Math.min(100,Math.round(td/x.goal*100)),L=xpLevel(x.tot);
+  const msg=td>=x.goal?GT("Meta de hoje concluída. Mandou bem!","Today's goal is done. Nice work!")
+    :s.risk?GT(`Sua ofensiva de ${s.n} dia${s.n>1?"s":""} está em risco. Faça uma atividade hoje!`,`Your ${s.n}-day streak is at risk. Do one activity today!`)
+    :td?GT(`Faltam ${x.goal-td} XP para a meta de hoje.`,`${x.goal-td} XP left for today's goal.`)
+    :GT("Responda questões, revise flashcards ou conclua uma aula para ganhar XP.","Answer questions, review flashcards or finish a lesson to earn XP.");
+  const nx=nextLesson();
+  return `<aside class="continue gam-card ${s.risk?"risk":""}" aria-label="${GT("Seu dia","Your day")}">
+    <div class="gm-top">
+      <div class="gm-fire ${s.today?"lit":""}"><span>${ic("flame")}</span><div><b>${s.n}</b><small>${GT(s.n===1?"dia de ofensiva":"dias de ofensiva",s.n===1?"day streak":"day streak")}</small></div></div>
+      <div class="gm-goal"><div class="gm-ring" style="--p:${p}"><span>${td}<small>/${x.goal}</small></span></div><small>${GT("XP hoje","XP today")}</small></div>
+    </div>
+    ${weekStrip()}
+    <p class="gm-msg">${msg}</p>
+    <div class="gm-lv"><span>${GT("Nível","Level")} ${L.lv}</span><div class="gm-lvbar"><i style="width:${L.p}%"></i></div><span>${fmtN(x.tot)} XP</span></div>
+    <div class="gm-row">
+      ${nx&&td<x.goal?`<a class="btn gm-go" href="#/aula/${nx.num}">${GT("Fazer a próxima aula","Do the next lesson")}</a>`:""}
+      <label class="gm-sel">${GT("Meta","Goal")} <select id="gmGoal">${GOALS.map(g=>`<option value="${g[0]}" ${g[0]===x.goal?"selected":""}>${GT(g[1],g[2])} · ${g[0]} XP</option>`).join("")}</select></label>
+      <button type="button" class="gm-snd" id="gmSnd" aria-pressed="${!x.mute}" title="${GT("Sons","Sounds")}">${x.mute?GT("Sons desligados","Sounds off"):GT("Sons ligados","Sounds on")}</button>
+    </div>
+  </aside>`;
+}
+function bindGamHome(app){
+  const g=app.querySelector("#gmGoal");if(g)g.addEventListener("change",()=>{const x=gx();x.goal=+g.value;state.xp=Object.assign({},x);persist();render();});
+  const sn=app.querySelector("#gmSnd");if(sn)sn.addEventListener("click",()=>{const x=gx();x.mute=!x.mute;state.xp=Object.assign({},x);persist();if(!x.mute)sfx("ok");render();});
+}
+
+// Seção de conquistas na página de desempenho
+function achSection(){
+  checkAch();const got=state.ach||{},x=gx(),L=xpLevel(x.tot),s=streakInfo();
+  const days=[];for(let i=13;i>=0;i--){const k=dayShift(dayKey(),-i);days.push([k,x.d[k]||0]);}
+  const mx=Math.max(x.goal,...days.map(d=>d[1]));
+  return `<section class="block gam-ach"><h2><span class="ico" aria-hidden="true">${ic("trophy")}</span>${GT("Ofensiva, XP e conquistas","Streak, XP and achievements")}</h2>
+    <div class="ga-stats"><div><small>${GT("Ofensiva atual","Current streak")}</small><b>${ic("flame")} ${s.n}</b></div><div><small>${GT("Maior ofensiva","Best streak")}</small><b>${Math.max(x.best||0,s.n)}</b></div>
+      <div><small>${GT("XP total","Total XP")}</small><b>${fmtN(x.tot)}</b></div><div><small>${GT("Nível","Level")}</small><b>${L.lv}</b></div>
+      <div><small>${GT("Metas batidas","Goals reached")}</small><b>${Object.keys(x.goals).length}</b></div></div>
+    <h3 class="pg-h3">${GT("XP nos últimos 14 dias","XP in the last 14 days")}</h3>
+    <div class="ga-chart" role="img" aria-label="${GT("XP por dia nos últimos 14 dias","XP per day in the last 14 days")}">${days.map(([k,v])=>`<span title="${k}: ${v} XP"><i style="height:${mx?Math.max(v?6:0,v/mx*100):0}%" class="${v>=x.goal?"hit":""}"></i><small>${+k.slice(8)}</small></span>`).join("")}<em style="bottom:${x.goal/mx*100}%"></em></div>
+    <h3 class="pg-h3">${GT("Conquistas","Achievements")} · ${Object.keys(got).filter(k=>ACH.some(a=>a[0]===k)).length}/${ACH.length}</h3>
+    <div class="ga-grid">${ACH.map(a=>{const v=a[6](),g=achGoal(a),on=!!got[a[0]];return `<div class="ga-b ${on?"on":""}"><span class="ga-i">${ic(a[1])}</span><b>${esc(GT(a[2],a[3]))}</b><small>${esc(GT(a[4],a[5]))}</small>
+      ${on?`<span class="ga-ok">${GT("Desbloqueada","Unlocked")}</span>`:`<span class="ga-pr"><i style="width:${Math.min(100,v/g*100)}%"></i></span><span class="ga-n">${fmtN(Math.min(v,g))}/${fmtN(g)}</span>`}</div>`;}).join("")}</div>
+  </section>`;
+}
+
+// Combo nas questões das aulas
+let _combo=0;
+function gamAnswer(ok,attempt,el,n){
+  if(ok){_combo++;sfx(_combo>=3?"combo":"ok");const x=gx();if(_combo>(x.c.combo||0)){x.c=Object.assign({},x.c,{combo:_combo});state.xp=Object.assign({},x);}
+    let xp=attempt<=1?10:5; if(_combo>=3){xp+=5;comboBadge(_combo,el);}
+    gainXP(xp,el);
+  }else{_combo=0;sfx("no");gainXP(2,el);}
+}
+function comboBadge(n,el){
+  const b=document.createElement("div");b.className="combo-b";b.innerHTML=`${ic("flame")} ${GT(`${n} seguidas!`,`${n} in a row!`)} <small>+5 XP</small>`;
+  document.body.appendChild(b);setTimeout(()=>b.remove(),1700);
+}
+const ENC_OK=[["Mandou bem!","Nice!"],["Isso aí!","That's it!"],["Excelente!","Excellent!"],["Perfeito!","Perfect!"],["Arrasou!","Nailed it!"]];
+const ENC_NO=[["Quase! Veja a explicação.","Almost! Check the explanation."],["Errar faz parte. Leia o porquê.","Mistakes are part of it. Read why."],["Boa tentativa! Revise e tente de novo.","Good try! Review and try again."]];
+const encPick=a=>{const x=a[Math.floor(Math.random()*a.length)];return GT(x[0],x[1]);};
+
+// Integração com as páginas existentes
+(function(){
+  const _rh=renderHome;
+  renderHome=function(app){_rh(app);
+    const side=app.querySelector(".hero-side");if(side){side.insertAdjacentHTML("afterbegin",gamHomeCard());bindGamHome(app);}
+    const nx=app.querySelector(".stop.is-next");if(nx)nx.dataset.go=doneCount()?GT("CONTINUAR","CONTINUE"):GT("COMEÇAR","START");};
+  const _rp=renderProgress;
+  renderProgress=function(app){_rp(app);const s=app.querySelector(".pg-stats");if(s)s.insertAdjacentHTML("afterend",achSection());};
+  const _r=render;
+  render=function(){_r();try{checkAch();updGamChip();lbProg();}catch(e){}};
+})();
+// Barra de progresso de leitura da aula
+function lbProg(){
+  const bar=document.getElementById("lessonBar");if(!bar)return;
+  let p=bar.querySelector(".lb-prog");if(!p){p=document.createElement("i");p.className="lb-prog";p.setAttribute("aria-hidden","true");bar.appendChild(p);}
+  if(bar.hidden){p.style.width="0";return;}
+  const h=document.documentElement.scrollHeight-window.innerHeight;p.style.width=(h>0?Math.min(100,window.scrollY/h*100):0)+"%";
+}
+window.addEventListener("scroll",()=>{if(!lbProg._r)lbProg._r=requestAnimationFrame(()=>{lbProg._r=0;lbProg();});},{passive:true});
+
+/* ============ JOGO DE PARES: LIGAR O TERMO AO SIGNIFICADO ============ */
+const firstSentence=s=>{s=String(s||"").trim();const m=s.match(/^(.{40,}?[.!?])\s/);return m?m[1]:s;};
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+// Monta e controla uma rodada. pairs: [{id, term, def}]
+function matchGame(box,pairs,opt){
+  opt=opt||{};
+  const P=pairs.map((p,i)=>Object.assign({k:"p"+i},p));
+  const L=shuf(P),R=shuf(P);
+  const st={sel:null,done:new Set(),miss:0,t0:Date.now(),streak:0};
+  box.innerHTML=`<div class="mg">
+    <div class="mg-top"><span class="mg-prog"><i style="width:0%"></i></span><span class="mg-cnt" aria-live="polite">0/${P.length}</span><span class="mg-miss" title="${GT("Erros","Mistakes")}">${GT("Erros","Mistakes")}: <b>0</b></span></div>
+    <p class="mg-help">${matchMedia("(pointer:coarse)").matches?GT("Toque em um termo e depois no significado correspondente.","Tap a term, then its matching meaning."):GT("Clique em um termo e depois no significado correspondente, ou arraste o termo até o significado.","Click a term and then its matching meaning, or drag the term onto the meaning.")}</p>
+    <div class="mg-cols">
+      <div class="mg-col mg-terms" role="group" aria-label="${GT("Termos","Terms")}">${L.map(p=>`<button type="button" class="mg-it mg-t" draggable="true" data-k="${p.k}">${esc(p.term)}</button>`).join("")}</div>
+      <div class="mg-col mg-defs" role="group" aria-label="${GT("Significados","Meanings")}">${R.map(p=>`<button type="button" class="mg-it mg-d" data-k="${p.k}">${esc(p.def)}</button>`).join("")}</div>
+    </div>
+    <div class="mg-end" hidden></div>
+  </div>`;
+  const $$=s=>[...box.querySelectorAll(s)];
+  const setTop=()=>{const h=document.querySelector("header"),lb=document.getElementById("lessonBar");let t=h?h.getBoundingClientRect().bottom:0;
+    if(lb&&!lb.hidden){const r=lb.getBoundingClientRect();if(r.height)t=Math.max(t,r.bottom);}box.style.setProperty("--mg-top",Math.round(Math.max(0,t)+2)+"px");};
+  setTimeout(setTop,60);setTimeout(setTop,600);let _stR=0;const onSc=()=>{if(!box.isConnected){window.removeEventListener("scroll",onSc);return;}if(!_stR)_stR=requestAnimationFrame(()=>{_stR=0;setTop();});};window.addEventListener("scroll",onSc,{passive:true});
+  const upd=()=>{const n=st.done.size;box.querySelector(".mg-prog i").style.width=(n/P.length*100)+"%";box.querySelector(".mg-cnt").textContent=n+"/"+P.length;box.querySelector(".mg-miss b").textContent=st.miss;};
+  const clearSel=()=>{$$(".mg-it.sel").forEach(x=>x.classList.remove("sel"));st.sel=null;};
+  function attempt(a,b){
+    const t=a.classList.contains("mg-t")?a:b, d=t===a?b:a;
+    if(t.dataset.k===d.dataset.k){
+      [t,d].forEach(x=>{x.classList.remove("sel");x.classList.add("ok","pop");x.disabled=true;x.setAttribute("aria-disabled","true");});
+      st.done.add(t.dataset.k);st.streak++;sfx(st.streak>=3?"combo":"ok");upd();
+      if(st.done.size===P.length) finish();
+    }else{
+      st.miss++;st.streak=0;sfx("no");
+      [t,d].forEach(x=>{x.classList.remove("sel");x.classList.add("bad");setTimeout(()=>x.classList.remove("bad"),450);});
+      upd();
+    }
+    st.sel=null;
+  }
+  function pick(el){
+    if(el.disabled) return;
+    if(!st.sel){clearSel();el.classList.add("sel");st.sel=el;sfx("tap");return;}
+    if(st.sel===el){clearSel();return;}
+    const sameSide=st.sel.classList.contains("mg-t")===el.classList.contains("mg-t");
+    if(sameSide){clearSel();el.classList.add("sel");st.sel=el;return;}
+    attempt(st.sel,el);
+  }
+  $$(".mg-it").forEach(el=>el.addEventListener("click",()=>pick(el)));
+  // Arrastar e soltar (computador)
+  $$(".mg-t").forEach(t=>{
+    t.addEventListener("dragstart",e=>{if(t.disabled){e.preventDefault();return;}e.dataTransfer.setData("text/plain",t.dataset.k);e.dataTransfer.effectAllowed="move";clearSel();t.classList.add("sel");st.sel=t;});
+    t.addEventListener("dragend",()=>{$$(".mg-d.over").forEach(x=>x.classList.remove("over"));});
+  });
+  $$(".mg-d").forEach(d=>{
+    d.addEventListener("dragover",e=>{if(!d.disabled){e.preventDefault();d.classList.add("over");}});
+    d.addEventListener("dragleave",()=>d.classList.remove("over"));
+    d.addEventListener("drop",e=>{e.preventDefault();d.classList.remove("over");if(st.sel&&st.sel.classList.contains("mg-t")&&!d.disabled)attempt(st.sel,d);});
+  });
+  function finish(){
+    const secs=Math.round((Date.now()-st.t0)/1000), stars=st.miss===0?3:st.miss<=2?2:1;
+    const xp=P.length*2+(st.miss===0?5:0);
+    gcount("match");gainXP(xp,box.querySelector(".mg-top"));
+    const end=box.querySelector(".mg-end");end.hidden=false;
+    const msg=stars===3?GT("Perfeito! Nenhum erro.","Perfect! No mistakes."):stars===2?GT("Muito bem! Quase sem erros.","Great! Almost no mistakes."):GT("Concluído! Jogue de novo para fixar.","Done! Play again to lock it in.");
+    end.innerHTML=`<div class="mg-stars" aria-label="${stars} ${GT("estrelas","stars")}">${[1,2,3].map(i=>`<span class="${i<=stars?"on":""}">${ic("star")}</span>`).join("")}</div>
+      <b>${msg}</b><p>${GT(`${P.length} pares em ${secs}s, com ${st.miss} erro${st.miss===1?"":"s"}. +${xp} XP`,`${P.length} pairs in ${secs}s with ${st.miss} mistake${st.miss===1?"":"s"}. +${xp} XP`)}</p>
+      <button type="button" class="btn mg-again">${GT("Jogar de novo","Play again")}</button>`;
+    end.querySelector(".mg-again").addEventListener("click",()=>opt.again?opt.again():matchGame(box,pairs,opt));
+    if(stars===3) sfx("win");
+    if(opt.onDone) opt.onDone({stars,miss:st.miss,secs});
+  }
+}
+// Tela do jogo dentro de Flashcards
+const mgS={cat:"all",n:5};
+function renderMatch(app){
+  const cats=FC_CATS.filter(c=>FC.some(x=>x[1]===c[0]));
+  const best=gx().c.match||0;
+  app.innerHTML=`<div class="fc-wrap">
+    <h1 class="page-title">${fu("h")}</h1>
+    ${fcDeckTabs()}
+    <section class="block mg-page">
+      <div class="mg-head"><div><h2><span class="ico" aria-hidden="true">${ic("spark")}</span>${GT("Jogo de pares","Matching game")}</h2>
+        <p class="mg-sub">${GT("Ligue cada termo técnico ao seu significado. Cada rodada sorteia termos novos.","Match each technical term to its meaning. Each round draws new terms.")}${best?` ${GT(`Partidas jogadas: ${best}.`,`Games played: ${best}.`)}`:""}</p></div>
+        <div class="mg-opts">
+          <label>${GT("Tema","Topic")} <select id="mgCat"><option value="all">${GT("Todos os temas","All topics")}</option>${cats.map(c=>`<option value="${c[0]}" ${mgS.cat===c[0]?"selected":""}>${esc(EN()?c[2]:c[1])}</option>`).join("")}</select></label>
+          <label>${GT("Pares","Pairs")} <select id="mgN">${[4,5,6].map(n=>`<option ${mgS.n===n?"selected":""}>${n}</option>`).join("")}</select></label>
+        </div></div>
+      <div id="mgBox"></div>
+    </section></div>`;
+  bindDeckTabs(app);
+  const start=()=>{const pool=FC.filter(c=>mgS.cat==="all"||c[1]===mgS.cat);
+    const pick=shuf(pool).slice(0,mgS.n).map(c=>({id:c[0],term:EN()?c[2][1]:c[2][0],def:firstSentence(EN()?c[3][1]:c[3][0])}));
+    matchGame(app.querySelector("#mgBox"),pick,{again:start});};
+  app.querySelector("#mgCat").addEventListener("change",e=>{mgS.cat=e.target.value;start();});
+  app.querySelector("#mgN").addEventListener("change",e=>{mgS.n=+e.target.value;start();});
+  start();
+}
+// Jogo rápido no fim dos conceitos de cada aula
+function addLessonMatch(app,l){
+  const K=(tx(l,"k")||[]).filter(x=>x&&x[0]&&x[1]); if(K.length<3) return;
+  const sec=app.querySelector(".concepts");const host=sec&&sec.closest("section");if(!host) return;
+  const el=document.createElement("section");el.className="block mg-lesson";
+  el.innerHTML=`<h2><span class="ico" aria-hidden="true">${ic("spark")}</span>${GT("Jogo rápido: ligue os conceitos","Quick game: match the concepts")}</h2><div class="mg-lbox"></div>`;
+  host.after(el);
+  const start=()=>{const pick=shuf(K).slice(0,5).map((x,i)=>({id:"k"+i,term:x[0],def:firstSentence(x[1])}));matchGame(el.querySelector(".mg-lbox"),pick,{again:start});};
+  start();
+}
+ACH.push(["match5","spark","Bom de par","Matchmaker","Conclua 5 jogos de pares","Finish 5 matching games",()=>gx().c.match||0,5]);
 
 /* ============ MODELOS DE DOCUMENTOS (PRD, evals, lançamento, riscos, PR/FAQ, decisão) ============ */
 // Seção: [título PT, título EN, [perguntas PT], [perguntas EN]]
