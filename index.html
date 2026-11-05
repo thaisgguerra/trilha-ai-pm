@@ -964,6 +964,24 @@ body:has(.gc-ov) .ach-toast,body:has(.gc-ov) .toast{opacity:0;visibility:hidden}
 .mg-lesson .mg-cols{grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr)}
 @media (max-width:640px){.mg-cols,.mg-lesson .mg-cols{grid-template-columns:1fr}.mg-terms{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:var(--mg-top,118px);z-index:5;background:var(--surface);padding:8px 0;border-bottom:1px solid var(--line)}.mg-t{padding:9px 12px;font-size:14px}.mg-t.ok{display:none}}
 @media (prefers-reduced-motion: reduce){.mg-it.pop,.mg-it.bad,.mg-stars span.on{animation:none}}
+.my-card{border:1px solid var(--line);border-top:6px solid var(--c);border-radius:20px;background:var(--surface);padding:20px;display:grid;gap:14px;margin-bottom:14px}
+.my-card .fc-tag{justify-self:start}
+.my-q{margin:0;font-size:22px;line-height:1.35}
+.my-practice{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.my-clock{font-weight:800;font-variant-numeric:tabular-nums;font-size:18px;color:var(--ok)}.my-clock.long{color:var(--warn)}
+.my-show{justify-self:start;min-height:46px}
+.my-ans{border-radius:14px;background:color-mix(in srgb,var(--c) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 30%,var(--line));padding:14px 16px}
+.my-ans-h{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}.my-ans-h small{color:var(--muted)}
+.my-ans p,.my-item p{margin:0 0 8px;line-height:1.65;font-size:15.5px}
+.my-todo{background:color-mix(in srgb,#F2B705 35%,transparent);color:inherit;border-radius:4px;padding:0 3px;font-weight:700}
+.my-say.on{color:var(--ok)}
+.my-list{display:grid;gap:8px}
+.my-item{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:14px;background:var(--surface);padding:0 14px}
+.my-item summary{display:flex;align-items:center;gap:10px;padding:12px 0;cursor:pointer;font-weight:700;list-style:none}.my-item summary::-webkit-details-marker{display:none}
+.my-item summary>span:nth-child(2){flex:1}
+.my-item[open]{padding-bottom:12px}
+.my-n{width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--c) 18%,transparent);display:grid;place-items:center;font-size:12.5px;flex:none}
+@media (max-width:640px){.my-q{font-size:19px}.my-card{padding:16px}}
 main:focus,main:focus-visible{outline:none}
 .legend i,.minibars a i{background:var(--c)}
 .btn:not(.ghost):not(.soft):not(.done){background:var(--brandi)}
@@ -5426,7 +5444,7 @@ const LS_KEY="trilha-ai-pm-v1";
 [38, 2, ["As vendas caíram 15% em relação à semana anterior, que tinha um feriado com promoção. Qual é o primeiro cuidado?", ["Comparar com um período equivalente para descontar a sazonalidade", "Concluir que o produto piorou e reverter a última mudança publicada no app", "Ignorar o dado, pois quedas desse tipo sempre se corrigem sozinhas em dias", "Trocar a fórmula da métrica para a queda sumir"], 0, "Datas especiais distorcem comparações. Antes de buscar culpados, compare com períodos parecidos, como a mesma semana do ano anterior.", "Sales fell 15% compared with the previous week, which had a holiday with a promotion. What is the first precaution?", ["Compare with an equivalent period to account for seasonality", "Conclude the product got worse and revert the last change shipped in the app", "Ignore the data, since drops like this always fix themselves within days", "Change the metric formula so the drop disappears"], "Special dates distort comparisons. Before looking for culprits, compare with similar periods, such as the same week last year."]],
 [39, 1, ["No modelo híbrido (hub and spoke) de um AI CoE, quem faz o quê?", ["O centro define padrões e plataforma, e os times de produto constroem as soluções", "Cada time define suas próprias regras e fornecedores, sem nenhum centro de referência", "Um fornecedor externo decide tudo pela empresa", "O centro constrói todas as soluções de IA e os times de produto apenas usam o que recebem"], 0, "O hub cuida de governança, plataforma e capacitação; os spokes, perto do negócio, constroem com autonomia dentro dessas regras.", "In a hybrid (hub and spoke) AI CoE model, who does what?", ["The hub sets standards and platform, and product teams build the solutions", "Each team sets its own rules and vendors, with no central reference", "An outside vendor decides everything for the company", "The hub builds every AI solution and product teams just use what they receive"], "The hub handles governance, platform and enablement; the spokes, close to the business, build with autonomy within those rules."]],
 [39, 2, ["Para que serve o fluxo de entrada (intake) de um AI CoE?", ["Receber, avaliar e priorizar as ideias de IA da empresa com critérios claros", "Registrar o horário de entrada dos funcionários", "Comprar licenças de modelos e ferramentas de IA para todos os funcionários", "Contratar e integrar novas pessoas para o time central de IA da empresa"], 0, "Um intake bem desenhado evita filas confusas e projetos sem valor, usando critérios como impacto, viabilidade, dados e risco.", "What is an AI CoE's intake flow for?", ["Receiving, assessing and ranking the company's AI ideas by clear criteria", "Logging employees' arrival times", "Buying model and AI tool licenses for every employee", "Hiring and onboarding new people for the company's central AI team"], "A well-designed intake avoids messy queues and low-value projects by using criteria such as impact, feasibility, data and risk."]]].forEach(([n,lv,q])=>{(QZ[n]=QZ[n]||[]).push(q);QLV[n]=(QLV[n]||[]).concat([lv]);});
-const BLANK=()=>({lv:2,done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null,fc:{},tplChk:{},fcq:{},fcDeck:"t",wrong:{},xp:{},ach:{}});
+const BLANK=()=>({lv:2,done:{},exDone:{},notes:{},ex:{},exFb:{},quiz:{},chats:{},theme:null,lang:"pt",iv:null,qa:{},qs:{},sim:null,fc:{},tplChk:{},fcq:{},fcDeck:"t",wrong:{},xp:{},ach:{},fcm:{}});
 let state = BLANK();
 let dbRef=null, saveTimer=null, saving=false, pending=false;
 
@@ -7116,16 +7134,17 @@ function fqDeck(){
   return ids;
 }
 function fcDeckTabs(){
-  const cur=state.fcDeck==="q"?"q":state.fcDeck==="g"?"g":"t";
+  const cur=["q","g","m"].includes(state.fcDeck)?state.fcDeck:"t";
   return `<div class="segs fc-decks" role="tablist" aria-label="${EN()?"Deck":"Baralho"}">
     <button class="seg" role="tab" data-deck="t" aria-pressed="${cur==="t"}">${qu("deck_terms")} · ${FC.length}</button>
     <button class="seg" role="tab" data-deck="q" aria-pressed="${cur==="q"}">${qu("deck_q")} · ${FQ.length}</button>
+    <button class="seg" role="tab" data-deck="m" aria-pressed="${cur==="m"}">${EN()?"My interview answers":"Minhas respostas de entrevista"} · ${MYQ.length}</button>
     <button class="seg" role="tab" data-deck="g" aria-pressed="${cur==="g"}">${EN()?"Matching game":"Jogo de pares"}</button></div>`;
 }
 function bindDeckTabs(app){
   app.querySelectorAll("[data-deck]").forEach(b=>b.addEventListener("click",()=>{if(state.fcDeck===b.dataset.deck)return;state.fcDeck=b.dataset.deck;persist();renderFlashcards(app);window.scrollTo(0,0);}));
 }
-function renderFlashcards(app){ if(state.fcDeck==="q") renderFlashQ(app); else if(state.fcDeck==="g") renderMatch(app); else renderFlash(app); }
+function renderFlashcards(app){ if(state.fcDeck==="q") renderFlashQ(app); else if(state.fcDeck==="g") renderMatch(app); else if(state.fcDeck==="m") renderMyAnswers(app); else renderFlash(app); }
 function renderFlashQ(app){
   const L=a=>EN()?a[1]:a[0];
   const deck=fqDeck();
@@ -7759,7 +7778,7 @@ const TERMS_EN=[
 ];
 const _tMap=new Map();TERMS_EN.forEach(([al,pt,en])=>al.forEach(a=>_tMap.set(a.toLowerCase(),[al[0],pt,en])));
 const _tRe=new RegExp("(^|[^\\p{L}\\p{N}@/^-])("+[..._tMap.keys()].sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")(?![\\p{L}\\p{N}@/-])","giu");
-const T_SKIP="a,button,label,input,textarea,select,code,pre,script,style,h1,h2,h3,summary,.tg,.nav,.top,.lesson-bar,.chat,.lab-ctrls,.sql-q,.sql-out,.fc-front,.fc-term,.dg,.pager,.lang,.l-kicker,.page-title,.toast,.tg-pop,.fq-opts,.opts,.sim-opts,.fq-l,.hist,.tpl-actions,.res-item,.refs";
+const T_SKIP="a,button,.fc-card,.fc-scene,.mg-it,label,input,textarea,select,code,pre,script,style,h1,h2,h3,summary,.tg,.nav,.top,.lesson-bar,.chat,.lab-ctrls,.sql-q,.sql-out,.fc-front,.fc-term,.dg,.pager,.lang,.l-kicker,.page-title,.toast,.tg-pop,.fq-opts,.opts,.sim-opts,.fq-l,.hist,.tpl-actions,.res-item,.refs";
 const T_BLOCK="p,li,td,th,dd,.fc-def,.fc-prac,.fq-sec,.fq-why,.fq-text,.why,.sim-text,.concept p,.case p,.bt-case p";
 function markTerms(root){
   if(!root) return;
@@ -8140,7 +8159,7 @@ const encPick=a=>{const x=a[Math.floor(Math.random()*a.length)];return GT(x[0],x
   const _rp=renderProgress;
   renderProgress=function(app){_rp(app);const s=app.querySelector(".pg-stats");if(s)s.insertAdjacentHTML("afterend",achSection());};
   const _r=render;
-  render=function(){_r();try{checkAch();updGamChip();lbProg();}catch(e){}};
+  render=function(){try{if(window.speechSynthesis)speechSynthesis.cancel();clearInterval(myTimer);}catch(e){}_r();try{checkAch();updGamChip();lbProg();}catch(e){}};
 })();
 // Barra de progresso de leitura da aula
 function lbProg(){
@@ -8257,6 +8276,114 @@ function addLessonMatch(app,l){
   start();
 }
 ACH.push(["match5","spark","Bom de par","Matchmaker","Conclua 5 jogos de pares","Finish 5 matching games",()=>gx().c.match||0,5]);
+
+/* ============ MINHAS RESPOSTAS DE ENTREVISTA (baralho separado) ============ */
+const MY_BLOCKS=[["b1","Apresentação e motivação","Introduction and motivation","var(--m1);--ci:var(--m1i)"],["b2","IA aplicada","Applied AI","var(--m3);--ci:var(--m3i)"],
+ ["b3","Discovery, dados e decisão","Discovery, data and decisions","var(--m5);--ci:var(--m5i)"],["b4","Priorização e execução","Prioritization and execution","var(--m4);--ci:var(--m4i)"],
+ ["b5","Liderança e impacto","Leadership and impact","var(--m6);--ci:var(--m6i)"],["b6","Lacunas apontadas no feedback","Gaps from feedback","var(--m8);--ci:var(--m8i)"]];
+const MYQ=[
+["m1","b1","Walk me through your background and how you became a PM.","I started in product design, then moved into product management at Flori Tech, a startup. Across more than 8 years in product, I owned the full cycle, from discovery to delivery, including for enterprise clients like a global coffee brand and a large energy company. What I enjoy most is turning messy operational problems into products people actually use. Now I want to apply that to AI products."],
+["m2","b1","Why product management?","Because I like owning the problem, not just the solution. As a designer I saw how often good solutions failed because the problem was framed badly. In product I can work on the framing, test it with data, and then see the result with real users."],
+["m3","b2","How do you use AI in your PM work, and where does it have the most impact?","Three places. First, an automation: Granola transcribes meetings, Claude extracts tasks, owners and deadlines, and ClickUp receives them automatically. Second, Claude Code to generate bottleneck reports from operations data. Third, high-fidelity prototypes with Claude and Lovable, which is how the first version of our platform redesign was built. The biggest impact is speed to a testable version. I keep humans in anything ambiguous or client-facing."],
+["m4","b2","What AI solutions have you built or shipped?","A computer vision model that identifies the type of waste discarded, requested by a large energy company. I defined the problem and the quality criteria, and worked with engineering on the build. It reaches 95% accuracy on material type in real operation, and about 70% on brand, which is still improving. I also built a local RAG with Llama and a Design QA agent with Claude Code."],
+["m5","b2","Tell me about your computer vision project.","The client, a large energy company, needed reliable data on what people were discarding. A dedicated sensor was expensive, so we used photos of real discards instead. The model works in two steps: material first, then brand, covering 11 to 30 brands, trained on up to 5,000 images. It took about a month to build. The impact was trust in the data for campaigns and external communication, and commercial insight for consumer brands in beauty and coffee."],
+["m6","b2","How do you handle low-confidence outputs?","The platform flags them instead of guessing. Low-confidence cases go to human review. I defined this as a product rule from the start, because a wrong answer in front of a client costs more than a slower answer. Reviewed cases also become new training data."],
+["m7","b2","Have you worked with RAG?","Yes, a local one. I built a RAG with Llama running on my own computer, with help from Claude. It answers questions about the financial and technical metrics of our projects, so I avoid unnecessary questions to the team. It is still an early version. The next step is making it more robust, mainly retrieval quality and source citations."],
+["m8","b2","Tell me about your Design QA agent.","Design reviews were slow and inconsistent, so I built an agent with Claude Code that compares design outputs against a client's brand book, for example a global beauty brand. It flags deviations before a human reviews. It reduced UI/UX inconsistencies by about 40%. The human still decides; the agent just catches the repetitive errors first."],
+["m9","b2","How do you evaluate whether an AI feature is good enough to ship?","I pick metrics that match the system. For classification, accuracy and the cost of wrong answers. In my vision project, 95% on material was measured in real operation, not only in testing. I also define what happens when the model is unsure. Then I track whether users trust the output, because a good metric with low adoption is still a failure."],
+["m10","b3","How do you use data to make product decisions?","For a global coffee brand, I wanted to know why users were not returning capsules. I measured behavior by item and not only totals, even when the first data was incomplete. After we launched a reward mechanic, new orders increased 23% and recycled volume increased 45%, with more than 5 tons in 3 months. I always state what was measured and over which period."],
+["m11","b3","How do you decide when you do not have reliable data?","I name the risk, run the smallest test that reduces it, and decide with the best signal available. For example, I changed the measurement to get item-by-item granularity instead of waiting for perfect data. I also talk to users directly, because qualitative signals fill the gap while the data matures."],
+["m12","b3","Tell me about a time a solution did not work.","We built an Android app for cooperatives, but adoption was only 20%. In discovery I learned partners did not have time to log in. We replaced it with a WhatsApp flow with automation. Collections went from 2 to 4 per month. The lesson: test where the user already is before building a new channel."],
+["m13","b4","How do you manage roadmap and backlog?","I start from outcomes, not features. Each initiative has a problem, a metric and an owner. I prioritize by impact, effort and risk, review the backlog regularly with engineering, and write user stories with clear acceptance criteria. When priorities change, I explain the trade-off openly."],
+["m14","b4","How do you handle a client request outside the plan?","I ask what problem is behind the request. Then I compare it with the roadmap on value and effort. If it is valuable, I negotiate what moves out. If not, I explain why with data. Personalization versus scalability was a trade-off I had to communicate clearly with enterprise clients."],
+["m15","b4","How do you write user stories and acceptance criteria?","Each story has the user, the need and the outcome, plus acceptance criteria that engineering can test. In the recycling project for a global coffee brand, I defined criteria linked to the user's behavior, not only the screen. I keep stories small so we can validate quickly."],
+["m16","b4","What would you do in your first month with a new product?","Weeks 1 and 2: listen. Talk to users, engineers and stakeholders, and review data. Week 3: define the main problem and a measurable goal. Week 4: choose one small experiment and align the roadmap. No big promises before I understand the context."],
+["m17","b4","How do you process requests from many people?","I built a request flow in Slack that standardized how the team asks for things. It reduced resolution time by about 25%. The goal is less back and forth and clearer priorities."],
+["m18","b5","Tell me about a time you disagreed with leadership or a client.","With a global coffee brand, [fill in: the Head of Sustainability's position]. I brought data and user evidence instead of opinion, proposed a small test, and let the result guide us. The relationship improved because the disagreement became a shared experiment."],
+["m19","b5","What results are you most proud of?","For a global coffee brand: +23% new orders, +45% recycled volume and more than 5 tons in 3 months, as reported by the client. For a large energy company: a vision model with 95% accuracy on material in real operation. And the WhatsApp flow that doubled monthly collections from 2 to 4."],
+["m20","b5","What do you need from leadership to succeed?","Clear goals, access to users and data, and room to disagree with respect. I work best when I can bring evidence and a recommendation, not only questions."],
+["m21","b6","How do you connect your work to business outcomes and OKRs?","I start from the company goal and break it into one product outcome with a metric. For the coffee brand, the client goal was recycling volume, so the outcome was repeat disposal, measured by new orders and volume. Every initiative must show which metric it should move. If it cannot, I question it."],
+["m22","b6","Tell me one story in one line: situation, action, metric, learning.","Cooperatives were not using our Android app (situation), so I moved the flow to WhatsApp with automation (action). Collections went from 2 to 4 per month (metric), and I learned to build where users already are (learning)."]
+];
+const myS={blk:"all",i:0,show:false,view:"card",order:null};
+function myMarks(){if(!state.fcm||typeof state.fcm!=="object")state.fcm={};return state.fcm;}
+const myStatus=id=>{const m=myMarks()[id];return m?m.s:"new";};
+function myDeck(){let d=MYQ.filter(q=>myS.blk==="all"||q[1]===myS.blk);if(myS.mode==="rev")d=d.filter(q=>myStatus(q[0])!=="ok");
+  if(myS.order){const p={};myS.order.forEach((id,i)=>p[id]=i);d=d.slice().sort((a,b)=>(p[a[0]]??1e9)-(p[b[0]]??1e9));}return d;}
+const myWords=t=>t.trim().split(/\s+/).length;
+function mySpeak(text,btn){
+  if(!("speechSynthesis" in window)){toast(GT("Seu navegador não tem leitura em voz alta","Your browser has no text to speech"));return;}
+  if(speechSynthesis.speaking){speechSynthesis.cancel();if(btn)btn.classList.remove("on");return;}
+  const u=new SpeechSynthesisUtterance(text);u.lang="en-US";u.rate=0.95;const v=speechSynthesis.getVoices().find(x=>/^en(-|_)US/i.test(x.lang));if(v)u.voice=v;
+  u.onend=()=>{if(btn)btn.classList.remove("on");};if(btn)btn.classList.add("on");speechSynthesis.speak(u);
+}
+let myTimer=null;
+function renderMyAnswers(app){
+  if(window.speechSynthesis)speechSynthesis.cancel();clearInterval(myTimer);
+  const deck=myDeck(); if(myS.i>=deck.length)myS.i=Math.max(0,deck.length-1);
+  const ok=MYQ.filter(q=>myStatus(q[0])==="ok").length, q=deck[myS.i], blk=q?MY_BLOCKS.find(b=>b[0]===q[1]):null;
+  const cnt=id=>MYQ.filter(x=>id==="all"||x[1]===id).length;
+  const hl=t=>esc(t).replace(/\[(fill in|preencher)[^\]]*\]/gi,m=>`<mark class="my-todo">${m}</mark>`);
+  app.innerHTML=`<div class="fc-wrap">
+    <h1 class="page-title">${fu("h")}</h1>
+    ${fcDeckTabs()}
+    <p class="page-sub">${GT("Suas perguntas de entrevista com as suas respostas, em inglês. Leia a pergunta, responda em voz alta e só depois compare com a sua versão.","Your interview questions with your own answers, in English. Read the question, answer out loud, then compare with your version.")}</p>
+    <div class="fc-prog"><div class="fc-bar" aria-hidden="true"><i style="width:${ok/MYQ.length*100}%"></i></div><b>${GT(`${ok} de ${MYQ.length} prontas`,`${ok} of ${MYQ.length} ready`)}</b></div>
+    <div class="segs fc-cats" role="group" aria-label="${GT("Blocos","Blocks")}">
+      <button class="seg" data-mblk="all" aria-pressed="${myS.blk==="all"}">${GT("Todos","All")} · ${cnt("all")}</button>
+      ${MY_BLOCKS.map((b,i)=>`<button class="seg" data-mblk="${b[0]}" aria-pressed="${myS.blk===b[0]}">${i+1}. ${esc(GT(b[1],b[2]))} · ${cnt(b[0])}</button>`).join("")}
+    </div>
+    <div class="fc-tools">
+      <div class="segs" role="group" aria-label="${GT("Visualização","View")}">
+        <button class="seg" data-mview="card" aria-pressed="${myS.view==="card"}">${GT("Treinar uma por vez","Practice one at a time")}</button>
+        <button class="seg" data-mview="list" aria-pressed="${myS.view==="list"}">${GT("Ver todas","See all")}</button>
+        <button class="seg" data-mmode="rev" aria-pressed="${myS.mode==="rev"}">${GT("Só as que preciso treinar","Only the ones to practice")}</button>
+      </div>
+      ${myS.view==="card"?`<button class="btn ghost" id="myShuf" type="button">${fu("shuffle")}</button>`:""}
+    </div>
+    ${myS.view==="list"?`<div class="my-list">${deck.map((x,i)=>{const b=MY_BLOCKS.find(z=>z[0]===x[1]);return `<details class="my-item" style="--c:${b[3]}"><summary><span class="my-n">${i+1}</span><span lang="en">${esc(x[2])}</span><span class="fc-st st-${myStatus(x[0])}">${myStatus(x[0])==="ok"?GT("Pronta","Ready"):myStatus(x[0])==="rev"?GT("Treinar","Practice"):GT("Nova","New")}</span></summary><p lang="en">${hl(x[3])}</p><button type="button" class="ask-link my-say" data-id="${x[0]}">${GT("Ouvir em inglês","Listen in English")}</button></details>`;}).join("")||`<div class="iv-empty">${GT("Nenhuma pergunta neste filtro.","No questions in this filter.")}</div>`}</div>`
+    :q?`<div class="fc-meta"><span>${fu("card",myS.i+1,deck.length)}</span><span class="fc-st st-${myStatus(q[0])}">${myStatus(q[0])==="ok"?GT("Pronta","Ready"):myStatus(q[0])==="rev"?GT("Treinar","Practice"):GT("Nova","New")}</span></div>
+    <article class="my-card" style="--c:${blk[3]}">
+      <span class="fc-tag">${esc(GT(blk[1],blk[2]))}</span>
+      <h2 class="my-q" lang="en">${esc(q[2])}</h2>
+      <div class="my-practice">
+        <button type="button" class="btn ghost" id="myTime">${GT("Responder em voz alta (cronômetro)","Answer out loud (timer)")}</button>
+        <span class="my-clock" id="myClock" aria-live="polite"></span>
+      </div>
+      ${myS.show?`<div class="my-ans"><div class="my-ans-h"><b>${GT("Sua resposta","Your answer")}</b><small>${myWords(q[3])} ${GT("palavras, cerca de","words, about")} ${Math.max(15,Math.round(myWords(q[3])/2.4/5)*5)}s</small></div>
+        <p lang="en">${hl(q[3])}</p>
+        <button type="button" class="ask-link my-say" data-id="${q[0]}">${GT("Ouvir em inglês","Listen in English")}</button></div>`
+      :`<button type="button" class="btn my-show" id="myShow">${GT("Mostrar minha resposta","Show my answer")}</button>`}
+    </article>
+    ${myS.show?`<div class="fc-actions"><button class="btn ghost" id="myNo" type="button">${GT("Preciso treinar","Need practice")}</button><button class="btn" id="myYes" type="button">${GT("Já sei responder","I've got it")}</button></div>`:""}
+    <div class="fc-nav"><button class="sim-exit" id="myPrev" type="button" ${myS.i===0?"disabled":""}>‹ ${fu("prev")}</button>
+      <a class="ask-link" href="#/entrevista">${GT("Treinar com o entrevistador","Practice with the interviewer")}</a>
+      <button class="sim-exit" id="myNext" type="button" ${myS.i>=deck.length-1?"disabled":""}>${fu("next")} ›</button></div>`
+    :`<div class="iv-empty">${GT("Você marcou todas como prontas. Mude o filtro para revisar.","You marked them all as ready. Change the filter to review.")}</div>`}
+  </div>`;
+  bindDeckTabs(app);
+  const re=()=>renderMyAnswers(app);
+  app.querySelectorAll("[data-mblk]").forEach(b=>b.addEventListener("click",()=>{myS.blk=b.dataset.mblk;myS.i=0;myS.show=false;re();}));
+  app.querySelectorAll("[data-mview]").forEach(b=>b.addEventListener("click",()=>{myS.view=b.dataset.mview;re();}));
+  app.querySelectorAll("[data-mmode]").forEach(b=>b.addEventListener("click",()=>{myS.mode=myS.mode==="rev"?null:"rev";myS.i=0;myS.show=false;re();}));
+  app.querySelectorAll(".my-say").forEach(b=>b.addEventListener("click",()=>{const x=MYQ.find(z=>z[0]===b.dataset.id);mySpeak(x[3].replace(/\[[^\]]*\]/g,""),b);}));
+  const g=s=>app.querySelector(s);
+  if(g("#myShuf"))g("#myShuf").addEventListener("click",()=>{myS.order=shuf(MYQ.map(x=>x[0]));myS.i=0;myS.show=false;re();});
+  if(g("#myShow"))g("#myShow").addEventListener("click",()=>{clearInterval(myTimer);myS.show=true;re();});
+  if(g("#myPrev"))g("#myPrev").addEventListener("click",()=>{myS.i--;myS.show=false;re();});
+  if(g("#myNext"))g("#myNext").addEventListener("click",()=>{myS.i++;myS.show=false;re();});
+  if(g("#myTime"))g("#myTime").addEventListener("click",e=>{
+    const btn=e.currentTarget,clk=g("#myClock");
+    if(myTimer){clearInterval(myTimer);myTimer=null;btn.textContent=GT("Responder em voz alta (cronômetro)","Answer out loud (timer)");return;}
+    const t0=Date.now();btn.textContent=GT("Parar","Stop");
+    const tick=()=>{const s=Math.floor((Date.now()-t0)/1000);clk.textContent=`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;clk.classList.toggle("long",s>120);};tick();myTimer=setInterval(tick,500);
+  });
+  const mark=v=>{const id=q[0],m=myMarks()[id]||{b:0},b=v==="ok"?Math.min(5,(m.s==="ok"?m.b:0)+1):0;
+    state.fcm=Object.assign({},myMarks(),{[id]:{s:v,b,d:Date.now()+FC_INT[b]*DAY}});persist();gcount("fc");gainXP(3,g(".my-card"));
+    myS.show=false;const nd=myDeck();const k=nd.findIndex(x=>x[0]===id);myS.i=k>=0?Math.min(k+1,nd.length-1):Math.min(myS.i,Math.max(0,nd.length-1));re();};
+  if(g("#myYes"))g("#myYes").addEventListener("click",()=>mark("ok"));
+  if(g("#myNo"))g("#myNo").addEventListener("click",()=>mark("rev"));
+}
 
 /* ============ MODELOS DE DOCUMENTOS (PRD, evals, lançamento, riscos, PR/FAQ, decisão) ============ */
 // Seção: [título PT, título EN, [perguntas PT], [perguntas EN]]
