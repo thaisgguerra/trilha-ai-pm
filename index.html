@@ -982,6 +982,21 @@ body:has(.gc-ov) .ach-toast,body:has(.gc-ov) .toast{opacity:0;visibility:hidden}
 .my-item[open]{padding-bottom:12px}
 .my-n{width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--c) 18%,transparent);display:grid;place-items:center;font-size:12.5px;flex:none}
 @media (max-width:640px){.my-q{font-size:19px}.my-card{padding:16px}}
+body.gated{overflow:hidden}
+body.gated>*:not(.gate){filter:blur(10px);pointer-events:none;user-select:none}
+.gate{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 70%,transparent);transition:opacity .25s}
+.gate.out{opacity:0}
+.gate-card{width:min(380px,100%);background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 22px;box-shadow:0 24px 60px rgba(20,23,42,.25);display:grid;gap:10px;text-align:center}
+.gate-card h2{margin:4px 0 0;font-size:24px}.gate-card>p{margin:0;color:var(--muted)}
+.gate-ico{width:56px;height:56px;margin:0 auto;border-radius:16px;background:color-mix(in srgb,var(--brand) 12%,var(--surface));color:var(--brand);display:grid;place-items:center}.gate-ico svg{width:28px;height:28px}
+.gate-l{text-align:left;font-weight:700;font-size:13.5px;margin-top:6px}
+.gate-card input[type=password]{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.gate-card input[type=password]:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:var(--brand)}
+.gate-err{min-height:1.2em;margin:0;color:var(--warn);font-size:13.5px;text-align:left}
+.gate-rem{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);text-align:left}
+.gate-btn{min-height:48px;justify-content:center;font-size:16px}
+.gate-card.shake{animation:noShake .4s ease}
+@media print{.gate{display:none}body.gated>*{filter:none}}
 main:focus,main:focus-visible{outline:none}
 .legend i,.minibars a i{background:var(--c)}
 .btn:not(.ghost):not(.soft):not(.done){background:var(--brandi)}
@@ -8905,6 +8920,38 @@ function drawHistory(){
 
 /* ============ INÍCIO ============ */
 loadLocal(); applyTheme(); render(); posLangFab(); initStore();
+/* ============ ACESSO COM SENHA ============ */
+(function(){
+  const H="c03bef17",K="trilha-ai-pm-unlock";
+  const hash=s=>{let h=0x811c9dc5;for(const c of "trilha-ai-pm:"+s){h^=c.charCodeAt(0);h=Math.imul(h,0x01000193)>>>0;}return h.toString(16);};
+  let ok=false;try{ok=localStorage.getItem(K)===H||sessionStorage.getItem(K)===H;}catch(e){}
+  if(ok) return;
+  const en=(()=>{try{return JSON.parse(localStorage.getItem("trilha-ai-pm-v1")||"{}").lang==="en";}catch(e){return false;}})();
+  const T=(pt,e)=>en?e:pt;
+  document.body.classList.add("gated");
+  const ov=document.createElement("div");ov.className="gate";ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");ov.setAttribute("aria-labelledby","gateT");
+  ov.innerHTML=`<form class="gate-card" novalidate>
+    <div class="gate-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+    <h2 id="gateT">${T("Trilha AI PM","AI PM Path")}</h2>
+    <p>${T("Digite a senha para acessar.","Enter the password to continue.")}</p>
+    <label class="gate-l" for="gateIn">${T("Senha","Password")}</label>
+    <input id="gateIn" type="password" autocomplete="current-password" autocapitalize="none" spellcheck="false" required>
+    <p class="gate-err" id="gateErr" role="alert"></p>
+    <label class="gate-rem"><input type="checkbox" id="gateRem" checked> ${T("Lembrar neste aparelho","Remember on this device")}</label>
+    <button type="submit" class="btn gate-btn">${T("Entrar","Enter")}</button>
+  </form>`;
+  document.body.appendChild(ov);
+  const inp=ov.querySelector("#gateIn"),err=ov.querySelector("#gateErr"),card=ov.querySelector(".gate-card");
+  setTimeout(()=>inp.focus(),50);
+  ov.querySelector("form").addEventListener("submit",e=>{e.preventDefault();
+    if(hash(inp.value.trim().toLowerCase())===H){
+      try{(ov.querySelector("#gateRem").checked?localStorage:sessionStorage).setItem(K,H);}catch(x){}
+      ov.classList.add("out");document.body.classList.remove("gated");setTimeout(()=>ov.remove(),250);
+      const m=document.getElementById("app");if(m)m.focus({preventScroll:true});
+    }else{err.textContent=T("Senha incorreta. Tente de novo.","Wrong password. Try again.");card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake");inp.select();}
+  });
+})();
+
 </script>
 </body>
 </html>
